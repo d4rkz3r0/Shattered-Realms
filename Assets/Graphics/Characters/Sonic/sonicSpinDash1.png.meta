@@ -1,0 +1,495 @@
+fileFormatVersion: 2
+guid: 29c3634965fa62a4cbbb9a687a8c9f1a
+timeCreated: 1439745120
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sonicSpinDash1_35
+    21300002: sonicSpinDash1_34
+    21300004: sonicSpinDash1_33
+    21300006: sonicSpinDash1_32
+    21300008: sonicSpinDash1_31
+    21300010: sonicSpinDash1_30
+    21300012: sonicSpinDash1_29
+    21300014: sonicSpinDash1_28
+    21300016: sonicSpinDash1_27
+    21300018: sonicSpinDash1_26
+    21300020: sonicSpinDash1_25
+    21300022: sonicSpinDash1_24
+    21300024: sonicSpinDash1_23
+    21300026: sonicSpinDash1_22
+    21300028: sonicSpinDash1_21
+    21300030: sonicSpinDash1_20
+    21300032: sonicSpinDash1_19
+    21300034: sonicSpinDash1_18
+    21300036: sonicSpinDash1_17
+    21300038: sonicSpinDash1_16
+    21300040: sonicSpinDash1_15
+    21300042: sonicSpinDash1_14
+    21300044: sonicSpinDash1_13
+    21300046: sonicSpinDash1_12
+    21300048: sonicSpinDash1_11
+    21300050: sonicSpinDash1_10
+    21300052: sonicSpinDash1_9
+    21300054: sonicSpinDash1_8
+    21300056: sonicSpinDash1_7
+    21300058: sonicSpinDash1_6
+    21300060: sonicSpinDash1_5
+    21300062: sonicSpinDash1_4
+    21300064: sonicSpinDash1_3
+    21300066: sonicSpinDash1_2
+    21300068: sonicSpinDash1_1
+    21300070: sonicSpinDash1_0
+    21300072: sonicSpinDash1_36
+    21300074: sonicSpinDash1_37
+    21300076: sonicSpinDash1_38
+    21300078: sonicSpinDash1_39
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 20
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: sonicSpinDash1_35
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_34
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_33
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_32
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_31
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_30
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_29
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_28
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_27
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_26
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_25
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_24
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_23
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_22
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_21
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_20
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_19
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_18
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_17
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_16
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_15
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_14
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_13
+      rect:
+        serializedVersion: 2
+        x: 1618
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_12
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_11
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_10
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_9
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_8
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_7
+      rect:
+        serializedVersion: 2
+        x: 1917
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_6
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_5
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_4
+      rect:
+        serializedVersion: 2
+        x: 2072
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_3
+      rect:
+        serializedVersion: 2
+        x: 2124
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_2
+      rect:
+        serializedVersion: 2
+        x: 2175
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_1
+      rect:
+        serializedVersion: 2
+        x: 2226
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_0
+      rect:
+        serializedVersion: 2
+        x: 2279
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_36
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_37
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_38
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonicSpinDash1_39
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

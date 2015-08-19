@@ -1,0 +1,118 @@
+using UnityEngine;
+using System.Collections;
+
+public class EnemyAttack : MonoBehaviour {
+
+	//Behaviour Manager
+	public enum AttackBehaviour {Melee, Range, Bomber, Stunned};
+	private AttackBehaviour myBehaviour;
+	public AttackBehaviour myDefaultBehaviour;
+
+	//General
+	public float timeBetweenAttacks;
+	public GameObject projectile;
+	private float attackTimer;
+
+	//Melee
+	public int damageAmount;
+	private Rigidbody2D playerRigidBody;
+	private AudioSource playerSound;
+	private MasterController playerScript;
+
+	//Projectile
+	private GameObject temp;
+	private Transform trf;
+	private Rigidbody2D rb2d;
+	public float projectileSpeed;
+
+	//Range
+	private GameObject player;
+	private bool isPlayerInRange;
+	public LayerMask playerLayer;
+	public float aggroRange;
+	private Vector2 aiming;
+
+	//Stunned
+	private float stunTimer;
+
+	// Use this for initialization
+	void Start () {
+		myBehaviour = myDefaultBehaviour;
+		playerSound = GameObject.Find("Player").GetComponent<AudioSource>();
+		playerScript = GameObject.Find ("Player").GetComponent<MasterController> ();
+		player = GameObject.Find ("Player");
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		if(attackTimer > 0)attackTimer -= Time.deltaTime;
+
+		switch (myBehaviour) {
+		case AttackBehaviour.Melee:
+			break;
+
+		case AttackBehaviour.Range:
+			isPlayerInRange = Physics2D.OverlapCircle(transform.position, aggroRange, playerLayer);
+
+			if(attackTimer <= 0 && isPlayerInRange){
+
+				aiming = player.transform.position - transform.position;
+				attackTimer = timeBetweenAttacks;
+				temp = Instantiate(projectile);
+				trf = temp.GetComponent<Transform>();
+				trf.position = transform.position;
+				rb2d = temp.GetComponent<Rigidbody2D>();
+				rb2d.velocity = aiming.normalized*projectileSpeed;
+			}
+			break;
+
+		case AttackBehaviour.Bomber:
+			if(attackTimer <= 0){
+				attackTimer = timeBetweenAttacks;
+				temp = Instantiate(projectile);
+				trf = temp.GetComponent<Transform>();
+				trf.position = transform.position;
+				rb2d = temp.GetComponent<Rigidbody2D>();
+				rb2d.velocity = new Vector2(0,-projectileSpeed);
+			}
+			break;
+
+		case AttackBehaviour.Stunned:
+
+			stunTimer -= Time.deltaTime;
+			if(stunTimer <=0 ){
+				myBehaviour = myDefaultBehaviour;
+			}
+			break;
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D other){
+		if (myBehaviour == AttackBehaviour.Melee && other.name == "Player" && attackTimer <= 0)
+		{
+
+			attackTimer = timeBetweenAttacks;
+			HealthManager.takeDamage(damageAmount);
+			playerSound.Play();
+
+			//Knockback
+			playerScript.stunned = true;
+			playerRigidBody = other.GetComponent<Rigidbody2D>();
+			if(other.transform.position.x <transform.position.x)
+			{
+				playerRigidBody.velocity = new Vector2(-10,10); 
+			}
+			else
+			{
+				playerRigidBody.velocity = new Vector2(10,10); 
+			}
+		}
+	}
+
+	public void GetStun(float stn){
+		rb2d.velocity = Vector2.zero;
+		myBehaviour = AttackBehaviour.Stunned;
+		stunTimer = stn;
+	}
+}

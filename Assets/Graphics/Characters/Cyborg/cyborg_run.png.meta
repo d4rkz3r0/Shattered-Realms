@@ -1,0 +1,210 @@
+fileFormatVersion: 2
+guid: 89847349521f0224eaec2eb2503130bb
+timeCreated: 1437505134
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cyborg_run_0
+    21300002: cyborg_run_1
+    21300004: cyborg_run_2
+    21300006: cyborg_run_3
+    21300008: cyborg_run_4
+    21300010: cyborg_run_5
+    21300012: cyborg_run_6
+    21300014: cyborg_run_7
+    21300016: cyborg_run_8
+    21300018: cyborg_run_9
+    21300020: cyborg_run_10
+    21300022: cyborg_run_11
+    21300024: cyborg_run_12
+    21300026: cyborg_run_13
+    21300028: cyborg_run_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: cyborg_run_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 0
+        width: 75
+        height: 62
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_1
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 0
+        width: 76
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_2
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 78
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_3
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 0
+        width: 81
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_4
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 0
+        width: 78
+        height: 63
+      alignment: 9
+      pivot: {x: .485453963, y: .55091083}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_5
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 0
+        width: 75
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_6
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 0
+        width: 76
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_7
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 0
+        width: 76
+        height: 65
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_8
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 0
+        width: 76
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_9
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 0
+        width: 79
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_10
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 0
+        width: 79
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_11
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 0
+        width: 76
+        height: 68
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_12
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 0
+        width: 66
+        height: 68
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_run_13
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 0
+        width: 67
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 530aeceff63fb9747924d83a07048d3f
+timeCreated: 1437465663
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cyborg_missle_0
+    21300002: cyborg_missle_1
+    21300004: cyborg_missle_2
+    21300006: cyborg_missle_3
+    21300008: cyborg_missle_4
+    21300010: cyborg_missle_5
+    21300012: cyborg_missle_6
+    21300014: cyborg_missle_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: cyborg_missle_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1
+        width: 68
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_missle_1
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_missle_2
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 1
+        width: 68
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_missle_3
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 1
+        width: 68
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_missle_4
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 1
+        width: 68
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_missle_5
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1
+        width: 55
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_missle_6
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1
+        width: 55
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: cyborg_missle_7
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

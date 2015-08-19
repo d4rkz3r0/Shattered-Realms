@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: c3977b3eda51c314ea9d268cfebae2c5
+timeCreated: 1439580382
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sonic_Run1_aaa
+    21300002: sonic_Run1_bbb
+    21300004: sonic_Run1_ccc
+    21300006: sonic_Run1_dddd
+    21300008: sonic_Run1_eeee
+    21300010: sonic_Run1_ffff
+    21300012: sonic_Run1_hhhhh
+    21300014: sonic_Run1_iiiiii
+    21300016: sonic_Run1_qqq
+    21300018: sonic_Run1_www
+    21300020: sonic_Run1_dddd
+    21300022: sonic_Run1_ffff
+    21300024: sonic_Run1_xxx
+    21300026: sonic_Run1_aaaa
+    21300028: sonic_Run1_qqqq
+    21300030: sonic_Run1_555
+    21300032: sonic_Run1_7
+    21300034: sonic_Run1_6
+    21300036: sonic_Run1_5
+    21300038: sonic_Run1_4
+    21300040: sonic_Run1_3
+    21300042: sonic_Run1_2
+    21300044: sonic_Run1_1
+    21300046: sonic_Run1_0
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 25
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: sonic_Run1_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonic_Run1_6
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonic_Run1_5
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonic_Run1_4
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonic_Run1_3
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonic_Run1_2
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonic_Run1_1
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sonic_Run1_0
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 0
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
