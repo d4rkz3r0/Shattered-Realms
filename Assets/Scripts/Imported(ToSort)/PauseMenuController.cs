@@ -50,6 +50,6 @@ public class PauseMenuController : MonoBehaviour
 
     public void MainMenu()
     {
-        Application.LoadLevel("IntroMenu");
+        Application.LoadLevel("MainMenu");
     }
 }
