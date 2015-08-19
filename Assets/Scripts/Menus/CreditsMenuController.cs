@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+//bobobo bo bobobo
+
 public class CreditsMenuController : MonoBehaviour
 {
 
