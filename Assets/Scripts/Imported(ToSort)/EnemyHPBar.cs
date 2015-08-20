@@ -13,6 +13,7 @@ public class EnemyHPBar : MonoBehaviour {
 	private Color E_lowHPColor;
 	private Color E_fullHPColor;
 	private Image E_hpBarSprite;
+	private Transform HealthBar;
 
 	private SpriteRenderer hi;
 
@@ -24,20 +25,28 @@ public class EnemyHPBar : MonoBehaviour {
 		E_lowHPColor = Color.red;
 		E_fullHPColor = Color.green; //Full Alpha
 		E_hpBarSprite = GetComponent<Image>();
+
+		HealthBar = transform.FindChild ("EnemyHealthBar");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		if (transform.localScale.x < 0)
+			transform.FindChild("EnemyHealthBar").localScale = new Vector3 (-1, 1, 1);
+		else
+			transform.FindChild("EnemyHealthBar").localScale = new Vector3 (1, 1, 1);
+
 		E_CurrentHP = GetComponentInParent <EnemyHealthManager> ().enemyHP;
 
 		Vector3 newEnemyHPBarPos = E_healthBarInitial;
 		newEnemyHPBarPos.x = newEnemyHPBarPos.x - (0.5f - ((float)E_CurrentHP / (float)E_MaxHP) * 0.5f);
-		gameObject.transform.position = newEnemyHPBarPos;
+		gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = newEnemyHPBarPos;
 
 		Vector3 newEnemyHPBarScale = new Vector3 (25, 1, 1);
 		newEnemyHPBarScale.x = 25.0f * ((float)E_CurrentHP / (float)E_MaxHP);
-		//gameObject.transform.localScale = newEnemyHPBarScale;
+		gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = newEnemyHPBarScale;
 
 		// Set Health Bar Color
 		Color theColor = gameObject.GetComponent<SpriteRenderer> ().color;
@@ -46,7 +55,7 @@ public class EnemyHPBar : MonoBehaviour {
 		theColor.g = 1.0f * (((float)E_CurrentHP / (float)E_MaxHP));
 		theColor.b = 0.0f;
 
-		hi = gameObject.GetComponentsInChildren<SpriteRenderer>()[1];
+		hi = gameObject.GetComponentsInChildren<SpriteRenderer>()[2];
 		hi.color = theColor;
 
 		if (E_CurrentHP <= 0)
