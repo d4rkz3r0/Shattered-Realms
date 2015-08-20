@@ -6,13 +6,14 @@ public class shotgunBlastController : MonoBehaviour
 
     //Public Globals
 	public int abilityDamage;
+	public float stunTime;
 
 	//Private References
 	private MasterController player;
     private Animator anim;
 	private Rigidbody2D otherRB;
-	private newAggresiveMelee meleeScrp;
-	private EnemyPatrollingAI patrolAIScrp;
+	private EnemyMovement eMScrp;
+	private EnemyAttack eAScrp;
     private float timer;
     public float timeBetweenAttacks;
 
@@ -59,15 +60,15 @@ public class shotgunBlastController : MonoBehaviour
                 other.GetComponent<BossHealthManager>().takeDamage(abilityDamage);
             }
 
-            if (other.GetComponent<newAggresiveMelee>())
+            if (other.GetComponent<EnemyMovement>())
             {
-                meleeScrp = other.GetComponent<newAggresiveMelee>();
-                meleeScrp.stunTimer = 0;
+                eMScrp = other.GetComponent<EnemyMovement>();
+				eMScrp.GetStun(stunTime);
             }
-            if (other.GetComponent<EnemyPatrollingAI>())
+            if (other.GetComponent<EnemyAttack>())
             {
-                patrolAIScrp = other.GetComponent<EnemyPatrollingAI>();
-                patrolAIScrp.stunTimer = 0;
+                eAScrp = other.GetComponent<EnemyAttack>();
+                eAScrp.GetStun(stunTime);
             }
             if (other.transform.position.x < transform.position.x)
             {
