@@ -175,6 +175,7 @@ public class HealthManager : MonoBehaviour
                 case 10:
                     {
                         currHPBarImage.sprite = hpBarSheet[0];
+
                         break;
                     }
                 case 9:
@@ -242,7 +243,7 @@ public class HealthManager : MonoBehaviour
                 case 5:
                     {
                         currHPBarImage.sprite = hpBarSheet[0];
-						break;
+                        break;
                     }
                 case 4:
                     {
@@ -338,7 +339,6 @@ public class HealthManager : MonoBehaviour
         
         //Death Value
         playerHP -= damageReceived;
-	
     }
 
     //public IEnumerator FlashPlayerCoRoutine()
