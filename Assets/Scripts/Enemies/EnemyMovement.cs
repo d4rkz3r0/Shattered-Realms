@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour {
 	public Transform waypoint2;
 	public Transform waypoint3;
 	private Vector3 currentWaypoint;
-
+	private GameObject HPBar;
 	//Ground Patrolling
 	private bool moveRight;
 
@@ -48,6 +48,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		HPBar = GameObject.Find("EnemyHealthBar");
 		startingPosition = transform.position;
 		currentWaypoint = waypoint1.position;
 
@@ -60,6 +61,8 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 
 		if (slowed)
 			actualSpeed = speed / slowFactor;
@@ -78,9 +81,16 @@ public class EnemyMovement : MonoBehaviour {
 				if (target.transform.position.x > transform.position.x) {
 					rb2d.velocity = new Vector2 (actualSpeed, rb2d.velocity.y);
 					transform.localScale = new Vector3 (-1.0f, 1.0f, 0.0f);
+					//rb2d.gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = new Vector3 (25, 1, 1);
+					//gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = new Vector3 (25, 1, 1);
+					  //rb2d.gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = new Vector2 (-actualSpeed, rb2d.velocity.y);
+					//gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = new Vector3 (25, 1, 1);
 				} else {
-					rb2d.velocity = new Vector2 (-actualSpeed, rb2d.velocity.y);
+				    rb2d.velocity = new Vector2 (-actualSpeed, rb2d.velocity.y);
 					transform.localScale = new Vector3 (1.0f, 1.0f, 0.0f);
+					//gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = new Vector3 (25, 1, 1);
+					  //rb2d.gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = new Vector3 (25, 1, 1);
+					//gameObject.GetComponentsInChildren<SpriteRenderer> () [2].transform.localScale = new Vector3 (25, 1, 1);
 				}
 			}
 
@@ -104,16 +114,17 @@ public class EnemyMovement : MonoBehaviour {
 			{
 				moveRight = !moveRight;
 			}
-			
 			if(moveRight)
 			{
 				transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
 				rb2d.velocity = new Vector2(actualSpeed, rb2d.velocity.y);
+				HPBar.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 			}
 			else
 			{
 				transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 				rb2d.velocity = new Vector2(-actualSpeed, rb2d.velocity.y);
+				HPBar.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 			}
 			break;
 
