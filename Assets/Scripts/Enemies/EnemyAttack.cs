@@ -111,7 +111,7 @@ public class EnemyAttack : MonoBehaviour {
 	}
 
 	public void GetStun(float stn){
-		rb2d.velocity = Vector2.zero;
+//		rb2d.velocity = Vector2.zero;
 		myBehaviour = AttackBehaviour.Stunned;
 		stunTimer = stn;
 	}
