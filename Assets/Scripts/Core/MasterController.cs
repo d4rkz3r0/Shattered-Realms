@@ -37,7 +37,7 @@ public class MasterController : MonoBehaviour
     public LayerMask blinkDetectionLayer;
     public bool isTouchingWall;
     public bool isOnWall;
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D[] boxColliders;
     private CircleCollider2D circleCollider;
 
 
@@ -182,7 +182,7 @@ public class MasterController : MonoBehaviour
         playedOnce = false;
         stunned = false;
         //Auto Hook to GameObjects Components
-        boxCollider = GetComponent<BoxCollider2D>();
+        boxColliders = GetComponents<BoxCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -195,7 +195,9 @@ public class MasterController : MonoBehaviour
         {
             case 1:
                 {
-                    boxCollider.offset = new Vector2(0.0f, 0.05f);
+		
+                    boxColliders[0].offset = new Vector2(0.0f, 0.05f);
+
                     circleCollider.offset = new Vector2(0.0f, -0.83f);
                     anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
                     
@@ -203,14 +205,16 @@ public class MasterController : MonoBehaviour
                 }
             case 2:
                 {
-                    boxCollider.offset = new Vector2(0.0f, 0.05f);
+
+                    boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                     circleCollider.offset = new Vector2(0.0f, -0.83f);
                     anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                     break;
                 }
             case 3:
                 {
-                    boxCollider.offset = new Vector2(0.0f, 0.05f);
+
+                    boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                     circleCollider.offset = new Vector2(0.0f, -0.56f);
                     transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                     anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
@@ -351,7 +355,7 @@ public class MasterController : MonoBehaviour
                     case 1:
                         {
                             currentCharacter = 2;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+                          //  boxCollider.offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
 
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
@@ -360,7 +364,7 @@ public class MasterController : MonoBehaviour
                     case 2:
                         {
                             currentCharacter = 3;
-                            boxCollider.offset = new Vector2(0.0f, 0.05f);
+                           // boxCollider.offset = new Vector2(0.0f, 0.05f);
                             transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                             circleCollider.offset = new Vector2(0.0f, -0.56f);
                             
@@ -370,7 +374,7 @@ public class MasterController : MonoBehaviour
                     case 3:
                         {
                             currentCharacter = 1;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+                           // boxCollider.offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
                             //circleCollider.radius = 0.2f;
                             transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
@@ -393,7 +397,7 @@ public class MasterController : MonoBehaviour
                     case 1:
                         {
                             currentCharacter = 3;
-                            boxCollider.offset = new Vector2(0.0f, 0.05f);
+                         //   boxCollider.offset = new Vector2(0.0f, 0.05f);
                             circleCollider.offset = new Vector2(0.0f, -0.56f);
                             transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
@@ -402,7 +406,7 @@ public class MasterController : MonoBehaviour
                     case 2:
                         {
                             currentCharacter = 1;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+                         //   boxCollider.offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
                             
 
@@ -412,7 +416,7 @@ public class MasterController : MonoBehaviour
                     case 3:
                         {
                             currentCharacter = 2;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+                          //  boxCollider.offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
                             transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
@@ -677,7 +681,7 @@ public class MasterController : MonoBehaviour
                     spinDashSFX.Play();
                     spinDashAnimTimer = 1.9f;
                     isSpinDashing = true;
-
+					boxColliders[1].enabled = false;
                     canCastSpinDash = false;
                     spinDashTimer = spinDashCoolDown;
                 }
@@ -782,6 +786,7 @@ public class MasterController : MonoBehaviour
             if (spinDashTimer <= 0.0f)
             {
                 canCastSpinDash = true;
+				boxColliders[1].enabled = true;
             }
 
 
