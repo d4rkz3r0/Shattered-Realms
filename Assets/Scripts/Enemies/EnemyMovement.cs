@@ -162,7 +162,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	public void GetStun(float stn){
-		rb2d.velocity = Vector2.zero;
+		//rb2d.velocity = Vector2.zero;
 		myBehaviour = MovementBehaviour.Stunned;
 		stunTimer = stn;
 	}
