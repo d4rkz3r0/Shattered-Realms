@@ -94,7 +94,7 @@ public class EnemyAttack : MonoBehaviour {
 
 			attackTimer = timeBetweenAttacks;
 			HealthManager.takeDamage(damageAmount);
-			playerSound.Play();
+
 
 			//Knockback
 			playerScript.stunned = true;
