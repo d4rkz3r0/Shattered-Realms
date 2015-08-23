@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour {
 
 	//Behaviour Manager
-	public enum AttackBehaviour {Melee, Range, Bomber, Stunned};
+	public enum AttackBehaviour {Melee, Range, Bomber, SideBomber, Stunned};
 	private AttackBehaviour myBehaviour;
 	public AttackBehaviour myDefaultBehaviour;
 
@@ -31,6 +31,9 @@ public class EnemyAttack : MonoBehaviour {
 	public LayerMask playerLayer;
 	public float aggroRange;
 	private Vector2 aiming;
+
+	//Side Bomber
+	public bool shootingLeft;
 
 	//Stunned
 	private float stunTimer;
@@ -75,6 +78,20 @@ public class EnemyAttack : MonoBehaviour {
 				trf.position = transform.position;
 				rb2d = temp.GetComponent<Rigidbody2D>();
 				rb2d.velocity = new Vector2(0,-projectileSpeed);
+			}
+			break;
+
+		case AttackBehaviour.SideBomber:
+			if(attackTimer <= 0){
+				attackTimer = timeBetweenAttacks;
+				temp = Instantiate(projectile);
+				trf = temp.GetComponent<Transform>();
+				trf.position = transform.position;
+				rb2d = temp.GetComponent<Rigidbody2D>();
+				if(shootingLeft)
+					rb2d.velocity = new Vector2(-projectileSpeed,0);
+				else
+					rb2d.velocity = new Vector2(projectileSpeed,0);
 			}
 			break;
 

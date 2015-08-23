@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
 
 	//Behaviour Managment
-	public enum MovementBehaviour {GroundAggro, GroundPatrolling, FlyingAggro, FlyingPatrolling, Stunned};
+	public enum MovementBehaviour {GroundAggro, GroundPatrolling, GroundSmart, GroundAgile, FlyingAggro, FlyingPatrolling, Stunned};
 	private MovementBehaviour myBehaviour;
 	public MovementBehaviour myDefaultBehaviour;
 
@@ -43,6 +43,15 @@ public class EnemyMovement : MonoBehaviour {
 	//Ground Patrolling
 	private bool moveRight;
 
+	//Ground Smart
+	private bool isPlayerTooClose;
+	public float defensiveRange;
+	private float smartTimer;
+
+	//Ground Agile
+	private GameObject playerProjectile;
+	private Vector2 toPlayerProj;
+
 	//Stunned
 	private float stunTimer;
 
@@ -56,6 +65,8 @@ public class EnemyMovement : MonoBehaviour {
 		target = GameObject.Find("Player");
 		rb2d = GetComponent<Rigidbody2D>();
 		jumping = false;
+		smartTimer = 0;
+
 	}
 	
 	// Update is called once per frame
@@ -68,6 +79,14 @@ public class EnemyMovement : MonoBehaviour {
 
 		isPlayerInRange = Physics2D.OverlapCircle(transform.position, aggroRange, playerLayer);
 
+		if(isPlayerInRange && myBehaviour != MovementBehaviour.GroundPatrolling  && myBehaviour != MovementBehaviour.FlyingPatrolling){
+			if (target.transform.position.x > transform.position.x) {
+				transform.localScale = new Vector3 (-1.0f, 1.0f, 0.0f);
+			} else {
+				transform.localScale = new Vector3 (1.0f, 1.0f, 0.0f);
+			}
+		}
+
 		switch (myBehaviour) {
 		case MovementBehaviour.GroundAggro:
 
@@ -77,10 +96,8 @@ public class EnemyMovement : MonoBehaviour {
 			if(isPlayerInRange){
 				if (target.transform.position.x > transform.position.x) {
 					rb2d.velocity = new Vector2 (actualSpeed, rb2d.velocity.y);
-					transform.localScale = new Vector3 (-1.0f, 1.0f, 0.0f);
 				} else {
 					rb2d.velocity = new Vector2 (-actualSpeed, rb2d.velocity.y);
-					transform.localScale = new Vector3 (1.0f, 1.0f, 0.0f);
 				}
 			}
 
@@ -114,6 +131,32 @@ public class EnemyMovement : MonoBehaviour {
 			{
 				transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 				rb2d.velocity = new Vector2(-actualSpeed, rb2d.velocity.y);
+			}
+			break;
+
+		case MovementBehaviour.GroundSmart:
+
+			isPlayerTooClose = Physics2D.OverlapCircle(transform.position, defensiveRange, playerLayer);
+			smartTimer -= Time.deltaTime;
+			if(isPlayerTooClose && smartTimer <= 0){
+				smartTimer = 1;
+				if (target.transform.position.x > transform.position.x) {
+					rb2d.velocity = new Vector2(-actualSpeed, jumpPower);
+				}
+				else
+					rb2d.velocity = new Vector2(actualSpeed, jumpPower);
+			}
+			break;
+
+		case MovementBehaviour.GroundAgile:
+			smartTimer -= Time.deltaTime;
+			playerProjectile = GameObject.FindGameObjectWithTag("PlayerAbility");
+			if(playerProjectile.transform.position.y < transform.position.y + 1 && playerProjectile.transform.position.y > transform.position.y - 1){
+				toPlayerProj = playerProjectile.transform.position - transform.position;
+				if(toPlayerProj.magnitude < defensiveRange  && smartTimer <= 0){
+					smartTimer = 2.08f;
+						rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower*2);
+				}
 			}
 			break;
 

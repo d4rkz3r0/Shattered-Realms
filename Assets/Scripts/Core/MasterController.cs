@@ -37,12 +37,13 @@ public class MasterController : MonoBehaviour
     public LayerMask blinkDetectionLayer;
     public bool isTouchingWall;
     public bool isOnWall;
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D[] boxColliders;
     private CircleCollider2D circleCollider;
 
 
 
     //SFX
+
     public AudioSource itachiHurtSFX;
     public AudioSource cyborgHurtSFX;
     public AudioSource sonicHurtSFX;
@@ -52,8 +53,6 @@ public class MasterController : MonoBehaviour
     public AudioSource backFlipSFX;
     public AudioSource chaosSFX;
     public AudioSource spinDashSFX;
-
-
     
     //Player and Character Animation Abilities
     private Animation blastProjectileAnimation;
@@ -138,6 +137,11 @@ public class MasterController : MonoBehaviour
 
 
     //Sonic
+	//Knocking Back Enemies
+	private EnemyMovement eMScrp;
+	private EnemyAttack eAScrp;
+	public float shortStun;
+
     //Q - Back Flip
     public float backFlipCoolDown;
     public int backFlipDamage;
@@ -201,7 +205,7 @@ public class MasterController : MonoBehaviour
         playedOnce = false;
         stunned = false;
         //Auto Hook to GameObjects Components
-        boxCollider = GetComponent<BoxCollider2D>();
+        boxColliders = GetComponents<BoxCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -224,7 +228,7 @@ public class MasterController : MonoBehaviour
         {
             case 1:
                 {
-                    boxCollider.offset = new Vector2(0.0f, 0.05f);
+                    boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                     circleCollider.offset = new Vector2(0.0f, -0.83f);
                     anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
                     
@@ -232,14 +236,14 @@ public class MasterController : MonoBehaviour
                 }
             case 2:
                 {
-                    boxCollider.offset = new Vector2(0.0f, 0.05f);
+			boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                     circleCollider.offset = new Vector2(0.0f, -0.83f);
                     anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                     break;
                 }
             case 3:
                 {
-                    boxCollider.offset = new Vector2(0.0f, 0.05f);
+			boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                     circleCollider.offset = new Vector2(0.0f, -0.56f);
                     transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                     anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
@@ -382,7 +386,7 @@ public class MasterController : MonoBehaviour
                     case 1:
                         {
                             currentCharacter = 2;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
 
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
@@ -391,17 +395,16 @@ public class MasterController : MonoBehaviour
                     case 2:
                         {
                             currentCharacter = 3;
-                            boxCollider.offset = new Vector2(0.0f, 0.05f);
+					boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                             transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                             circleCollider.offset = new Vector2(0.0f, -0.56f);
-
                             anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
                             break;
                         }
                     case 3:
                         {
                             currentCharacter = 1;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
                             //circleCollider.radius = 0.2f;
                             transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
@@ -424,7 +427,7 @@ public class MasterController : MonoBehaviour
                     case 1:
                         {
                             currentCharacter = 3;
-                            boxCollider.offset = new Vector2(0.0f, 0.05f);
+					boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                             circleCollider.offset = new Vector2(0.0f, -0.56f);
                             transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
@@ -433,9 +436,8 @@ public class MasterController : MonoBehaviour
                     case 2:
                         {
                             currentCharacter = 1;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
-
 
                             anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
                             break;
@@ -443,7 +445,7 @@ public class MasterController : MonoBehaviour
                     case 3:
                         {
                             currentCharacter = 2;
-                            boxCollider.offset = new Vector2(0.0f, 0.05127716f);
+					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
                             transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
@@ -614,7 +616,7 @@ public class MasterController : MonoBehaviour
             if (isQuaking)
             {
                 rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);
-                if (rb2D.velocity.y == 0)
+                if (isGrounded)
                 {
                     actualQuake = Instantiate(theQuake);
                     actualQuake.transform.position = transform.position;
@@ -707,6 +709,8 @@ public class MasterController : MonoBehaviour
                 if (canCastSpinDash)
                 {
                     //circleCollider.radius = 0.4f;
+
+					boxColliders[1].enabled = false;
 
                     spinDashSFX.Play();
                     spinDashAnimTimer = 1.9f;
@@ -816,7 +820,8 @@ public class MasterController : MonoBehaviour
 
             if (spinDashTimer <= 0.0f)
             {
-                canCastSpinDash = true;
+				canCastSpinDash = true;
+				boxColliders[1].enabled = true;
             }
         }
 
@@ -1028,6 +1033,24 @@ public class MasterController : MonoBehaviour
         if (other.tag == "Enemy" && isBackFlipping)
         {
             other.GetComponent<EnemyHealthManager>().takeDamage(backFlipDamage);
+			if(other.GetComponent<EnemyMovement>())
+			{
+				eMScrp = other.GetComponent<EnemyMovement>();
+				eMScrp.GetStun(shortStun);
+			}
+			if( other.GetComponent<EnemyAttack>())
+			{
+				eAScrp = other.GetComponent<EnemyAttack>();
+				eAScrp.GetStun(shortStun);
+			}
+			if (other.transform.position.x < transform.position.x) 
+			{
+				other.attachedRigidbody.velocity = new Vector2 (-4, 2); 
+			} 
+			else
+			{
+				other.attachedRigidbody.velocity = new Vector2 (4, 2); 
+			}
         }
 
         if(other.tag == "Enemy" && isGoingSuper)
@@ -1038,16 +1061,21 @@ public class MasterController : MonoBehaviour
         if(other.tag == "Enemy" && isSpinDashing)
         {
             other.GetComponent<EnemyHealthManager>().takeDamage(spinDashDamage);
+			if(other.GetComponent<EnemyMovement>())
+			{
+				eMScrp = other.GetComponent<EnemyMovement>();
+				eMScrp.GetStun(shortStun);
+			}
+			if( other.GetComponent<EnemyAttack>())
+			{
+				eAScrp = other.GetComponent<EnemyAttack>();
+				eAScrp.GetStun(shortStun);
+			}
+		
+				other.attachedRigidbody.velocity = new Vector2 (0, 8); 
+			
         }
 
-        if (isQuaking) 
-        {
-			actualQuake = Instantiate(theQuake);
-			actualQuake.transform.position = transform.position;
-			actualQuake.transform.localScale = new Vector3(quakeSize, quakeSize, 1.0f);
-			isQuaking = false;
-            rb2D.gravityScale = defaultGravityScale;
-		}
 
         if(other.tag == "Obstacle" && isSpinDashing)
         {
