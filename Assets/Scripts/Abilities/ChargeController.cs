@@ -30,8 +30,9 @@
 		
 		void OnTriggerEnter2D(Collider2D other)
 		{
-			if (other.name != "Player" || other.tag != "Collectibles" || other.tag != "LethalHazard" || other.tag != "Platform") 
-			{
+			//if (other.name != "Player" || other.tag != "Collectibles" || other.tag != "LethalHazard" || other.tag != "Platform") 
+		if(other.GetComponent<Rigidbody2D> ())	
+		{
 				otherRB = other.GetComponent<Rigidbody2D> ();
 				
 				if (other.tag == "Enemy")
