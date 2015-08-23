@@ -1,4 +1,4 @@
-﻿///***********************************************************************
+///***********************************************************************
 //Class: DarkStormController.cs
 /*Notes:
  * The DarkStormController class handles Itachi's DarkStorm ability.
@@ -43,7 +43,7 @@ public class DarkStormController : MonoBehaviour
 
     void Update()
     {
-        
+        transform.position = player.darkStormPoint.position;
     }
 
     //Stay On Platforms

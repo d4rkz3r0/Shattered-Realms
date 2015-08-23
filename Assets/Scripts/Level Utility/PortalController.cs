@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PortalController : MonoBehaviour
@@ -39,15 +39,15 @@ public class PortalController : MonoBehaviour
             //MessageController.textSelection = 1;
             if(!playedOnce)
             {
-                if(AudioManager.currAudio.isPlaying)
-                {
-                    AudioManager.currAudio.Stop();
-                }
+                //if(AudioManager.currAudio.isPlaying)
+                //{
+                //    AudioManager.currAudio.Stop();
+                //}
                 
                 winMusic.Play();
                 playedOnce = true;
             }
-            Invoke("LoadLevel", 3.0f);
+            Invoke("LoadLevel", 3.4f);
             
             
         }

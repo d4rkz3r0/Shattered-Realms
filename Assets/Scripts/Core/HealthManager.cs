@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 //using XInputDotNetPure;
 using System.Collections;
@@ -78,7 +78,7 @@ public class HealthManager : MonoBehaviour
 
         //Initial Player Spawn
         playerHP = 10;
-            playerMaxHP = 10;
+        playerMaxHP = 10;
         isPlayerDead = false;
 	}
 
@@ -165,7 +165,6 @@ public class HealthManager : MonoBehaviour
             lowHPMusic.Stop();
             AudioManager.currAudio.Play();
             lowBGMHasPlayed = false;
-            
         }
 
         if(playerMaxHP > 5)
@@ -355,7 +354,6 @@ public class HealthManager : MonoBehaviour
 
     public static void receiveHealing(int healingAmount)
     {
-        
         playerHP += healingAmount;
     }
 

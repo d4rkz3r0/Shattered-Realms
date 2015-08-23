@@ -43,7 +43,6 @@ public class MasterController : MonoBehaviour
 
 
     //SFX
-
     public AudioSource itachiHurtSFX;
     public AudioSource cyborgHurtSFX;
     public AudioSource sonicHurtSFX;
@@ -53,18 +52,20 @@ public class MasterController : MonoBehaviour
     public AudioSource backFlipSFX;
     public AudioSource chaosSFX;
     public AudioSource spinDashSFX;
+
+
     
     //Player and Character Animation Abilities
     private Animation blastProjectileAnimation;
     private float blastAnimTimer = 0.45f; //Must Match ability cooldown!
     public bool isGrounded;
-    private bool isBlinking;
+    public bool isBlinking;
 
     //LvL Up Animation
     private Animation levelUpAnimation;
     private float levelUpAnimTimer;
     private bool releaseControl;
-
+    
 
     //Character Switching
     //1 - Itachi
@@ -104,6 +105,7 @@ public class MasterController : MonoBehaviour
     public float blinkCoolDown;
     private float blinkTimer;
     private bool canCastBlink;
+    private float blinkAnimTimer;
    
     
 	//CB - The Cyborg
@@ -162,7 +164,16 @@ public class MasterController : MonoBehaviour
     public bool disableInput;
     
     
-	
+	//Neat Hacks
+    public Sprite sasukePain;
+    public Sprite sasukeDead;
+    public bool canExecuteSasuke;
+    public bool isExecutingSasuke;
+    public bool once;
+    public bool sasukeBossFightOver;
+    public float executeSasukeTimer;
+    private float executeSasukeAnimTimer;
+    public AudioSource executeSasukeSFX;
 
     
 
@@ -170,13 +181,21 @@ public class MasterController : MonoBehaviour
     private Rigidbody2D rb2D;
     private Animator anim;
     private HealthManager healthManager;
+    private SasukeController sasuke;
+    private PortalController warpPortal;
+    private KeyPickup warpKey;
+    private BossHealthManager sasukeHP;
 
 
 
     void Start()
     {
+        
         releaseControl = false;
         disableInput = false;
+        canExecuteSasuke = false;
+        isExecutingSasuke = false;
+        once = false;
         //aboutToCastFireball = false;
         levelUpAnimTimer = 0.0f;
         playedOnce = false;
@@ -189,7 +208,17 @@ public class MasterController : MonoBehaviour
         currentCharacter = startingCharacter;
         healthManager = FindObjectOfType<HealthManager>();
         defaultGravityScale = rb2D.gravityScale;
+        warpPortal = FindObjectOfType<PortalController>();
+        warpKey = FindObjectOfType<KeyPickup>();
         //defaultDrag = rb2D.drag;
+
+        if(Application.loadedLevel == 5)
+        {
+            executeSasukeTimer = 2.0f;
+            sasukeBossFightOver = false;
+            sasuke = FindObjectOfType<SasukeController>();
+            sasukeHP = FindObjectOfType<BossHealthManager>();
+        }
 
         switch(currentCharacter)
         {
@@ -251,6 +280,7 @@ public class MasterController : MonoBehaviour
 
     void Update()
     {
+
         if (stunned)
         {
             stunTimer -= Time.deltaTime;
@@ -261,7 +291,7 @@ public class MasterController : MonoBehaviour
             }
         }
 
-        else if (!healthManager.isPlayerDead && !PauseMenuController.isGamePaused)
+        else if (!healthManager.isPlayerDead && !PauseMenuController.isGamePaused && !disableInput)
         {
             //Left Right Movement
             float hAxis = Input.GetAxis("Horizontal");
@@ -269,17 +299,18 @@ public class MasterController : MonoBehaviour
 
             if (hAxis != 0.0f)
             {
-                if(disableInput)
+                if (disableInput)
                 {
+                    return;
                     //Do Nothing
                 }
                 else
                 {
                     rb2D.velocity = new Vector2(moveSpeed * hAxis, rb2D.velocity.y);
                 }
-                
+
             }
-           
+
 
 
             if (XPGemManager.allGemsCollected && playedOnce == false)
@@ -293,11 +324,11 @@ public class MasterController : MonoBehaviour
                 releaseControl = false;
             }
 
-            if(levelUpAnimTimer > 0.0f)
+            if (levelUpAnimTimer > 0.0f)
             {
                 levelUpAnimTimer -= Time.deltaTime;
             }
-            if(levelUpAnimTimer < 0.0f && playedOnce && releaseControl == false)
+            if (levelUpAnimTimer < 0.0f && playedOnce && releaseControl == false)
             {
                 if (currentCharacter == 1)
                 {
@@ -346,7 +377,7 @@ public class MasterController : MonoBehaviour
             //Forward
             if (Input.GetButtonDown("CharSwitchForward"))
             {
-                switch(currentCharacter)
+                switch (currentCharacter)
                 {
                     case 1:
                         {
@@ -363,7 +394,7 @@ public class MasterController : MonoBehaviour
                             boxCollider.offset = new Vector2(0.0f, 0.05f);
                             transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                             circleCollider.offset = new Vector2(0.0f, -0.56f);
-                            
+
                             anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
                             break;
                         }
@@ -404,7 +435,7 @@ public class MasterController : MonoBehaviour
                             currentCharacter = 1;
                             boxCollider.offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
-                            
+
 
                             anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
                             break;
@@ -418,16 +449,16 @@ public class MasterController : MonoBehaviour
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                             break;
                         }
-                        /*
-                         * 
-                         * 
-                         * 
-                         * 
-                         * 
-                         * 
-                         * 
-                         * 
-                         * */
+                    /*
+                     * 
+                     * 
+                     * 
+                     * 
+                     * 
+                     * 
+                     * 
+                     * 
+                     * */
                     default:
                         {
                             Debug.Log("Character not assigned");
@@ -473,7 +504,7 @@ public class MasterController : MonoBehaviour
                     {
                         StartCoroutine("makeBlinkParticle");
                         blinkSFX.Play();
-                        isBlinking = true;
+                        blinkAnimTimer = 0.3f;
                         rb2D.transform.position = new Vector3(downBlinkPoint.transform.position.x,
                                                               downBlinkPoint.transform.position.y,
                                                               rb2D.transform.position.z);
@@ -488,8 +519,9 @@ public class MasterController : MonoBehaviour
                 }
             }
 
+
             //Upward
-            else if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (Input.GetAxis("Vertical") > 0) && (currentCharacter == 1) && !healthManager.isPlayerDead)
+            else if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (Input.GetAxis("Vertical") > 0) && (currentCharacter == 1))
             {
                 if (canCastBlink)
                 {
@@ -497,7 +529,8 @@ public class MasterController : MonoBehaviour
                     {
                         StartCoroutine("makeBlinkParticle");
                         blinkSFX.Play();
-                        isBlinking = true;
+                        blinkAnimTimer = 0.3f;
+
                         rb2D.transform.position = new Vector3(upBlinkPoint.transform.position.x,
                                                               upBlinkPoint.transform.position.y,
                                                               rb2D.transform.position.z);
@@ -520,7 +553,7 @@ public class MasterController : MonoBehaviour
                     {
                         StartCoroutine("makeBlinkParticle");
                         blinkSFX.Play();
-                        isBlinking = true;
+                        blinkAnimTimer = 0.3f;
                         rb2D.transform.position = new Vector3(blinkPoint.transform.position.x,
                                                               blinkPoint.transform.position.y,
                                                               rb2D.transform.position.z);
@@ -536,11 +569,12 @@ public class MasterController : MonoBehaviour
             }
 
             //Reset Blink Animation
-            if ((Input.GetAxis("Fire4") == 0 || Input.GetKeyDown(KeyCode.R)) && (currentCharacter == 1))
+            if ((Input.GetAxis("Fire4") == 0 && (currentCharacter == 1)))
             {
-                isBlinking = false;
+                //isBlinking = false;
             }
 
+           
 
             //////Cyborg
             ////Q - Blast Ability with Ability CoolDown
@@ -565,7 +599,7 @@ public class MasterController : MonoBehaviour
                     rb2D.velocity = new Vector2(chargeRunningSpeed, rb2D.velocity.y);
                 else
                     rb2D.velocity = new Vector2(-chargeRunningSpeed, rb2D.velocity.y);
-                actualCharge.transform.localScale = transform.localScale* chargeSize;
+                actualCharge.transform.localScale = transform.localScale * chargeSize;
                 actualCharge.transform.position = transform.position;
             }
             //Quake Ability with CoolDown
@@ -591,7 +625,7 @@ public class MasterController : MonoBehaviour
             }
 
             //// Charge
-            if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (currentCharacter == 2) && !healthManager.isPlayerDead)
+            if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (currentCharacter == 2))
             {
                 if (canCastCharge)
                 {
@@ -612,7 +646,7 @@ public class MasterController : MonoBehaviour
                 rb2D.gravityScale = defaultGravityScale;
             }
             //// Quake
-            if ((Input.GetButtonDown("Fire2")) && (currentCharacter == 2) && !healthManager.isPlayerDead && !isGrounded)
+            if ((Input.GetButtonDown("Fire2")) && (currentCharacter == 2))
             {
                 if (canCastQuake)
                 {
@@ -642,12 +676,12 @@ public class MasterController : MonoBehaviour
 
                     backFlipAnimTimer = 0.8f;
                     isBackFlipping = true;
-                    
+
                     //anim.Play("sonic_Backflip");
 
                     //Instantiate(blast, blastPoint.position, blastPoint.rotation);
                     canCastBackFlip = false;
-                    
+
                     backFlipTimer = backFlipCoolDown;
                 }
             }
@@ -666,14 +700,14 @@ public class MasterController : MonoBehaviour
                     chaosEmeraldTimer = chaosEmeraldCoolDown;
                 }
             }
-            
+
             ////R - SpinDash Ability with CoolDown
-            if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (currentCharacter == 3)) 
+            if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (currentCharacter == 3))
             {
                 if (canCastSpinDash)
                 {
                     //circleCollider.radius = 0.4f;
-                    
+
                     spinDashSFX.Play();
                     spinDashAnimTimer = 1.9f;
                     isSpinDashing = true;
@@ -683,16 +717,16 @@ public class MasterController : MonoBehaviour
                 }
             }
 
-           if(isSpinDashing && isGrounded)
-           {
-               disableInput = true;
-           }
-           else if(isSpinDashing && !isGrounded)
-           {
-               disableInput = false;
-           }
+            if (isSpinDashing && isGrounded)
+            {
+                disableInput = true;
+            }
+            else if (isSpinDashing && !isGrounded)
+            {
+                disableInput = false;
+            }
 
-           
+
 
 
             ////Ability Timers
@@ -721,6 +755,7 @@ public class MasterController : MonoBehaviour
             }
             if (blinkTimer <= 0.0f)
             {
+                isBlinking = false;
                 canCastBlink = true;
             }
 
@@ -783,85 +818,178 @@ public class MasterController : MonoBehaviour
             {
                 canCastSpinDash = true;
             }
+        }
+
+        //End Disable Input Zone
 
 
-
-            ////Update Animator Values
-            if (currentCharacter == 1)
+        if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
+        {
+            if (canExecuteSasuke && !isExecutingSasuke)
             {
-                anim.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
-                anim.SetBool("isGrounded", isGrounded);
+                currentCharacter = 1;
+                anim.SetBool("isExecuting", true);
+                Vector3 newExecutePosition = sasuke.transform.position;
+                
+                if(transform.localScale.x == 1)
+                {
+                    newExecutePosition += new Vector3(-3.26f, 0.0f, 0.0f);
+                }
+                else if(transform.localScale.x == -1)
+                {
+                    newExecutePosition += new Vector3(3.26f, 0.0f, 0.0f);
+                }
+
+                transform.position = newExecutePosition;
+                sasuke.GetComponent<SpriteRenderer>().sortingOrder = -1;
+                sasuke.GetComponent<SpriteRenderer>().sprite = sasukePain;
+                anim.Play("itachi_Execute");
+                executeSasukeSFX.Play();
+                sasuke.sasukeExecuteSFX.Play();
+                executeSasukeAnimTimer = 3.2f;
+                canExecuteSasuke = false;
+                isExecutingSasuke = true;
+            }
+        }
+
+        if(canExecuteSasuke == false && isExecutingSasuke == false)
+        {
+            executeSasukeAnimTimer = 3.2f;
+        }
+
+        if (executeSasukeAnimTimer >= 0.0f && isExecutingSasuke)
+        {
+            executeSasukeAnimTimer -= Time.deltaTime;
+        }
+
+        if (executeSasukeTimer >= 0.0f && sasuke.GetComponent<SpriteRenderer>().sprite == sasukeDead)
+        {
+            
+            executeSasukeTimer -= Time.deltaTime;
+        }
+
+        if (executeSasukeAnimTimer <= 0.0f)
+        {
+            anim.SetBool("isExecuting", false);
+            isExecutingSasuke = false;
+            sasuke.GetComponent<SpriteRenderer>().sprite = sasukeDead;
+            sasuke.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            sasuke.GetComponent<BoxCollider2D>().enabled = false;
+            sasuke.GetComponent<CircleCollider2D>().enabled = false;
+            if(!once)
+            {
+                executeSasukeTimer = 2.0f;
+                //anim.Play("itachi_VictoryPost");
+                once = true;
+            }
+            
+
+            disableInput = false;
+        }
+
+        if (executeSasukeTimer <= 0.0f && !sasukeBossFightOver)
+        {
+            sasukeBossFightOver = true;
+            Vector3 formattedWarpPortalPos = sasuke.transform.position;
+            formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);
+            warpPortal.transform.position = formattedWarpPortalPos;
+            Vector3 formattedWarpKeyPos = warpPortal.transform.position;
+            formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
+            warpKey.transform.position = formattedWarpKeyPos;
+            ////sasukeHP.gameObject.SetActive(false);
+            //sasukeHP.enabled = false;
+            //sasuke.gameObject.SetActive(false);
+            
+        }
+
+
+
+        ////Update Animator Values
+        if (currentCharacter == 1)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
+            anim.SetBool("isGrounded", isGrounded);
+            anim.SetBool("isBlinking", isBlinking);
+            anim.SetBool("isOnWall", isOnWall);
+
+            if (blinkAnimTimer >= 0.0f)
+            {
+                isBlinking = true;
                 anim.SetBool("isBlinking", isBlinking);
-                anim.SetBool("isOnWall", isOnWall);
-                //anim.SetBool("aboutToCastFireball", aboutToCastFireball);
+                blinkAnimTimer -= Time.deltaTime;
+
             }
-            else if (currentCharacter == 2)
+
+            if (blinkAnimTimer <= 0.0f)
             {
-                anim.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
-                anim.SetBool("isGrounded", isGrounded);
-
-                if (blastAnimTimer >= 0.0f)
-                {
-                    anim.SetBool("castMissle", true);
-                    blastAnimTimer -= Time.deltaTime;
-
-                }
-
-                if (blastAnimTimer <= 0.0f)
-                {
-                    anim.SetBool("castMissle", false);
-                }
+                isBlinking = false;
+                anim.SetBool("isBlinking", isBlinking);
             }
-            else if (currentCharacter == 3)
+
+        }
+        else if (currentCharacter == 2)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
+            anim.SetBool("isGrounded", isGrounded);
+
+            if (blastAnimTimer >= 0.0f)
             {
-                anim.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
-                anim.SetBool("isGrounded", isGrounded);
+                anim.SetBool("castMissle", true);
+                blastAnimTimer -= Time.deltaTime;
 
-                if (backFlipAnimTimer >= 0.0f)
-                {
-                    isBackFlipping = true;
-                    anim.SetBool("isBackflipping", isBackFlipping);
-                    backFlipAnimTimer -= Time.deltaTime;
-
-                }
-
-                if (backFlipAnimTimer <= 0.0f)
-                {
-                    isBackFlipping = false;
-                    anim.SetBool("isBackflipping", isBackFlipping);
-                }
-
-                if (chaosEmeraldsAnimTimer >= 0.0f)
-                {
-                    chaosEmeraldsAnimTimer -= Time.deltaTime;
-                    anim.SetBool("isGoingSuper", true);
-                }
-
-                if (chaosEmeraldsAnimTimer <= 0.0f)
-                {
-                    isGoingSuper = false;
-                    anim.SetBool("isGoingSuper", false);
-
-                }
-
-                if (spinDashAnimTimer >= 0.0f)
-                {
-                    spinDashAnimTimer -= Time.deltaTime;
-                    anim.SetBool("isSpinDashing", true);
-                }
-
-                if (spinDashAnimTimer <= 0.0f)
-                {
-                    anim.SetBool("isSpinDashing", false);
-                    isSpinDashing = false;
-                    disableInput = false;
-                    anim.SetBool("isSpinDashing", false);
-
-                }
             }
-            //Console Output if Desired
-            //Debug.Log("Vel: " + rb2D.velocity);
-            //Debug.Log(rb2D.position);
+
+            if (blastAnimTimer <= 0.0f)
+            {
+                anim.SetBool("castMissle", false);
+            }
+        }
+        else if (currentCharacter == 3)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(rb2D.velocity.x));
+            anim.SetBool("isGrounded", isGrounded);
+
+            if (backFlipAnimTimer >= 0.0f)
+            {
+                isBackFlipping = true;
+                anim.SetBool("isBackflipping", isBackFlipping);
+                backFlipAnimTimer -= Time.deltaTime;
+
+            }
+
+            if (backFlipAnimTimer <= 0.0f)
+            {
+                isBackFlipping = false;
+                anim.SetBool("isBackflipping", isBackFlipping);
+            }
+
+            if (chaosEmeraldsAnimTimer >= 0.0f)
+            {
+                chaosEmeraldsAnimTimer -= Time.deltaTime;
+                anim.SetBool("isGoingSuper", true);
+            }
+
+            if (chaosEmeraldsAnimTimer <= 0.0f)
+            {
+                isGoingSuper = false;
+                anim.SetBool("isGoingSuper", false);
+
+            }
+
+            if (spinDashAnimTimer >= 0.0f)
+            {
+                spinDashAnimTimer -= Time.deltaTime;
+                anim.SetBool("isSpinDashing", true);
+            }
+
+            if (spinDashAnimTimer <= 0.0f)
+            {
+                anim.SetBool("isSpinDashing", false);
+                isSpinDashing = false;
+                disableInput = false;
+                anim.SetBool("isSpinDashing", false);
+
+            }
         }
     }
 

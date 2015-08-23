@@ -1,4 +1,4 @@
-﻿///***********************************************************************
+///***********************************************************************
 //Class: LevelManager.cs
 /*Notes:
  * The LevelManager class handles Respawning the Player and playing the
@@ -56,7 +56,12 @@ public class LevelManager : MonoBehaviour
     {
 
         //Death Occurred
-        //player.isBlinking = false; //Enable if Itachi is still blinking after death respawn
+        player.isBlinking = false;
+        if(player.currentCharacter == 1)
+        {
+            player.GetComponent<Animator>().SetBool("isBlinking", false); //Enable if Itachi is still blinking after death respawn
+        }
+        
         
         Instantiate(deathParticle, player.transform.position, player.transform.rotation);
         player.GetComponent<CircleCollider2D>().enabled = false;

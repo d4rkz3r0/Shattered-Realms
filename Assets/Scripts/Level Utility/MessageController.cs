@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -188,6 +188,94 @@ public class MessageController : MonoBehaviour
             case 19:
                 {
 			pressedUp = true;
+                    displayedText.text =
+                        "You must find the key before you\ncan warp out of here!";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 20:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "How much can I see\nwith these?";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 21:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "What I'm seeing right\nnow...";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 22:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "Is you dead at my\nfeet!";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 23:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "You see me dead do\nyou?";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 24:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "Well then...";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 25:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "Make it happen!";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 26:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "What?!";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 27:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "Itachi! All these\nyears nothing has\nchanged...";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 28:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "I'll handle this...\n(Press LT)";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 29:
+                {
+                    pressedUp = true;
+                    displayedText.text =
+                        "Make it happen!";
+                    //textFadeTimer = defaultTextFadeDuration;
+                    break;
+                }
+            case 30:
+                {
+                    pressedUp = true;
                     displayedText.text =
                         "You must find the key before you\ncan warp out of here!";
                     //textFadeTimer = defaultTextFadeDuration;

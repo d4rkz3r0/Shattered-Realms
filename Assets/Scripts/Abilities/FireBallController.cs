@@ -1,4 +1,4 @@
-﻿///***********************************************************************
+///***********************************************************************
 //Class: FireBallController.cs
 /*Notes:
  * The FireBallController class handles Itachi's FireBall ability.
@@ -28,7 +28,8 @@ public class FireBallController : MonoBehaviour
 
     //Private References
     private Rigidbody2D rb2D;
-    private MasterController player;   
+    private MasterController player;
+    private BossHealthManager sasuke;
 
 
 
@@ -36,6 +37,20 @@ public class FireBallController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<MasterController>();
+
+        switch(Application.loadedLevel)
+        {
+            case 5:
+                {
+                    sasuke = FindObjectOfType<BossHealthManager>();
+                    break;
+                }
+            default:
+                {
+                    sasuke = null;
+                    break;
+                }
+        }
         
 
         if(player.transform.localScale.x < 0.0f)
@@ -66,9 +81,16 @@ public class FireBallController : MonoBehaviour
         {
             other.GetComponent<EnemyHealthManager>().takeDamage(abilityDamage);
         }
-        if(other.tag == "MiniBoss")
+        if(other.tag == "Boss")
         {
-            other.GetComponent<BossHealthManager>().takeDamage(abilityDamage);
+            if(sasuke != null)
+            {
+                sasuke.takeDamage(abilityDamage);
+            }
+            else
+            {
+                return;
+            }
         }
    
         //Fireball->Anything Else
