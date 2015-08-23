@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
@@ -106,7 +106,8 @@ public class EnemyMovement : MonoBehaviour {
 				rb2d.velocity = new Vector2 (rb2d.velocity.x, jumpPower);
 			}
 
-			if (rb2d.velocity.y == 0.0f) {
+			if (rb2d.velocity.y == 0.0f) 
+            {
 				jumping = false;
 			}
 

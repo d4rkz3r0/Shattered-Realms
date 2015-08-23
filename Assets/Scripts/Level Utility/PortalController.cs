@@ -78,6 +78,6 @@ public class PortalController : MonoBehaviour
     void LoadLevel()
     {
         Application.LoadLevel(sceneToLoad);
-        AudioManager.currAudio.Play();
+        //AudioManager.currAudio.Play();
     }
 }

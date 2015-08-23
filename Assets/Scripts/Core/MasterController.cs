@@ -827,85 +827,88 @@ public class MasterController : MonoBehaviour
 
         //End Disable Input Zone
 
-
-        if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
+        if(Application.loadedLevel == 5)
         {
-            if (canExecuteSasuke && !isExecutingSasuke)
+            if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
             {
-                currentCharacter = 1;
-                anim.SetBool("isExecuting", true);
-                Vector3 newExecutePosition = sasuke.transform.position;
-                
-                if(transform.localScale.x == 1)
+                if (canExecuteSasuke && !isExecutingSasuke)
                 {
-                    newExecutePosition += new Vector3(-3.26f, 0.0f, 0.0f);
-                }
-                else if(transform.localScale.x == -1)
-                {
-                    newExecutePosition += new Vector3(3.26f, 0.0f, 0.0f);
-                }
+                    currentCharacter = 1;
+                    anim.SetBool("isExecuting", true);
+                    Vector3 newExecutePosition = sasuke.transform.position;
 
-                transform.position = newExecutePosition;
-                sasuke.GetComponent<SpriteRenderer>().sortingOrder = -1;
-                sasuke.GetComponent<SpriteRenderer>().sprite = sasukePain;
-                anim.Play("itachi_Execute");
-                executeSasukeSFX.Play();
-                sasuke.sasukeExecuteSFX.Play();
+                    if (transform.localScale.x == 1)
+                    {
+                        newExecutePosition += new Vector3(-3.26f, 0.0f, 0.0f);
+                    }
+                    else if (transform.localScale.x == -1)
+                    {
+                        newExecutePosition += new Vector3(3.26f, 0.0f, 0.0f);
+                    }
+
+                    transform.position = newExecutePosition;
+                    sasuke.GetComponent<SpriteRenderer>().sortingOrder = -1;
+                    sasuke.GetComponent<SpriteRenderer>().sprite = sasukePain;
+                    anim.Play("itachi_Execute");
+                    executeSasukeSFX.Play();
+                    sasuke.sasukeExecuteSFX.Play();
+                    executeSasukeAnimTimer = 3.2f;
+                    canExecuteSasuke = false;
+                    isExecutingSasuke = true;
+                }
+            }
+
+            if (canExecuteSasuke == false && isExecutingSasuke == false)
+            {
                 executeSasukeAnimTimer = 3.2f;
-                canExecuteSasuke = false;
-                isExecutingSasuke = true;
             }
-        }
 
-        if(canExecuteSasuke == false && isExecutingSasuke == false)
-        {
-            executeSasukeAnimTimer = 3.2f;
-        }
-
-        if (executeSasukeAnimTimer >= 0.0f && isExecutingSasuke)
-        {
-            executeSasukeAnimTimer -= Time.deltaTime;
-        }
-
-        if (executeSasukeTimer >= 0.0f && sasuke.GetComponent<SpriteRenderer>().sprite == sasukeDead)
-        {
-            
-            executeSasukeTimer -= Time.deltaTime;
-        }
-
-        if (executeSasukeAnimTimer <= 0.0f)
-        {
-            anim.SetBool("isExecuting", false);
-            isExecutingSasuke = false;
-            sasuke.GetComponent<SpriteRenderer>().sprite = sasukeDead;
-            sasuke.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
-            sasuke.GetComponent<BoxCollider2D>().enabled = false;
-            sasuke.GetComponent<CircleCollider2D>().enabled = false;
-            if(!once)
+            if (executeSasukeAnimTimer >= 0.0f && isExecutingSasuke)
             {
-                executeSasukeTimer = 2.0f;
-                //anim.Play("itachi_VictoryPost");
-                once = true;
+                executeSasukeAnimTimer -= Time.deltaTime;
             }
-            
 
-            disableInput = false;
-        }
+            if (executeSasukeTimer >= 0.0f && sasuke.GetComponent<SpriteRenderer>().sprite == sasukeDead)
+            {
 
-        if (executeSasukeTimer <= 0.0f && !sasukeBossFightOver)
-        {
-            sasukeBossFightOver = true;
-            Vector3 formattedWarpPortalPos = sasuke.transform.position;
-            formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);
-            warpPortal.transform.position = formattedWarpPortalPos;
-            Vector3 formattedWarpKeyPos = warpPortal.transform.position;
-            formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
-            warpKey.transform.position = formattedWarpKeyPos;
-            ////sasukeHP.gameObject.SetActive(false);
-            //sasukeHP.enabled = false;
-            //sasuke.gameObject.SetActive(false);
-            
+                executeSasukeTimer -= Time.deltaTime;
+            }
+
+            if (executeSasukeAnimTimer <= 0.0f)
+            {
+                anim.SetBool("isExecuting", false);
+                isExecutingSasuke = false;
+                sasuke.GetComponent<SpriteRenderer>().sprite = sasukeDead;
+                sasuke.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+                sasuke.GetComponent<BoxCollider2D>().enabled = false;
+                sasuke.GetComponent<CircleCollider2D>().enabled = false;
+                if (!once)
+                {
+                    executeSasukeTimer = 2.0f;
+                    //anim.Play("itachi_VictoryPost");
+                    once = true;
+                }
+
+
+                disableInput = false;
+            }
+
+            if (executeSasukeTimer <= 0.0f && !sasukeBossFightOver)
+            {
+                sasukeBossFightOver = true;
+                Vector3 formattedWarpPortalPos = sasuke.transform.position;
+                formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);
+                warpPortal.transform.position = formattedWarpPortalPos;
+                Vector3 formattedWarpKeyPos = warpPortal.transform.position;
+                formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
+                warpKey.transform.position = formattedWarpKeyPos;
+                ////sasukeHP.gameObject.SetActive(false);
+                //sasukeHP.enabled = false;
+                //sasuke.gameObject.SetActive(false);
+
+            }
         }
+       
 
 
 
