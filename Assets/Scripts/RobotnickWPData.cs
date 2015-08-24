@@ -9,6 +9,8 @@ public class RobotnickWPData : MonoBehaviour {
 	public float RobSpeed;
 	public float RobSpeedIncrement;
 	public bool RobLaserOn;
+	public Direction RobLaserDir;
+
 
 	// Use this for initialization
 	void Start () {

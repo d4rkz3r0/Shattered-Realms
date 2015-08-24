@@ -58,6 +58,7 @@
 					eAScrp = other.GetComponent<EnemyAttack>();
 					eAScrp.GetStun(stunTime);
 				}
+			if(other.tag != "Obstacle"){
 				if (other.transform.position.x < transform.position.x) 
 				{
 					otherRB.velocity = new Vector2 (-18, 2); 
@@ -66,6 +67,7 @@
 				{
 					otherRB.velocity = new Vector2 (18, 2); 
 				}
+			}
 			}
 			
 		}
