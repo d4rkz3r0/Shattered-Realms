@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 //using XInputDotNetPure;
 using System.Collections;
@@ -23,7 +23,8 @@ public class HealthManager : MonoBehaviour
     private AudioSource playerDeathSFX;
     private AudioSource lowHPMusic;
     private bool lowBGMHasPlayed;
-
+	public static float DamageTakenTimer;
+	public Color tempColor;
 
 
     //Player Feedback for damage
@@ -60,6 +61,7 @@ public class HealthManager : MonoBehaviour
 
     void Start () 
     {
+		DamageTakenTimer = 0.0f;
         lowBGMHasPlayed = false;
         //Pull Player Info
         playerMaxHP = PlayerPrefs.GetInt("PlayerMaxHP");
@@ -78,12 +80,13 @@ public class HealthManager : MonoBehaviour
 
         //Initial Player Spawn
         playerHP = 10;
-        playerMaxHP = 10;
+            playerMaxHP = 10;
         isPlayerDead = false;
 	}
 
     void Update()
     {
+
         //Visual Feedback Update
         healthStatusRatio = (float)playerHP / (float)playerMaxHP;
         //Player Sprite
@@ -92,8 +95,20 @@ public class HealthManager : MonoBehaviour
         //HP Bar Sprite
         currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
         hpBarSprite.color = currHPBarSpriteColor;
-            
 
+
+		//This block of code makes it so that the players hpbar goes 100% transparency if hit 
+		//and 50% transparency after 5 seconds if not hit.
+		tempColor = gameObject.GetComponent<Image> ().color;
+		DamageTakenTimer -= Time.deltaTime;
+		if (DamageTakenTimer > 0.0f) {
+			tempColor.a = 1.0f;
+			gameObject.GetComponent<Image> ().color = tempColor;
+			//hpBarSprite.color.a = tempColor;
+		} else {
+			tempColor.a = 0.25f;
+			gameObject.GetComponent<Image> ().color = tempColor;
+		}
 
         if(damageVibrationTimer >= 0.0f)
         {
@@ -154,7 +169,7 @@ public class HealthManager : MonoBehaviour
         {
             if (!lowBGMHasPlayed)
             {
-                AudioManager.currAudio.Stop();
+                //AudioManager.currAudio.Stop();
                 lowHPMusic.Play();
                 lowBGMHasPlayed = true;
                 
@@ -163,8 +178,9 @@ public class HealthManager : MonoBehaviour
         if(playerHP > 3 && lowBGMHasPlayed)
         {
             lowHPMusic.Stop();
-            AudioManager.currAudio.Play();
+            //AudioManager.currAudio.Play();
             lowBGMHasPlayed = false;
+            
         }
 
         if(playerMaxHP > 5)
@@ -173,8 +189,7 @@ public class HealthManager : MonoBehaviour
             {
                 case 10:
                     {
-                        currHPBarImage.sprite = hpBarSheet[0];
-
+                        currHPBarImage.sprite = hpBarSheet[0];						
                         break;
                     }
                 case 9:
@@ -338,6 +353,7 @@ public class HealthManager : MonoBehaviour
         
         //Death Value
         playerHP -= damageReceived;
+		DamageTakenTimer = 5.0f;
     }
 
     //public IEnumerator FlashPlayerCoRoutine()
@@ -354,6 +370,7 @@ public class HealthManager : MonoBehaviour
 
     public static void receiveHealing(int healingAmount)
     {
+        
         playerHP += healingAmount;
     }
 

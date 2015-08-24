@@ -821,7 +821,6 @@ public class MasterController : MonoBehaviour
             if (spinDashTimer <= 0.0f)
             {
 				canCastSpinDash = true;
-				boxColliders[1].enabled = true;
             }
         }
 
@@ -993,6 +992,7 @@ public class MasterController : MonoBehaviour
             if (spinDashAnimTimer <= 0.0f)
             {
                 anim.SetBool("isSpinDashing", false);
+				boxColliders[1].enabled = true;
                 isSpinDashing = false;
                 disableInput = false;
                 anim.SetBool("isSpinDashing", false);
