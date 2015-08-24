@@ -190,6 +190,10 @@ public class MasterController : MonoBehaviour
     private KeyPickup warpKey;
     private BossHealthManager sasukeHP;
 
+    //Gizmo
+    private GameObject gizmo;
+    public bool gizmoBossFightOver;
+
 
 
     void Start()
@@ -216,7 +220,7 @@ public class MasterController : MonoBehaviour
         warpKey = FindObjectOfType<KeyPickup>();
         //defaultDrag = rb2D.drag;
 
-        if(Application.loadedLevel == 5)
+        if(Application.loadedLevel == 6)
         {
             executeSasukeTimer = 2.0f;
             sasukeBossFightOver = false;
@@ -224,6 +228,11 @@ public class MasterController : MonoBehaviour
             sasukeHP = FindObjectOfType<BossHealthManager>();
         }
 
+        if(Application.loadedLevel == 7)
+        {
+            gizmo = GameObject.Find("Gizmo");
+            gizmoBossFightOver = false;
+        }
         switch(currentCharacter)
         {
             case 1:
@@ -827,7 +836,7 @@ public class MasterController : MonoBehaviour
 
         //End Disable Input Zone
 
-        if(Application.loadedLevel == 5)
+        if(Application.loadedLevel == 6)
         {
             if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
             {
@@ -902,10 +911,20 @@ public class MasterController : MonoBehaviour
                 Vector3 formattedWarpKeyPos = warpPortal.transform.position;
                 formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
                 warpKey.transform.position = formattedWarpKeyPos;
-                ////sasukeHP.gameObject.SetActive(false);
-                //sasukeHP.enabled = false;
-                //sasuke.gameObject.SetActive(false);
+            }
+        }
 
+        if(Application.loadedLevel == 7)
+        {
+            if (!gizmoBossFightOver)
+            {
+                gizmoBossFightOver = true;
+                Vector3 formattedWarpPortalPos = gizmo.transform.position;
+                formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);
+                warpPortal.transform.position = formattedWarpPortalPos;
+                Vector3 formattedWarpKeyPos = warpPortal.transform.position;
+                formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
+                warpKey.transform.position = formattedWarpKeyPos;
             }
         }
        

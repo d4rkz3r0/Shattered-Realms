@@ -63,4 +63,9 @@ public class SettingsMenuController : MonoBehaviour
         testSFX.volume = GameOptionData.sfxVolume;
         testSFX.Play();
     }
+
+	public void ScreenToggle()
+	{
+		Screen.fullScreen = !Screen.fullScreen;
+	}
 }

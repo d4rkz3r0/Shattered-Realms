@@ -144,7 +144,7 @@ public class BossHealthManager : MonoBehaviour
                 if (!hasPlayed)
                 {
                     bossLowHPSFX.Play();
-                    //bossHP = 6;
+                    bossHP = 6;
                     hasPlayed = true;
                 }
             }
