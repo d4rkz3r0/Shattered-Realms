@@ -158,6 +158,7 @@ public class BossHealthManager : MonoBehaviour
             {
                 bossHP = 0;
                 sasukeAnimator.Play("sasuke_OOHP");
+                
             }
 
             

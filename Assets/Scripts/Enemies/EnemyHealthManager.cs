@@ -9,11 +9,13 @@ public class EnemyHealthManager : MonoBehaviour
     private AudioSource enemyHurtSFX;
     public int EnemyMaxHP;
     public bool isDead;
+    public bool deathAnimation;
 
     private MasterController player;
 
 	void Start () 
     {
+        deathAnimation = false;
         player = FindObjectOfType<MasterController>();
         isDead = false;
         EnemyMaxHP = enemyHP;
@@ -40,9 +42,19 @@ public class EnemyHealthManager : MonoBehaviour
             }
             else
             {
-                Instantiate(deathParticle, transform.position, transform.rotation);
-                XPManager.AddToEarnedXPThisLevel(xpOnDeath);
-                Destroy(gameObject);
+                if(GetComponent<Animator>() != null)
+                {
+                    deathAnimation = true;
+                    XPManager.AddToEarnedXPThisLevel(xpOnDeath);
+                    return;
+                }
+                else
+                {
+                    Instantiate(deathParticle, transform.position, transform.rotation);
+                    XPManager.AddToEarnedXPThisLevel(xpOnDeath);
+                    Destroy(gameObject);
+                }
+                
             }
             
         }

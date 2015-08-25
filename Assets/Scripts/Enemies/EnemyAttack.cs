@@ -15,6 +15,7 @@ public class EnemyAttack : MonoBehaviour {
 
 	//Melee
 	public int damageAmount;
+    public bool attackAnimation;
 	private Rigidbody2D playerRigidBody;
 	private AudioSource playerSound;
 	private MasterController playerScript;
@@ -40,6 +41,7 @@ public class EnemyAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        attackAnimation = false;
 		myBehaviour = myDefaultBehaviour;
 		playerSound = GameObject.Find("Player").GetComponent<AudioSource>();
 		playerScript = GameObject.Find ("Player").GetComponent<MasterController> ();
@@ -58,8 +60,13 @@ public class EnemyAttack : MonoBehaviour {
 		case AttackBehaviour.Range:
 			isPlayerInRange = Physics2D.OverlapCircle(transform.position, aggroRange, playerLayer);
 
-			if(attackTimer <= 0 && isPlayerInRange){
-
+			if(attackTimer <= 0 && isPlayerInRange)
+            {
+                if (GetComponent<Animator>() != null)
+                {
+                    attackAnimation = true;
+                    return;
+                }
 				aiming = player.transform.position - transform.position;
 				attackTimer = timeBetweenAttacks;
 				temp = Instantiate(projectile);
@@ -105,13 +112,17 @@ public class EnemyAttack : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerStay2D(Collider2D other){
+	void OnTriggerStay2D(Collider2D other)
+    {
 		if (myBehaviour == AttackBehaviour.Melee && other.name == "Player" && attackTimer <= 0)
 		{
-
+            if(GetComponent<Animator>() != null)
+            {
+                attackAnimation = true;
+            }
+            
 			attackTimer = timeBetweenAttacks;
 			HealthManager.takeDamage(damageAmount);
-
 
 			//Knockback
 			playerScript.stunned = true;

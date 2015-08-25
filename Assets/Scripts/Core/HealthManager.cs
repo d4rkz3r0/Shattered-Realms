@@ -167,13 +167,13 @@ public class HealthManager : MonoBehaviour
 
         if(playerHP < 4 && playerHP > 0 )
         {
-            if (!lowBGMHasPlayed)
-            {
-                AudioManager.currAudio.Stop();
-                lowHPMusic.Play();
-                lowBGMHasPlayed = true;
+            //if (!lowBGMHasPlayed)
+            //{
+            //    AudioManager.currAudio.Stop();
+            //    lowHPMusic.Play();
+            //    lowBGMHasPlayed = true;
                 
-            }
+            //}
         }
         if(playerHP > 3 && lowBGMHasPlayed)
         {

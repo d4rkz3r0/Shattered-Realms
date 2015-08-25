@@ -183,6 +183,7 @@ public class ChatBoxController : MonoBehaviour
                     {
                         if (!hasEndPlayed)
                         {
+                            player.currentCharacter = 1;
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
                             voiceClips[voiceClipIndex].Play();
                             voiceClipEndAudioTimer = 0.717f;

@@ -1017,9 +1017,18 @@ public class MasterController : MonoBehaviour
                 anim.SetBool("isSpinDashing", false);
 				boxColliders[1].enabled = true;
                 isSpinDashing = false;
-                //disableInput = false;
+                if(Application.loadedLevel != 6)
+                {
+                    disableInput = false;
+                }
+                else
+                {
+                    if(FindObjectOfType<ChatBoxController>() != null)
+                    {
+                        disableInput = true;
+                    }
+                }
                 anim.SetBool("isSpinDashing", false);
-
             }
         }
     }

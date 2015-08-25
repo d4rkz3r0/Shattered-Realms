@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
 
 	//Behaviour Managment
-	public enum MovementBehaviour {GroundAggro, GroundPatrolling, GroundSmart, GroundAgile, FlyingAggro, FlyingPatrolling, Stunned};
+    public enum MovementBehaviour { GroundAggro, GroundPatrolling, FixedDistanceGroundPatrolling, GroundSmart, GroundAgile, FlyingAggro, FlyingPatrolling, Stunned };
 	private MovementBehaviour myBehaviour;
 	public MovementBehaviour myDefaultBehaviour;
 
@@ -42,6 +42,10 @@ public class EnemyMovement : MonoBehaviour {
 
 	//Ground Patrolling
 	private bool moveRight;
+
+    //Fixed Distance Ground Patrolling
+    public float distance;
+    private float distanceTimer;
 
 	//Ground Smart
 	private bool isPlayerTooClose;
@@ -136,17 +140,65 @@ public class EnemyMovement : MonoBehaviour {
 			}
 			break;
 
+
+        case MovementBehaviour.FixedDistanceGroundPatrolling:
+
+            if (distanceTimer >= 0.0f)
+            {
+                distanceTimer -= Time.deltaTime;
+            }
+
+            if (distanceTimer <= 0.0f)
+            {
+                moveRight = !moveRight;
+                distanceTimer = distance;
+            }
+
+            if (moveRight)
+            {
+                transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+                rb2d.velocity = new Vector2(actualSpeed, rb2d.velocity.y);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                rb2d.velocity = new Vector2(-actualSpeed, rb2d.velocity.y);
+            }
+            break;
+
 		case MovementBehaviour.GroundSmart:
 
 			isPlayerTooClose = Physics2D.OverlapCircle(transform.position, defensiveRange, playerLayer);
 			smartTimer -= Time.deltaTime;
-			if(isPlayerTooClose && smartTimer <= 0){
+			if(isPlayerTooClose && smartTimer <= 0)
+            {
 				smartTimer = 1;
-				if (target.transform.position.x > transform.position.x) {
-					rb2d.velocity = new Vector2(-actualSpeed, jumpPower);
+				if (target.transform.position.x > transform.position.x) 
+                {
+                    if(gameObject.name == "Jumping Sound Ninja")
+                    {
+                        rb2d.gravityScale = 1.5f;
+                        rb2d.velocity = new Vector2(-actualSpeed * 0.3f, jumpPower);
+                    }
+                    else
+                    {
+                        rb2d.velocity = new Vector2(-actualSpeed, jumpPower);
+                    }
+					
 				}
 				else
-					rb2d.velocity = new Vector2(actualSpeed, jumpPower);
+                {
+                    if (gameObject.name == "Jumping Sound Ninja")
+                    {
+                        rb2d.gravityScale = 1.5f;
+                        rb2d.velocity = new Vector2(actualSpeed * 0.3f, jumpPower);
+                    }
+                    else
+                    {
+                        rb2d.velocity = new Vector2(actualSpeed, jumpPower);
+                    }
+                }
+					
 			}
 			break;
 
