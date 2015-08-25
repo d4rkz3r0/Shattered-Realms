@@ -38,13 +38,13 @@ public class LevelManager : MonoBehaviour
         healthManager = FindObjectOfType<HealthManager>();
         //xpManager = FindObjectOfType<XPManager>();
         timerManager = FindObjectOfType<TimerManager>();
-        
+        GameOptionData.currentLevel = Application.loadedLevel;
     }
 
 
     void Update()
     {
-
+        Debug.Log(GameOptionData.currentLevel);
     }
 
     public void RespawnPlayer()

@@ -1132,7 +1132,10 @@ public class MasterController : MonoBehaviour
                 if(Application.loadedLevel == 7)
                 {
                     //Sasuke Takes Dmg
-                    //sasuke.GetComponent<SasukeController>().takeDamage(sonicJumpDamage);
+                    if (GameObject.FindObjectOfType<BossHealthManager>() != null)
+                    {
+                        GameObject.FindObjectOfType<BossHealthManager>().takeDamage(sonicJumpDamage);
+                    }
                 }
                 else if(Application.loadedLevel == 8)
                 {

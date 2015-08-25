@@ -39,10 +39,10 @@ public class PortalController : MonoBehaviour
             //MessageController.textSelection = 1;
             if(!playedOnce)
             {
-                if (AudioManager.currAudio.isPlaying)
-                {
-                    AudioManager.currAudio.Stop();
-                }
+                //if (AudioManager.currAudio.isPlaying)
+                //{
+                //    AudioManager.currAudio.Stop();
+                //}
                 
                 winMusic.Play();
                 playedOnce = true;
