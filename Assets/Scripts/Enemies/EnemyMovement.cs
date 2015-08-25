@@ -56,7 +56,8 @@ public class EnemyMovement : MonoBehaviour {
 	private float stunTimer;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		startingPosition = transform.position;
 		currentWaypoint = waypoint1.position;
 

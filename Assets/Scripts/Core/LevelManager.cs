@@ -73,11 +73,11 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Respawn Event Triggered");
         yield return new WaitForSeconds(respawnDelay);
 
-        ////Death Timer has Expired
-        //if(!AudioManager.currAudio.isPlaying)
-        //{
-        //    AudioManager.currAudio.Play();
-        //}
+        //Death Timer has Expired
+        if (!AudioManager.currAudio.isPlaying)
+        {
+            AudioManager.currAudio.Play();
+        }
 
         player.isGrounded = true;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

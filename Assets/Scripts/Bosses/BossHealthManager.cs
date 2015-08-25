@@ -20,7 +20,7 @@ public class BossHealthManager : MonoBehaviour
     //Boss Audio Helpers
     private bool hasPlayed;
     private float voiceClipAudioTimer;
-    private float voiceClipDuration = 2.0f;
+    //private float voiceClipDuration = 2.0f;
     
     
     //Dynamic Boss HP Bar

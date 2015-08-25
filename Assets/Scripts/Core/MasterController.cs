@@ -141,6 +141,7 @@ public class MasterController : MonoBehaviour
 	private EnemyMovement eMScrp;
 	private EnemyAttack eAScrp;
 	public float shortStun;
+    public int sonicJumpDamage;
 
     //Q - Back Flip
     public float backFlipCoolDown;
@@ -148,7 +149,7 @@ public class MasterController : MonoBehaviour
     private float backFlipTimer;
     private bool canCastBackFlip;
     private float backFlipAnimTimer; //Must Match ability cooldown!
-    private bool isBackFlipping;
+    public bool isBackFlipping;
     
     //W - Chaos Emeralds
     public float chaosEmeraldCoolDown;
@@ -168,7 +169,7 @@ public class MasterController : MonoBehaviour
     public bool disableInput;
     
     
-	//Neat Hacks
+	//Sasuke 
     public Sprite sasukePain;
     public Sprite sasukeDead;
     public bool canExecuteSasuke;
@@ -179,7 +180,10 @@ public class MasterController : MonoBehaviour
     private float executeSasukeAnimTimer;
     public AudioSource executeSasukeSFX;
 
-    
+
+    //Gizmo
+    private GameObject gizmo;
+    public bool gizmoBossFightOver;
 
     ////Private References
     private Rigidbody2D rb2D;
@@ -190,10 +194,7 @@ public class MasterController : MonoBehaviour
     private KeyPickup warpKey;
     private BossHealthManager sasukeHP;
 
-    //Gizmo
-    private GameObject gizmo;
-    public bool gizmoBossFightOver;
-
+    
 
 
     void Start()
@@ -1016,7 +1017,7 @@ public class MasterController : MonoBehaviour
                 anim.SetBool("isSpinDashing", false);
 				boxColliders[1].enabled = true;
                 isSpinDashing = false;
-                disableInput = false;
+                //disableInput = false;
                 anim.SetBool("isSpinDashing", false);
 
             }
@@ -1025,6 +1026,7 @@ public class MasterController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        //Hurt SFXs
         if (other.tag == "Enemy" || other.tag == "Projectile")
         {
             switch(currentCharacter)
@@ -1043,16 +1045,19 @@ public class MasterController : MonoBehaviour
                     {
                         if(!isGoingSuper && !isBackFlipping && !isSpinDashing)
                         {
-                            sonicHurtSFX.Play();
-                        }
-                        else
-                        {
-                            //Do Nothing
+                            if(!isGrounded)
+                            {
+                                //Do Nothing
+                            }
+                            else
+                            {
+                                sonicHurtSFX.Play();
+                            }
+                            
                         }
                         break;
                     }
             }
-            
         }
 
         if (other.tag == "Enemy" && isBackFlipping)
@@ -1097,10 +1102,8 @@ public class MasterController : MonoBehaviour
 				eAScrp.GetStun(shortStun);
 			}
 		
-				other.attachedRigidbody.velocity = new Vector2 (0, 8); 
-			
+				other.attachedRigidbody.velocity = new Vector2 (0, 8);
         }
-
 
         if(other.tag == "Obstacle" && isSpinDashing)
         {
@@ -1109,6 +1112,32 @@ public class MasterController : MonoBehaviour
                 rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);           
         }
 
+        if(currentCharacter == 3 && !isGrounded)
+        {
+            if(other.tag == "Enemy")
+            {
+                other.GetComponent<EnemyHealthManager>().takeDamage(sonicJumpDamage);
+            }
+            if(other.tag == "Boss")
+            {
+                if(Application.loadedLevel == 6)
+                {
+                    //Sasuke Takes Dmg
+                    //sasuke.GetComponent<SasukeController>().takeDamage(sonicJumpDamage);
+                }
+                else if(Application.loadedLevel == 7)
+                {
+                    //Gizmo Takes Dmg
+                    gizmo.GetComponent<EnemyHealthManager>().takeDamage(sonicJumpDamage);
+                }
+                else if (Application.loadedLevel == 8)
+                {
+                    //Robotnik Takes Double Dmg
+                    sonicJumpDamage *= 2;
+                    //robotink.GetComponent<RobotnikController>().takeDamage(sonicJumpDamage);
+                }
+            }
+        }
     }
 
     //public void WallSlide()
@@ -1167,7 +1196,7 @@ public class MasterController : MonoBehaviour
 
     void SpinDashEnd()
     {
-        
+        disableInput = false;
         //Debug.Log("HIt");
     }
 

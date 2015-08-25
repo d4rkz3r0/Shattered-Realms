@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 //using XInputDotNetPure;
 using System.Collections;
@@ -169,7 +169,7 @@ public class HealthManager : MonoBehaviour
         {
             if (!lowBGMHasPlayed)
             {
-                //AudioManager.currAudio.Stop();
+                AudioManager.currAudio.Stop();
                 lowHPMusic.Play();
                 lowBGMHasPlayed = true;
                 
@@ -178,7 +178,7 @@ public class HealthManager : MonoBehaviour
         if(playerHP > 3 && lowBGMHasPlayed)
         {
             lowHPMusic.Stop();
-            //AudioManager.currAudio.Play();
+            AudioManager.currAudio.Play();
             lowBGMHasPlayed = false;
             
         }

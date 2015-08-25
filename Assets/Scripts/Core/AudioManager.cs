@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AudioManager : MonoBehaviour
@@ -8,8 +8,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource preStoryMusic;
     public AudioSource tutorialLevelMusic;
     public AudioSource levelOneMusic;
-    public AudioSource levelTwoMusic;
     public AudioSource SasukeBossFight;
+    public AudioSource GizmoBossFight;
     public AudioSource RobotnikBossFight;
 
     
@@ -45,50 +45,39 @@ public class AudioManager : MonoBehaviour
             currAudio = preStoryMusic;
             currAudio.Play();
         }
-
-        
-        //if (Application.loadedLevelName == "TutorialLevel")
-        //{
-        //    currAudio.Stop();
-        //    currAudio = tutorialLevelMusic;
-        //    currAudio.Play();
-        //}
-        //if (Application.loadedLevelName == "Level1")
-        //{
-        //    currAudio.Stop();
-        //    currAudio = level1Music;
-        //    currAudio.Play();
-        //}
-        //if (Application.loadedLevelName == "TutorialLevelHard")
-        //{
-        //    currAudio.Stop();
-        //    currAudio = tutorialLevelMusic;
-        //    currAudio.Play();
-        //}
-        //if (Application.loadedLevelName == "Level1Hard")
-        //{
-        //    currAudio.Stop();
-        //    currAudio = level1Music;
-        //    currAudio.Play();
-        //}
+        else if (Application.loadedLevel == 4)
+        {
+            //currAudio.Stop();
+            currAudio = tutorialLevelMusic;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 5)
+        {
+            //currAudio.Stop();
+            currAudio = levelOneMusic;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 6)
+        {
+            //currAudio.Stop();
+            currAudio = preStoryMusic;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 7)
+        {
+            //currAudio.Stop();
+            currAudio = preStoryMusic;
+            currAudio.Play();
+        }
     }
     void Start()
     {
-        if (Application.loadedLevelName == "IntroMenu")
-        {
-            //currAudio.Stop();
-            //currAudio = mainMenuMusic;
-            //currAudio.Play();
-        }
+
     }
     
     void Update()
     {
-        //if(Application.loadedLevelName == "IntroMenu")
-        //{
-        //    currAudio = mainMenuMusic;
-        //    currAudio.Play();
-        //}
+
     }
     public static AudioManager GetInstance()
     {
