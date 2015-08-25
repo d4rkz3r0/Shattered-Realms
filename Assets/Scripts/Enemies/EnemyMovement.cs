@@ -151,13 +151,14 @@ public class EnemyMovement : MonoBehaviour {
 
 		case MovementBehaviour.GroundAgile:
 			smartTimer -= Time.deltaTime;
-			playerProjectile = GameObject.FindGameObjectWithTag("PlayerAbility");
+			if(playerProjectile = GameObject.FindGameObjectWithTag("PlayerAbility")){
 			if(playerProjectile.transform.position.y < transform.position.y + 1 && playerProjectile.transform.position.y > transform.position.y - 1){
 				toPlayerProj = playerProjectile.transform.position - transform.position;
 				if(toPlayerProj.magnitude < defensiveRange  && smartTimer <= 0){
 					smartTimer = 2.08f;
 						rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower*2);
 				}
+			}
 			}
 			break;
 

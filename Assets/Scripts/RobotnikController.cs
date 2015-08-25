@@ -9,12 +9,14 @@ public class RobotnikController : MonoBehaviour {
 	private float speed;
 	private float speedIncrement;
 	private Direction dir;
+	private Direction laserDir;
 
 	private RobotnickWPData newData;
 	
 	// Use this for initialization
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
+		laserDir = Direction.Down;
 	}
 	
 	// Update is called once per frame
@@ -47,7 +49,74 @@ public class RobotnikController : MonoBehaviour {
 
 			laser.SetActive(newData.RobLaserOn);
 
-					
+			switch(laserDir){
+
+			case Direction.Down:
+				switch(newData.RobLaserDir){
+				case Direction.Down:
+					break;
+				case Direction.Right:
+					laser.transform.RotateAround(transform.position,transform.forward,90);
+					break;
+				case Direction.Up:
+					laser.transform.RotateAround(transform.position,transform.forward,180);
+					break;
+				case Direction.Left:
+					laser.transform.RotateAround(transform.position,transform.forward,-90);
+					break;
+				}
+				break;
+
+			case Direction.Right:
+				switch(newData.RobLaserDir){
+				case Direction.Right:
+					break;
+				case Direction.Up:
+					laser.transform.RotateAround(transform.position,transform.forward,90);
+					break;
+				case Direction.Left:
+					laser.transform.RotateAround(transform.position,transform.forward,180);
+					break;
+				case Direction.Down:
+					laser.transform.RotateAround(transform.position,transform.forward,-90);
+					break;
+				}
+				break;
+
+			case Direction.Up:
+				switch(newData.RobLaserDir){
+				case Direction.Up:
+					break;
+				case Direction.Left:
+					laser.transform.RotateAround(transform.position,transform.forward,90);
+					break;
+				case Direction.Down:
+					laser.transform.RotateAround(transform.position,transform.forward,180);
+					break;
+				case Direction.Right:
+					laser.transform.RotateAround(transform.position,transform.forward,-90);
+					break;
+				}
+				break;
+
+			case Direction.Left:
+				switch(newData.RobLaserDir){
+				case Direction.Left:
+					break;
+				case Direction.Down:
+					laser.transform.RotateAround(transform.position,transform.forward,90);
+					break;
+				case Direction.Right:
+					laser.transform.RotateAround(transform.position,transform.forward,180);
+					break;
+				case Direction.Up:
+					laser.transform.RotateAround(transform.position,transform.forward,-90);
+					break;
+				}
+				break;			
+			}
+
+			laserDir = newData.RobLaserDir;				
 		}
 	}
 }
