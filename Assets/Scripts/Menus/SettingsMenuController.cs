@@ -8,6 +8,8 @@ public class SettingsMenuController : MonoBehaviour
     public Slider sfxVolumeSlider;
     private AudioSource testSFX;
 
+    public AudioSource ButtonSelectSFX;
+
     void Awake()
     {
 
@@ -33,10 +35,18 @@ public class SettingsMenuController : MonoBehaviour
         GameOptionData.sfxVolume = newSFXVolume;
     }
 
-    public void ChangeScene(int sceneChoice)
+    public IEnumerator ChangeScene(int sceneChoice, float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         GameOptionData.currentLevel = sceneChoice;
         Application.LoadLevel(sceneChoice);
+
+    }
+
+    public void ChangeScenes(int sceneChoice)
+    {
+        ButtonSelectSFX.Play();
+        StartCoroutine(ChangeScene(sceneChoice, 1.1f));
     }
 
     public void ToggleMusic()

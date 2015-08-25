@@ -9,6 +9,9 @@ public class ImageSwitcherController : MonoBehaviour
     public Image[] imageBank;
     private Image currImage;
 
+    public AudioSource ButtonSelectSFX;
+    
+
 	// Use this for initialization
 	void Start () 
     {
@@ -35,10 +38,11 @@ public class ImageSwitcherController : MonoBehaviour
 
     public void IncreaseScene()
     {
+        GetComponent<AudioSource>().Play();
         if (imageIndex >= 22)
         {
             imageIndex = 22;
-            ChangeScene(5);
+            ChangeScenes(5);
         }
         else
         {
@@ -50,6 +54,7 @@ public class ImageSwitcherController : MonoBehaviour
 
     public void DecreaseScene()
     {
+        GetComponent<AudioSource>().Play();
         if (imageIndex <= 0)
         {
             imageIndex = 0;
@@ -64,15 +69,23 @@ public class ImageSwitcherController : MonoBehaviour
         
     }
 
-    public void ChangeScene(int sceneChoice)
+    public IEnumerator ChangeScene(int sceneChoice, float waitTime)
     {
-        if(AudioManager.GetInstance() != null)
+        yield return new WaitForSeconds(waitTime);
+
+        if (AudioManager.GetInstance() != null)
         {
             AudioManager.currAudio.Stop();
         }
-        
         GameOptionData.currentLevel = sceneChoice;
         Application.LoadLevel(sceneChoice);
+
+    }
+
+    public void ChangeScenes(int sceneChoice)
+    {
+        ButtonSelectSFX.Play();
+        StartCoroutine(ChangeScene(sceneChoice, 1.1f));
     }
 
     public void SkipIntro()

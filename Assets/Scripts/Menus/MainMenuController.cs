@@ -2,8 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+
+
 public class MainMenuController : MonoBehaviour
 {
+
+    public AudioSource ButtonSelectSFX;
+
 
     void Awake()
     {
@@ -30,10 +35,12 @@ public class MainMenuController : MonoBehaviour
     //}
 
 
-    public void ChangeScene(int sceneChoice)
+    public IEnumerator ChangeScene(int sceneChoice, float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         GameOptionData.currentLevel = sceneChoice;
         Application.LoadLevel(sceneChoice);
+
     }
 
     public void ToggleMusic()
@@ -53,6 +60,12 @@ public class MainMenuController : MonoBehaviour
         {
             return;
         }
+    }
+
+    public void ChangeScenes(int sceneChoice)
+    {
+        ButtonSelectSFX.Play();
+        StartCoroutine(ChangeScene(sceneChoice, 1.1f));
     }
 
     public void Quit()

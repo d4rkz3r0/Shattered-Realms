@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseUIOverlay;
+
 
     //Private References
     public static bool isGamePaused;

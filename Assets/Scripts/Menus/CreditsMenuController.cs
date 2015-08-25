@@ -7,6 +7,8 @@ using System.Collections;
 public class CreditsMenuController : MonoBehaviour
 {
 
+    public AudioSource ButtonSelectSFX;
+
 	void Start () 
     {
 	
@@ -17,10 +19,18 @@ public class CreditsMenuController : MonoBehaviour
 	
 	}
 
-    public void ChangeScene(int sceneChoice)
+    public IEnumerator ChangeScene(int sceneChoice, float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         GameOptionData.currentLevel = sceneChoice;
         Application.LoadLevel(sceneChoice);
+
+    }
+
+    public void ChangeScenes(int sceneChoice)
+    {
+        ButtonSelectSFX.Play();
+        StartCoroutine(ChangeScene(sceneChoice, 1.1f));
     }
 
     public void ToggleMusic()
