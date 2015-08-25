@@ -54,4 +54,9 @@ public class AITriggerWall : MonoBehaviour
             player.disableInput = true;
         }
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        //if(chatBoxHUDElement.gameObject.active == true)
+    }
 }
