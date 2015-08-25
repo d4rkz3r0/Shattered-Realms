@@ -6,16 +6,25 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager GM;
+
+    //Save Files
+    //public static List<PlayerData> saveFiles = new List<PlayerData>();
+    public static PlayerData saveFile;
     public int playerHP;
     public int playerXP;
     public int playerLVL;
     public int levelsCompleted;
+
+
+    
+
 
     void Awake()
     {
@@ -27,12 +36,12 @@ public class GameManager : MonoBehaviour
         else if(GM != this)
         {
             Destroy(gameObject);
-        }   
+        }
     }
 
     void Start()
     {
-        
+         
     }
 
 
@@ -41,23 +50,50 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void CreateGame()
+    {
+        BinaryFormatter fileWriter = new BinaryFormatter();
+        if (!File.Exists(Application.persistentDataPath + "/playerStats.dat"))
+        {
+            PlayerData fileData = new PlayerData();
+            FileStream file = File.Create(Application.persistentDataPath + "/playerStats.dat");
+            //Actually write to the file
+            fileWriter.Serialize(file, fileData);
+            //Always close the file when you are finished
+            file.Close();
+        }
+        else
+        {
+            Debug.Log("Save File already exists...");
+            return;
+        }
+    }
+
     public void SaveGame()
     {
         BinaryFormatter fileWriter = new BinaryFormatter();
-        //Creates playerStats.dat binary file in "C:\Users\YOURNAME\AppData\LocalLow\DefaultCompany\Shattered Realms"
-        FileStream file = File.Create(Application.persistentDataPath + "/playerStats.dat");
         //Create object to hold data to write
         PlayerData fileData = new PlayerData();
-        //Fill in class data
-        fileData.playerHP = playerHP;
-        fileData.playerXP = playerXP;
-        fileData.playerLVL = playerLVL;
-        fileData.levelsCompleted = levelsCompleted;
-        //Actually write to the file
-        fileWriter.Serialize(file, fileData);
-        //Always close the file when you are finished
-        file.Close();
 
+        //Creates playerStats.dat binary file in "C:\Users\YOURNAME\AppData\LocalLow\DefaultCompany\Shattered Realms"
+        if (File.Exists(Application.persistentDataPath + "/playerStats.dat"))
+        {
+            FileStream file = File.Create(Application.persistentDataPath + "/playerStats.dat");
+            //Fill in class data
+            fileData.playerHP = playerHP;
+            fileData.playerXP = playerXP;
+            fileData.playerLVL = playerLVL;
+            fileData.levelsCompleted = levelsCompleted;
+            //Actually write to the file
+            fileWriter.Serialize(file, fileData);
+            //Always close the file when you are finished
+            file.Close();
+        }
+        else
+        {
+            Debug.Log("No File to Save to!");
+            return;
+        }
     }
 
     public void LoadGame()
@@ -78,16 +114,46 @@ public class GameManager : MonoBehaviour
             playerLVL = fileData.playerLVL;
             levelsCompleted = fileData.levelsCompleted;
         }
+        else
+        {
+            Debug.Log("No Save File to Load!");
+            return;
+        }
+    }
+
+    public void OverwriteGame()
+    {
+        saveFile = new PlayerData();
+    }
+
+    public void DeleteGame()
+    {
+        if(File.Exists(Application.persistentDataPath + "/playerStats.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/playerStats.dat");
+        }
+        else
+        {
+            Debug.Log("No Save File to Delete...");
+        }
     }
 }
 
 
 //Save File Struct
 [Serializable]
-class PlayerData
+public class PlayerData
 {
     public int playerHP;
     public int playerXP;
     public int playerLVL;
     public int levelsCompleted;
+
+    public PlayerData()
+    {
+        playerHP = 10;
+        playerXP = 0;
+        playerLVL = 1;
+        levelsCompleted = 0;
+    }
 }

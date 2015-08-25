@@ -5,6 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     //Level BGMs
     public AudioSource mainMenuMusic;
+    public AudioSource fileSelectMusic;
     public AudioSource preStoryMusic;
     public AudioSource tutorialLevelMusic;
     public AudioSource levelOneMusic;
@@ -41,32 +42,38 @@ public class AudioManager : MonoBehaviour
 
         if (Application.loadedLevel == 3)
         {
-            //currAudio.Stop();
-            currAudio = preStoryMusic;
+            currAudio = fileSelectMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 4)
         {
-            //currAudio.Stop();
-            currAudio = tutorialLevelMusic;
+            currAudio.Stop();
+            currAudio = preStoryMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 5)
         {
-            //currAudio.Stop();
-            currAudio = levelOneMusic;
+            currAudio = tutorialLevelMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 6)
         {
-            //currAudio.Stop();
-            currAudio = preStoryMusic;
+            currAudio = levelOneMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 7)
         {
-            //currAudio.Stop();
-            currAudio = preStoryMusic;
+            currAudio = SasukeBossFight;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 8)
+        {
+            currAudio = GizmoBossFight;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 9)
+        {
+            currAudio = RobotnikBossFight;
             currAudio.Play();
         }
     }

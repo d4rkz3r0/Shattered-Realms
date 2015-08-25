@@ -40,7 +40,7 @@ public class FireBallController : MonoBehaviour
 
         switch(Application.loadedLevel)
         {
-            case 6:
+            case 7:
                 {
                     sasuke = FindObjectOfType<BossHealthManager>();
                     break;

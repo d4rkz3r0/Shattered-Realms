@@ -221,7 +221,7 @@ public class MasterController : MonoBehaviour
         warpKey = FindObjectOfType<KeyPickup>();
         //defaultDrag = rb2D.drag;
 
-        if(Application.loadedLevel == 6)
+        if(Application.loadedLevel == 7)
         {
             executeSasukeTimer = 2.0f;
             sasukeBossFightOver = false;
@@ -229,7 +229,7 @@ public class MasterController : MonoBehaviour
             sasukeHP = FindObjectOfType<BossHealthManager>();
         }
 
-        if(Application.loadedLevel == 7)
+        if(Application.loadedLevel == 8)
         {
             gizmoBossFightOver = false;
             gizmo = GameObject.Find("Gizmo");
@@ -837,7 +837,7 @@ public class MasterController : MonoBehaviour
 
         //End Disable Input Zone
 
-        if(Application.loadedLevel == 6)
+        if(Application.loadedLevel == 7)
         {
             if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
             {
@@ -916,7 +916,7 @@ public class MasterController : MonoBehaviour
         }
 
         //WARNING: FIX THIS SPAGHETTI, Interdependent code module: EnemyHealthManager.cs!
-        if(Application.loadedLevel == 7)
+        if(Application.loadedLevel == 8)
         {
             if (gizmoBossFightOver)
             {
@@ -1017,7 +1017,7 @@ public class MasterController : MonoBehaviour
                 anim.SetBool("isSpinDashing", false);
 				boxColliders[1].enabled = true;
                 isSpinDashing = false;
-                if(Application.loadedLevel != 6)
+                if(Application.loadedLevel != 7)
                 {
                     disableInput = false;
                 }
@@ -1129,17 +1129,17 @@ public class MasterController : MonoBehaviour
             }
             if(other.tag == "Boss")
             {
-                if(Application.loadedLevel == 6)
+                if(Application.loadedLevel == 7)
                 {
                     //Sasuke Takes Dmg
                     //sasuke.GetComponent<SasukeController>().takeDamage(sonicJumpDamage);
                 }
-                else if(Application.loadedLevel == 7)
+                else if(Application.loadedLevel == 8)
                 {
                     //Gizmo Takes Dmg
                     gizmo.GetComponent<EnemyHealthManager>().takeDamage(sonicJumpDamage);
                 }
-                else if (Application.loadedLevel == 8)
+                else if (Application.loadedLevel == 9)
                 {
                     //Robotnik Takes Double Dmg
                     sonicJumpDamage *= 2;
