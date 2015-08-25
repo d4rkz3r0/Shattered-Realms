@@ -10,8 +10,11 @@ public class EnemyHealthManager : MonoBehaviour
     public int EnemyMaxHP;
     public bool isDead;
 
+    private MasterController player;
+
 	void Start () 
     {
+        player = FindObjectOfType<MasterController>();
         isDead = false;
         EnemyMaxHP = enemyHP;
         enemyHurtSFX = GetComponent<AudioSource>();
@@ -29,10 +32,19 @@ public class EnemyHealthManager : MonoBehaviour
 
 	    if(isDead)
         {
+            if(Application.loadedLevel == 7)
+            {
+                player.gizmoBossFightOver = true;
+                Instantiate(deathParticle, transform.position, transform.rotation);
+                XPManager.AddToEarnedXPThisLevel(xpOnDeath);
+            }
+            else
+            {
+                Instantiate(deathParticle, transform.position, transform.rotation);
+                XPManager.AddToEarnedXPThisLevel(xpOnDeath);
+                Destroy(gameObject);
+            }
             
-            Instantiate(deathParticle, transform.position, transform.rotation);
-            XPManager.AddToEarnedXPThisLevel(xpOnDeath);
-            Destroy(gameObject);
         }
 	}
 

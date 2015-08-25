@@ -230,8 +230,9 @@ public class MasterController : MonoBehaviour
 
         if(Application.loadedLevel == 7)
         {
-            gizmo = GameObject.Find("Gizmo");
             gizmoBossFightOver = false;
+            gizmo = GameObject.Find("Gizmo");
+            
         }
         switch(currentCharacter)
         {
@@ -913,17 +914,19 @@ public class MasterController : MonoBehaviour
             }
         }
 
+        //WARNING: FIX THIS SPAGHETTI, Interdependent code module: EnemyHealthManager.cs!
         if(Application.loadedLevel == 7)
         {
-            if (!gizmoBossFightOver)
+            if (gizmoBossFightOver)
             {
-                gizmoBossFightOver = true;
+                gizmoBossFightOver = false;
                 Vector3 formattedWarpPortalPos = gizmo.transform.position;
                 formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);
                 warpPortal.transform.position = formattedWarpPortalPos;
                 Vector3 formattedWarpKeyPos = warpPortal.transform.position;
                 formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
                 warpKey.transform.position = formattedWarpKeyPos;
+                Destroy(gizmo);
             }
         }
        
