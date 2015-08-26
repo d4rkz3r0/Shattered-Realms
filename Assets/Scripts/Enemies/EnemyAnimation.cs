@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyAnimation : MonoBehaviour
 {
+    private bool isIdling;
     private bool isGrounded;
     private bool isJumping;
     private bool isAttacking;
@@ -87,6 +88,8 @@ public class EnemyAnimation : MonoBehaviour
             anim.SetBool("isDying", false);
             Destroy(gameObject);
         }
+
+        //Debug.Log(anim.GetComponent<Animation>().name);
 	}
 
     public void ThrowKunai()

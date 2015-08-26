@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(GameOptionData.currentLevel);
+
     }
 
     public void RespawnPlayer()
