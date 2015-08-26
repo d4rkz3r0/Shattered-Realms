@@ -32,11 +32,22 @@ public class EnemyAnimation : MonoBehaviour
     {
         movement = GetComponent<EnemyMovement>();
         AI = GetComponent<EnemyAttack>();
-        health = GetComponent<EnemyHealthManager>();
+        if(gameObject.name == "Sasuke")
+        {
+
+
+        }
+
+        else
+        {
+            health = GetComponent<EnemyHealthManager>();
+            hp = health.enemyHP;
+        }
+       
         rb2D = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         moveSpeed = movement.speed;
-        hp = health.enemyHP;
+        
 	}
 
     void FixedUpdate()
@@ -51,14 +62,23 @@ public class EnemyAnimation : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
 
 
-        //Defeat
-        if(health.deathAnimation)
+        if(gameObject.name == "Sasuke")
         {
-            movement.enabled = false;
-            AI.enabled = false;
-            anim.SetBool("isDying", true);
-            enemyDefeatedAnimTimer = enemyDefeatedAnimDuration;
+            //Do Nothing
         }
+        else
+        {
+            //Defeat
+            if (health.deathAnimation)
+            {
+                movement.enabled = false;
+                AI.enabled = false;
+                anim.SetBool("isDying", true);
+                enemyDefeatedAnimTimer = enemyDefeatedAnimDuration;
+            }
+        }
+        
+        
         
         //Attack
         if(AI.attackAnimation && enemyAttackAnimTimer <= 0.0f)
@@ -78,17 +98,25 @@ public class EnemyAnimation : MonoBehaviour
             AI.attackAnimation = false;
         }
 
-        if(enemyDefeatedAnimTimer >= 0.0f && health.isDead)
+        if(gameObject.name == "Sasuke")
         {
-            enemyDefeatedAnimDuration -= Time.deltaTime;
+            //Do Nothign
         }
-
-        if(enemyDefeatedAnimTimer <= 0.0f && health.isDead)
+        else
         {
-            anim.SetBool("isDying", false);
-            Destroy(gameObject);
-        }
+            if (enemyDefeatedAnimTimer >= 0.0f && health.isDead)
+            {
+                enemyDefeatedAnimDuration -= Time.deltaTime;
+            }
 
+            if (enemyDefeatedAnimTimer <= 0.0f && health.isDead)
+            {
+                anim.SetBool("isDying", false);
+                Destroy(gameObject);
+            }
+
+        }
+        
         //Debug.Log(anim.GetComponent<Animation>().name);
 	}
 

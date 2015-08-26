@@ -84,15 +84,27 @@ public class EnemyMovement : MonoBehaviour {
 
 		isPlayerInRange = Physics2D.OverlapCircle(transform.position, aggroRange, playerLayer);
 
-		if(isPlayerInRange && myBehaviour != MovementBehaviour.GroundPatrolling  && myBehaviour != MovementBehaviour.FlyingPatrolling){
-			if (target.transform.position.x > transform.position.x) {
-				transform.localScale = new Vector3 (-1.0f, 1.0f, 0.0f);
-			} else {
-				transform.localScale = new Vector3 (1.0f, 1.0f, 0.0f);
-			}
+		if(isPlayerInRange && myBehaviour != MovementBehaviour.GroundPatrolling  && myBehaviour != MovementBehaviour.FlyingPatrolling)
+        {
+            if (gameObject.name == "Sasuke")
+            {
+                //Do Nothing
+            }
+            else
+            {
+                if (target.transform.position.x > transform.position.x)
+                {
+                    transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+                }
+            }
 		}
 
-		switch (myBehaviour) {
+		switch (myBehaviour) 
+        {
 		case MovementBehaviour.GroundAggro:
 
 			hasHitWall = Physics2D.OverlapCircle(wallCheckTransform.position, wallCheckRadius, wallCheckLayer);

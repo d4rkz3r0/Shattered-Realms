@@ -63,6 +63,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        
         float time = Mathf.PingPong(Time.time, timeSpeed) / timeSpeed;
 
        if(mangekyouTimer <= 0.0f)

@@ -32,6 +32,11 @@ public static class GameOptionData
     public static bool fullScreen;
 
 
+    public static float xpCollectedPercentage;
+
+    public static int actualLevelTime;
+    public static int levelGoalTime;
+
     public static void InitializeGame()
     {
         playerStartingHP = 10;

@@ -77,6 +77,21 @@ public class PortalController : MonoBehaviour
 
     void LoadLevel()
     {
+        int nextLevelToLoad = Application.loadedLevel;
+        nextLevelToLoad++;
+
+        float yourLevelTime = Time.time;
+        int levelCompletedTimeSecs = (int)Mathf.Round(yourLevelTime);
+        GameOptionData.actualLevelTime = levelCompletedTimeSecs;
+
+        float goalLevelTime = FindObjectOfType<TimerManager>().timeToCompleteLevel;
+        int levelGoalTimeSecs = (int)Mathf.Round(goalLevelTime);
+        GameOptionData.levelGoalTime = levelGoalTimeSecs;
+
+        float xpCollectedPercentage = FindObjectOfType<XPGemManager>().formatFinalXPBarRatio;
+        GameOptionData.xpCollectedPercentage = xpCollectedPercentage;
+
+        GameOptionData.nextLevel = nextLevelToLoad;
         Application.LoadLevel(sceneToLoad);
     }
 }

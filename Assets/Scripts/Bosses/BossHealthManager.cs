@@ -157,13 +157,14 @@ public class BossHealthManager : MonoBehaviour
             if (bossHP <= 0 && !warpPortalEngaged)
             {
                 bossHP = 0;
-                sasukeAnimator.Play("sasuke_OOHP");
                 
+                sasukeAnimator.Play("sasuke_OOHP");
             }
 
             
             if (sasukeOOHPAnimationTimer >= 0.0f && bossHP == 0)
             {
+                FindObjectOfType<SasukeController>().GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
                 sasukeOOHPAnimationTimer -= Time.deltaTime;
             }
             
@@ -178,6 +179,9 @@ public class BossHealthManager : MonoBehaviour
                 
                 if (!once)
                 {
+                   
+                    FindObjectOfType<SasukeController>().canMove = false;
+                    
                     sasukeSpriteRenderer.sprite = sasukeKnee;
                     MessageController.textSelection = 26;
                     chatBoxHUDElement.gameObject.SetActive(true);

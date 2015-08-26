@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -16,6 +16,7 @@ public class XPGemManager : MonoBehaviour
     //XP Bar Vars
     private float xpBarRatio;
     private float finalXPBarRatio;
+    public float formatFinalXPBarRatio;
     //private float currXPCollected;
     //private float totalLvLXP;
     public static int playerGemCount;
@@ -30,6 +31,9 @@ public class XPGemManager : MonoBehaviour
         allGemsCollected = false;
         levelXPGems = GameObject.FindGameObjectsWithTag("XP Gem");
         gemsRemaining = levelXPGems.Length;
+
+        
+        
         //gemsRemainingText = GetComponentInChildren<Text>();
 
         currXPBarImage = GetComponent<Image>();
@@ -67,7 +71,9 @@ public class XPGemManager : MonoBehaviour
         //}
 
         xpBarRatio = (float)playerGemCount / (float)gemsRemaining;
+        formatFinalXPBarRatio = xpBarRatio * 100.0f;
         finalXPBarRatio = xpBarRatio * 10.0f;
+        
 
         xpBarSelection = Mathf.RoundToInt(finalXPBarRatio);
 

@@ -841,6 +841,10 @@ public class MasterController : MonoBehaviour
         {
             if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
             {
+                
+                sasuke.GetComponent<BoxCollider2D>().enabled = true;
+                //sasuke.GetComponent<CircleCollider2D>().radius = 0.5f;
+
                 if (canExecuteSasuke && !isExecutingSasuke)
                 {
                     currentCharacter = 1;
@@ -890,8 +894,9 @@ public class MasterController : MonoBehaviour
                 isExecutingSasuke = false;
                 sasuke.GetComponent<SpriteRenderer>().sprite = sasukeDead;
                 sasuke.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
-                sasuke.GetComponent<BoxCollider2D>().enabled = false;
-                sasuke.GetComponent<CircleCollider2D>().enabled = false;
+                
+
+                //sasuke.GetComponent<CircleCollider2D>().enabled = true;
                 if (!once)
                 {
                     executeSasukeTimer = 2.0f;
@@ -912,6 +917,7 @@ public class MasterController : MonoBehaviour
                 Vector3 formattedWarpKeyPos = warpPortal.transform.position;
                 formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
                 warpKey.transform.position = formattedWarpKeyPos;
+                sasuke.gameObject.SetActive(false);
             }
         }
 

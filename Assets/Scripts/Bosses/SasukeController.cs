@@ -67,7 +67,7 @@ public class SasukeController : MonoBehaviour
     //Private References
     private Rigidbody2D rb2D;
     private Animator animator;
-    private EnemyHealthManager sasukeHealth;
+    private BossHealthManager sasukeHealth;
     private MasterController player;
     private Transform playerLocation;
 
@@ -92,7 +92,7 @@ public class SasukeController : MonoBehaviour
 
         boxColliders = GetComponents<BoxCollider2D>();
         circleColliderCollision = GetComponent<CircleCollider2D>();
-        sasukeHealth = GetComponent<EnemyHealthManager>();
+        sasukeHealth = GetComponent<BossHealthManager>();
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -111,29 +111,28 @@ public class SasukeController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        if(startMoving == false)
+        if (playerLocation.position.x > transform.position.x)
         {
-            return;
+            //rb2D.velocity = new Vector2(chaseSpeed, rb2D.velocity.y);
+            transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
         }
         else
         {
-            if (!sasukeHealth.isDead)
+            //rb2D.velocity = new Vector2(-chaseSpeed, rb2D.velocity.y);
+            transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+        }
+
+
+            if (canMove)
             {
-                if (canMove)
-                {
-                    if (playerLocation.position.x > transform.position.x)
-                    {
-                        rb2D.velocity = new Vector2(chaseSpeed, rb2D.velocity.y);
-                        transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
-                    }
-                    else
-                    {
-                        rb2D.velocity = new Vector2(-chaseSpeed, rb2D.velocity.y);
-                        transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
-                    }
-                }
+                GetComponent<EnemyMovement>().enabled = true;
             }
-        } 
+            else if(!canMove)
+            {
+                GetComponent<EnemyMovement>().enabled = false;
+            }
+
+        
 	}
 
     void castPhoenixFlowerJustu()

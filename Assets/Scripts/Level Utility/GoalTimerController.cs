@@ -16,6 +16,8 @@ public class GoalTimerController : MonoBehaviour
     private int timerMins;
     private int timerSecs;
 
+    private int[] finalTime = new int[2];
+
 
 	// Use this for initialization
 	void Start () 
@@ -47,6 +49,9 @@ public class GoalTimerController : MonoBehaviour
         totalMins = goalTimerInt / 60;
         timerMins = totalMins % 60;
 
+        finalTime[0] = timerMins;
+        finalTime[1] = timerSecs;
+
         if (timerSecs <= 9 && timerSecs >= 0)
         {
             goalTimerText.text = "" + timerMins + ":" + "0" + timerSecs;
@@ -55,6 +60,11 @@ public class GoalTimerController : MonoBehaviour
         {
             goalTimerText.text = "" + timerMins + ":" + timerSecs;
         }
+    }
+
+    public void SaveOut()
+    {
+        //GameOptionData.levelGoalTime = levelGoalTime;
     }
 
     //Not Needed but JIC

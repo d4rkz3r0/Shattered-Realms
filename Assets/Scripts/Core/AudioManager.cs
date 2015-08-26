@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource SasukeBossFight;
     public AudioSource GizmoBossFight;
     public AudioSource RobotnikBossFight;
+    public AudioSource MarioBossFight;
 
     
     //Instance
@@ -76,6 +77,13 @@ public class AudioManager : MonoBehaviour
             currAudio = RobotnikBossFight;
             currAudio.Play();
         }
+       else if (Application.loadedLevel == 10)
+        {
+            currAudio = MarioBossFight;
+            currAudio.Play();
+        }
+
+       
     }
     void Start()
     {

@@ -27,11 +27,13 @@ public class LevelManager : MonoBehaviour
     //private XPManager xpManager;
     private HealthManager healthManager;
     private TimerManager timerManager;
-    
+
 
 
     void Start()
     {
+
+
         //Auto Hook
         currCheckpoint = GameObject.Find("startCP");
         player = FindObjectOfType<MasterController>();
