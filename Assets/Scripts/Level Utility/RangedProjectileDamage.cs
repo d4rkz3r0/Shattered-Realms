@@ -43,7 +43,4 @@ public class RangedProjectileDamage : MonoBehaviour
 		} 
     }
 
-	void OnCollisionEnter2D(Collider2D other){
-
-	}
 }
