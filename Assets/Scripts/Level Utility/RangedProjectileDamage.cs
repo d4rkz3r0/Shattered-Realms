@@ -21,7 +21,7 @@ public class RangedProjectileDamage : MonoBehaviour
 	
     void FixedUpdate()
     {
-        shouldDelete = Physics2D.OverlapCircle(transform.position, 0.2f, CollisionLayer);
+        shouldDelete = Physics2D.OverlapCircle(transform.position, 0.3f, CollisionLayer);
     }
 
 	void Update () 
@@ -36,11 +36,11 @@ public class RangedProjectileDamage : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.name == "Player") && (timer > timeBetweenAttacks))
-        {
-            timer = 0.0f;
-            HealthManager.takeDamage(damageAmount);
-            Destroy(gameObject);
-        }  
+        if ((other.name == "Player") && (timer > timeBetweenAttacks)) {
+			timer = 0.0f;
+			HealthManager.takeDamage (damageAmount);
+			Destroy (gameObject);
+		} 
     }
+
 }

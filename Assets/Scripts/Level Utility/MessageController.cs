@@ -104,7 +104,7 @@ public class MessageController : MonoBehaviour
             case 7:
                 {
                     displayedText.text =
-                        "Cyborg's X has shorter range but more power.";
+                        "Cyborg's X has shorter range but more power.\nAnd Sonic's even more!";
                     //displayedText.text =
                     //    "Press Q,W,E,R to use your abilities.";
                     break;
@@ -174,8 +174,8 @@ public class MessageController : MonoBehaviour
                 }
             case 17:
                 {
-                    displayedText.text =
-                        "You can't kill this guys.";
+			displayedText.text = "";
+                       
                     break;
                 }
             case 18:
