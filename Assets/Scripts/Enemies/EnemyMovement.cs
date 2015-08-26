@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
 
 	//Behaviour Managment
-    public enum MovementBehaviour { GroundAggro, GroundPatrolling, FixedDistanceGroundPatrolling, GroundSmart, GroundAgile, FlyingAggro, FlyingPatrolling, Stunned };
+    public enum MovementBehaviour { GroundAggro, GroundPatrolling, FixedDistanceGroundPatrolling, GroundSmart, GroundAgile, FlyingAggro, FlyingPatrolling, Stunned, SpawnAggro };
 	private MovementBehaviour myBehaviour;
 	public MovementBehaviour myDefaultBehaviour;
 
@@ -256,6 +256,18 @@ public class EnemyMovement : MonoBehaviour {
 				myBehaviour = myDefaultBehaviour;
 			}
 			break;
+
+            case MovementBehaviour.SpawnAggro:
+
+            isPlayerInRange = Physics2D.OverlapCircle(transform.position, aggroRange, playerLayer);
+
+                if(isPlayerInRange && !GetComponent<EnemyHealthManager>().isDead)
+                {
+                    GetComponent<BoxCollider2D>().enabled = true;
+                    GetComponent<SpriteRenderer>().enabled = true;
+                    GetComponent<Animator>().enabled = true;
+                }
+            break;
 		}
 	}
 
