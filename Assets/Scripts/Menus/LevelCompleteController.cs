@@ -30,7 +30,7 @@ public class LevelCompleteController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        
+        Debug.Log(Application.loadedLevel);
 
         yourTimeText.text = GameOptionData.actualLevelTime.ToString() + " seconds";
         levelTimeText.text = GameOptionData.levelGoalTime.ToString() + " seconds";

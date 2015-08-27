@@ -10,8 +10,10 @@ public class EnemyAttack : MonoBehaviour {
 
 	//General
 	public float timeBetweenAttacks;
+	public float timeBetweenJutsuAttacks;
 	public GameObject projectile;
 	private float attackTimer;
+	private float justuAttackTimer;
 
 	//Melee
 	public int damageAmount;
@@ -53,8 +55,20 @@ public class EnemyAttack : MonoBehaviour {
 
 		if(attackTimer > 0)attackTimer -= Time.deltaTime;
 
+        if(justuAttackTimer > 0)justuAttackTimer -= Time.deltaTime;
+        
+
 		switch (myBehaviour) {
 		case AttackBehaviour.Melee:
+                if (gameObject.name == "Sasuke")
+                {
+                    if(timeBetweenJutsuAttacks <= 0)
+                    {
+                        justuAttackTimer = timeBetweenJutsuAttacks;
+                        gameObject.GetComponent<SasukeController>().canMove = false;
+                        gameObject.GetComponent<Animator>().Play("sasuke_Fireball");
+                    }
+                }
 			break;
 
 		case AttackBehaviour.Range:

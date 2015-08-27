@@ -92,6 +92,10 @@ public class PortalController : MonoBehaviour
         GameOptionData.xpCollectedPercentage = xpCollectedPercentage;
 
         GameOptionData.nextLevel = nextLevelToLoad;
+        if(nextLevelToLoad == 13)
+        {
+            sceneToLoad = 0;
+        }
         Application.LoadLevel(sceneToLoad);
     }
 }

@@ -22,6 +22,8 @@ public class CameraController : MonoBehaviour
     public Vector3 minBounds;
     public Vector3 maxBounds;
 
+    public float cameraRotX;
+
     public bool mangekyouSharingan;
     private float mangekyouTimer;
 
@@ -51,6 +53,8 @@ public class CameraController : MonoBehaviour
         positionX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref cameraVelocity.x, lagX);
         positionY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref cameraVelocity.y, lagY);
 
+
+        cameraRotX = transform.rotation.x;
         transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
 
         if(boundsLock)
@@ -63,7 +67,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        
+        cameraRotX += Time.deltaTime;
         float time = Mathf.PingPong(Time.time, timeSpeed) / timeSpeed;
 
        if(mangekyouTimer <= 0.0f)

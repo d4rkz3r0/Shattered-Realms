@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour
 
         if (Application.loadedLevel == 3)
         {
+            currAudio.Stop();
             currAudio = fileSelectMusic;
             currAudio.Play();
         }
@@ -54,31 +55,43 @@ public class AudioManager : MonoBehaviour
         }
         else if (Application.loadedLevel == 5)
         {
+            currAudio.Stop();
             currAudio = tutorialLevelMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 6)
         {
+            currAudio.Stop();
             currAudio = levelOneMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 7)
         {
+            currAudio.Stop();
             currAudio = SasukeBossFight;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 8)
         {
+            currAudio.Stop();
             currAudio = GizmoBossFight;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 9)
         {
+            currAudio.Stop();
             currAudio = RobotnikBossFight;
             currAudio.Play();
         }
        else if (Application.loadedLevel == 10)
         {
+            currAudio.Stop();
+            currAudio = MarioBossFight;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 11)
+        {
+            currAudio.Stop();
             currAudio = MarioBossFight;
             currAudio.Play();
         }
