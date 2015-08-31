@@ -13,7 +13,8 @@ public class CameraController : MonoBehaviour
     public float YOffset;
 
     //Version 2.0
-    public bool boundsLock;
+    public bool boundsLock = true;
+    public bool followPlayer = true;
     public float lagX;
     public float lagY;
     private float positionX;
@@ -41,7 +42,7 @@ public class CameraController : MonoBehaviour
 	void Start () 
     {
         theCamera = GetComponent<Camera>();
-        //theCamera.clearFlags = CameraClearFlags.SolidColor;
+
         mangekyouSharingan = false;
         mangekyouTimer = 3.0f;
         //Auto Hook
@@ -50,13 +51,13 @@ public class CameraController : MonoBehaviour
 
     void FixedUpdate()
     {
-        positionX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref cameraVelocity.x, lagX);
-        positionY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref cameraVelocity.y, lagY);
-
-
-        cameraRotX = transform.rotation.x;
-        transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
-
+        if(followPlayer)
+        {
+            positionX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref cameraVelocity.x, lagX);
+            positionY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref cameraVelocity.y, lagY);
+            transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
+        }
+        
         if(boundsLock)
         {
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x),
@@ -67,7 +68,6 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        cameraRotX += Time.deltaTime;
         float time = Mathf.PingPong(Time.time, timeSpeed) / timeSpeed;
 
        if(mangekyouTimer <= 0.0f)
