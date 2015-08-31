@@ -18,10 +18,10 @@ public class LevelManager : MonoBehaviour
     //Public Vars
     public GameObject deathParticle;
     public GameObject respawnParticle;
-    public float respawnDelay;
+    public float playerRespawnDelay;
     private float cameraSize;
     private float defaultCameraSize;
-    public float maxCameraSize;
+    public float maxCameraZoomOutSize;
     private float startZoomInTime;
     private float startZoomOutTime;
 
@@ -34,8 +34,8 @@ public class LevelManager : MonoBehaviour
     private TimerManager timerManager;
     private Camera mainCamera;
     
-    public bool cameraZoomInEffect;
-    public bool cameraZoomOutEffect;
+    private bool cameraZoomInEffect;
+    private bool cameraZoomOutEffect;
     private float zoomInDuration;
     private float zoomOutDuration;
     
@@ -51,8 +51,8 @@ public class LevelManager : MonoBehaviour
         //Camera Zoom in and out after Player Death
         mainCamera = FindObjectOfType<Camera>();
         cameraSize = mainCamera.orthographicSize;
-        zoomOutDuration = respawnDelay * 0.35f;
-        zoomInDuration = respawnDelay;
+        zoomOutDuration = playerRespawnDelay * 0.35f;
+        zoomInDuration = playerRespawnDelay;
         defaultCameraSize = mainCamera.orthographicSize;
         cameraZoomInEffect = false;
         cameraZoomOutEffect = false;
@@ -62,14 +62,14 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         
-        float formattedMaxCameraSize = maxCameraSize + 0.02f;
+        float formattedMaxCameraSize = maxCameraZoomOutSize + 0.02f;
         float formattedDefaultCameraSize = defaultCameraSize + 0.02f;
         
         if (cameraZoomInEffect)
         {
             if (mainCamera.orthographicSize < formattedMaxCameraSize)
             {
-                if(mainCamera.orthographicSize >= maxCameraSize)
+                if(mainCamera.orthographicSize >= maxCameraZoomOutSize)
                 {
                     startZoomOutTime = Time.time;
                     cameraZoomInEffect = false;
@@ -78,18 +78,22 @@ public class LevelManager : MonoBehaviour
                 }
 
                 float lambda = (Time.time - startZoomInTime) / (zoomInDuration);
-                cameraSize = Mathf.SmoothStep(defaultCameraSize, maxCameraSize, lambda);
+                cameraSize = Mathf.SmoothStep(defaultCameraSize, maxCameraZoomOutSize, lambda);
                 mainCamera.orthographicSize = cameraSize;
             }
         }
 
         if(cameraZoomOutEffect)
         {
-
+            if(mainCamera.orthographicSize == defaultCameraSize)
+            {
+                cameraZoomOutEffect = false;
+            }
             float lambda = (Time.time - startZoomOutTime) / (zoomOutDuration);
-            cameraSize = Mathf.Lerp(maxCameraSize, defaultCameraSize, lambda);
+            cameraSize = Mathf.Lerp(maxCameraZoomOutSize, defaultCameraSize, lambda);
             mainCamera.orthographicSize = cameraSize;
         }
+
     }
 
     public void RespawnPlayer()
@@ -121,8 +125,7 @@ public class LevelManager : MonoBehaviour
 
 
 
-        Debug.Log("Respawn Event Triggered");
-        yield return new WaitForSeconds(respawnDelay);
+        yield return new WaitForSeconds(playerRespawnDelay);
 
         //AudioManager
         //Death Timer has Expired
@@ -147,6 +150,7 @@ public class LevelManager : MonoBehaviour
         Instantiate(respawnParticle, player.transform.position, player.transform.rotation);
         startZoomOutTime = 0.0f;
         startZoomInTime = 0.0f;
+        
 
     }
 }

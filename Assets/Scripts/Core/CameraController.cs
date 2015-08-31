@@ -23,10 +23,8 @@ public class CameraController : MonoBehaviour
     public Vector3 minBounds;
     public Vector3 maxBounds;
 
-    public float cameraRotX;
-
-    public bool mangekyouSharingan;
-    private float mangekyouTimer;
+    //public bool mangekyouSharingan;
+    //private float mangekyouTimer;
 
     private Camera theCamera;
     private Color color1 = Color.black;
@@ -43,8 +41,8 @@ public class CameraController : MonoBehaviour
     {
         theCamera = GetComponent<Camera>();
 
-        mangekyouSharingan = false;
-        mangekyouTimer = 3.0f;
+        //mangekyouSharingan = false;
+        //mangekyouTimer = 3.0f;
         //Auto Hook
         player = FindObjectOfType<MasterController>();
     }
@@ -68,20 +66,20 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        float time = Mathf.PingPong(Time.time, timeSpeed) / timeSpeed;
+        //float time = Mathf.PingPong(Time.time, timeSpeed) / timeSpeed;
 
-       if(mangekyouTimer <= 0.0f)
-       {
-           theCamera.backgroundColor = Color.cyan;
-       }
+        //if (mangekyouTimer <= 0.0f)
+        //{
+        //    theCamera.backgroundColor = Color.black;
+        //}
 
-        if (mangekyouSharingan)
-        {
-            if (mangekyouTimer >= 0.0f)
-            {
-                mangekyouTimer -= Time.deltaTime;
-                theCamera.backgroundColor = Color.Lerp(color1, color2, time);
-            }   
-        }
+        //if (mangekyouSharingan)
+        //{
+        //    if (mangekyouTimer >= 0.0f)
+        //    {
+        //        mangekyouTimer -= Time.deltaTime;
+        //        theCamera.backgroundColor = Color.Lerp(color1, color2, time);
+        //    }
+        //}
     }
 }
