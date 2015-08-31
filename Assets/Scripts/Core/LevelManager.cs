@@ -25,6 +25,10 @@ public class LevelManager : MonoBehaviour
     private float startZoomInTime;
     private float startZoomOutTime;
 
+    //Stores all enemies locations in the level
+    public Vector3[] enemyPositionArray;
+    public GameObject enemyPrefab;
+    private int arraySize;
 
     //Private References
     public GameObject currCheckpoint;
@@ -41,6 +45,12 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
+        //levelXPGems = GameObject.FindGameObjectsWithTag("XP Gem");
+        arraySize = GameObject.FindObjectsOfType<EnemyHealthManager>().Length;
+        enemyPositionArray = new Vector3[arraySize];
+
+        
+        
         //Hook to HUD Elements and Checkpoints
         currCheckpoint = GameObject.Find("startCP");
         player = FindObjectOfType<MasterController>();
@@ -61,7 +71,10 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        
+
+
+
+
         float formattedMaxCameraSize = maxCameraZoomOutSize + 0.02f;
         float formattedDefaultCameraSize = defaultCameraSize + 0.02f;
         
@@ -99,6 +112,12 @@ public class LevelManager : MonoBehaviour
     public void RespawnPlayer()
     {
         StartCoroutine("RespawnPlayerCoRoutine");
+    }
+
+
+    public void RespawnEnemies()
+    {
+        StartCoroutine("RespawnEnemyCoRoutine");
     }
 
     public IEnumerator RespawnPlayerCoRoutine()
@@ -152,5 +171,22 @@ public class LevelManager : MonoBehaviour
         startZoomInTime = 0.0f;
         
 
+    }
+
+    public IEnumerator RespawnEnemyCoRoutine()
+    {
+        for (int i = 0; i < enemyPositionArray.Length; i++)
+        {
+            if (enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
+            {
+                break;
+            }
+            else
+            {
+                enemyPrefab = (GameObject)Instantiate(enemyPrefab, enemyPositionArray[i], Quaternion.identity);
+            }
+        }
+
+            yield return null;
     }
 }

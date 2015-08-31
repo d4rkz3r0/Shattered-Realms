@@ -11,12 +11,19 @@ public class EnemyHealthManager : MonoBehaviour
     public bool isDead;
     public bool deathAnimation;
 
+    //Enemy Respawning
+    public GameObject EnemyPrefab;
+    public bool isRespawnable;
+
+    private Vector3 lastPosition;
+    private LevelManager LM;
     private MasterController player;
 
 	void Start () 
     {
         deathAnimation = false;
         player = FindObjectOfType<MasterController>();
+        LM = FindObjectOfType<LevelManager>();
         isDead = false;
         EnemyMaxHP = enemyHP;
         enemyHurtSFX = GetComponent<AudioSource>();
@@ -64,6 +71,30 @@ public class EnemyHealthManager : MonoBehaviour
     {
         enemyHP -= damageReceived;
         enemyHurtSFX.Play();
+    }
+
+    public IEnumerator RespawnSelf()
+    {
+        for (int i = 0; i < LM.enemyPositionArray.Length; i++)
+        {
+            if (LM.enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
+            {
+                LM.enemyPositionArray[i] = transform.position;
+                break;
+            }
+        }
+           
+        Destroy(gameObject);
+        yield return null;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        RespawnSelf();
+        //if(other.tag == "Player")
+        //{
+        //    LM.RespawnEnemies();
+        //}
     }
 
     
