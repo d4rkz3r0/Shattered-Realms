@@ -234,7 +234,7 @@ public class MasterController : MonoBehaviour
         defaultGravityScale = rb2D.gravityScale;
         warpPortal = FindObjectOfType<PortalController>();
         warpKey = FindObjectOfType<KeyPickup>();
-		//spRender = GetComponent<SpriteRenderer> ();
+		spRender = GetComponent<SpriteRenderer> ();
         //defaultDrag = rb2D.drag;
 
         if(Application.loadedLevel == 8)
@@ -746,7 +746,7 @@ public class MasterController : MonoBehaviour
 				if (canCastSpring)
 				{
 					rb2D.velocity = new Vector2(0,springSpeed);
-					//spRender.color = Color.yellow;
+					spRender.color = Color.yellow;
 					isSpringing = true;			
 					canCastSpring = false;
 					springTimer = springCoolDown;
@@ -887,7 +887,7 @@ public class MasterController : MonoBehaviour
 			}
 			if(rb2D.velocity.y < 0){
 				isSpringing = false;
-				//spRender.color = Color.white;
+				spRender.color = Color.white;
 
 			}
 
@@ -1163,6 +1163,20 @@ public class MasterController : MonoBehaviour
 				other.attachedRigidbody.velocity = new Vector2 (4, 2); 
 			}
         }
+		
+		if (other.tag == "Enemy" && isSpringing) {
+			other.GetComponent<EnemyHealthManager>().takeDamage(springDamage);
+			if(other.GetComponent<EnemyMovement>())
+			{
+				eMScrp = other.GetComponent<EnemyMovement>();
+				eMScrp.GetStun(shortStun);
+			}
+			if( other.GetComponent<EnemyAttack>())
+			{
+				eAScrp = other.GetComponent<EnemyAttack>();
+				eAScrp.GetStun(shortStun);
+			}
+		}
 
         if(other.tag == "Enemy" && isGoingSuper)
         {

@@ -6,6 +6,7 @@ public class TsukuController : MonoBehaviour {
 	private SpriteRenderer spRender;
 	private float timer;
 	public float duration;
+	private EnemyMovement eM;
 
 	// Use this for initialization
 	void Start () {
@@ -24,4 +25,17 @@ public class TsukuController : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (eM = other.GetComponent<EnemyMovement> ()) {
+			eM.slowed = true;
+		}
+	}
+	void OnTriggerStay2D(Collider2D other){
+		if (timer <= 0.1f && other.GetComponent<EnemyMovement> ()) {
+			eM = other.GetComponent<EnemyMovement>();
+			eM.slowed = false;
+		}
+	}
+
 }
