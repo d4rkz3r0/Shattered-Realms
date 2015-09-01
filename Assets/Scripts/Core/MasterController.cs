@@ -93,7 +93,12 @@ public class MasterController : MonoBehaviour
     private float darkStormTimer;
     private bool canCastDarkStorm;
 
-    //Magic Guard
+	//Tsukuyomi
+	public GameObject daTsuku;
+	private GameObject privTsu;
+	public float tsukuyomiCoolDown;
+	private float tsukuyomiTimer;
+	private bool canCastTsukuyomi;
 
     //Blink
     public Transform blinkPoint;
@@ -158,6 +163,16 @@ public class MasterController : MonoBehaviour
     private float chaosEmeraldsAnimTimer; //Must Match ability cooldown!
     public bool isGoingSuper;
 
+	//E - Spring
+	public float springCoolDown;
+	public int springDamage;
+	private float springTimer;
+	private bool canCastSpring;
+	public bool isSpringing;
+	public float springSpeed;
+	private SpriteRenderer spRender;
+	//private float springAnimTimer; //Must Match ability cooldown!
+
     //R - Spin Dash
     public float spinDashSpeed;
     public float spinDashCoolDown;
@@ -219,6 +234,7 @@ public class MasterController : MonoBehaviour
         defaultGravityScale = rb2D.gravityScale;
         warpPortal = FindObjectOfType<PortalController>();
         warpKey = FindObjectOfType<KeyPickup>();
+		//spRender = GetComponent<SpriteRenderer> ();
         //defaultDrag = rb2D.drag;
 
         if(Application.loadedLevel == 8)
@@ -276,14 +292,16 @@ public class MasterController : MonoBehaviour
         canCastQuake = true;
         canCastBackFlip = true;
         canCastChaosEmeralds = true;
-        canCastSpinDash = true;
-
+		canCastSpinDash = true;
+		canCastSpring = true;
+		canCastTsukuyomi = true;
 
         //Local Player Ability Animation
         isBlinking = false;
         isBackFlipping = false;
         isGoingSuper = false;
         isSpinDashing = false;
+		isSpringing = false;
     }
 
     void FixedUpdate()
@@ -397,7 +415,7 @@ public class MasterController : MonoBehaviour
                     case 1:
                         {
                             currentCharacter = 2;
-					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
+							boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
 
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
@@ -406,7 +424,7 @@ public class MasterController : MonoBehaviour
                     case 2:
                         {
                             currentCharacter = 3;
-					boxColliders[0].offset = new Vector2(0.0f, 0.05f);
+							boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                             transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                             circleCollider.offset = new Vector2(0.0f, -0.56f);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
@@ -415,7 +433,7 @@ public class MasterController : MonoBehaviour
                     case 3:
                         {
                             currentCharacter = 1;
-					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
+							boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
                             //circleCollider.radius = 0.2f;
                             transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
@@ -456,7 +474,7 @@ public class MasterController : MonoBehaviour
                     case 3:
                         {
                             currentCharacter = 2;
-					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
+							boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
                             transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
@@ -504,8 +522,16 @@ public class MasterController : MonoBehaviour
                 }
             }
 
-            ////E - Magic Guard Ability with CoolDown
-
+            ////E - Tsukuyomi Guard Ability with CoolDown
+			if ((Input.GetButtonDown("Fire3")) && (currentCharacter == 1))
+			{
+				if (canCastTsukuyomi)
+				{
+					privTsu = Instantiate(daTsuku);
+					canCastTsukuyomi = false;
+					tsukuyomiTimer = tsukuyomiCoolDown;
+				}
+			}
 
             ////R - Blink Ability with CoolDown
             //Downward
@@ -714,6 +740,19 @@ public class MasterController : MonoBehaviour
                 }
             }
 
+			////E - SpringActivate Ability with Ability CoolDown
+			if (Input.GetButtonDown("Fire3") && (currentCharacter == 3))
+			{
+				if (canCastSpring)
+				{
+					rb2D.velocity = new Vector2(0,springSpeed);
+					//spRender.color = Color.yellow;
+					isSpringing = true;			
+					canCastSpring = false;
+					springTimer = springCoolDown;
+				}
+			}
+
             ////R - SpinDash Ability with CoolDown
             if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (currentCharacter == 3))
             {
@@ -763,6 +802,21 @@ public class MasterController : MonoBehaviour
             {
                 canCastDarkStorm = true;
             }
+
+			if(privTsu){
+				privTsu.transform.position = transform.position;
+			}
+			
+			if (!canCastTsukuyomi && tsukuyomiTimer >= 0.0f)
+			{
+				tsukuyomiTimer -= Time.deltaTime;
+			}
+			if (tsukuyomiTimer <= 0.0f)
+			{
+				canCastTsukuyomi = true;
+				tsukuyomiTimer = tsukuyomiCoolDown;
+			}
+
 
             if (!canCastBlink && blinkTimer >= 0.0f)
             {
@@ -823,12 +877,24 @@ public class MasterController : MonoBehaviour
                 canCastChaosEmeralds = true;
             }
 
+			if (!canCastSpring && springTimer >= 0.0f)
+			{
+				springTimer -= Time.deltaTime;
+			}
+			if (springTimer <= 0.0f)
+			{
+				canCastSpring = true;
+			}
+			if(rb2D.velocity.y < 0){
+				isSpringing = false;
+				//spRender.color = Color.white;
+
+			}
+
             if (!canCastSpinDash && spinDashTimer >= 0.0f)
             {
                 spinDashTimer -= Time.deltaTime;
             }
-
-
             if (spinDashTimer <= 0.0f)
             {
 				canCastSpinDash = true;
