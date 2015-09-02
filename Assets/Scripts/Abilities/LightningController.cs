@@ -10,19 +10,24 @@ public class LightningController : MonoBehaviour {
 	private GameObject newLight;
 	private MasterController player;
 	private Rigidbody2D rb2D;
-	public Vector3 distance;
+	private Vector3 distance;
 	public bool isInitial;
 	private LightningController lc;
 	private EnemyMovement eM;
-	public GameObject closest;
-	public List<GameObject> enemies;
-	public int i;
+	private GameObject closest;
+	private List<GameObject> enemies;
+	private int i;
+	private float timer;
+	private Color clr;
+	private SpriteRenderer spR;
 
 	// Use this for initialization
 	void Start () {
+		transform.localScale = new Vector3(3.5f,3.5f,0);
 		rb2D = GetComponent<Rigidbody2D>();
 		player = FindObjectOfType<MasterController>();
-
+		spR = GetComponent<SpriteRenderer> ();
+		clr = spR.color;
 		if (isInitial) {
 			if (player.transform.localScale.x < 0.0f) {
 				rb2D.velocity = new Vector2 (-abilitySpeed, 0);
@@ -34,7 +39,18 @@ public class LightningController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		timer -= Time.deltaTime;
+		if (timer < 0) {
+			if(spR.color == clr){
+				spR.color = new Color(1,1,1,1);
+				timer = 0.1f;
+			}
+			else{
+				spR.color = clr;
+				timer = 0.1f;
+			}
 
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

@@ -53,6 +53,7 @@ public class MasterController : MonoBehaviour
     public AudioSource backFlipSFX;
     public AudioSource chaosSFX;
     public AudioSource spinDashSFX;
+	public AudioSource springSFX;
     
     //Player and Character Animation Abilities
     private Animation blastProjectileAnimation;
@@ -761,6 +762,7 @@ public class MasterController : MonoBehaviour
 			{
 				if (canCastSpring)
 				{
+					springSFX.Play();
 					rb2D.velocity = new Vector2(0,springSpeed);
 					spRender.color = Color.yellow;
 					isSpringing = true;			
