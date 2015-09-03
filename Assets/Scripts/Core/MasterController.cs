@@ -245,7 +245,7 @@ public class MasterController : MonoBehaviour
             sasukeHP = FindObjectOfType<BossHealthManager>();
         }
 
-        if(Application.loadedLevel == 9)
+        if(Application.loadedLevel == 11)
         {
             gizmoBossFightOver = false;
             gizmo = GameObject.Find("Gizmo");
@@ -988,7 +988,7 @@ public class MasterController : MonoBehaviour
         }
 
         //WARNING: FIX THIS SPAGHETTI, Interdependent code module: EnemyHealthManager.cs!
-        if(Application.loadedLevel == 9)
+        if(Application.loadedLevel == 11)
         {
             if (gizmoBossFightOver)
             {
@@ -1223,12 +1223,12 @@ public class MasterController : MonoBehaviour
                         GameObject.FindObjectOfType<BossHealthManager>().takeDamage(sonicJumpDamage);
                     }
                 }
-                else if(Application.loadedLevel == 9)
+                else if(Application.loadedLevel == 11)
                 {
                     //Gizmo Takes Dmg
                     gizmo.GetComponent<EnemyHealthManager>().takeDamage(sonicJumpDamage);
                 }
-                else if (Application.loadedLevel == 10)
+                else if (Application.loadedLevel == 14)
                 {
                     //Robotnik Takes Double Dmg
                     sonicJumpDamage *= 2;

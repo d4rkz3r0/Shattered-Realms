@@ -41,7 +41,7 @@ public class EnemyHealthManager : MonoBehaviour
 
 	    if(isDead)
         {
-            if(Application.loadedLevel == 9)
+            if(Application.loadedLevel == 11)
             {
                 player.gizmoBossFightOver = true;
                 Instantiate(deathParticle, transform.position, transform.rotation);
