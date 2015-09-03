@@ -90,8 +90,8 @@ public class HealthManager : MonoBehaviour
         //Visual Feedback Update
         healthStatusRatio = (float)playerHP / (float)playerMaxHP;
         //Player Sprite
-        currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-        playerSprite.color = currPlayerSpriteColor;
+       //currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+       //playerSprite.color = currPlayerSpriteColor;
         //HP Bar Sprite
         currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
         hpBarSprite.color = currHPBarSpriteColor;

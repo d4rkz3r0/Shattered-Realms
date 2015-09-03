@@ -15,6 +15,10 @@ public class EnemyMovement : MonoBehaviour {
 	public bool slowed;
 	public float slowFactor;
 
+	//lightning
+	public bool shocked;
+	public float shockTimer;
+
 	//Aggresive Behaviour Variables
 	private GameObject target;
 	public float aggroRange;
@@ -70,12 +74,20 @@ public class EnemyMovement : MonoBehaviour {
 		target = GameObject.Find("Player");
 		rb2d = GetComponent<Rigidbody2D>();
 		jumping = false;
+		shocked = false;
 		smartTimer = 0;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (shocked) {
+			shockTimer -= Time.deltaTime;
+		}
+		if (shockTimer <= 0) {
+			shocked = false;
+		}
 
 		if (slowed)
 			actualSpeed = speed / slowFactor;
