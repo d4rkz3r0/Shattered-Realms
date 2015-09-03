@@ -7,12 +7,17 @@ public class AudioManager : MonoBehaviour
     public AudioSource mainMenuMusic;
     public AudioSource fileSelectMusic;
     public AudioSource preStoryMusic;
-    public AudioSource tutorialLevelMusic;
-    public AudioSource levelOneMusic;
-    public AudioSource SasukeBossFight;
-    public AudioSource GizmoBossFight;
-    public AudioSource RobotnikBossFight;
-    public AudioSource MarioBossFight;
+    public AudioSource levelSelectMusic;
+    public AudioSource level1Music;
+    public AudioSource level2Music;
+    public AudioSource level3Music;
+    public AudioSource level4Music;
+    public AudioSource level5Music;
+    public AudioSource level6Music;
+    public AudioSource level7Music;
+    public AudioSource level8Music;
+    public AudioSource level9Music;
+    public AudioSource level10Music;
 
     
     //Instance
@@ -66,43 +71,67 @@ public class AudioManager : MonoBehaviour
         else if (Application.loadedLevel == 5)
         {
             currAudio.Stop();
-            currAudio = tutorialLevelMusic;
+            currAudio = levelSelectMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 6)
         {
             currAudio.Stop();
-            currAudio = levelOneMusic;
+            currAudio = level1Music;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 7)
         {
             currAudio.Stop();
-            currAudio = SasukeBossFight;
+            currAudio = level2Music;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 8)
         {
             currAudio.Stop();
-            currAudio = GizmoBossFight;
+            currAudio = level3Music;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 9)
         {
             currAudio.Stop();
-            currAudio = RobotnikBossFight;
+            currAudio = level4Music;
             currAudio.Play();
         }
        else if (Application.loadedLevel == 10)
         {
             currAudio.Stop();
-            currAudio = MarioBossFight;
+            currAudio = level5Music;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 11)
         {
             currAudio.Stop();
-            currAudio = MarioBossFight;
+            currAudio = level6Music;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 12)
+        {
+            currAudio.Stop();
+            currAudio = level7Music;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 13)
+        {
+            currAudio.Stop();
+            currAudio = level8Music;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 14)
+        {
+            currAudio.Stop();
+            currAudio = level9Music;
+            currAudio.Play();
+        }
+        else if (Application.loadedLevel == 15)
+        {
+            currAudio.Stop();
+            currAudio = level10Music;
             currAudio.Play();
         }
     }
