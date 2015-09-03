@@ -40,10 +40,20 @@ public class AudioManager : MonoBehaviour
 
    void OnLevelWasLoaded(int level)
     {
-
-        if (Application.loadedLevel == 3)
+        if (Application.loadedLevel == 0)
         {
-            currAudio.Stop();
+            if(currAudio != null)
+            {
+                currAudio.Stop();
+            }
+
+            
+            
+        }
+
+        else if (Application.loadedLevel == 3)
+        {
+            
             currAudio = fileSelectMusic;
             currAudio.Play();
         }
@@ -95,9 +105,8 @@ public class AudioManager : MonoBehaviour
             currAudio = MarioBossFight;
             currAudio.Play();
         }
-
-       
     }
+
     void Start()
     {
 
@@ -105,7 +114,7 @@ public class AudioManager : MonoBehaviour
     
     void Update()
     {
-
+        Debug.Log(Application.loadedLevel);
     }
     public static AudioManager GetInstance()
     {
