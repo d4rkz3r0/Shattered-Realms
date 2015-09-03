@@ -53,6 +53,7 @@ public class MasterController : MonoBehaviour
     public AudioSource backFlipSFX;
     public AudioSource chaosSFX;
     public AudioSource spinDashSFX;
+	public AudioSource springSFX;
     
     //Player and Character Animation Abilities
     private Animation blastProjectileAnimation;
@@ -139,6 +140,14 @@ public class MasterController : MonoBehaviour
 	public GameObject theQuake;
 	private GameObject actualQuake;
 	public float quakeSize;
+
+	//Lightning
+	public float lightningCoolDown;
+	private float lightningTimer;
+	private bool canCastLightning;
+	public GameObject theLightning;
+	private GameObject actualLightning;
+	private LightningController lC;
 
 
     //Sonic
@@ -295,6 +304,7 @@ public class MasterController : MonoBehaviour
 		canCastSpinDash = true;
 		canCastSpring = true;
 		canCastTsukuyomi = true;
+		canCastLightning = true;
 
         //Local Player Ability Animation
         isBlinking = false;
@@ -695,14 +705,21 @@ public class MasterController : MonoBehaviour
 
                     canCastQuake = false;
                     quakeTimer = quakeCoolDown;
-                }
-
-
-
-                ////E - RocketJump Ability with CoolDown
-
-                ////R - Charge Ability with CoolDown
+                }  
             }
+			//// Lightning
+			if ((Input.GetButtonDown("Fire3")) && (currentCharacter == 2))
+			{
+				if (canCastLightning)
+				{
+					actualLightning = Instantiate(theLightning);
+					lC = actualLightning.GetComponent<LightningController>();
+					lC.isInitial = true;
+					actualLightning.transform.position = transform.position;
+					canCastLightning = false;
+					lightningTimer = lightningCoolDown;
+				}  
+			}
 
             ////Sonic
             ////Q - BackFlip Ability with Ability CoolDown
@@ -745,6 +762,7 @@ public class MasterController : MonoBehaviour
 			{
 				if (canCastSpring)
 				{
+					springSFX.Play();
 					rb2D.velocity = new Vector2(0,springSpeed);
 					spRender.color = Color.yellow;
 					isSpringing = true;			
@@ -851,6 +869,14 @@ public class MasterController : MonoBehaviour
                 isCharging = false;
                 DestroyObject(actualCharge);
             }
+			if (!canCastLightning && lightningTimer >= 0.0f)
+			{
+				lightningTimer -= Time.deltaTime;
+			}
+			if (lightningTimer <= 0.0f)
+			{
+				canCastLightning = true;
+			}
 
             //Sonic
             if (!canCastBackFlip && backFlipTimer >= 0.0f)
