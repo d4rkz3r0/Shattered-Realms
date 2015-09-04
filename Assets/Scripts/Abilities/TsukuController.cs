@@ -37,5 +37,11 @@ public class TsukuController : MonoBehaviour {
 			eM.slowed = false;
 		}
 	}
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if (eM = other.GetComponent<EnemyMovement> ()) {
+			eM.slowed = false;
+		}
+	}
 
 }
