@@ -271,6 +271,15 @@ public class EnemyMovement : MonoBehaviour {
 				}
 			}
 
+			//if (transform.position.x < currentWaypoint.x)
+			//{
+			//	transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+			//}
+			//else
+			//{
+			//	transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+			//}
+
 			break;
 
 		case MovementBehaviour.Stunned:
