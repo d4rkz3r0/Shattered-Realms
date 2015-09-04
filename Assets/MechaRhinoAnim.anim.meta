@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/MechaRhinoAnim.anim.meta
 guid: a4d6baec61e1e6147a61fd1fd2be670c
 timeCreated: 1441377990
 licenseType: Free
 NativeFormatImporter:
+=======
+guid: f95310443c2aea84586d3ac72cb87756
+timeCreated: 1441374179
+licenseType: Pro
+DefaultImporter:
+>>>>>>> b0f32497012c3425a2a312050a8469f07c08919e:Assets/Scenes/Levels/Game/Level_1.unity.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
