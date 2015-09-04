@@ -4,7 +4,7 @@ using System.Collections;
 public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseUIOverlay;
-
+    public AudioSource ButtonSelectSFX;
 
     //Private References
     public static bool isGamePaused;
@@ -43,14 +43,19 @@ public class PauseMenuController : MonoBehaviour
         isGamePaused = false;
     }
 
-    public void Respawn()
+
+    public IEnumerator ChangeScene(int sceneChoice, float waitTime)
     {
-        //Fuck yourself
-        Application.LoadLevel(Application.loadedLevel);
+        yield return new WaitForSeconds(waitTime);
+        GameOptionData.currentLevel = sceneChoice;
+        AudioManager.currAudio.Stop();
+        Application.LoadLevel(sceneChoice);
+
     }
 
-    public void MainMenu()
+    public void ChangeScenes(int sceneChoice)
     {
-        Application.LoadLevel("MainMenu");
+        ButtonSelectSFX.Play();
+        StartCoroutine(ChangeScene(sceneChoice, 1.1f));
     }
 }
