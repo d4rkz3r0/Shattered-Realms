@@ -26,7 +26,9 @@ public class CameraController : MonoBehaviour
     ////Level Specific Camera Movement
     //Level 1
     private bool level1PreStory;
-    private GameObject[] fakePlayers;
+    private FakeI fakeItachi;
+    private FakeC fakeCyborg;
+    private FakeS fakeSonic;
 
 
 
@@ -36,13 +38,15 @@ public class CameraController : MonoBehaviour
 
 	void Start () 
     {
-        fakePlayers = new GameObject[3];
+        fakeItachi = FindObjectOfType<FakeI>();
+        fakeCyborg = FindObjectOfType<FakeC>();
+        fakeSonic = FindObjectOfType<FakeS>();
 
         if(Application.loadedLevel == 6)
         {
-            fakePlayers[0] = GameObject.Find("FakeItachi");
-            fakePlayers[1] = GameObject.Find("FakeCyborg");
-            fakePlayers[2] = GameObject.Find("FakeSonic");
+            fakeItachi = FindObjectOfType<FakeI>();
+            fakeCyborg = FindObjectOfType<FakeC>();
+            fakeSonic = FindObjectOfType<FakeS>();
             level1PreStory = true;
         }
 
@@ -68,8 +72,8 @@ public class CameraController : MonoBehaviour
 
         if(level1PreStory)
         {
-            positionX = Mathf.SmoothDamp(transform.position.x, fakePlayers[1].transform.position.x, ref cameraVelocity.x, lagX);
-            positionY = Mathf.SmoothDamp(transform.position.y, fakePlayers[1].transform.position.y, ref cameraVelocity.y, lagY);
+            positionX = Mathf.SmoothDamp(transform.position.x, fakeCyborg.transform.position.x, ref cameraVelocity.x, lagX);
+            positionY = Mathf.SmoothDamp(transform.position.y, fakeCyborg.transform.position.y - 2.0f, ref cameraVelocity.y, lagY);
             transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
         }
     }

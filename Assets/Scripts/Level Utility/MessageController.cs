@@ -287,6 +287,102 @@ public class MessageController : MonoBehaviour
                         "Game Message Event Triggered.";
                     break;
                 }
+
+            case 101:
+                {
+                    displayedText.text =
+                        "Ahhhhhh!";
+                    break;
+                }
+            case 102:
+                {
+                    displayedText.text =
+                        "Oh nooo!";
+                    break;
+                }
+            case 103:
+                {
+                    displayedText.text =
+                        "...";
+                    break;
+                }
+            case 104:
+                {
+                    displayedText.text =
+                        "Is this some sort of\n" +
+                        "Genjutsu?";
+                    break;
+                }
+            case 105:
+                {
+                    displayedText.text =
+                        "What a ride, my head\n" +
+                        "hurts...";
+                    break;
+                }
+            case 106:
+                {
+                    displayedText.text =
+                        "Ow! That smarts...\n" +
+                        "Where am I?";
+                    break;
+                }
+            case 107:
+                {
+                    displayedText.text =
+                        "It seems I have company...";
+                    break;
+                }
+            case 108:
+                {
+                    displayedText.text =
+                        "Yo ninja-guy, nice threads!";
+                    break;
+                }
+            case 109:
+                {
+                    displayedText.text =
+                        "Do you guys work for Eggman?";
+                    break;
+                }
+            case 110:
+                {
+                    displayedText.text =
+                        "Egg-what?";
+                    break;
+                }
+            case 111:
+                {
+                    displayedText.text =
+                        "You are mistaken, child...";
+                    break;
+                }
+            case 112:
+                {
+                    displayedText.text =
+                        "I don't know what's going on...\n" +
+                        "but I don't like it!";
+                    break;
+                }
+            case 113:
+                {
+                    displayedText.text =
+                        "Now I'll show you!";
+                    break;
+                }
+            case 114:
+                {
+                    displayedText.text =
+                        "";
+                    break;
+                }
+            case 115:
+                {
+                    displayedText.text =
+                        "Fool...";
+                    break;
+                }
+
             default:
                 {
                     //
