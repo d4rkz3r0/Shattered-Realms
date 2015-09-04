@@ -45,10 +45,9 @@ public class AudioManager : MonoBehaviour
 
    void OnLevelWasLoaded(int level)
     {
-
         if (Application.loadedLevel == 3)
         {
-            currAudio.Stop();
+            //currAudio.Stop();
             currAudio = fileSelectMusic;
             currAudio.Play();
         }
@@ -88,7 +87,7 @@ public class AudioManager : MonoBehaviour
             currAudio = level4Music;
             currAudio.Play();
         }
-       else if (Application.loadedLevel == 10)
+        else if (Application.loadedLevel == 10)
         {
             currAudio.Stop();
             currAudio = level5Music;
@@ -125,14 +124,15 @@ public class AudioManager : MonoBehaviour
             currAudio.Play();
         }
     }
+
     void Start()
     {
-
+        //currAudio = mainMenuMusic;
     }
     
     void Update()
     {
-
+        //Debug.Log(Application.loadedLevel);
     }
     public static AudioManager GetInstance()
     {

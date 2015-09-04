@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        GameOptionData.InitializeGame();
     }
 
     void Start()

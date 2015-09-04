@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;  
 using System.Collections;
 
@@ -22,7 +22,7 @@ public class KeyPickup : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        portal.canWarp = isPickedUp;
+        portal.keyCollected = isPickedUp;
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -36,7 +36,7 @@ public class KeyPickup : MonoBehaviour
         //TutorialTextController.textSelection = 5;
         //keySlotUIElement
         isPickedUp = true;
-        portal.canWarp = true;
+        portal.keyCollected = true;
         keySFX.Play();
         Destroy(gameObject);
 

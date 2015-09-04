@@ -61,6 +61,7 @@ public class FileSelectMenuController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         GameOptionData.currentLevel = sceneChoice;
+        AudioManager.currAudio.Stop();
         Application.LoadLevel(sceneChoice);
 
     }

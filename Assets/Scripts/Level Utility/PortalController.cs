@@ -3,58 +3,38 @@ using System.Collections;
 
 public class PortalController : MonoBehaviour
 {
+    public bool keyCollected;
     private bool isplayerInWarp;
-    public int sceneToLoad;
-    public bool canWarp;
     private bool playedOnce;
-    private AudioSource winMusic;
+    private AudioSource warpSFX;
     private float winAudioTimer;
-    public float winDurationTime;
+    private float warpSFXDuration;
 
 	void Start ()
     {
         //sceneToLoad = GameManager.currentLevel;
         playedOnce = false;
-        winMusic = GetComponent<AudioSource>();
-        winDurationTime = 3.0f;
-        canWarp = false;
         isplayerInWarp = false;
+        keyCollected = false;
+        warpSFX = GetComponent<AudioSource>();
+        warpSFXDuration = 1.3f;
 	}
 	
 	void Update ()
     {
-        //if(winAudioTimer >= 0.0f)
-        //{
-        //    winAudioTimer -= Time.deltaTime;
-        //}
-
-        //if(winAudioTimer <= 0.0f)
-        //{
-            
-        //}
-
-        if ((Input.GetAxis("Vertical") > 0.0f) && isplayerInWarp && canWarp)
+        if ((Input.GetAxis("Vertical") > 0.0f) && isplayerInWarp && keyCollected)
         {
-            //XPManager.AddToPlayerXP(XPManager.xpEarnedThisLevel);
-            //MessageController.textSelection = 1;
             if(!playedOnce)
             {
-                //if (AudioManager.currAudio.isPlaying)
-                //{
-                //    AudioManager.currAudio.Stop();
-                //}
-                
-                winMusic.Play();
+                warpSFX.Play();
                 playedOnce = true;
             }
-            Invoke("LoadLevel", 3.4f);
-            
-            
+            Invoke("LoadLevel", warpSFXDuration);
         }
-        else if ((Input.GetAxis("Vertical") > 0.0f) && isplayerInWarp && !canWarp)
+        else if ((Input.GetAxis("Vertical") > 0.0f) && isplayerInWarp && !keyCollected)
         {
+            //Tell the player to get they Key!
             MessageController.textSelection = 19;
-            
         }
 	}
 
@@ -92,10 +72,8 @@ public class PortalController : MonoBehaviour
         GameOptionData.xpCollectedPercentage = xpCollectedPercentage;
 
         GameOptionData.nextLevel = nextLevelToLoad;
-        if(nextLevelToLoad == 13)
-        {
-            sceneToLoad = 0;
-        }
-        Application.LoadLevel(sceneToLoad);
+
+        //Always Load the Level Complete Screen
+        Application.LoadLevel(16);
     }
 }
