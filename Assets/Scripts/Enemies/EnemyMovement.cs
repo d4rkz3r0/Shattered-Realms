@@ -98,6 +98,7 @@ public class EnemyMovement : MonoBehaviour {
 
 		if(isPlayerInRange && myBehaviour != MovementBehaviour.GroundPatrolling  && myBehaviour != MovementBehaviour.FlyingPatrolling)
         {
+			Debug.Log("it gets called");
             if (gameObject.name == "Sasuke")
             {
                 //Do Nothing
@@ -106,11 +107,13 @@ public class EnemyMovement : MonoBehaviour {
             {
                 if (target.transform.position.x > transform.position.x)
                 {
-                    transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+                    transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+					Debug.Log("CHANGE 1");
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+                    transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+					Debug.Log("CHANGE 2");
                 }
             }
 		}
