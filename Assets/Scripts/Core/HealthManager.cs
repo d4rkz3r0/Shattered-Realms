@@ -90,27 +90,30 @@ public class HealthManager : MonoBehaviour
         //Visual Feedback Update
         healthStatusRatio = (float)playerHP / (float)playerMaxHP;
         //Player Sprite
-       //currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-       //playerSprite.color = currPlayerSpriteColor;
+        //currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+        //playerSprite.color = currPlayerSpriteColor;
         //HP Bar Sprite
         currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
         hpBarSprite.color = currHPBarSpriteColor;
 
 
-		//This block of code makes it so that the players hpbar goes 100% transparency if hit 
-		//and 50% transparency after 5 seconds if not hit.
-		tempColor = gameObject.GetComponent<Image> ().color;
-		DamageTakenTimer -= Time.deltaTime;
-		if (DamageTakenTimer > 0.0f) {
-			tempColor.a = 1.0f;
-			gameObject.GetComponent<Image> ().color = tempColor;
-			//hpBarSprite.color.a = tempColor;
-		} else {
-			tempColor.a = 0.25f;
-			gameObject.GetComponent<Image> ().color = tempColor;
-		}
+        ////This block of code makes it so that the players hpbar goes 100% transparency if hit 
+        ////and 50% transparency after 5 seconds if not hit.
+        //tempColor = gameObject.GetComponent<Image>().color;
+        //DamageTakenTimer -= Time.deltaTime;
+        //if (DamageTakenTimer > 0.0f)
+        //{
+        //    tempColor.a = 1.0f;
+        //    gameObject.GetComponent<Image>().color = tempColor;
+        //    //hpBarSprite.color.a = tempColor;
+        //}
+        //else
+        //{
+        //    tempColor.a = 0.25f;
+        //    gameObject.GetComponent<Image>().color = tempColor;
+        //}
 
-        if(damageVibrationTimer >= 0.0f)
+        if (damageVibrationTimer >= 0.0f)
         {
             damageVibrationTimer -= Time.deltaTime;
         }
@@ -145,7 +148,7 @@ public class HealthManager : MonoBehaviour
         //Constant Updating
         if (playerHP <= 0)
         {
-            
+
             playerHP = 0;
         }
 
@@ -155,7 +158,7 @@ public class HealthManager : MonoBehaviour
             lowHPMusic.Stop();
             lowBGMHasPlayed = false;
             playerDeathSFX.Play();
-            
+
             levelManager.RespawnPlayer();
             isPlayerDead = true;
         }
@@ -165,31 +168,31 @@ public class HealthManager : MonoBehaviour
             playerHP = playerMaxHP;
         }
 
-        if(playerHP < 4 && playerHP > 0 )
+        if (playerHP < 4 && playerHP > 0)
         {
             //if (!lowBGMHasPlayed)
             //{
             //    AudioManager.currAudio.Stop();
             //    lowHPMusic.Play();
             //    lowBGMHasPlayed = true;
-                
+
             //}
         }
-        if(playerHP > 3 && lowBGMHasPlayed)
+        if (playerHP > 3 && lowBGMHasPlayed)
         {
             lowHPMusic.Stop();
             AudioManager.currAudio.Play();
             lowBGMHasPlayed = false;
-            
+
         }
 
-        if(playerMaxHP > 5)
+        if (playerMaxHP > 5)
         {
             switch (playerHP)
             {
                 case 10:
                     {
-                        currHPBarImage.sprite = hpBarSheet[0];						
+                        currHPBarImage.sprite = hpBarSheet[0];
                         break;
                     }
                 case 9:
@@ -250,7 +253,7 @@ public class HealthManager : MonoBehaviour
                     }
             }
         }
-        else if(playerMaxHP <= 5)
+        else if (playerMaxHP <= 5)
         {
             switch (playerHP)
             {

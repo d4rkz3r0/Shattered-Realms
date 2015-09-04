@@ -20,7 +20,7 @@ public class MainMenuMusic : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        GameOptionData.InitializeGame();
+        //GameOptionData.InitializeGame();
     }
 
     void OnLevelWasLoaded(int level)

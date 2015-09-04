@@ -18,16 +18,25 @@ public class EnemyHealthManager : MonoBehaviour
     private Vector3 lastPosition;
     private LevelManager LM;
     private MasterController player;
+    private EnemyAnimation enemyAnim;
 
 	void Start () 
     {
         deathAnimation = false;
-        player = FindObjectOfType<MasterController>();
-        LM = FindObjectOfType<LevelManager>();
         isDead = false;
         EnemyMaxHP = enemyHP;
+        player = FindObjectOfType<MasterController>();
+        LM = FindObjectOfType<LevelManager>();
         enemyHurtSFX = GetComponent<AudioSource>();
-        
+
+        if (GetComponent<Animator>() != null)
+        {
+            enemyAnim = FindObjectOfType<EnemyAnimation>();
+        }
+        else
+        {
+            enemyAnim = null;
+        }   
 	}
 	
 
@@ -49,7 +58,7 @@ public class EnemyHealthManager : MonoBehaviour
             }
             else
             {
-                if(GetComponent<Animator>() != null)
+                if(enemyAnim != null)
                 {
                     deathAnimation = true;
                     XPManager.AddToEarnedXPThisLevel(xpOnDeath);
@@ -60,10 +69,8 @@ public class EnemyHealthManager : MonoBehaviour
                     Instantiate(deathParticle, transform.position, transform.rotation);
                     XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                     Destroy(gameObject);
-                }
-                
-            }
-            
+                }  
+            } 
         }
 	}
 

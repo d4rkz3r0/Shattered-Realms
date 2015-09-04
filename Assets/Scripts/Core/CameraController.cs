@@ -26,10 +26,10 @@ public class CameraController : MonoBehaviour
     //public bool mangekyouSharingan;
     //private float mangekyouTimer;
 
-    private Camera theCamera;
-    private Color color1 = Color.black;
-    private Color color2 = Color.red;
-    private float timeSpeed = 1.0f;
+    
+    //private Color color1 = Color.black;
+    //private Color color2 = Color.red;
+    //private float timeSpeed = 1.0f;
    
     
 
@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
 
 	void Start () 
     {
-        theCamera = GetComponent<Camera>();
+        
 
         //mangekyouSharingan = false;
         //mangekyouTimer = 3.0f;
