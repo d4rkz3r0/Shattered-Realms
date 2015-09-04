@@ -79,6 +79,11 @@ public class shotgunBlastController : MonoBehaviour
                 otherRB.velocity = new Vector2(5, 2);
             }
         }
+
+		if (other.tag == "Destructable Platform")
+		{
+			other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
+		}
         //Cleanup
         //Destroy(gameObject);
     }

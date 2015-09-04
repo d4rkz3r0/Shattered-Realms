@@ -37,7 +37,12 @@ public class QuakeController : MonoBehaviour {
 		if (other.name != "Player" && other.tag != "Collectibles" && other.tag != "LethalHazard" && other.tag != "Platform") 
 		{
 			otherRB = other.GetComponent<Rigidbody2D> ();
-			
+
+			if (other.tag == "Destructable Platform")
+			{
+				Debug.Log ("here");
+				other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
+			}
 			if (other.tag == "Enemy")
 			{
 				other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
