@@ -23,26 +23,27 @@ public class CameraController : MonoBehaviour
     public Vector3 minBounds;
     public Vector3 maxBounds;
 
-    //public bool mangekyouSharingan;
-    //private float mangekyouTimer;
+    ////Level Specific Camera Movement
+    //Level 1
+    private bool level1PreStory;
+    private GameObject[] fakePlayers;
 
-    
-    //private Color color1 = Color.black;
-    //private Color color2 = Color.red;
-    //private float timeSpeed = 1.0f;
-   
-    
 
 
     ////Private References
     private MasterController player;
+    
 
 	void Start () 
     {
-        
+        if(Application.loadedLevel == 6)
+        {
+            fakePlayers[0] = GameObject.Find("FakeItachi");
+            fakePlayers[1] = GameObject.Find("FakeCyborg");
+            fakePlayers[2] = GameObject.Find("FakeSonic");
+            level1PreStory = true;
+        }
 
-        //mangekyouSharingan = false;
-        //mangekyouTimer = 3.0f;
         //Auto Hook
         player = FindObjectOfType<MasterController>();
     }
@@ -61,25 +62,18 @@ public class CameraController : MonoBehaviour
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x),
                                              Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y),
                                              Mathf.Clamp(transform.position.z, minBounds.z, maxBounds.z));
-        }   
+        }
+
+        if(level1PreStory)
+        {
+            positionX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref cameraVelocity.x, lagX);
+            positionY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref cameraVelocity.y, lagY);
+            transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
+        }
     }
 
     void Update()
     {
-        //float time = Mathf.PingPong(Time.time, timeSpeed) / timeSpeed;
-
-        //if (mangekyouTimer <= 0.0f)
-        //{
-        //    theCamera.backgroundColor = Color.black;
-        //}
-
-        //if (mangekyouSharingan)
-        //{
-        //    if (mangekyouTimer >= 0.0f)
-        //    {
-        //        mangekyouTimer -= Time.deltaTime;
-        //        theCamera.backgroundColor = Color.Lerp(color1, color2, time);
-        //    }
-        //}
+        
     }
 }
