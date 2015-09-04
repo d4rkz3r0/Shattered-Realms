@@ -41,8 +41,20 @@ public class EnemyAttack : MonoBehaviour {
 	//Stunned
 	private float stunTimer;
 
+
+	//Other References
+	private EnemyAnimation enemyAnim;
+
 	// Use this for initialization
 	void Start () {
+		if (GetComponent<Animator>() != null)
+		{
+			enemyAnim = FindObjectOfType<EnemyAnimation>();
+		}
+		else
+		{
+			enemyAnim = null;
+		}   
         attackAnimation = false;
 		myBehaviour = myDefaultBehaviour;
 		playerSound = GameObject.Find("Player").GetComponent<AudioSource>();
@@ -76,11 +88,14 @@ public class EnemyAttack : MonoBehaviour {
 
 			if(attackTimer <= 0 && isPlayerInRange)
             {
-                if (GetComponent<Animator>() != null)
-                {
-                    attackAnimation = true;
-                    return;
-                }
+				if (GetComponent<Animator>() != null)
+				{
+					enemyAnim = FindObjectOfType<EnemyAnimation>();
+				}
+				else
+				{
+					enemyAnim = null;
+				} 
 				aiming = player.transform.position - transform.position;
 				attackTimer = timeBetweenAttacks;
 				temp = Instantiate(projectile);
