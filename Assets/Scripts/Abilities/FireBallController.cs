@@ -76,23 +76,23 @@ public class FireBallController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Fireball->Enemy
-        if (other.tag == "Enemy")
-        {
-            other.GetComponent<EnemyHealthManager>().takeDamage(abilityDamage);
-        }
-        if(other.tag == "Boss")
-        {
+		//Fireball->Enemy
+		if (other.tag == "Enemy") {
+			other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
+		}
+		if (other.tag == "Boss") {
             
-            if(sasuke != null)
-            {
-                sasuke.takeDamage(abilityDamage);
-            }
-            else
-            {
-                return;
-            }
-        }
+			if (sasuke != null) {
+				sasuke.takeDamage (abilityDamage);
+			} else {
+				return;
+			}
+		}
+		if (other.tag == "Destructable Platform")
+		{
+			other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
+		}
+
    
         //Fireball->Anything Else
         Instantiate(standardImpactParticle, transform.position, transform.rotation);
