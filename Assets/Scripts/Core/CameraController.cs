@@ -36,6 +36,8 @@ public class CameraController : MonoBehaviour
 
 	void Start () 
     {
+        fakePlayers = new GameObject[3];
+
         if(Application.loadedLevel == 6)
         {
             fakePlayers[0] = GameObject.Find("FakeItachi");
@@ -66,8 +68,8 @@ public class CameraController : MonoBehaviour
 
         if(level1PreStory)
         {
-            positionX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref cameraVelocity.x, lagX);
-            positionY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref cameraVelocity.y, lagY);
+            positionX = Mathf.SmoothDamp(transform.position.x, fakePlayers[1].transform.position.x, ref cameraVelocity.x, lagX);
+            positionY = Mathf.SmoothDamp(transform.position.y, fakePlayers[1].transform.position.y, ref cameraVelocity.y, lagY);
             transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
         }
     }
