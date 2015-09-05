@@ -40,9 +40,6 @@ public class ChatBoxController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-
-
-
         if(startBossDialogue == false && startEndBossDialogue == false)
         {
             voiceClipAudioTimer = voiceClipDuration;
