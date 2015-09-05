@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FakeS : MonoBehaviour
@@ -18,6 +18,8 @@ public class FakeS : MonoBehaviour
         anim = GetComponent<Animator>();
         sprRenderer = GetComponent<SpriteRenderer>();
         groundChecker = GetComponentInChildren<Transform>();
+        anim.enabled = false;
+        //transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
     }
 
     void FixedUpdate()
