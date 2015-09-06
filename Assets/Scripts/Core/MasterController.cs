@@ -43,7 +43,6 @@ public class MasterController : MonoBehaviour
 
 
     //SFX
-
     public AudioSource itachiHurtSFX;
     public AudioSource cyborgHurtSFX;
     public AudioSource sonicHurtSFX;
@@ -1045,7 +1044,6 @@ public class MasterController : MonoBehaviour
                 isBlinking = true;
                 anim.SetBool("isBlinking", isBlinking);
                 blinkAnimTimer -= Time.deltaTime;
-
             }
 
             if (blinkAnimTimer <= 0.0f)
