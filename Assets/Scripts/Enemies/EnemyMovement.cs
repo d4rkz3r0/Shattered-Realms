@@ -31,9 +31,9 @@ public class EnemyMovement : MonoBehaviour {
 	public LayerMask wallCheckLayer;
 	public LayerMask hazardCheckLayer;
 	public float wallCheckRadius;
-	private bool hasHitWall;
+	public bool hasHitWall;
 	private bool hasHitHazardWall;
-	private bool thersGround;
+    public bool thersGround;
 	public float jumpPower;
 	private bool jumping;
 
@@ -63,6 +63,10 @@ public class EnemyMovement : MonoBehaviour {
 	//Stunned
 	private float stunTimer;
 
+    //Ground Aggro Movement Fix
+    private SasukeController sasuke;
+    private MasterController player;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -72,7 +76,10 @@ public class EnemyMovement : MonoBehaviour {
 		actualSpeed = speed;
 		myBehaviour = myDefaultBehaviour;
 		target = GameObject.Find("Player");
+        player = FindObjectOfType<MasterController>();
+        sasuke = FindObjectOfType<SasukeController>();
 		rb2d = GetComponent<Rigidbody2D>();
+        
 		jumping = false;
 		shocked = false;
 		smartTimer = 0;
@@ -80,8 +87,8 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+    {
 		if (shocked) {
 			shockTimer -= Time.deltaTime;
 		}
@@ -98,7 +105,6 @@ public class EnemyMovement : MonoBehaviour {
 
 		if(isPlayerInRange && myBehaviour != MovementBehaviour.GroundPatrolling  && myBehaviour != MovementBehaviour.FlyingPatrolling)
         {
-			Debug.Log("it gets called");
             if (gameObject.name == "Sasuke")
             {
                 //Do Nothing
@@ -107,13 +113,13 @@ public class EnemyMovement : MonoBehaviour {
             {
                 if (target.transform.position.x > transform.position.x)
                 {
-                    transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
-					Debug.Log("CHANGE 1");
+                    transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+					//Debug.Log("CHANGE 1");
                 }
                 else
                 {
-                    transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
-					Debug.Log("CHANGE 2");
+                    transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+					//Debug.Log("CHANGE 2");
                 }
             }
 		}
@@ -125,23 +131,54 @@ public class EnemyMovement : MonoBehaviour {
 			hasHitWall = Physics2D.OverlapCircle(wallCheckTransform.position, wallCheckRadius, wallCheckLayer);
 			thersGround = Physics2D.OverlapCircle(edgeCheckTransform.position, wallCheckRadius, wallCheckLayer);
 
-			if(isPlayerInRange){
-				if (target.transform.position.x > transform.position.x) {
+			if(isPlayerInRange)
+            {
+                if(Mathf.Round(target.transform.position.x) == Mathf.Round(transform.position.x))
+                {
+                    if(gameObject.name == "Sasuke")
+                    {
+                        if (sasuke.canCastBlink && Mathf.Round(target.transform.position.y) > Mathf.Round(transform.position.y) && player.isGrounded)
+                        {
+                            sasuke.castUpwardBlink();
+                        }
+                        else if (sasuke.canCastBlink && Mathf.Round(target.transform.position.y) < Mathf.Round(transform.position.y) && player.isGrounded)
+                        {
+                            sasuke.castDownwardBlink();
+                        }
+                        else
+                        {
+                            rb2d.velocity = new Vector2(0.0f, rb2d.velocity.y);
+                        }
+                    }
+
+                    else
+                    {
+                        rb2d.velocity = new Vector2(0.0f, rb2d.velocity.y);
+                    }
+                    
+                }
+
+                else if ((Mathf.Round(target.transform.position.x * 100.0f) / 100.0f) > (Mathf.Round(transform.position.x) * 100.0f) / 100.0f)
+                {
 					rb2d.velocity = new Vector2 (actualSpeed, rb2d.velocity.y);
-				} else {
+				}
+                else 
+                {
 					rb2d.velocity = new Vector2 (-actualSpeed, rb2d.velocity.y);
 				}
 			}
 
-			if ((hasHitWall || !thersGround) && !jumping) {
+			if ((hasHitWall || !thersGround) && !jumping) 
+            {
 				jumping = true;
 				rb2d.velocity = new Vector2 (rb2d.velocity.x, jumpPower);
 			}
 
 			if (rb2d.velocity.y == 0.0f) 
             {
-				jumping = false;
-			}
+                    jumping = false;
+            }
+				
 
 			break;
 

@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: 674df4520d4237443b809cc718ece1be
+timeCreated: 1441484268
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sasuke_castFireBall_0
+    21300002: sasuke_castFireBall_1
+    21300004: sasuke_castFireBall_2
+    21300006: sasuke_castFireBall_3
+    21300008: sasuke_castFireBall_4
+    21300010: sasuke_castFireBall_5
+    21300012: sasuke_castFireBall_6
+    21300014: sasuke_castFireBall_7
+    21300016: sasuke_castFireBall_8
+    21300018: sasuke_castFireBall_9
+    21300020: sasuke_castFireBall_10
+    21300022: sasuke_castFireBall_11
+    21300024: sasuke_castFireBall_12
+    21300026: sasuke_castFireBall_13
+    21300028: sasuke_castFireBall_14
+    21300030: sasuke_castFireBall_15
+    21300032: sasuke_castFireBall_16
+    21300034: sasuke_castFireBall_17
+    21300036: sasuke_castFireBall_18
+    21300038: sasuke_castFireBall_19
+    21300040: sasuke_castFireBall_20
+    21300042: sasuke_castFireBall_21
+    21300044: sasuke_castFireBall_22
+    21300046: sasuke_castFireBall_23
+    21300048: sasuke_castFireBall_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: sasuke_castFireBall_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_2
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_4
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_5
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_6
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 0
+        width: 39
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_8
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_9
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_10
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 0
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_11
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_12
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 0
+        width: 34
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_13
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 0
+        width: 38
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_14
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 0
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_15
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 0
+        width: 55
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_16
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_17
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_18
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_19
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_20
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_21
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_22
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_23
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: sasuke_castFireBall_24
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 0
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

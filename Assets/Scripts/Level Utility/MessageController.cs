@@ -336,13 +336,15 @@ public class MessageController : MonoBehaviour
             case 108:
                 {
                     displayedText.text =
-                        "Yo ninja-guy, nice threads!";
+                        "Yo ninja-dude, nice\n" +
+                        "threads!";
                     break;
                 }
             case 109:
                 {
                     displayedText.text =
-                        "Do you guys work for Eggman?";
+                        "Do you guys work for\n" +
+                        "Eggman?";
                     break;
                 }
             case 110:
@@ -354,32 +356,38 @@ public class MessageController : MonoBehaviour
             case 111:
                 {
                     displayedText.text =
-                        "You are mistaken, child...";
+                        "You are mistaken, creature\n" +
+                        "Begone before you get hurt.";
                     break;
                 }
             case 112:
                 {
                     displayedText.text =
-                        "I don't know what's going on...\n" +
-                        "but I don't like it!";
+                        "What?! I don't know what's\n" +
+                        "going on but I don't like\n" +
+                        "it!";
                     break;
                 }
             case 113:
                 {
                     displayedText.text =
-                        "Now I'll show you!";
+                        "I also don't like your\n" +
+                        "attitude ninja-dude!\n";
                     break;
                 }
             case 114:
                 {
                     displayedText.text =
-                        "";
+                        "Can everyone PLEASE\n" +
+                        "calm down?";
                     break;
                 }
             case 115:
                 {
                     displayedText.text =
-                        "Fool...";
+                        "This creature has\n" +
+                        "a death wish. I shall\n" +
+                        "grant it...";
                     break;
                 }
 

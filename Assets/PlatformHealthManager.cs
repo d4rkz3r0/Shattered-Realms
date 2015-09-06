@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlatformHealthManager : MonoBehaviour {
@@ -15,7 +15,6 @@ public class PlatformHealthManager : MonoBehaviour {
 	
 	private Vector3 lastPosition;
 	private LevelManager LM;
-	private MasterController player;
 	private EnemyAnimation enemyAnim;
 	
 	void Start () 
@@ -23,7 +22,6 @@ public class PlatformHealthManager : MonoBehaviour {
 		deathAnimation = false;
 		isDead = false;
 		EnemyMaxHP = enemyHP;
-		player = FindObjectOfType<MasterController>();
 		LM = FindObjectOfType<LevelManager>();
 		enemyHurtSFX = GetComponent<AudioSource>();
 		
