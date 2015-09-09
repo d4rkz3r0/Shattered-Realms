@@ -234,7 +234,7 @@ public class MasterController : MonoBehaviour
 		wallCheck = GetComponentInChildren<WallClimbingCheck> ();
 		wallClimbing = false;
         releaseControl = false;
-		Debug.Log("1");
+		//Debug.Log("1");
         disableInput = false;
         canExecuteSasuke = false;
         isExecutingSasuke = false;
