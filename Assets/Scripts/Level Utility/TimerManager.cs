@@ -4,15 +4,20 @@ using System.Collections;
 
 public class TimerManager : MonoBehaviour
 {
-    public float timeToCompleteLevel;
+    //Level Tier Times
+    public float maxTimeToCompleteLevel;
+    public float bronzeTimeToCompleteLevel;
+    public float silverTimeToCompleteLevel;
+    public float goldTimeToCompleteLevel;
+
+    //Level Timer
     private float levelTimer;
     private Text timeRemainingText;
 
+    //Formatting
     private int levelTimerInt;
     private int totalMins;
     private int totalSecs;
-
-
     private int timerMins;
     private int timerSecs;
 
@@ -20,7 +25,7 @@ public class TimerManager : MonoBehaviour
 	void Start ()
     {
         timeRemainingText = GetComponent<Text>();
-        levelTimer = timeToCompleteLevel;
+        levelTimer = maxTimeToCompleteLevel;
 	}
 	
 	void Update () 
@@ -53,6 +58,6 @@ public class TimerManager : MonoBehaviour
 
     public void ResetTimer()
     {
-        levelTimer = timeToCompleteLevel;
+        levelTimer = maxTimeToCompleteLevel;
     }
 }

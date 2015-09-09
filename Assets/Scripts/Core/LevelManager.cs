@@ -71,10 +71,6 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-
-
-
-
         float formattedMaxCameraSize = maxCameraZoomOutSize + 0.02f;
         
         if (cameraZoomInEffect)

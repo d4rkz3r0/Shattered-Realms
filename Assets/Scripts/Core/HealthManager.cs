@@ -80,13 +80,14 @@ public class HealthManager : MonoBehaviour
 
         //Initial Player Spawn
         playerHP = 10;
-            playerMaxHP = 10;
+        playerMaxHP = 10;
         isPlayerDead = false;
 	}
 
     void Update()
     {
-
+        //Debug.Log(playerHP);
+        
         //Visual Feedback Update
         healthStatusRatio = (float)playerHP / (float)playerMaxHP;
         //Player Sprite
@@ -148,7 +149,6 @@ public class HealthManager : MonoBehaviour
         //Constant Updating
         if (playerHP <= 0)
         {
-
             playerHP = 0;
         }
 
@@ -351,9 +351,8 @@ public class HealthManager : MonoBehaviour
         //damageVibrationTimer = damageVibrationDuration;
         //GamePad.SetVibration(playerIndex, 0.25f, 1.0f);
         ////fakePlayer.StartCoroutine("FlashPlayerCoRoutine");
-        
 
-        
+
         //Death Value
         playerHP -= damageReceived;
 		DamageTakenTimer = 5.0f;
