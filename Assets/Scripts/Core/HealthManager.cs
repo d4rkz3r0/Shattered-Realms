@@ -72,7 +72,7 @@ public class HealthManager : MonoBehaviour
         currHPBarImage = GetComponent<Image>();
 
         //Sprite Tinting
-        lowHPColor = Color.red;
+		lowHPColor = new Color (1,0,0,0.2f);
         fullHPColor = Color.white; //Full Alpha
         //fullHPBarColor = Color.green;
         playerSprite = FindObjectOfType<MasterController>().GetComponent<SpriteRenderer>();
@@ -80,21 +80,22 @@ public class HealthManager : MonoBehaviour
 
         //Initial Player Spawn
         playerHP = 10;
-            playerMaxHP = 10;
+        playerMaxHP = 10;
         isPlayerDead = false;
 	}
 
     void Update()
     {
-
+        //Debug.Log(playerHP);
+        
         //Visual Feedback Update
-        healthStatusRatio = (float)playerHP / (float)playerMaxHP;
-        //Player Sprite
-        //currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-        //playerSprite.color = currPlayerSpriteColor;
-        //HP Bar Sprite
-        currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-        hpBarSprite.color = currHPBarSpriteColor;
+     //healthStatusRatio = (float)playerHP / (float)playerMaxHP;
+     ////Player Sprite
+     ////currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+     ////playerSprite.color = currPlayerSpriteColor;
+     ////HP Bar Sprite
+     //currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+     //hpBarSprite.color = currHPBarSpriteColor;
 
 
         ////This block of code makes it so that the players hpbar goes 100% transparency if hit 
@@ -148,7 +149,6 @@ public class HealthManager : MonoBehaviour
         //Constant Updating
         if (playerHP <= 0)
         {
-
             playerHP = 0;
         }
 
@@ -351,9 +351,8 @@ public class HealthManager : MonoBehaviour
         //damageVibrationTimer = damageVibrationDuration;
         //GamePad.SetVibration(playerIndex, 0.25f, 1.0f);
         ////fakePlayer.StartCoroutine("FlashPlayerCoRoutine");
-        
 
-        
+
         //Death Value
         playerHP -= damageReceived;
 		DamageTakenTimer = 5.0f;

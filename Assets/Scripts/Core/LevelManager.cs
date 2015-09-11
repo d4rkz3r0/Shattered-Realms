@@ -71,10 +71,6 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-
-
-
-
         float formattedMaxCameraSize = maxCameraZoomOutSize + 0.02f;
         
         if (cameraZoomInEffect)
@@ -121,7 +117,16 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator RespawnPlayerCoRoutine()
     {
-        
+        if (Application.loadedLevel == 8)
+        {
+            if(!FindObjectOfType<SasukeController>().hasPlayedOnce && GameObject.Find("BossIntro") == null)
+            {
+                FindObjectOfType<SasukeController>().sasukeVictorySFX.Play();
+                FindObjectOfType<SasukeController>().hasPlayedOnce = true;
+            }
+        }
+
+
         //Death Occurred
         cameraZoomInEffect = true;
         player.isBlinking = false;

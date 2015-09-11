@@ -157,7 +157,6 @@ public class BossHealthManager : MonoBehaviour
             if (bossHP <= 0 && !warpPortalEngaged)
             {
                 bossHP = 0;
-                
                 sasukeAnimator.Play("sasuke_OOHP");
             }
 
@@ -175,6 +174,7 @@ public class BossHealthManager : MonoBehaviour
 
             if (isBossDead)
             {
+                
                 sasukeAnimator.enabled = false;
                 
                 if (!once)

@@ -10,10 +10,9 @@ public class EnemyAttack : MonoBehaviour {
 
 	//General
 	public float timeBetweenAttacks;
-	public float timeBetweenJutsuAttacks;
 	public GameObject projectile;
-	private float attackTimer;
-	private float justuAttackTimer;
+    private float attackTimer;
+
 
 	//Melee
 	public int damageAmount;
@@ -43,6 +42,7 @@ public class EnemyAttack : MonoBehaviour {
 
 
 	//Other References
+    private SasukeController sasuke;
 	private EnemyAnimation enemyAnim;
 
 	// Use this for initialization
@@ -60,27 +60,23 @@ public class EnemyAttack : MonoBehaviour {
 		playerSound = GameObject.Find("Player").GetComponent<AudioSource>();
 		playerScript = GameObject.Find ("Player").GetComponent<MasterController> ();
 		player = GameObject.Find ("Player");
+
+        if(Application.loadedLevel == 8)
+        {
+            sasuke = FindObjectOfType<SasukeController>();
+        }
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 
 		if(attackTimer > 0)attackTimer -= Time.deltaTime;
 
-        if(justuAttackTimer > 0)justuAttackTimer -= Time.deltaTime;
-        
-
-		switch (myBehaviour) {
+		switch (myBehaviour)
+        {
 		case AttackBehaviour.Melee:
-                if (gameObject.name == "Sasuke")
-                {
-                    if(timeBetweenJutsuAttacks <= 0)
-                    {
-                        justuAttackTimer = timeBetweenJutsuAttacks;
-                        gameObject.GetComponent<SasukeController>().canMove = false;
-                        gameObject.GetComponent<Animator>().Play("sasuke_Fireball");
-                    }
-                }
+              
 			break;
 
 		case AttackBehaviour.Range:
@@ -141,30 +137,61 @@ public class EnemyAttack : MonoBehaviour {
 		}
 	}
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(gameObject.name == "Sasuke" && sasuke.isChargingChidori)
+        {
+            if(!sasuke.chidoriStrike)
+            {
+                HealthManager.takeDamage(5);
+                
+                playerRigidBody = other.GetComponent<Rigidbody2D>();
+                if(other.gameObject != null)
+                {
+                    if (other.transform.position.x < transform.position.x)
+                    {
+                        playerRigidBody.velocity = new Vector2(-12.0f, 12.0f);
+                    }
+                    else
+                    {
+                        playerRigidBody.velocity = new Vector2(12.0f, 12.0f);
+                    }
+                }
+                sasuke.chidoriStrike = true;
+            }
+        }
+    }
+
+
 	void OnTriggerStay2D(Collider2D other)
     {
-		if (myBehaviour == AttackBehaviour.Melee && other.name == "Player" && attackTimer <= 0)
-		{
-            if(GetComponent<Animator>() != null)
+        if(gameObject.name == "Sasuke" && sasuke.isChargingChidori)
+        {
+            return;
+        }
+
+        if (myBehaviour == AttackBehaviour.Melee && other.name == "Player" && attackTimer <= 0)
+        {
+            if (GetComponent<Animator>() != null)
             {
                 attackAnimation = true;
             }
-            
-			attackTimer = timeBetweenAttacks;
-			HealthManager.takeDamage(damageAmount);
 
-			//Knockback
-			playerScript.stunned = true;
-			playerRigidBody = other.GetComponent<Rigidbody2D>();
-			if(other.transform.position.x <transform.position.x)
-			{
-				playerRigidBody.velocity = new Vector2(-10,10); 
-			}
-			else
-			{
-				playerRigidBody.velocity = new Vector2(10,10); 
-			}
-		}
+            attackTimer = timeBetweenAttacks;
+            HealthManager.takeDamage(damageAmount);
+
+            //Knockback
+            playerScript.stunned = true;
+            playerRigidBody = other.GetComponent<Rigidbody2D>();
+            if (other.transform.position.x < transform.position.x)
+            {
+                playerRigidBody.velocity = new Vector2(-10, 10);
+            }
+            else
+            {
+                playerRigidBody.velocity = new Vector2(10, 10);
+            }
+        }
 	}
 
 	public void GetStun(float stn){

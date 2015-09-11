@@ -8,6 +8,7 @@ public class EnemyAnimation : MonoBehaviour
     private bool isJumping;
     private bool isAttacking;
     private bool isDefeated;
+
     private int moveSpeed;
     private int hp;
     private float groundCheckRadius = 0.1f;
@@ -26,6 +27,8 @@ public class EnemyAnimation : MonoBehaviour
 
     private float enemyAttackAnimTimer;
     public float enemyAttackAnimTimerDuration;
+
+    private SasukeController sasuke;
     
     
 	void Start () 
@@ -34,7 +37,7 @@ public class EnemyAnimation : MonoBehaviour
         AI = GetComponent<EnemyAttack>();
         if(gameObject.name == "Sasuke")
         {
-
+            sasuke = FindObjectOfType<SasukeController>();
 
         }
 
@@ -83,6 +86,11 @@ public class EnemyAnimation : MonoBehaviour
         //Attack
         if(AI.attackAnimation && enemyAttackAnimTimer <= 0.0f)
         {
+            if(gameObject.name == "Sasuke")
+            {
+                sasuke.sasukeMeleeSFX.Play();
+            }
+
             anim.SetBool("isAttacking", true);
             enemyAttackAnimTimer = enemyAttackAnimTimerDuration;
         }
@@ -100,7 +108,7 @@ public class EnemyAnimation : MonoBehaviour
 
         if(gameObject.name == "Sasuke")
         {
-            //Do Nothign
+            //Do Nothing
         }
         else
         {
@@ -116,8 +124,6 @@ public class EnemyAnimation : MonoBehaviour
             }
 
         }
-        
-        //Debug.Log(anim.GetComponent<Animation>().name);
 	}
 
     public void ThrowKunai()

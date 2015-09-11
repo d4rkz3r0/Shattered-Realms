@@ -5,11 +5,13 @@ public class RobotnikController : MonoBehaviour {
 	
 	private Rigidbody2D rb2d;
 	public GameObject laser;
+	public float robotnickSize;
 
 	private float speed;
 	private float speedIncrement;
 	private Direction dir;
 	private Direction laserDir;
+
 
 	private RobotnickWPData newData;
 	
@@ -37,6 +39,13 @@ public class RobotnikController : MonoBehaviour {
 			break;
 		}
 		rb2d.velocity *= speed;
+
+		if (rb2d.velocity.x < 0) {
+			transform.localScale = new Vector3(robotnickSize,robotnickSize,1);
+		}
+		else if (rb2d.velocity.x > 0) {
+			transform.localScale = new Vector3(-robotnickSize,robotnickSize,1);
+		}
 
 	}
 

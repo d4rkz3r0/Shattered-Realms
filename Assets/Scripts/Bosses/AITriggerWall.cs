@@ -38,6 +38,7 @@ public class AITriggerWall : MonoBehaviour
             sasukeHPBarHUDElement.GetComponent<Animator>().enabled = false;
             sasuke.canMove = true;
             player.disableInput = false;
+            
             Destroy(gameObject);
         }
 	}
