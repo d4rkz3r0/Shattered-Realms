@@ -1122,7 +1122,6 @@ public class MasterController : MonoBehaviour
                     once = true;
                 }
 
-				Debug.Log("4");
                 disableInput = false;
             }
 
