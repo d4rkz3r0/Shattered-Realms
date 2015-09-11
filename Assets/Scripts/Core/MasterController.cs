@@ -338,7 +338,7 @@ public class MasterController : MonoBehaviour
 
     void Update()
     {
-		if (!wallCheck.touchingWall && wallClimbing) { 
+		if (!wallCheck.touchingWall && wallClimbing && currentCharacter != 3) { 
 			Debug.Log("after climb");
 			//if(currentCharacter == 3 || currentCharacter == 1){
 			transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -915,6 +915,8 @@ public class MasterController : MonoBehaviour
             if (isSpinDashing && isGrounded)
             {
                 disableInput = true;
+				Debug.Log("o3");
+				
             }
             else if (isSpinDashing && !isGrounded)
             {
@@ -1238,6 +1240,7 @@ public class MasterController : MonoBehaviour
             {
                 anim.SetBool("isSpinDashing", false);
 				boxColliders[1].enabled = true;
+
                 isSpinDashing = false;
                 if(Application.loadedLevel != 8 && isSpinDashing)
                 {

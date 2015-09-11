@@ -72,7 +72,7 @@ public class HealthManager : MonoBehaviour
         currHPBarImage = GetComponent<Image>();
 
         //Sprite Tinting
-        lowHPColor = Color.red;
+		lowHPColor = new Color (1,0,0,0.2f);
         fullHPColor = Color.white; //Full Alpha
         //fullHPBarColor = Color.green;
         playerSprite = FindObjectOfType<MasterController>().GetComponent<SpriteRenderer>();
@@ -88,13 +88,13 @@ public class HealthManager : MonoBehaviour
     {
 
         //Visual Feedback Update
-        healthStatusRatio = (float)playerHP / (float)playerMaxHP;
-        //Player Sprite
-        //currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-        //playerSprite.color = currPlayerSpriteColor;
-        //HP Bar Sprite
-        currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-        hpBarSprite.color = currHPBarSpriteColor;
+     //healthStatusRatio = (float)playerHP / (float)playerMaxHP;
+     ////Player Sprite
+     ////currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+     ////playerSprite.color = currPlayerSpriteColor;
+     ////HP Bar Sprite
+     //currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+     //hpBarSprite.color = currHPBarSpriteColor;
 
 
         ////This block of code makes it so that the players hpbar goes 100% transparency if hit 

@@ -1,0 +1,726 @@
+fileFormatVersion: 2
+guid: e1f1372e28e1ffd4e8561152e6c57414
+timeCreated: 1441824381
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Robotnik_0
+    21300002: Robotnik_1
+    21300004: Robotnik_2
+    21300006: Robotnik_3
+    21300008: Robotnik_4
+    21300010: Robotnik_5
+    21300012: Robotnik_6
+    21300014: Robotnik_7
+    21300016: Robotnik_8
+    21300018: Robotnik_9
+    21300020: Robotnik_10
+    21300022: Robotnik_11
+    21300024: Robotnik_12
+    21300026: Robotnik_13
+    21300028: Robotnik_14
+    21300030: Robotnik_15
+    21300032: Robotnik_16
+    21300034: Robotnik_17
+    21300036: Robotnik_18
+    21300038: Robotnik_19
+    21300040: Robotnik_20
+    21300042: Robotnik_21
+    21300044: Robotnik_22
+    21300046: Robotnik_23
+    21300048: Robotnik_24
+    21300050: Robotnik_25
+    21300052: Robotnik_26
+    21300054: Robotnik_27
+    21300056: Robotnik_28
+    21300058: Robotnik_29
+    21300060: Robotnik_30
+    21300062: Robotnik_31
+    21300064: Robotnik_32
+    21300066: Robotnik_33
+    21300068: Robotnik_34
+    21300070: Robotnik_35
+    21300072: Robotnik_36
+    21300074: Robotnik_37
+    21300076: Robotnik_38
+    21300078: Robotnik_39
+    21300080: Robotnik_40
+    21300082: Robotnik_41
+    21300084: Robotnik_42
+    21300086: Robotnik_43
+    21300088: Robotnik_44
+    21300090: Robotnik_45
+    21300092: Robotnik_46
+    21300094: Robotnik_47
+    21300096: Robotnik_48
+    21300098: Robotnik_49
+    21300100: Robotnik_50
+    21300102: Robotnik_51
+    21300104: Robotnik_52
+    21300106: Robotnik_53
+    21300108: Robotnik_54
+    21300110: Robotnik_55
+    21300112: Robotnik_56
+    21300114: Robotnik_57
+    21300116: Robotnik_58
+    21300118: Robotnik_59
+    21300120: Robotnik_60
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Robotnik_0
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 366
+        width: 64
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_1
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 366
+        width: 64
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_2
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 366
+        width: 64
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_3
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 418
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 366
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 366
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_6
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 366
+        width: 64
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_7
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 366
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_8
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 302
+        width: 64
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_9
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 302
+        width: 64
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_10
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 302
+        width: 64
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_11
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 354
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 302
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 316
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 302
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_15
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 316
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_16
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 316
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_17
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 302
+        width: 64
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_18
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 316
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_19
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 316
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_20
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 316
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_21
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 302
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_22
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 316
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_23
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 238
+        width: 77
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_24
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 238
+        width: 77
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_25
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 238
+        width: 77
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_26
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 290
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 238
+        width: 77
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_28
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 238
+        width: 77
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_29
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 238
+        width: 77
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_30
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 238
+        width: 77
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_31
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 178
+        width: 64
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_32
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 178
+        width: 64
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_33
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 178
+        width: 64
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_34
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 229
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_35
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 178
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_36
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 178
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_37
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 178
+        width: 64
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_38
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 178
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_39
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 113
+        width: 64
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_40
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 113
+        width: 64
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_41
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 127
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_42
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 112
+        width: 77
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_43
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 113
+        width: 64
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_44
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 109
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_45
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 112
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_46
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 129
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_47
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 130
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_48
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 130
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_49
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 131
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_50
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 132
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_51
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 132
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_52
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 80
+        width: 52
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_53
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 80
+        width: 52
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_54
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 80
+        width: 52
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_55
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 97
+        width: 10
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_56
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 80
+        width: 52
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_57
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 80
+        width: 52
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_58
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 80
+        width: 52
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_59
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 80
+        width: 52
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robotnik_60
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 0
+        width: 240
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
