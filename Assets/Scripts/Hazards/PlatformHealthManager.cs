@@ -63,7 +63,7 @@ public class PlatformHealthManager : MonoBehaviour {
 	public void takeDamage(int damageReceived)
 	{
 		enemyHP -= damageReceived;
-		enemyHurtSFX.Play();
+		//enemyHurtSFX.Play();
 	}
 	
 	public IEnumerator RespawnSelf()
