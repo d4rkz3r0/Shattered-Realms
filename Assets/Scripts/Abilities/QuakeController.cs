@@ -35,10 +35,8 @@ public class QuakeController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 
-		Debug.Log ("WUT");
 	
 		if (other.tag != "Player" && other.tag != "Collectibles" && other.tag != "LethalHazard" && other.tag != "Platform") 
-
 		{
 			otherRB = other.GetComponent<Rigidbody2D> ();
 			Debug.Log ("not here");
