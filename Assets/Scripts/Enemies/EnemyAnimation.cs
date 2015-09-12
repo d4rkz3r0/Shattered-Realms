@@ -38,7 +38,6 @@ public class EnemyAnimation : MonoBehaviour
         if(gameObject.name == "Sasuke")
         {
             sasuke = FindObjectOfType<SasukeController>();
-
         }
 
         else
@@ -65,10 +64,16 @@ public class EnemyAnimation : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
 
 
+        if(gameObject.name == "Jumping Sound Ninja")
+        {
+
+        }
+
         if(gameObject.name == "Sasuke")
         {
             //Do Nothing
         }
+
         else
         {
             //Defeat
@@ -122,7 +127,6 @@ public class EnemyAnimation : MonoBehaviour
                 anim.SetBool("isDying", false);
                 Destroy(gameObject);
             }
-
         }
 	}
 
@@ -132,15 +136,20 @@ public class EnemyAnimation : MonoBehaviour
         GameObject kunai = Instantiate(AI.projectile);
         if(transform.localScale.x >= 0.0f)
         {
-            kunai.transform.localScale = new Vector3(2.0f, 2.0f, 1.0f);
+            kunai.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         else
         {
-            kunai.transform.localScale = new Vector3(-2.0f, 2.0f, 1.0f);
+            kunai.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         }
         Transform kunaiTransform = kunai.GetComponent<Transform>();
         kunaiTransform.position = transform.position;
         Rigidbody2D RB2D = kunai.GetComponent<Rigidbody2D>();
         RB2D.velocity = targetPoint.normalized * AI.projectileSpeed;
+    }
+
+    public void TriggerKunai()
+    {
+        AI.attackAnimation = true;
     }
 }
