@@ -294,9 +294,9 @@ public class MasterController : MonoBehaviour
                 }
             case 3:
                 {
-			boxColliders[0].offset = new Vector2(0.0f, 0.05f);
-                    circleCollider.offset = new Vector2(0.0f, -0.56f);
-                    transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
+			//boxColliders[0].offset = new Vector2(0.0f, 0.05f);
+           //        circleCollider.offset = new Vector2(0.0f, -0.56f);
+           //        transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
                     anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
                     break;
                 }
@@ -534,7 +534,7 @@ public class MasterController : MonoBehaviour
                             currentCharacter = 2;
 							boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
-
+					boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                             break;
                         }
@@ -543,17 +543,18 @@ public class MasterController : MonoBehaviour
                             currentCharacter = 3;
 							boxColliders[0].offset = new Vector2(0.0f, 0.05f);
                             transform.position = new Vector3(transform.position.x, transform.position.y - 0.26992f, transform.position.z);
-                            circleCollider.offset = new Vector2(0.0f, -0.56f);
+                           circleCollider.offset = new Vector2(0.0f, -0.56f);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
                             break;
                         }
                     case 3:
                         {
                             currentCharacter = 1;
+					boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
 							boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
-                            circleCollider.offset = new Vector2(0.0f, -0.83f);
-                            //circleCollider.radius = 0.2f;
-                            transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
+                           circleCollider.offset = new Vector2(0.0f, -0.83f);
+                         circleCollider.radius = 0.2f;
+                           transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
 
                             anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
                             break;
@@ -581,7 +582,9 @@ public class MasterController : MonoBehaviour
                         }
                     case 2:
                         {
-                            currentCharacter = 1;
+					currentCharacter = 1;
+					boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
+
 					boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
                             circleCollider.offset = new Vector2(0.0f, -0.83f);
 
@@ -591,9 +594,10 @@ public class MasterController : MonoBehaviour
                     case 3:
                         {
                             currentCharacter = 2;
+					boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
 							boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
-                            circleCollider.offset = new Vector2(0.0f, -0.83f);
-                            transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
+                           circleCollider.offset = new Vector2(0.0f, -0.83f);
+                           transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
                             anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                             break;
                         }
@@ -1005,14 +1009,16 @@ public class MasterController : MonoBehaviour
 			}
 
             //Sonic
+			if(currentCharacter == 3){
             if (!canCastBackFlip && backFlipTimer >= 0.0f)
             {
                 backFlipTimer -= Time.deltaTime;
             }
             if (backFlipTimer <= 0.0f)
             {
-                if (currentCharacter == 3)
                 {
+					boxColliders[0].offset = new Vector2(0.0f, 0.45f);
+						boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.45f);
                     circleCollider.offset = new Vector2(0.0f, -0.56f);
                 }
                 canCastBackFlip = true;
@@ -1051,6 +1057,7 @@ public class MasterController : MonoBehaviour
             {
 				canCastSpinDash = true;
             }
+			}
         }
 
         //End Disable Input Zone

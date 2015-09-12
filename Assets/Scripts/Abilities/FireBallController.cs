@@ -92,6 +92,10 @@ public class FireBallController : MonoBehaviour
 		{
 			other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
 		}
+		if (other.tag == "MysteryBox")
+		{
+			other.GetComponent<MysteryBoxHealthManager> ().takeDamage (abilityDamage);
+		}
 
    
         //Fireball->Anything Else
