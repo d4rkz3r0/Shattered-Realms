@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 4362bf301458f9343aa97a799b5b4f5b
+timeCreated: 1441987353
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Conveyor Belt_0
+    21300002: Conveyor Belt_1
+    21300004: Conveyor Belt_2
+    21300006: Conveyor Belt_3
+    21300008: Conveyor Belt_4
+    21300010: Conveyor Belt_5
+    21300012: Conveyor Belt_6
+    21300014: Conveyor Belt_7
+    21300016: Conveyor Belt_8
+    21300018: Conveyor Belt_9
+    21300020: Conveyor Belt_10
+    21300022: Conveyor Belt_11
+    21300024: Conveyor Belt_12
+    21300026: Conveyor Belt_13
+    21300028: Conveyor Belt_14
+    21300030: Conveyor Belt_15
+    21300032: Conveyor Belt_16
+    21300034: Conveyor Belt_17
+    21300036: Conveyor Belt_18
+    21300038: Conveyor Belt_19
+    21300040: Conveyor Belt_20
+    21300042: Conveyor Belt_21
+    21300044: Conveyor Belt_22
+    21300046: Conveyor Belt_23
+    21300048: Conveyor Belt_24
+    21300050: Conveyor Belt_25
+    21300052: Conveyor Belt_26
+    21300054: Conveyor Belt_27
+    21300056: Conveyor Belt_28
+    21300058: Conveyor Belt_29
+    21300060: Conveyor Belt_30
+    21300062: Conveyor Belt_31
+    21300064: Conveyor Belt_32
+    21300066: Conveyor Belt_33
+    21300068: Conveyor Belt_34
+    21300070: Conveyor Belt_35
+    21300072: Conveyor Belt_36
+    21300074: Conveyor Belt_37
+    21300076: Conveyor Belt_38
+    21300078: Conveyor Belt_39
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 64
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Conveyor Belt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 605
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Conveyor Belt_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 605
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Conveyor Belt_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 605
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Conveyor Belt_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 605
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

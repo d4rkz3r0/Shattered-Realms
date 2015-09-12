@@ -50,6 +50,15 @@ public class shotgunBlastController : MonoBehaviour
         {
             otherRB = other.GetComponent<Rigidbody2D>();
             //Fireball->Enemy
+
+			if (other.tag == "Destructable Platform")
+			{
+				other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
+			}
+			if (other.tag == "MysteryBox")
+			{
+				other.GetComponent<MysteryBoxHealthManager> ().takeDamage (abilityDamage);
+			}
             if (other.tag == "Enemy" && timer > timeBetweenAttacks)
             {
                 timer = 0;
@@ -80,10 +89,6 @@ public class shotgunBlastController : MonoBehaviour
             }
         }
 
-		if (other.tag == "Destructable Platform")
-		{
-			other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
-		}
         //Cleanup
         //Destroy(gameObject);
     }

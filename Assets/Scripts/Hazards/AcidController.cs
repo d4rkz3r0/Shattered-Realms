@@ -30,5 +30,11 @@ public class AcidController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+		if (other.tag == "Destructable Platform" && audioTimer <= 0.0f)
+		{
+			other.GetComponent<PlatformHealthManager> ().takeDamage (1);
+			Destroy(gameObject);
+		}
     }
 }

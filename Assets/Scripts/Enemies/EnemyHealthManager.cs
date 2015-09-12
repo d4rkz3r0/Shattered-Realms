@@ -60,12 +60,18 @@ public class EnemyHealthManager : MonoBehaviour
             {
                 if(enemyAnim != null)
                 {
+                    
                     deathAnimation = true;
                     XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                     return;
                 }
                 else
                 {
+                    if(gameObject.name == "Ranged Sound Ninja")
+                    {
+                        deathAnimation = true;
+                        return;
+                    }
                     Instantiate(deathParticle, transform.position, transform.rotation);
                     XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                     Destroy(gameObject);
@@ -80,29 +86,29 @@ public class EnemyHealthManager : MonoBehaviour
         enemyHurtSFX.Play();
     }
 
-    public IEnumerator RespawnSelf()
-    {
-        for (int i = 0; i < LM.enemyPositionArray.Length; i++)
-        {
-            if (LM.enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
-            {
-                LM.enemyPositionArray[i] = transform.position;
-                break;
-            }
-        }
+    //public IEnumerator RespawnSelf()
+    //{
+    //    for (int i = 0; i < LM.enemyPositionArray.Length; i++)
+    //    {
+    //        if (LM.enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
+    //        {
+    //            LM.enemyPositionArray[i] = transform.position;
+    //            break;
+    //        }
+    //    }
            
-        Destroy(gameObject);
-        yield return null;
-    }
+    //    Destroy(gameObject);
+    //    yield return null;
+    //}
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        RespawnSelf();
-        //if(other.tag == "Player")
-        //{
-        //    LM.RespawnEnemies();
-        //}
-    }
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    RespawnSelf();
+    //    //if(other.tag == "Player")
+    //    //{
+    //    //    LM.RespawnEnemies();
+    //    //}
+    //}
 
     
 }

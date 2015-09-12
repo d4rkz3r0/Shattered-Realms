@@ -243,10 +243,12 @@ public class EnemyMovement : MonoBehaviour {
                     {
                         rb2d.gravityScale = 1.5f;
                         rb2d.velocity = new Vector2(-actualSpeed * 0.3f, jumpPower);
+                        
                     }
                     else
                     {
                         rb2d.velocity = new Vector2(-actualSpeed, jumpPower);
+
                     }
 					
 				}

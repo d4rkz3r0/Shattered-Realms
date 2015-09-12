@@ -5,11 +5,16 @@ public class RobotnikController : MonoBehaviour {
 	
 	private Rigidbody2D rb2d;
 	public GameObject laser;
+	public float robotnickSize;
+	private MasterController player;
+	public GameObject projectile;
+	private float shotTimer;
 
 	private float speed;
 	private float speedIncrement;
 	private Direction dir;
 	private Direction laserDir;
+
 
 	private RobotnickWPData newData;
 	
@@ -17,10 +22,12 @@ public class RobotnikController : MonoBehaviour {
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
 		laserDir = Direction.Down;
+		player = FindObjectOfType<MasterController> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		shotTimer += Time.deltaTime;
 		speed += speedIncrement * Time.deltaTime;
 		switch (dir) {
 		case Direction.Right:
@@ -37,6 +44,25 @@ public class RobotnikController : MonoBehaviour {
 			break;
 		}
 		rb2d.velocity *= speed;
+
+		if (rb2d.velocity.x < 0) {
+			transform.localScale = new Vector3(robotnickSize,robotnickSize,1);
+		}
+		else if (rb2d.velocity.x > 0) {
+			transform.localScale = new Vector3(-robotnickSize,robotnickSize,1);
+		}
+
+		//Controlling Player
+		if (shotTimer > 1  && ((player.transform.position.y > transform.position.y && player.transform.position.x < transform.position.x + 1) || player.transform.position.x < transform.position.x)){
+			//player.stunned = true;
+			//player.GetComponent<Rigidbody2D>().velocity = new Vector2(15,0);
+			shotTimer = 0;
+			GameObject daProj = Instantiate(projectile);
+			daProj.transform.localScale = new Vector3(5,5,1);
+			daProj.transform.position = transform.position;
+			Vector2 vel = new Vector2(player.transform.position.x - transform.position.x,player.transform.position.y - transform.position.y);
+			daProj.GetComponent<Rigidbody2D>().velocity = vel.normalized * 100;
+		}
 
 	}
 
