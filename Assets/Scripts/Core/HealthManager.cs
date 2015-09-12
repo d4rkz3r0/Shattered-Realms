@@ -147,7 +147,6 @@ public class HealthManager : MonoBehaviour
         //Constant Updating
         if (playerHP <= 0)
         {
-            Debug.Log("here1");
             playerHP = 0;
         }
 
