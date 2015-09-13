@@ -218,9 +218,6 @@ public class MasterController : MonoBehaviour
     private GameObject gizmo;
     public bool gizmoBossFightOver;
 
-	//Mario
-	private GameObject mario;
-	public bool MarioBossFightOver;
 
     ////Private References
     private Rigidbody2D rb2D;
@@ -278,11 +275,7 @@ public class MasterController : MonoBehaviour
             gizmoBossFightOver = false;
             gizmo = GameObject.Find("Gizmo");
         }
-		if(Application.loadedLevel == 15)
-		{
-			MarioBossFightOver = false;
-			mario = GameObject.Find("Mario");
-		}
+
         switch(currentCharacter)
         {
             case 1:
@@ -1168,20 +1161,6 @@ public class MasterController : MonoBehaviour
                 Destroy(gizmo);
             }
         }
-		if(Application.loadedLevel == 15)
-		{
-			if (MarioBossFightOver)
-			{
-				MarioBossFightOver = false;
-				Vector3 formattedWarpPortalPos = mario.transform.position;
-				formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);
-				warpPortal.transform.position = formattedWarpPortalPos;
-				Vector3 formattedWarpKeyPos = warpPortal.transform.position;
-				formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
-				warpKey.transform.position = formattedWarpKeyPos;
-				Destroy(mario);
-			}
-		}
        
 
 
