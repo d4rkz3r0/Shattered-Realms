@@ -1,4 +1,4 @@
-﻿///***********************************************************************
+///***********************************************************************
 //Class: KillPlayer.cs
 /*Notes:
  * This KillPlayer class respawns the player. This script should be attached
@@ -33,6 +33,13 @@ public class KillPlayer : MonoBehaviour
             HealthManager.respawnRumbleStart();
             HealthManager.playerHP = 0;
             levelManager.RespawnPlayer();
+        }
+        if(other.tag == "Enemy")
+        {
+            if(other.GetComponent<EnemyAnimation>() != null)
+            {
+                other.GetComponent<EnemyHealthManager>().deathAnimation = true;
+            }
         }
     }
 }

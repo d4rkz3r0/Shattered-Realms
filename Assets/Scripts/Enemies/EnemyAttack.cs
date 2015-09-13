@@ -87,7 +87,7 @@ public class EnemyAttack : MonoBehaviour {
 				if (GetComponent<Animator>() != null)
 				{
 					enemyAnim = FindObjectOfType<EnemyAnimation>();
-                    if(gameObject.name == "Ranged Sound Ninja")
+                    if(gameObject.name == "Ranged Sound Ninja" || gameObject.name == "Spawning Ranged Sound Ninja")
                     {
                         attackAnimation = true;
                         return;

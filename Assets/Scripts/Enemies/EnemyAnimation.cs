@@ -132,24 +132,43 @@ public class EnemyAnimation : MonoBehaviour
 
     public void ThrowKunai()
     {
-        Vector2 targetPoint = FindObjectOfType<MasterController>().transform.position - transform.position;
-        GameObject kunai = Instantiate(AI.projectile);
-        if(transform.localScale.x >= 0.0f)
+        if(!FindObjectOfType<HealthManager>().isPlayerDead)
         {
-            kunai.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            Vector2 targetPoint = FindObjectOfType<MasterController>().transform.position - transform.position;
+            GameObject kunai = Instantiate(AI.projectile);
+            if (transform.localScale.x >= 0.0f)
+            {
+                kunai.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
+            else
+            {
+                kunai.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+            }
+            Transform kunaiTransform = kunai.GetComponent<Transform>();
+            kunaiTransform.position = transform.position;
+            Rigidbody2D RB2D = kunai.GetComponent<Rigidbody2D>();
+            RB2D.velocity = targetPoint.normalized * AI.projectileSpeed;
         }
-        else
+        else if(!AI.attackAnimation)
         {
-            kunai.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+            anim.SetBool("isAttacking", false);
+            return;
         }
-        Transform kunaiTransform = kunai.GetComponent<Transform>();
-        kunaiTransform.position = transform.position;
-        Rigidbody2D RB2D = kunai.GetComponent<Rigidbody2D>();
-        RB2D.velocity = targetPoint.normalized * AI.projectileSpeed;
     }
 
     public void TriggerKunai()
     {
         AI.attackAnimation = true;
+    }
+
+    public void TriggerIdle()
+    {
+        anim.SetBool("isIdling", true);
+    }
+    public void TriggerWaiting()
+    {
+        anim.SetBool("isWaiting", true);
+        anim.SetBool("isDespawning", false);
+        //movement.spawnAggroOnce = true;
     }
 }

@@ -1,9 +1,22 @@
 fileFormatVersion: 2
 guid: 59ebf6945b999ef47ad3ef3aa6662e80
-timeCreated: 1442002557
+timeCreated: 1442043500
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: enemy4_defeat1_0
+    21300002: enemy4_defeat1_1
+    21300004: enemy4_defeat1_2
+    21300006: enemy4_defeat1_3
+    21300008: enemy4_defeat1_4
+    21300010: enemy4_defeat1_5
+    21300012: enemy4_defeat1_6
+    21300014: enemy4_defeat1_7
+    21300016: enemy4_defeat1_8
+    21300018: enemy4_defeat1_9
+    21300020: enemy4_defeat1_10
+    21300022: enemy4_defeat1_11
+    21300024: enemy4_defeat1_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,7 +50,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +61,127 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: enemy4_defeat1_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 0
+        width: 62
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 62
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 62
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_4
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 0
+        width: 62
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_5
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 0
+        width: 81
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_6
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 0
+        width: 81
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_7
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 0
+        width: 81
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_8
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 0
+        width: 81
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_9
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 0
+        width: 81
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_10
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 0
+        width: 81
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_defeat1_11
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 1
+        width: 73
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

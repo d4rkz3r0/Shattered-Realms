@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class ConveyorBeltController : MonoBehaviour {
+public class ConveyorBeltController : MonoBehaviour
+{
 
 	public bool goingRight;
 	public float beltSpeed;
@@ -16,9 +17,6 @@ public class ConveyorBeltController : MonoBehaviour {
 	
 	}
 	void OnTriggerStay2D(Collider2D other){
-
-		if ((other.tag == "Player" && other.name != "Ground Checker" )|| other.tag == "Enemy") {
-
 			if (goingRight) {
 				//if (other.transform.position.y > transform.position.y)
 				other.transform.position += transform.right * beltSpeed * Time.deltaTime;
@@ -32,4 +30,3 @@ public class ConveyorBeltController : MonoBehaviour {
 			}	
 		}
 	}
-}
