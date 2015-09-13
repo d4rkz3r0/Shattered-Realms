@@ -96,16 +96,14 @@ public class HealthManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(playerHP);
-        
         //Visual Feedback Update
-     //healthStatusRatio = (float)playerHP / (float)playerMaxHP;
-     ////Player Sprite
-     ////currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-     ////playerSprite.color = currPlayerSpriteColor;
-     ////HP Bar Sprite
-     //currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
-     //hpBarSprite.color = currHPBarSpriteColor;
+        //healthStatusRatio = (float)playerHP / (float)playerMaxHP;
+        ////Player Sprite
+        ////currPlayerSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+        ////playerSprite.color = currPlayerSpriteColor;
+        ////HP Bar Sprite
+        //currHPBarSpriteColor = Color.Lerp(lowHPColor, fullHPColor, healthStatusRatio);
+        //hpBarSprite.color = currHPBarSpriteColor;
 
 
         ////This block of code makes it so that the players hpbar goes 100% transparency if hit 

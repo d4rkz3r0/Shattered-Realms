@@ -87,6 +87,11 @@ public class EnemyAttack : MonoBehaviour {
 				if (GetComponent<Animator>() != null)
 				{
 					enemyAnim = FindObjectOfType<EnemyAnimation>();
+                    if(gameObject.name == "Ranged Sound Ninja")
+                    {
+                        attackAnimation = true;
+                        return;
+                    }
 				}
 				else
 				{
@@ -128,7 +133,6 @@ public class EnemyAttack : MonoBehaviour {
 			break;
 
 		case AttackBehaviour.Stunned:
-
 			stunTimer -= Time.deltaTime;
 			if(stunTimer <=0 ){
 				myBehaviour = myDefaultBehaviour;

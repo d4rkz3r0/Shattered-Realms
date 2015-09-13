@@ -66,23 +66,23 @@ public class PlatformHealthManager : MonoBehaviour {
 		//enemyHurtSFX.Play();
 	}
 	
-	public IEnumerator RespawnSelf()
-	{
-		for (int i = 0; i < LM.enemyPositionArray.Length; i++)
-		{
-			if (LM.enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
-			{
-				LM.enemyPositionArray[i] = transform.position;
-				break;
-			}
-		}
+    //public IEnumerator RespawnSelf()
+    //{
+    //    for (int i = 0; i < LM.enemyPositionArray.Length; i++)
+    //    {
+    //        if (LM.enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
+    //        {
+    //            LM.enemyPositionArray[i] = transform.position;
+    //            break;
+    //        }
+    //    }
 		
-		Destroy(gameObject);
-		yield return null;
-	}
+    //    Destroy(gameObject);
+    //    yield return null;
+    //}
 	
-	void OnTriggerEnter2D(Collider2D other)
-	{
-		RespawnSelf();
-	}
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    RespawnSelf();
+    //}
 }

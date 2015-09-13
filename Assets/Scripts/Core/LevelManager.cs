@@ -25,10 +25,10 @@ public class LevelManager : MonoBehaviour
     private float startZoomInTime;
     private float startZoomOutTime;
 
-    //Stores all enemies locations in the level
-    public Vector3[] enemyPositionArray;
-    public GameObject enemyPrefab;
-    private int arraySize;
+    ////Stores all enemies locations in the level
+    //public Vector3[] enemyPositionArray;
+    //public GameObject enemyPrefab;
+    //private int arraySize;
 
     //Private References
     public GameObject currCheckpoint;
@@ -46,8 +46,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         //levelXPGems = GameObject.FindGameObjectsWithTag("XP Gem");
-        arraySize = GameObject.FindObjectsOfType<EnemyHealthManager>().Length;
-        enemyPositionArray = new Vector3[arraySize];
+        //arraySize = GameObject.FindObjectsOfType<EnemyHealthManager>().Length;
+        //enemyPositionArray = new Vector3[arraySize];
 
         
         
@@ -110,10 +110,10 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void RespawnEnemies()
-    {
-        StartCoroutine("RespawnEnemyCoRoutine");
-    }
+    //public void RespawnEnemies()
+    //{
+    //    StartCoroutine("RespawnEnemyCoRoutine");
+    //}
 
     public IEnumerator RespawnPlayerCoRoutine()
     {
@@ -177,20 +177,20 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public IEnumerator RespawnEnemyCoRoutine()
-    {
-        for (int i = 0; i < enemyPositionArray.Length; i++)
-        {
-            if (enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
-            {
-                break;
-            }
-            else
-            {
-                enemyPrefab = (GameObject)Instantiate(enemyPrefab, enemyPositionArray[i], Quaternion.identity);
-            }
-        }
+    //public IEnumerator RespawnEnemyCoRoutine()
+    //{
+    //    for (int i = 0; i < enemyPositionArray.Length; i++)
+    //    {
+    //        if (enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
+    //        {
+    //            break;
+    //        }
+    //        else
+    //        {
+    //            enemyPrefab = (GameObject)Instantiate(enemyPrefab, enemyPositionArray[i], Quaternion.identity);
+    //        }
+    //    }
 
-            yield return null;
-    }
+    //        yield return null;
+    //}
 }

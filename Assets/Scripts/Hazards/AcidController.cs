@@ -33,6 +33,7 @@ public class AcidController : MonoBehaviour
 
 		if (other.tag == "Destructable Platform" && audioTimer <= 0.0f)
 		{
+			Debug.Log("Test");
 			other.GetComponent<PlatformHealthManager> ().takeDamage (1);
 			Destroy(gameObject);
 		}
