@@ -16,7 +16,6 @@ public class ConveyorBeltController : MonoBehaviour {
 	
 	}
 	void OnTriggerStay2D(Collider2D other){
-		if ((other.tag == "Player" && other.name != "Ground Checker" )|| other.tag == "Enemy") {
 			if (goingRight) {
 				//if (other.transform.position.y > transform.position.y)
 				other.transform.position += transform.right * beltSpeed * Time.deltaTime;
