@@ -1296,38 +1296,38 @@ public class MasterController : MonoBehaviour
 		//}
 
         //Hurt SFXs
-        if (other.tag == "Enemy" || other.tag == "Projectile")
-        {
-            switch(currentCharacter)
-            {
-                case 1:
-                    {
-                        itachiHurtSFX.Play();
-                        break;
-                    }
-                case 2:
-                    {
-                        cyborgHurtSFX.Play();
-                        break;
-                    }
-                case 3:
-                    {
-                        if(!isGoingSuper && !isBackFlipping && !isSpinDashing)
-                        {
-                            if(!isGrounded)
-                            {
-                                //Do Nothing
-                            }
-                            else
-                            {
-                                sonicHurtSFX.Play();
-                            }
-                            
-                        }
-                        break;
-                    }
-            }
-        }
+      // if (other.tag == "Enemy" || other.tag == "Projectile")
+      // {
+      //     switch(currentCharacter)
+      //     {
+      //         case 1:
+      //             {
+      //                 itachiHurtSFX.Play();
+      //                 break;
+      //             }
+      //         case 2:
+      //             {
+      //                 cyborgHurtSFX.Play();
+      //                 break;
+      //             }
+      //         case 3:
+      //             {
+      //                 if(!isGoingSuper && !isBackFlipping && !isSpinDashing)
+      //                 {
+      //                     if(!isGrounded)
+      //                     {
+      //                         //Do Nothing
+      //                     }
+      //                     else
+      //                     {
+      //                         sonicHurtSFX.Play();
+      //                     }
+      //                     
+      //                 }
+      //                 break;
+      //             }
+      //     }
+      // }
 
         if (other.tag == "Enemy" && isBackFlipping)
         {

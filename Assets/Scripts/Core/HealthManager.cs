@@ -26,8 +26,11 @@ public class HealthManager : MonoBehaviour
 	public static float DamageTakenTimer;
 	public Color tempColor;
 
-
-    //Player Feedback for damage
+	static AudioSource itachiHurtSFX;
+	static AudioSource cyborgHurtSFX;
+	static AudioSource sonicHurtSFX;
+	
+	//Player Feedback for damage
     //Gamepad Rumble
     //bool playerIndexSet = false;
     //static PlayerIndex playerIndex;
@@ -41,6 +44,7 @@ public class HealthManager : MonoBehaviour
     private float healthStatusRatio;
     private Color lowHPColor;
     private Color fullHPColor;
+
     //private Color fullHPBarColor;
     //Player Sprite Tinting
     private SpriteRenderer playerSprite;
@@ -77,6 +81,12 @@ public class HealthManager : MonoBehaviour
         //fullHPBarColor = Color.green;
         playerSprite = FindObjectOfType<MasterController>().GetComponent<SpriteRenderer>();
         hpBarSprite = GetComponent<Image>();
+
+		//DamageFeedBack
+		itachiHurtSFX = FindObjectOfType<MasterController>().GetComponents<AudioSource>()[0];
+		cyborgHurtSFX = FindObjectOfType<MasterController>().GetComponents<AudioSource>()[1];
+		sonicHurtSFX = FindObjectOfType<MasterController>().GetComponents<AudioSource>()[2];
+		
 
         //Initial Player Spawn
         playerHP = 10;
@@ -352,16 +362,34 @@ public class HealthManager : MonoBehaviour
         //GamePad.SetVibration(playerIndex, 0.25f, 1.0f);
         ////fakePlayer.StartCoroutine("FlashPlayerCoRoutine");
 
-
-        //Death Value
-        playerHP -= damageReceived;
-		DamageTakenTimer = 5.0f;
-    }
-
-    //public IEnumerator FlashPlayerCoRoutine()
-    //{
-    //    ////Hit by projectile
-    //    //for (int i = 0; i < sprites.Length; i++)
+		//int cC = FindObjectOfType<MasterController> ().currentCharacter;
+		switch(FindObjectOfType<MasterController> ().currentCharacter)
+		{
+		case 1:
+		{
+			itachiHurtSFX.Play();
+			break;
+		}
+		case 2:
+		{
+			cyborgHurtSFX.Play();
+			break;
+		}
+		case 3:
+		{
+			sonicHurtSFX.Play();
+			break;
+		}
+		}
+			//Death Value
+			playerHP -= damageReceived;
+			DamageTakenTimer = 5.0f;
+		}
+			
+			//public IEnumerator FlashPlayerCoRoutine()
+			//{
+			//    ////Hit by projectile
+			//    //for (int i = 0; i < sprites.Length; i++)
     //    //{
     //    //    sprites[i].color = Color.red;
     //    //    yield return new WaitForSeconds(0.5f);
