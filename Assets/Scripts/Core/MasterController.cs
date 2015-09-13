@@ -1151,6 +1151,7 @@ public class MasterController : MonoBehaviour
         {
             if (gizmoBossFightOver)
             {
+                Debug.Log("Not here");
                 gizmoBossFightOver = false;
                 Vector3 formattedWarpPortalPos = gizmo.transform.position;
                 formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);

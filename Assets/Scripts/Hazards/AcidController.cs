@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class AcidController : MonoBehaviour
@@ -21,7 +21,7 @@ public class AcidController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.name == "Itachi")
+        if(other.name == "Player")
         {
             audioTimer = 1.0f;
         }
@@ -33,7 +33,6 @@ public class AcidController : MonoBehaviour
 
 		if (other.tag == "Destructable Platform" && audioTimer <= 0.0f)
 		{
-			Debug.Log("Test");
 			other.GetComponent<PlatformHealthManager> ().takeDamage (1);
 			Destroy(gameObject);
 		}
