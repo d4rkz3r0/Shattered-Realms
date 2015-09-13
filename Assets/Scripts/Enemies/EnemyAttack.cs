@@ -47,7 +47,7 @@ public class EnemyAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (GetComponent<Animator>() != null)
+        if (GetComponent<EnemyAnimation>() != null)
 		{
 			enemyAnim = FindObjectOfType<EnemyAnimation>();
 		}
