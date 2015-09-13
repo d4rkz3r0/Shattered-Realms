@@ -159,6 +159,12 @@ public class LevelCompleteController : MonoBehaviour
     public IEnumerator ChangeScene(int sceneChoice, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+
+        //If End of Game, return to Main Menu
+        if(sceneChoice == 16)
+        {
+            sceneChoice = 0;
+        }
         Application.LoadLevel(sceneChoice);
 
     }

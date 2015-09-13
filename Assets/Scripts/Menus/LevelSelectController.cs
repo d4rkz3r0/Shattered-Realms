@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -37,20 +37,20 @@ public class LevelSelectController : MonoBehaviour
         StartCoroutine(ChangeScene(sceneChoice, 1.1f));
     }
 
-    //public IEnumerator ChangeSceneSasuke(int sceneChoice, float waitTime)
-    //{
-    //    sceneChoice++;
-    //    yield return new WaitForSeconds(waitTime);
-    //    GameOptionData.currentLevel = sceneChoice;
-    //    Application.LoadLevel(sceneChoice);
+    public IEnumerator ChangeSceneSasuke(int sceneChoice, float waitTime)
+    {
+        sceneChoice++;
+        yield return new WaitForSeconds(waitTime);
+        GameOptionData.currentLevel = sceneChoice;
+        Application.LoadLevel(sceneChoice);
 
-    //}
+    }
 
-    //public void ChangeScenesSasuke(int sceneChoice)
-    //{
-    //    SasukeSelectSFX.Play();
-    //    StartCoroutine(ChangeSceneSasuke(sceneChoice, 1.1f));
-    //}
+    public void ChangeScenesSasuke(int sceneChoice)
+    {
+        SasukeSelectSFX.Play();
+        StartCoroutine(ChangeSceneSasuke(sceneChoice, 4.47f));
+    }
 
     public IEnumerator ChangeSceneGizmo(int sceneChoice, float waitTime)
     {
