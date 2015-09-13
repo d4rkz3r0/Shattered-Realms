@@ -1,9 +1,18 @@
 fileFormatVersion: 2
 guid: ad5e21fb24b0e2c4ba05bb96cc38c762
-timeCreated: 1442001828
+timeCreated: 1442043711
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: enemy4_melee_0
+    21300002: enemy4_melee_1
+    21300004: enemy4_melee_2
+    21300006: enemy4_melee_4
+    21300008: enemy4_melee_5
+    21300010: enemy4_melee_6
+    21300012: enemy4_melee_7
+    21300014: enemy4_melee_8
+    21300016: enemy4_melee_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -48,7 +57,97 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: enemy4_melee_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_2
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_4
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_5
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_6
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_7
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_8
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy4_melee_3
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 0
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

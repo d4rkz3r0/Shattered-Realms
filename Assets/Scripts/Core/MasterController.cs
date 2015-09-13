@@ -1296,7 +1296,7 @@ public class MasterController : MonoBehaviour
 		//}
 
         //Hurt SFXs
-        if (other.tag == "Enemy" || other.tag == "Projectile")
+        if (other.tag == "Enemy" || other.tag == "EnemyProjectile")
         {
             switch(currentCharacter)
             {
