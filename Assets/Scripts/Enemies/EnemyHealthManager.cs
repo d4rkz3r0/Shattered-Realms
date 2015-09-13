@@ -29,7 +29,7 @@ public class EnemyHealthManager : MonoBehaviour
         LM = FindObjectOfType<LevelManager>();
         enemyHurtSFX = GetComponent<AudioSource>();
 
-        if (GetComponent<Animator>() != null)
+        if (GetComponent<EnemyAnimation>() != null)
         {
             enemyAnim = FindObjectOfType<EnemyAnimation>();
         }
