@@ -56,6 +56,12 @@ public class EnemyHealthManager : MonoBehaviour
                 Instantiate(deathParticle, transform.position, transform.rotation);
                 XPManager.AddToEarnedXPThisLevel(xpOnDeath);
             }
+			if(Application.loadedLevel == 15)
+			{
+				player.MarioBossFightOver = true;
+				Instantiate(deathParticle, transform.position, transform.rotation);
+				XPManager.AddToEarnedXPThisLevel(xpOnDeath);
+			}
             else
             {
                 if(enemyAnim != null)
