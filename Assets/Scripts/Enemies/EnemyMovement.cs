@@ -63,6 +63,9 @@ public class EnemyMovement : MonoBehaviour {
 	//Stunned
 	private float stunTimer;
 
+    //Spawn Aggro
+    public bool spawnAggroOnce;
+
     //Ground Aggro Movement Fix
     private SasukeController sasuke;
     private MasterController player;
@@ -83,6 +86,9 @@ public class EnemyMovement : MonoBehaviour {
 		jumping = false;
 		shocked = false;
 		smartTimer = 0;
+
+        //Spawn Aggro
+        spawnAggroOnce = false;
 
 	}
 	
@@ -167,17 +173,30 @@ public class EnemyMovement : MonoBehaviour {
 					rb2d.velocity = new Vector2 (-actualSpeed, rb2d.velocity.y);
 				}
 			}
+            
 
-			if ((hasHitWall || !thersGround) && !jumping) 
-            {
-				jumping = true;
-				rb2d.velocity = new Vector2 (rb2d.velocity.x, jumpPower);
-			}
+                if(gameObject.name == "Heavy Aggro Sound Ninja")
+                {
+                    if(hasHitWall)
+                    {
+                        rb2d.velocity = new Vector2(0.0f, 0.0f);
+                    }
+                    return;
+                }
+                else
+                {
+                    if ((hasHitWall || !thersGround) && !jumping)
+                    {
+                        jumping = true;
+                        rb2d.velocity = new Vector2(rb2d.velocity.x, jumpPower);
+                    }
 
-			if (rb2d.velocity.y == 0.0f) 
-            {
-                    jumping = false;
-            }
+                    if (rb2d.velocity.y == 0.0f)
+                    {
+                        jumping = false;
+                    }
+                }
+			
 				
 
 			break;
@@ -259,6 +278,11 @@ public class EnemyMovement : MonoBehaviour {
                         rb2d.gravityScale = 1.5f;
                         rb2d.velocity = new Vector2(actualSpeed * 0.3f, jumpPower);
                     }
+                    else if(gameObject.name == "FLJumping Sound Ninja")
+                    {
+                        rb2d.gravityScale = 1.5f;
+                        rb2d.velocity = new Vector2(0.0f, jumpPower);
+                    }
                     else
                     {
                         rb2d.velocity = new Vector2(actualSpeed, jumpPower);
@@ -338,9 +362,18 @@ public class EnemyMovement : MonoBehaviour {
 
                 if(isPlayerInRange && !GetComponent<EnemyHealthManager>().isDead)
                 {
-                    GetComponent<BoxCollider2D>().enabled = true;
-                    GetComponent<SpriteRenderer>().enabled = true;
-                    GetComponent<Animator>().enabled = true;
+                    GetComponent<Animator>().SetBool("isSpawning", true);
+                    GetComponent<Animator>().SetBool("isDespawning", false);
+                }
+                else if (!isPlayerInRange && !GetComponent<EnemyHealthManager>().isDead)
+                {
+                    if (!spawnAggroOnce)
+                    {
+                        GetComponent<Animator>().SetBool("isDespawning", true);
+                        spawnAggroOnce = true;
+                    }
+                    GetComponent<Animator>().SetBool("isIdling", false);
+                    GetComponent<Animator>().SetBool("isSpawning", false);
                 }
             break;
 		}

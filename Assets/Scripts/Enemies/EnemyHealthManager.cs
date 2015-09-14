@@ -4,21 +4,20 @@ using System.Collections;
 public class EnemyHealthManager : MonoBehaviour
 {
     public int enemyHP;
+    public int EnemyMaxHP;
     public int xpOnDeath;
     public GameObject deathParticle;
     private AudioSource enemyHurtSFX;
-    public int EnemyMaxHP;
+    
     public bool isDead;
     public bool deathAnimation;
 
-    //Enemy Respawning
-    public GameObject EnemyPrefab;
-    public bool isRespawnable;
 
-    private Vector3 lastPosition;
     private LevelManager LM;
     private MasterController player;
     private EnemyAnimation enemyAnim;
+    private PortalController warpPortal;
+    private KeyPickup warpKey;
 
 	void Start () 
     {
@@ -27,9 +26,12 @@ public class EnemyHealthManager : MonoBehaviour
         EnemyMaxHP = enemyHP;
         player = FindObjectOfType<MasterController>();
         LM = FindObjectOfType<LevelManager>();
+        warpPortal = FindObjectOfType<PortalController>();
+        warpKey = FindObjectOfType<KeyPickup>();
         enemyHurtSFX = GetComponent<AudioSource>();
+        
 
-        if (GetComponent<Animator>() != null)
+        if (GetComponent<EnemyAnimation>() != null)
         {
             enemyAnim = FindObjectOfType<EnemyAnimation>();
         }
@@ -42,7 +44,6 @@ public class EnemyHealthManager : MonoBehaviour
 
 	void Update () 
     {
-
         if(enemyHP <= 0)
         {
             isDead = true;
@@ -50,17 +51,46 @@ public class EnemyHealthManager : MonoBehaviour
 
 	    if(isDead)
         {
-            if(Application.loadedLevel == 11)
+            if(Application.loadedLevel == 11 && gameObject.name == "Gizmo")
             {
-                player.gizmoBossFightOver = true;
+                Vector3 formattedWarpPortalPos = gameObject.transform.position;
+                formattedWarpPortalPos += new Vector3(0.0f, 1.0f, 0.0f);
+                warpPortal.transform.position = formattedWarpPortalPos;
+                if (warpKey != null)
+                {
+                    Vector3 formattedWarpKeyPos = warpPortal.transform.position;
+                    formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
+                    warpKey.transform.position = formattedWarpKeyPos;
+
+                }
                 Instantiate(deathParticle, transform.position, transform.rotation);
                 XPManager.AddToEarnedXPThisLevel(xpOnDeath);
+                Destroy(gameObject);
             }
+
+            if(Application.loadedLevel == 15 && gameObject.name == "Mario")
+            {
+                Vector3 formattedWarpPortalPos = gameObject.transform.position;
+                formattedWarpPortalPos += new Vector3(0.0f, 1.0f, 0.0f);
+                warpPortal.transform.position = formattedWarpPortalPos;
+                if(warpKey != null)
+                {
+                    Vector3 formattedWarpKeyPos = warpPortal.transform.position;
+                    formattedWarpKeyPos += new Vector3(-1.0f, 0.0f, 0.0f);
+                    warpKey.transform.position = formattedWarpKeyPos;
+
+                }
+                Instantiate(deathParticle, transform.position, transform.rotation);
+                XPManager.AddToEarnedXPThisLevel(xpOnDeath);
+                Destroy(gameObject);
+                
+            }
+
             else
             {
+
                 if(enemyAnim != null)
                 {
-                    
                     deathAnimation = true;
                     XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                     return;
@@ -74,7 +104,7 @@ public class EnemyHealthManager : MonoBehaviour
                     }
                     Instantiate(deathParticle, transform.position, transform.rotation);
                     XPManager.AddToEarnedXPThisLevel(xpOnDeath);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }  
             } 
         }
@@ -85,30 +115,4 @@ public class EnemyHealthManager : MonoBehaviour
         enemyHP -= damageReceived;
         enemyHurtSFX.Play();
     }
-
-    //public IEnumerator RespawnSelf()
-    //{
-    //    for (int i = 0; i < LM.enemyPositionArray.Length; i++)
-    //    {
-    //        if (LM.enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
-    //        {
-    //            LM.enemyPositionArray[i] = transform.position;
-    //            break;
-    //        }
-    //    }
-           
-    //    Destroy(gameObject);
-    //    yield return null;
-    //}
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    RespawnSelf();
-    //    //if(other.tag == "Player")
-    //    //{
-    //    //    LM.RespawnEnemies();
-    //    //}
-    //}
-
-    
 }

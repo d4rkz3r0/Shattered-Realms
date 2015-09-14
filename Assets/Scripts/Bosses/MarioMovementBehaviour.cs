@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MarioMovementBehaviour : MonoBehaviour {
@@ -53,7 +53,7 @@ public class MarioMovementBehaviour : MonoBehaviour {
 			//transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, actualSpeed * Time.deltaTime);
 
 
-			if (gameObject.GetComponent<EnemyHealthManager>().enemyHP == gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP && PoweredUp == false ||
+			if (gameObject.GetComponent<EnemyHealthManager>().enemyHP ==  gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP && PoweredUp == false ||
 			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.75f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.50f)&& PoweredUp == false ||
 			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.50f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f) && PoweredUp == false ||
 			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > 0 && PoweredUp == false)

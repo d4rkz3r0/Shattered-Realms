@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PowerupMovement : MonoBehaviour {
@@ -26,38 +26,51 @@ public class PowerupMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 		PwrUPPOS = new Vector3 (0, 60, 0);
 		oppositeVec = new Vector3(-tempvec.x, 0, 0);
 
-		if (Mario.GetComponent<MarioMovementBehaviour> ().MushroomActive == true && gameObject.name == "MarioLargePowerUp") {
-			gameObject.transform.position += PwrUPPOS * Time.deltaTime;
-			Mario.GetComponent<MarioMovementBehaviour> ().MushroomActive = false;
-			gameObject.GetComponent<Rigidbody2D> ().gravityScale = 1;
-			gameObject.GetComponent<BoxCollider2D> ().enabled = true;
-			gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
-		}
-		else if (Mario.GetComponent<MarioMovementBehaviour> ().FlowerActive == true && gameObject.name == "Mario Flower Powerup") {
-			gameObject.transform.position += PwrUPPOS * Time.deltaTime;
-			Mario.GetComponent<MarioMovementBehaviour> ().FlowerActive = false;
-			gameObject.GetComponent<Rigidbody2D> ().gravityScale = 1;
-			gameObject.GetComponent<BoxCollider2D> ().enabled = true;
-			gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
-		}
-		else if (Mario.GetComponent<MarioMovementBehaviour> ().TanookiActive == true && gameObject.name == "Mario Racoon Suit Powerup") {
-			gameObject.transform.position += PwrUPPOS * Time.deltaTime;
-			Mario.GetComponent<MarioMovementBehaviour> ().TanookiActive = false;
-			gameObject.GetComponent<Rigidbody2D> ().gravityScale = 1;
-			gameObject.GetComponent<BoxCollider2D> ().enabled = true;
-			gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
-		}
-		else if (Mario.GetComponent<MarioMovementBehaviour> ().StarActive == true && gameObject.name == "MarioStarPowerup") {
-			gameObject.transform.position += PwrUPPOS * Time.deltaTime;
-			Mario.GetComponent<MarioMovementBehaviour> ().StarActive = false;
-			gameObject.GetComponent<Rigidbody2D> ().gravityScale = 1;
-			gameObject.GetComponent<BoxCollider2D> ().enabled = true;
-			gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
-		}
+        if(Mario == null)
+        {
+            return;
+        }
+        else
+        {
+            if (Mario.GetComponent<MarioMovementBehaviour>().MushroomActive == true && gameObject.name == "MarioLargePowerUp")
+            {
+                gameObject.transform.position += PwrUPPOS * Time.deltaTime;
+                Mario.GetComponent<MarioMovementBehaviour>().MushroomActive = false;
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
+            }
+            else if (Mario.GetComponent<MarioMovementBehaviour>().FlowerActive == true && gameObject.name == "Mario Flower Powerup")
+            {
+                gameObject.transform.position += PwrUPPOS * Time.deltaTime;
+                Mario.GetComponent<MarioMovementBehaviour>().FlowerActive = false;
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
+            }
+            else if (Mario.GetComponent<MarioMovementBehaviour>().TanookiActive == true && gameObject.name == "Mario Racoon Suit Powerup")
+            {
+                gameObject.transform.position += PwrUPPOS * Time.deltaTime;
+                Mario.GetComponent<MarioMovementBehaviour>().TanookiActive = false;
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
+            }
+            else if (Mario.GetComponent<MarioMovementBehaviour>().StarActive == true && gameObject.name == "MarioStarPowerup")
+            {
+                gameObject.transform.position += PwrUPPOS * Time.deltaTime;
+                Mario.GetComponent<MarioMovementBehaviour>().StarActive = false;
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                gameObject.GetComponent<Rigidbody2D>().velocity = tempvec;
+            }
+        }
+		
 
 		
 	}

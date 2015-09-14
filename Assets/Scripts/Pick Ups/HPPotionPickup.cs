@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class HPPotionPickup : MonoBehaviour
@@ -8,7 +8,14 @@ public class HPPotionPickup : MonoBehaviour
 
 	void Start () 
     {
-        hpSFX = GetComponentInParent<AudioSource>();
+        if(gameObject.name == "chestHPGem (clone)")
+        {
+            hpSFX = GetComponent<AudioSource>();
+        }
+        else
+        {
+            hpSFX = GetComponentInParent<AudioSource>();
+        }
 	}
 
 

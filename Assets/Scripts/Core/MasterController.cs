@@ -211,12 +211,12 @@ public class MasterController : MonoBehaviour
     public bool sasukeBossFightOver;
     public float executeSasukeTimer;
     private float executeSasukeAnimTimer;
-    public AudioSource executeSasukeSFX;
 
 
     //Gizmo
     private GameObject gizmo;
     public bool gizmoBossFightOver;
+
 
     ////Private References
     private Rigidbody2D rb2D;
@@ -273,8 +273,8 @@ public class MasterController : MonoBehaviour
         {
             gizmoBossFightOver = false;
             gizmo = GameObject.Find("Gizmo");
-            
         }
+
         switch(currentCharacter)
         {
             case 1:
@@ -1089,7 +1089,6 @@ public class MasterController : MonoBehaviour
                     sasuke.GetComponent<SpriteRenderer>().sortingOrder = -1;
                     sasuke.GetComponent<SpriteRenderer>().sprite = sasukePain;
                     anim.Play("itachi_Execute");
-                    executeSasukeSFX.Play();
                     sasuke.sasukeExecuteSFX.Play();
                     executeSasukeAnimTimer = 3.2f;
                     canExecuteSasuke = false;
@@ -1150,6 +1149,7 @@ public class MasterController : MonoBehaviour
         {
             if (gizmoBossFightOver)
             {
+                Debug.Log("Not here");
                 gizmoBossFightOver = false;
                 Vector3 formattedWarpPortalPos = gizmo.transform.position;
                 formattedWarpPortalPos += new Vector3(0.0f, 1.5f, 0.0f);
@@ -1295,39 +1295,39 @@ public class MasterController : MonoBehaviour
 		//	transform.Rotate(0,0,90);
 		//}
 
-        //Hurt SFXs
-      // if (other.tag == "Enemy" || other.tag == "Projectile")
-      // {
-      //     switch(currentCharacter)
-      //     {
-      //         case 1:
-      //             {
-      //                 itachiHurtSFX.Play();
-      //                 break;
-      //             }
-      //         case 2:
-      //             {
-      //                 cyborgHurtSFX.Play();
-      //                 break;
-      //             }
-      //         case 3:
-      //             {
-      //                 if(!isGoingSuper && !isBackFlipping && !isSpinDashing)
-      //                 {
-      //                     if(!isGrounded)
-      //                     {
-      //                         //Do Nothing
-      //                     }
-      //                     else
-      //                     {
-      //                         sonicHurtSFX.Play();
-      //                     }
-      //                     
-      //                 }
-      //                 break;
-      //             }
-      //     }
-      // }
+        ////Hurt SFXs
+        //if (other.tag == "Enemy" || other.tag == "EnemyProjectile")
+        //{
+        //    switch(currentCharacter)
+        //    {
+        //        case 1:
+        //            {
+        //                itachiHurtSFX.Play();
+        //                break;
+        //            }
+        //        case 2:
+        //            {
+        //                cyborgHurtSFX.Play();
+        //                break;
+        //            }
+        //        case 3:
+        //            {
+        //                if(!isGoingSuper && !isBackFlipping && !isSpinDashing)
+        //                {
+        //                    if(!isGrounded)
+        //                    {
+        //                        //Do Nothing
+        //                    }
+        //                    else
+        //                    {
+        //                        sonicHurtSFX.Play();
+        //                    }
+                            
+        //                }
+        //                break;
+        //            }
+        //    }
+        //}
 
         if (other.tag == "Enemy" && isBackFlipping)
         {
@@ -1494,9 +1494,7 @@ public class MasterController : MonoBehaviour
 
     void SpinDashEnd()
     {
-		Debug.Log("7");
         disableInput = false;
-        //Debug.Log("HIt");
     }
 
    

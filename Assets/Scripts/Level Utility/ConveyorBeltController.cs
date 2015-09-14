@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class ConveyorBeltController : MonoBehaviour {
+public class ConveyorBeltController : MonoBehaviour
+{
 
 	public bool goingRight;
 	public float beltSpeed;
@@ -29,4 +30,4 @@ public class ConveyorBeltController : MonoBehaviour {
 			}	
 		}
 	}
-
+}
