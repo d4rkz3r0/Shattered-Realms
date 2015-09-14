@@ -29,4 +29,4 @@ public class ConveyorBeltController : MonoBehaviour {
 			}	
 		}
 	}
-}
+
