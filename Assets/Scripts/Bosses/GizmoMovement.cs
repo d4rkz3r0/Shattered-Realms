@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GizmoMovement : MonoBehaviour {
@@ -84,9 +84,9 @@ public class GizmoMovement : MonoBehaviour {
 		
 		if(isPlayerInRange && myBehaviour != MovementBehaviour.GroundPatrolling  && myBehaviour != MovementBehaviour.FlyingPatrolling){
 			if (target.transform.position.x > transform.position.x) {
-				transform.localScale = new Vector3 (-1.0f, 1.0f, 0.0f);
-			} else {
 				transform.localScale = new Vector3 (1.0f, 1.0f, 0.0f);
+			} else {
+				transform.localScale = new Vector3 (-1.0f, 1.0f, 0.0f);
 			}
 		}
 		

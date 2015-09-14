@@ -10,6 +10,7 @@ public class shotgunBlastController : MonoBehaviour
 
 	//Private References
 	private MasterController player;
+    private BossHealthManager sasuke;
     private Animator anim;
 	private Rigidbody2D otherRB;
 	private EnemyMovement eMScrp;
@@ -35,6 +36,19 @@ public class shotgunBlastController : MonoBehaviour
 		{
 			transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 		}
+        switch (Application.loadedLevel)
+        {
+            case 8:
+                {
+                    sasuke = FindObjectOfType<BossHealthManager>();
+                    break;
+                }
+            default:
+                {
+                    sasuke = null;
+                    break;
+                }
+        }
 
 	}
 	
@@ -56,7 +70,19 @@ public class shotgunBlastController : MonoBehaviour
             {
                 otherRB = other.GetComponent<Rigidbody2D>();
             }
+            if (other.tag == "Boss" && timer > timeBetweenAttacks)
+            {
 
+                if (sasuke != null)
+                {
+                    timer = 0;
+                    sasuke.takeDamage(1);
+                }
+                else
+                {
+                    return;
+                }
+            }
 
 			if (other.tag == "Destructable Platform")
 			{

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class LightningController : MonoBehaviour {
 
+    private BossHealthManager sasuke;
 	public float abilitySpeed;
 	public int abilityDamage;
 	public float maxDistanceToTarget;
@@ -36,6 +37,19 @@ public class LightningController : MonoBehaviour {
 				rb2D.velocity = new Vector2 (abilitySpeed, 0);
 			}
 		}
+        switch (Application.loadedLevel)
+        {
+            case 8:
+                {
+                    sasuke = FindObjectOfType<BossHealthManager>();
+                    break;
+                }
+            default:
+                {
+                    sasuke = null;
+                    break;
+                }
+        }
 	}
 	
 	// Update is called once per frame
@@ -63,6 +77,18 @@ public class LightningController : MonoBehaviour {
 		{
 			other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
 		}
+        if (other.tag == "Boss")
+        {
+
+            if (sasuke != null)
+            {
+                sasuke.takeDamage(abilityDamage);
+            }
+            else
+            {
+                return;
+            }
+        }
 		if (other.tag == "MysteryBox")
 		{
 			other.GetComponent<MysteryBoxHealthManager> ().takeDamage (abilityDamage);

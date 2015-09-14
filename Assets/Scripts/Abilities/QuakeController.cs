@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class QuakeController : MonoBehaviour {
@@ -10,6 +10,7 @@ public class QuakeController : MonoBehaviour {
 	
 	//Private References
 	private MasterController player;
+    private BossHealthManager sasuke;
 	private Rigidbody2D otherRB;
 	private EnemyMovement eMScrp;
 	private EnemyAttack eAScrp;
@@ -21,6 +22,19 @@ public class QuakeController : MonoBehaviour {
 	void Start ()
 	{
 		timer = 0;
+        switch (Application.loadedLevel)
+        {
+            case 8:
+                {
+                    sasuke = FindObjectOfType<BossHealthManager>();
+                    break;
+                }
+            default:
+                {
+                    sasuke = null;
+                    break;
+                }
+        }
 	}
 	
 	// Update is called once per frame
@@ -49,6 +63,18 @@ public class QuakeController : MonoBehaviour {
 			{
 				other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
 			}
+            if (other.tag == "Boss")
+            {
+
+                if (sasuke != null)
+                {
+                    sasuke.takeDamage(abilityDamage);
+                }
+                else
+                {
+                    return;
+                }
+            }
 			if (other.tag == "MiniBoss")
 			{
 				other.GetComponent<BossHealthManager> ().takeDamage (abilityDamage);

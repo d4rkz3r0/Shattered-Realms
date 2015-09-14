@@ -928,14 +928,6 @@ public class MasterController : MonoBehaviour
                 }
             }
 
-            //N - Skip Level (Debugging)
-            if(Input.GetKeyDown(KeyCode.N))
-            {
-                warpKey.isPickedUp = true;
-                transform.position = warpPortal.transform.position;
-            }
-
-
             if (isSpinDashing && isGrounded)
             {
                 disableInput = true;
@@ -1082,17 +1074,28 @@ public class MasterController : MonoBehaviour
 
         //End Disable Input Zone
 
+        //N - Skip Level (Debugging)
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            warpKey.isPickedUp = true;
+            transform.position = warpPortal.transform.position;
+        }
+
         if(Application.loadedLevel == 8)
         {
             if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
             {
-                
+                currentCharacter = 1;
                 sasuke.GetComponent<BoxCollider2D>().enabled = true;
                 //sasuke.GetComponent<CircleCollider2D>().radius = 0.5f;
 
                 if (canExecuteSasuke && !isExecutingSasuke)
                 {
                     currentCharacter = 1;
+                    boxColliders[0].offset = new Vector2(0.0f, 0.05f);
+                    circleCollider.offset = new Vector2(0.0f, -0.83f);
+                    anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+
                     anim.SetBool("isExecuting", true);
                     Vector3 newExecutePosition = sasuke.transform.position;
 
@@ -1370,6 +1373,19 @@ public class MasterController : MonoBehaviour
 			{
 				other.attachedRigidbody.velocity = new Vector2 (4, 2); 
 			}
+        }
+
+        if (other.tag == "Boss" && isBackFlipping)
+        {
+            if (sasukeHP != null)
+            {
+                sasukeHP.takeDamage(backFlipDamage);
+            }
+            else
+            {
+                return;
+            }
+
         }
 		
 		if (other.tag == "Enemy" && isSpringing) {
