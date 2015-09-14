@@ -125,7 +125,7 @@ public class EnemyAnimation : MonoBehaviour
             if (enemyDefeatedAnimTimer <= 0.0f && health.isDead)
             {
                 anim.SetBool("isDying", false);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 	}

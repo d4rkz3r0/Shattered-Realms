@@ -1496,9 +1496,7 @@ public class MasterController : MonoBehaviour
 
     void SpinDashEnd()
     {
-		Debug.Log("7");
         disableInput = false;
-        //Debug.Log("HIt");
     }
 
    

@@ -4,18 +4,15 @@ using System.Collections;
 public class EnemyHealthManager : MonoBehaviour
 {
     public int enemyHP;
+    public int EnemyMaxHP;
     public int xpOnDeath;
     public GameObject deathParticle;
     private AudioSource enemyHurtSFX;
-    public int EnemyMaxHP;
+    
     public bool isDead;
     public bool deathAnimation;
 
-    //Enemy Respawning
-    public GameObject EnemyPrefab;
-    public bool isRespawnable;
 
-    private Vector3 lastPosition;
     private LevelManager LM;
     private MasterController player;
     private EnemyAnimation enemyAnim;
@@ -31,7 +28,6 @@ public class EnemyHealthManager : MonoBehaviour
         LM = FindObjectOfType<LevelManager>();
         warpPortal = FindObjectOfType<PortalController>();
         warpKey = FindObjectOfType<KeyPickup>();
-
         enemyHurtSFX = GetComponent<AudioSource>();
         
 
@@ -48,7 +44,6 @@ public class EnemyHealthManager : MonoBehaviour
 
 	void Update () 
     {
-
         if(enemyHP <= 0)
         {
             isDead = true;
@@ -109,7 +104,7 @@ public class EnemyHealthManager : MonoBehaviour
                     }
                     Instantiate(deathParticle, transform.position, transform.rotation);
                     XPManager.AddToEarnedXPThisLevel(xpOnDeath);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }  
             } 
         }
@@ -120,30 +115,4 @@ public class EnemyHealthManager : MonoBehaviour
         enemyHP -= damageReceived;
         enemyHurtSFX.Play();
     }
-
-    //public IEnumerator RespawnSelf()
-    //{
-    //    for (int i = 0; i < LM.enemyPositionArray.Length; i++)
-    //    {
-    //        if (LM.enemyPositionArray[i] == new Vector3(0.0f, 0.0f, 0.0f))
-    //        {
-    //            LM.enemyPositionArray[i] = transform.position;
-    //            break;
-    //        }
-    //    }
-           
-    //    Destroy(gameObject);
-    //    yield return null;
-    //}
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    RespawnSelf();
-    //    //if(other.tag == "Player")
-    //    //{
-    //    //    LM.RespawnEnemies();
-    //    //}
-    //}
-
-    
 }

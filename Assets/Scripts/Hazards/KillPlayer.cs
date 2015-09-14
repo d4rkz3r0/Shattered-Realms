@@ -38,7 +38,8 @@ public class KillPlayer : MonoBehaviour
         {
             if(other.GetComponent<EnemyAnimation>() != null)
             {
-                other.GetComponent<EnemyHealthManager>().deathAnimation = true;
+                other.GetComponent<EnemyHealthManager>().enemyHP = 0;
+                //other.GetComponent<EnemyHealthManager>().deathAnimation = true;
             }
         }
     }
