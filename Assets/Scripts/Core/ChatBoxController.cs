@@ -65,7 +65,9 @@ public class ChatBoxController : MonoBehaviour
 
         if (voiceClipEndAudioTimer <= 0.0f)
         {
-            if(MessageController.textSelection == 28 || MessageController.textSelection == 32)
+            if (MessageController.textSelection == 28 ||
+                MessageController.textSelection == 32 ||
+                MessageController.textSelection == 37)
             {
                 MessageController.textSelection = 0;
                 currText.text = "";
@@ -240,6 +242,44 @@ public class ChatBoxController : MonoBehaviour
                         }
                         break;
                     }
+                    //End Gizmo Boss Fight
+                    //Start Robotnik Boss Fight
+                case 35:
+                    {
+                        if (!hasPlayed)
+                        {
+                            currChatBoxAvatar.sprite = chatBoxAvatars[0];
+                            voiceClips[voiceClipIndex].Play();
+                            voiceClipAudioTimer = 2.12f;
+                            hasPlayed = true;
+                        }
+                        break;
+                    }
+                case 36:
+                    {
+                        hasPlayed = false;
+                        if (!hasPlayed && voiceClipAudioTimer <= 0.0f)
+                        {
+                            currChatBoxAvatar.sprite = chatBoxAvatars[0];
+                            voiceClips[voiceClipIndex].Play();
+                            voiceClipAudioTimer = 1.78f;
+                            hasPlayed = true;
+                        }
+                        break;
+                    }
+                case 37:
+                    {
+                        hasPlayed = false;
+                        if (!hasPlayed && voiceClipAudioTimer <= 0.0f)
+                        {
+                            currChatBoxAvatar.sprite = chatBoxAvatars[1];
+                            voiceClips[voiceClipIndex].Play();
+                            voiceClipAudioTimer = 2.35f;
+                            hasPlayed = true;
+                        }
+                        break;
+                    }
+                    //End Robotnik Boss Fight
             }
         }
 	}

@@ -1,27 +1,25 @@
 using UnityEngine;
 using System.Collections;
 
-public class GizmoTriggerWall : MonoBehaviour 
+public class RobotnikTriggerWall : MonoBehaviour 
 {
     private MasterController player;
-    private GameObject gizmo;
+    private GameObject robotnik;
     private float IntroTimer;
-    private float IntroTimerDuration = 3.6f;
-    private EnemyHealthManager gizmoHP;
+    private float IntroTimerDuration = 6.19f;
     public ChatBoxController chatBoxHUDElement;
-    public BossHealthManager gizmoHPBarHUDElement;
     private bool start;
 
 	void Start () 
     {
         start = false;
         player = FindObjectOfType<MasterController>();
-        gizmo = GameObject.Find("Gizmo");
+        robotnik = GameObject.Find("Robotnick");
 
         MessageController.textSelection = 1;
 	}
 	
-	void Update () 
+	void Update ()
     {
         if (IntroTimer >= 0.0f)
         {
@@ -29,11 +27,6 @@ public class GizmoTriggerWall : MonoBehaviour
         }
         if (IntroTimer <= 0.0f && start)
         {
-            if (GameObject.Find("Boss HP Bar Image").GetComponent<Animator>() != null)
-            {
-                GameObject.Find("Boss HP Bar Image").GetComponent<Animator>().enabled = false;
-            }
-            
             chatBoxHUDElement.gameObject.SetActive(false);
             Destroy(gameObject);
         }
@@ -41,13 +34,12 @@ public class GizmoTriggerWall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             IntroTimer = IntroTimerDuration;
-            gizmoHPBarHUDElement.gameObject.SetActive(true);
             chatBoxHUDElement.startBossDialogue = true;
             chatBoxHUDElement.gameObject.SetActive(true);
-            MessageController.textSelection = 31;
+            MessageController.textSelection = 35;
             start = true;
         }
     }

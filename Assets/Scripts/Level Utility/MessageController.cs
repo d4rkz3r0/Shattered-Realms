@@ -294,6 +294,27 @@ public class MessageController : MonoBehaviour
                         "Uhhhh... YEAH?!";
                     break;
                 }
+            case 35:
+                {
+                    displayedText.text =
+                        "Ah ha ha ho!\n" +
+                        "Are you fast";
+                    break;
+                }
+            case 36:
+                {
+                    displayedText.text =
+                        "enough to dodge\n" +
+                        "this?!";
+                    break;
+                }
+            case 37:
+                {
+                    displayedText.text =
+                        "Hey! That's\n" +
+                        "my line!!";
+                    break;
+                }
             case 100:
                 {
                     displayedText.text =
