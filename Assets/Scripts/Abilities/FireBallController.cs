@@ -31,6 +31,8 @@ public class FireBallController : MonoBehaviour
     private MasterController player;
     private BossHealthManager sasuke;
 
+	public GameObject hit;
+
 
 
 	void Start () 
@@ -79,6 +81,7 @@ public class FireBallController : MonoBehaviour
 		//Fireball->Enemy
 		if (other.tag == "Enemy") {
 			other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
+			Instantiate(hit).transform.position = transform.position;
 		}
 		if (other.tag == "Boss") {
             

@@ -20,6 +20,7 @@ public class LightningController : MonoBehaviour {
 	private float timer;
 	private Color clr;
 	private SpriteRenderer spR;
+	public GameObject hit;
 
 	// Use this for initialization
 	void Start () {
@@ -69,8 +70,9 @@ public class LightningController : MonoBehaviour {
 
 		if (other.tag == "Enemy" && !eM.shocked) {
 			other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
+			Instantiate(hit).transform.position = transform.position;
 			eM.shocked = true;
-			eM.shockTimer = 5;
+			eM.shockTimer = 2;
 			enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
 			eM = enemies[0].GetComponent<EnemyMovement>();
 			closest = enemies[0];

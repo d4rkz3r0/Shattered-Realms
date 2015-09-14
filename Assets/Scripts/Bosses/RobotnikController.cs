@@ -18,13 +18,16 @@ public class RobotnikController : MonoBehaviour {
 	private float delayTimer;
 
 	private RobotnickWPData newData;
-	
+
+	private AudioSource laugh;
+
 	// Use this for initialization
 	void Start () {
 		delayTimer = 0;
 		rb2d = GetComponent<Rigidbody2D>();
 		laserDir = Direction.Down;
 		player = FindObjectOfType<MasterController> ();
+		laugh = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -60,6 +63,7 @@ public class RobotnikController : MonoBehaviour {
 			if (shotTimer > 1 && ((player.transform.position.y > transform.position.y && player.transform.position.x < transform.position.x + 1) || player.transform.position.x < transform.position.x)) {
 				//player.stunned = true;
 				//player.GetComponent<Rigidbody2D>().velocity = new Vector2(15,0);
+				laugh.Play();
 				shotTimer = 0;
 				GameObject daProj = Instantiate (projectile);
 				daProj.transform.localScale = new Vector3 (5, 5, 1);
@@ -69,7 +73,8 @@ public class RobotnikController : MonoBehaviour {
 			}
 
 			if (HealthManager.playerHP == 0) {
-				transform.position = new Vector3 (-6.5f, -60.2f, 0);
+				laugh.Play();
+				transform.position = new Vector3 (-6.5f, -64.48f, 0);
 				delayTimer = 0;
 				rb2d.velocity = Vector2.zero;
 			}
