@@ -15,11 +15,13 @@ public class RobotnikController : MonoBehaviour {
 	private Direction dir;
 	private Direction laserDir;
 
+	private float delayTimer;
 
 	private RobotnickWPData newData;
 	
 	// Use this for initialization
 	void Start () {
+		delayTimer = 0;
 		rb2d = GetComponent<Rigidbody2D>();
 		laserDir = Direction.Down;
 		player = FindObjectOfType<MasterController> ();
@@ -27,43 +29,52 @@ public class RobotnikController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		shotTimer += Time.deltaTime;
-		speed += speedIncrement * Time.deltaTime;
-		switch (dir) {
-		case Direction.Right:
-			rb2d.velocity = transform.right;
-			break;
-		case Direction.Up:
-			rb2d.velocity = transform.up;
-			break;
-		case Direction.Left:
-			rb2d.velocity = -transform.right;
-			break;
-		case Direction.Down:
-			rb2d.velocity = -transform.up;
-			break;
-		}
-		rb2d.velocity *= speed;
+		delayTimer += Time.deltaTime;
+		if (delayTimer > 2) {
+			shotTimer += Time.deltaTime;
 
-		if (rb2d.velocity.x < 0) {
-			transform.localScale = new Vector3(robotnickSize,robotnickSize,1);
-		}
-		else if (rb2d.velocity.x > 0) {
-			transform.localScale = new Vector3(-robotnickSize,robotnickSize,1);
-		}
+			speed += speedIncrement * Time.deltaTime;
+			switch (dir) {
+			case Direction.Right:
+				rb2d.velocity = transform.right;
+				break;
+			case Direction.Up:
+				rb2d.velocity = transform.up;
+				break;
+			case Direction.Left:
+				rb2d.velocity = -transform.right;
+				break;
+			case Direction.Down:
+				rb2d.velocity = -transform.up;
+				break;
+			}
+			rb2d.velocity *= speed;
 
-		//Controlling Player
-		if (shotTimer > 1  && ((player.transform.position.y > transform.position.y && player.transform.position.x < transform.position.x + 1) || player.transform.position.x < transform.position.x)){
-			//player.stunned = true;
-			//player.GetComponent<Rigidbody2D>().velocity = new Vector2(15,0);
-			shotTimer = 0;
-			GameObject daProj = Instantiate(projectile);
-			daProj.transform.localScale = new Vector3(5,5,1);
-			daProj.transform.position = transform.position;
-			Vector2 vel = new Vector2(player.transform.position.x - transform.position.x,player.transform.position.y - transform.position.y);
-			daProj.GetComponent<Rigidbody2D>().velocity = vel.normalized * 100;
-		}
+			if (rb2d.velocity.x < 0) {
+				transform.localScale = new Vector3 (robotnickSize, robotnickSize, 1);
+			} else if (rb2d.velocity.x > 0) {
+				transform.localScale = new Vector3 (-robotnickSize, robotnickSize, 1);
+			}
 
+			//Controlling Player
+			if (shotTimer > 1 && ((player.transform.position.y > transform.position.y && player.transform.position.x < transform.position.x + 1) || player.transform.position.x < transform.position.x)) {
+				//player.stunned = true;
+				//player.GetComponent<Rigidbody2D>().velocity = new Vector2(15,0);
+				shotTimer = 0;
+				GameObject daProj = Instantiate (projectile);
+				daProj.transform.localScale = new Vector3 (5, 5, 1);
+				daProj.transform.position = transform.position;
+				Vector2 vel = new Vector2 (player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
+				daProj.GetComponent<Rigidbody2D> ().velocity = vel.normalized * 100;
+			}
+
+			if (HealthManager.playerHP == 0) {
+				transform.position = new Vector3 (-6.5f, -60.2f, 0);
+				delayTimer = 0;
+				rb2d.velocity = Vector2.zero;
+			}
+
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

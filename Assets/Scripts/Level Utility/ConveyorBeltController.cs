@@ -17,6 +17,7 @@ public class ConveyorBeltController : MonoBehaviour
 	
 	}
 	void OnTriggerStay2D(Collider2D other){
+		if (other.name != "Ground Checker") {
 			if (goingRight) {
 				//if (other.transform.position.y > transform.position.y)
 				other.transform.position += transform.right * beltSpeed * Time.deltaTime;
@@ -30,3 +31,4 @@ public class ConveyorBeltController : MonoBehaviour
 			}	
 		}
 	}
+}
