@@ -13,6 +13,8 @@ using System.Collections;
 
 public class MasterController : MonoBehaviour
 {
+	private float idleTimer;
+
 	//Wall Climbing
 	private bool wallClimbing;
 	private float wallClimbingTimer;
@@ -339,6 +341,15 @@ public class MasterController : MonoBehaviour
 
     void Update()
     {
+		if (disableInput) {
+			idleTimer += Time.deltaTime;
+			if (idleTimer > 3) {
+				disableInput = true;
+			}
+		} else {
+			idleTimer = 0;
+		}
+
 		if (!wallCheck.touchingWall && wallClimbing && currentCharacter != 3) { 
 			Debug.Log("after climb");
 			//if(currentCharacter == 3 || currentCharacter == 1){
