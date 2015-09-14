@@ -6,6 +6,8 @@ public class HPPotionPickup : MonoBehaviour
     public int HPToAdd;
     private AudioSource hpSFX;
 
+	public GameObject spark;
+
 	void Start () 
     {
         if(gameObject.name == "chestHPGem (clone)")
@@ -28,6 +30,9 @@ public class HPPotionPickup : MonoBehaviour
         }
         HealthManager.receiveHealing(HPToAdd);
         hpSFX.Play();
-        Destroy(gameObject);
+
+		Instantiate (spark).transform.position = transform.position;
+        
+		Destroy(gameObject);
     }
 }

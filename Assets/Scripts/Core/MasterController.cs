@@ -15,6 +15,8 @@ public class MasterController : MonoBehaviour
 {
 	private float idleTimer;
 
+	public GameObject damAnim;
+
 	//Wall Climbing
 	private bool wallClimbing;
 	private float wallClimbingTimer;
@@ -23,7 +25,7 @@ public class MasterController : MonoBehaviour
 	private float afterClimbEffTimer;
 	private bool afterClimbEff;
 	private bool wallQuaking;
-	public GameObject wallQuake;
+	//public GameObject wallQuake;
 
     //Movement Abilities
     public bool stunned;
@@ -344,9 +346,10 @@ public class MasterController : MonoBehaviour
 		if (disableInput) {
 			idleTimer += Time.deltaTime;
 			if (idleTimer > 3) {
-				disableInput = true;
+				disableInput = false;
 			}
-		} else {
+		} 
+		else {
 			idleTimer = 0;
 		}
 

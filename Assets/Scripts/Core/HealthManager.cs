@@ -54,7 +54,7 @@ public class HealthManager : MonoBehaviour
     private Image hpBarSprite;
     private Color currHPBarSpriteColor;
     
-    
+//	public static GameObject dam;
 
 
     void Awake()
@@ -359,6 +359,8 @@ public class HealthManager : MonoBehaviour
         //damageVibrationTimer = damageVibrationDuration;
         //GamePad.SetVibration(playerIndex, 0.25f, 1.0f);
         ////fakePlayer.StartCoroutine("FlashPlayerCoRoutine");
+
+		Instantiate (FindObjectOfType<MasterController> ().damAnim).transform.position = FindObjectOfType<MasterController> ().transform.position;
 
 		//int cC = FindObjectOfType<MasterController> ().currentCharacter;
 		switch(FindObjectOfType<MasterController> ().currentCharacter)
