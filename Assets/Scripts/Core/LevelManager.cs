@@ -154,7 +154,13 @@ public class LevelManager : MonoBehaviour
         //}
 
         //Respawn Enemies
-        respawnManager.isRespawning = true;
+        if(respawnManager != null)
+        {
+            respawnManager.isRespawning = true;
+        }
+        
+
+        
 
         //Respawn Player
         player.isGrounded = true;
