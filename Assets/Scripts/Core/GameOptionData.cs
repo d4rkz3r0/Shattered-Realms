@@ -151,28 +151,28 @@ public static class GameOptionData
                 {
                     if(levelTimeInSecs >= levelOneMaxTime && levelTimeInSecs >= levelOneBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelOneTimeTier = 0;
                     }
 
                     else if(levelTimeInSecs <= levelOneBronzeTime && levelTimeInSecs >= levelOneSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelOneTimeTier = 1;
                     }
                     else if(levelTimeInSecs <= levelOneSilverTime && levelTimeInSecs >= levelOneGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelOneTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelOneGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelOneTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelOneTimeTier = 0;
                     }
                     break;
@@ -181,28 +181,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelTwoMaxTime && levelTimeInSecs >= levelTwoBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelTwoTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelTwoBronzeTime && levelTimeInSecs >= levelTwoSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelTwoTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelTwoSilverTime && levelTimeInSecs >= levelTwoGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelTwoTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelTwoGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelTwoTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelTwoTimeTier = 0;
                     }
                     break;
@@ -211,28 +211,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelThreeMaxTime && levelTimeInSecs >= levelThreeBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelThreeTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelThreeBronzeTime && levelTimeInSecs >= levelThreeSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelThreeTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelThreeSilverTime && levelTimeInSecs >= levelThreeGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelThreeTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelThreeGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelThreeTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelThreeTimeTier = 0;
                     }
                     break;
@@ -241,28 +241,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelFourMaxTime && levelTimeInSecs >= levelFourBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelFourTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelFourBronzeTime && levelTimeInSecs >= levelFourSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelFourTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelFourSilverTime && levelTimeInSecs >= levelFourGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelFourTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelFourGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelFourTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelFourTimeTier = 0;
                     }
                     break;
@@ -271,28 +271,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelFiveMaxTime && levelTimeInSecs >= levelFiveBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelFiveTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelFiveBronzeTime && levelTimeInSecs >= levelFiveSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelFiveTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelFiveSilverTime && levelTimeInSecs >= levelFiveGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelFiveTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelFiveGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelFiveTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelFiveTimeTier = 0;
                     }
                     break;
@@ -301,28 +301,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelSixMaxTime && levelTimeInSecs >= levelSixBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelSixTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelSixBronzeTime && levelTimeInSecs >= levelSixSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelSixTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelSixSilverTime && levelTimeInSecs >= levelSixGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelSixTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelSixGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelSixTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelSixTimeTier = 0;
                     }
                     break;
@@ -331,28 +331,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelSevenMaxTime && levelTimeInSecs >= levelSevenBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelSevenTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelSevenBronzeTime && levelTimeInSecs >= levelSevenSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelSevenTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelSevenSilverTime && levelTimeInSecs >= levelSevenGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelSevenTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelSevenGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelSevenTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelSevenTimeTier = 0;
                     }
                     break;
@@ -361,28 +361,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelEightMaxTime && levelTimeInSecs >= levelEightBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelEightTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelEightBronzeTime && levelTimeInSecs >= levelEightSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelEightTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelEightSilverTime && levelTimeInSecs >= levelEightGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelEightTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelEightGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelEightTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelEightTimeTier = 0;
                     }
                     break;
@@ -391,28 +391,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelNineMaxTime && levelTimeInSecs >= levelNineBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelNineTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelNineBronzeTime && levelTimeInSecs >= levelNineSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelNineTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelNineSilverTime && levelTimeInSecs >= levelNineGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelNineTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelNineGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelNineTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelNineTimeTier = 0;
                     }
                     break;
@@ -421,28 +421,28 @@ public static class GameOptionData
                 {
                     if (levelTimeInSecs >= levelTenMaxTime && levelTimeInSecs >= levelTenBronzeTime)
                     {
-                        Debug.Log("Completion Tier Time Assigned");
+                        
                         levelTenTimeTier = 0;
                     }
 
                     else if (levelTimeInSecs <= levelTenBronzeTime && levelTimeInSecs >= levelTenSilverTime)
                     {
-                        Debug.Log("Bronze Time Assigned");
+                        
                         levelTenTimeTier = 1;
                     }
                     else if (levelTimeInSecs <= levelTenSilverTime && levelTimeInSecs >= levelTenGoldTime)
                     {
-                        Debug.Log("Silver Time Assigned");
+                        
                         levelTenTimeTier = 2;
                     }
                     else if (levelTimeInSecs <= levelTenGoldTime)
                     {
-                        Debug.Log("Gold Time Assigned");
+                        
                         levelTenTimeTier = 3;
                     }
                     else
                     {
-                        Debug.Log("Default No Time");
+                        Debug.Log("Time Not Specified");
                         levelTenTimeTier = 0;
                     }
                     break;

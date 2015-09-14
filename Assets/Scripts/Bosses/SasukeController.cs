@@ -39,7 +39,7 @@ public class SasukeController : MonoBehaviour
     //Chidori
     public bool isChargingChidori;
     public float chidoriAnimTimer;
-    public Transform chidoriEndPoint;
+    public Transform chidoriCheckPoint;
     public float chidoriCoolDown;
     public float chidoriTimer;
     private bool chidoriChargeAudiohasPlayed;
@@ -51,7 +51,9 @@ public class SasukeController : MonoBehaviour
     public float chidoriChargeSpeed;
     public float chidoriChargeTimer;
     public float chidoriChargeDuration = 7.0f;
+    public float chidoriStrikeCD = 3.0f;
     public bool chidoriStrike;
+    public bool chidoriHit;
 
 
     public float jumpHeight;
@@ -104,6 +106,7 @@ public class SasukeController : MonoBehaviour
 	void Start ()
     {
         hasPlayedOnce = false;
+        chidoriHit = false;
         chidoriStrike = false;
         isChargingChidori = false;
         isCastingFireBallJustu = false;
@@ -134,13 +137,16 @@ public class SasukeController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, groundCheckRadius, groundCheckLayer);
         isPlayerInFireBallRange = Physics2D.OverlapCircle(transform.position, fireBallAggroRange, playerLayer);
         isPlayerInChidoriRange = Physics2D.OverlapCircle(transform.position, chidoriAggroRange, playerLayer);
-        
+        chidoriHit = Physics2D.OverlapCircle(chidoriCheckPoint.position, 0.2f, playerLayer);
     }
 
 	// Update is called once per frame
 	void Update () 
     {
-
+        if(chidoriStrikeCD >= 0.0f && canCastChidori)
+        {
+            chidoriStrikeCD -= Time.deltaTime;
+        }
 
         //float myX = Mathf.Abs(transform.position.x);
         //float hisX = Mathf.Abs(player.transform.position.x);
@@ -407,5 +413,13 @@ public class SasukeController : MonoBehaviour
         chidoriStrike = false;
     }
 
-    
+    public void chidoriStrikeCheck()
+    {
+        if(chidoriHit && chidoriStrikeCD <= 0.0f)
+        {
+            HealthManager.takeDamage(5);
+            chidoriStrikeCD = 3.0f;
+            canCastChidori = false;
+        }
+    }
 }

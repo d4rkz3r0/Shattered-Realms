@@ -91,7 +91,6 @@ public class Level1Controller : MonoBehaviour
         {
             Debug.Log("OH YEA, SONIC'S TOO STRONK!!!");
             Debug.Log("PRESS ENTER TO GTFO");
-            Debug.Log("WILL FIX LATER!");
             fakeCyborg.transform.position = Vector3.MoveTowards(fakeCyborg.transform.position, hoverPoint.position, 5.0f * Time.deltaTime);
             animC.Play("Cyborg_Hover");
 
