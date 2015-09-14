@@ -211,7 +211,6 @@ public class MasterController : MonoBehaviour
     public bool sasukeBossFightOver;
     public float executeSasukeTimer;
     private float executeSasukeAnimTimer;
-    public AudioSource executeSasukeSFX;
 
 
     //Gizmo
@@ -1090,7 +1089,6 @@ public class MasterController : MonoBehaviour
                     sasuke.GetComponent<SpriteRenderer>().sortingOrder = -1;
                     sasuke.GetComponent<SpriteRenderer>().sprite = sasukePain;
                     anim.Play("itachi_Execute");
-                    executeSasukeSFX.Play();
                     sasuke.sasukeExecuteSFX.Play();
                     executeSasukeAnimTimer = 3.2f;
                     canExecuteSasuke = false;
