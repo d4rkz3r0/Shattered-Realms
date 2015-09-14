@@ -146,10 +146,12 @@ public class EnemyAttack : MonoBehaviour {
         if(gameObject.name == "Sasuke" && sasuke.isChargingChidori)
         {
             if(!sasuke.chidoriStrike)
-            {
-                HealthManager.takeDamage(5);
+            {                
+                if(other.GetComponent<Rigidbody2D>() != null)
+                {
+                    playerRigidBody = other.GetComponent<Rigidbody2D>();
+                }
                 
-                playerRigidBody = other.GetComponent<Rigidbody2D>();
                 if(other.gameObject != null)
                 {
                     if (other.transform.position.x < transform.position.x)

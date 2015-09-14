@@ -227,6 +227,7 @@ public class MasterController : MonoBehaviour
     private KeyPickup warpKey;
     private BossHealthManager sasukeHP;
 
+
     
 
 
@@ -915,6 +916,14 @@ public class MasterController : MonoBehaviour
                     spinDashTimer = spinDashCoolDown;
                 }
             }
+
+            //N - Skip Level (Debugging)
+            if(Input.GetKeyDown(KeyCode.N))
+            {
+                warpKey.isPickedUp = true;
+                transform.position = warpPortal.transform.position;
+            }
+
 
             if (isSpinDashing && isGrounded)
             {

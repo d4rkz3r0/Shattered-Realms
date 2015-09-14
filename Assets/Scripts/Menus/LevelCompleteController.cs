@@ -25,6 +25,14 @@ public class LevelCompleteController : MonoBehaviour
     private Text bronzeTierTimeText;
     private Text xpCollectedText;
 
+    //Special Items
+    public Image level1SpecialItem;
+    public Image level2SpecialItem;
+    public Image level4SpecialItem;
+    public Image level5SpecialItem;
+    public Image level7SpecialItem;
+    public Image level8SpecialItem;
+
 
 	void Start () 
     {
@@ -37,6 +45,38 @@ public class LevelCompleteController : MonoBehaviour
         silverTierTimeText = LevelSilverTimeTextHUD.GetComponent<Text>();
         bronzeTierTimeText = LevelBronzeTimeTextHUD.GetComponent<Text>();
         xpCollectedText = XPCollectedTextHUD.GetComponent<Text>();
+
+        if(GameOptionData.level1SpecialItemCollected)
+        {
+            level1SpecialItem.gameObject.SetActive(true);
+        }
+
+        if (GameOptionData.level2SpecialItemCollected)
+        {
+            level2SpecialItem.gameObject.SetActive(true);
+        }
+
+        if (GameOptionData.level4SpecialItemCollected)
+        {
+            level4SpecialItem.gameObject.SetActive(true);
+        }
+
+        if (GameOptionData.level5SpecialItemCollected)
+        {
+            level5SpecialItem.gameObject.SetActive(true);
+        }
+
+        if (GameOptionData.level7SpecialItemCollected)
+        {
+            level7SpecialItem.gameObject.SetActive(true);
+        }
+
+        if (GameOptionData.level8SpecialItemCollected)
+        {
+            level8SpecialItem.gameObject.SetActive(true);
+        }
+
+
 	}
 	
 	void Update () 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class shotgunBlastController : MonoBehaviour
@@ -48,8 +48,15 @@ public class shotgunBlastController : MonoBehaviour
     {
         if (other.name != "Player" || other.tag != "Collectibles" || other.tag != "LethalHazard" || other.tag != "Platform")
         {
-            otherRB = other.GetComponent<Rigidbody2D>();
-            //Fireball->Enemy
+            if(other.GetComponent<Rigidbody2D>() == null)
+            {
+                return;
+            }
+            else
+            {
+                otherRB = other.GetComponent<Rigidbody2D>();
+            }
+
 
 			if (other.tag == "Destructable Platform")
 			{

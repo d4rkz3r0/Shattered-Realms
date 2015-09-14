@@ -4,12 +4,31 @@ using System.Collections;
 public class specialItemPickup : MonoBehaviour
 {
     public bool isSpecialItemPickedUp;
-    private AudioSource specialSFX;
+    private AudioSource[] specialItemSFXs;
+    private AudioSource currentItemSFX;
 
 	void Start ()
     {
         isSpecialItemPickedUp = false;
-        specialSFX = GetComponentInParent<AudioSource>();
+        specialItemSFXs = GetComponentsInParent<AudioSource>();
+
+        if(gameObject.name == "Ninja Scroll")
+        {
+            currentItemSFX = specialItemSFXs[0];
+        }
+        else if(gameObject.name == "Titan Communicator")
+        {
+            currentItemSFX = specialItemSFXs[1];
+        }
+        else if (gameObject.name == "Golden Ring")
+        {
+            currentItemSFX = specialItemSFXs[2];
+        }
+        else
+        {
+            //Default Itachi SFX
+            currentItemSFX = specialItemSFXs[0];
+        }
 	}
 	
 	void Update () 
@@ -65,7 +84,7 @@ public class specialItemPickup : MonoBehaviour
                     break;
                 }
         }
-        specialSFX.Play();
+        currentItemSFX.Play();
         Destroy(gameObject);
 
     }
