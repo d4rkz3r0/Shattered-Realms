@@ -281,6 +281,19 @@ public class MessageController : MonoBehaviour
                     //textFadeTimer = defaultTextFadeDuration;
                     break;
                 }
+            case 31:
+                {
+                    displayedText.text =
+                        "Are you out of your\n" +
+                        "stinking mind?!";
+                    break;
+                }
+            case 32:
+                {
+                    displayedText.text =
+                        "Uhhhh... YEAH?!";
+                    break;
+                }
             case 100:
                 {
                     displayedText.text =

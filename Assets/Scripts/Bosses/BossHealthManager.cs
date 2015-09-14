@@ -45,6 +45,9 @@ public class BossHealthManager : MonoBehaviour
     //References
     private SasukeController sasuke;
     private SpriteRenderer sasukeSpriteRenderer;
+    private GameObject gizmo;
+    private int gizmoHP;
+
     private Animator sasukeAnimator;
     private AudioSource bossHurtSFX;
     public AudioSource bossLowHPSFX;
@@ -63,15 +66,27 @@ public class BossHealthManager : MonoBehaviour
 
         //Visual Hooks
         currBossHPBarImage = GetComponent<Image>();
-        sasukeAnimator = FindObjectOfType<SasukeController>().GetComponent<Animator>();
-        sasukeSpriteRenderer = FindObjectOfType<SasukeController>().GetComponent<SpriteRenderer>();
+        if(Application.loadedLevel == 8)
+        {
+            sasukeAnimator = FindObjectOfType<SasukeController>().GetComponent<Animator>();
+            sasukeSpriteRenderer = FindObjectOfType<SasukeController>().GetComponent<SpriteRenderer>();
+            //Animation Logic
+            sasukeOOHPAnimationTimer = sasukeOOHPAnimationTimerDuration;
+        }
+
+        if(Application.loadedLevel == 11)
+        {
+            gizmo = GameObject.Find("Gizmo");
+            bossHP = gizmoHP;
+            bossMaxHP = bossHP;
+        }
+        
         //Audio Hooks
         bossHurtSFX = GetComponent<AudioSource>();
         hasPlayed = false;
 
 
-        //Animation Logic
-        sasukeOOHPAnimationTimer = sasukeOOHPAnimationTimerDuration;
+       
 
         //hack
         once = false;
@@ -81,10 +96,9 @@ public class BossHealthManager : MonoBehaviour
 
     void Update()
     {
-
-        if (bossMaxHP == 8)
+        if(Application.loadedLevel == 11)
         {
-            switch (bossHP)
+            switch(gizmo.GetComponent<EnemyHealthManager>().enemyHP)
             {
                 case 8:
                     {
@@ -138,58 +152,142 @@ public class BossHealthManager : MonoBehaviour
                         break;
                     }
             }
+        }
 
-            if (bossHP < 4 && bossHP > 0)
+        if(Application.loadedLevel == 8)
+        {
+            if (bossMaxHP == 8)
             {
-                if (!hasPlayed)
+                switch (bossHP)
                 {
-                    bossLowHPSFX.Play();
-                    bossHP = 6;
-                    hasPlayed = true;
+                    case 8:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[0];
+                            break;
+                        }
+                    case 7:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[1];
+                            break;
+                        }
+                    case 6:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[2];
+                            break;
+                        }
+                    case 5:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[3];
+                            break;
+                        }
+                    case 4:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[4];
+                            break;
+                        }
+                    case 3:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[5];
+                            break;
+                        }
+                    case 2:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[6];
+                            break;
+                        }
+                    case 1:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[7];
+                            break;
+                        }
+                    case 0:
+                        {
+                            currBossHPBarImage.sprite = bossHPBarSheet[8];
+                            break;
+                        }
+                    default:
+                        {
+                            //Empty Bar
+                            currBossHPBarImage.sprite = bossHPBarSheet[8];
+                            break;
+                        }
+                }
+        }
+       
+
+            if(Application.loadedLevel == 8)
+            {
+                if (bossHP < 4 && bossHP > 0)
+                {
+                    if (!hasPlayed)
+                    {
+                        bossLowHPSFX.Play();
+                        bossHP = 6;
+                        hasPlayed = true;
+                    }
                 }
             }
+            
 
             if (bossHP >= bossMaxHP)
             {
                 bossHP = bossMaxHP;
             }
 
-            if (bossHP <= 0 && !warpPortalEngaged)
+            if(Application.loadedLevel == 8)
             {
-                bossHP = 0;
-                sasukeAnimator.Play("sasuke_OOHP");
+                if (bossHP <= 0 && !warpPortalEngaged)
+                {
+                    bossHP = 0;
+                    sasukeAnimator.Play("sasuke_OOHP");
+                }
             }
 
-            
-            if (sasukeOOHPAnimationTimer >= 0.0f && bossHP == 0)
+            if(bossHP <= 0)
             {
-                FindObjectOfType<SasukeController>().GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
-                sasukeOOHPAnimationTimer -= Time.deltaTime;
+                bossHP = 0;
             }
             
-            if(sasukeOOHPAnimationTimer <= 0.0f )
+
+            if(Application.loadedLevel == 8)
             {
-                isBossDead = true;
+                if (sasukeOOHPAnimationTimer >= 0.0f && bossHP == 0)
+                {
+                    FindObjectOfType<SasukeController>().GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
+                    sasukeOOHPAnimationTimer -= Time.deltaTime;
+                }
             }
+            
+            if(Application.loadedLevel == 8)
+            {
+                if (sasukeOOHPAnimationTimer <= 0.0f)
+                {
+                    isBossDead = true;
+                }
+            }
+            
 
             if (isBossDead)
             {
-                
-                sasukeAnimator.enabled = false;
-                
-                if (!once)
+                if(Application.loadedLevel == 8)
                 {
-                   
-                    FindObjectOfType<SasukeController>().canMove = false;
-                    
-                    sasukeSpriteRenderer.sprite = sasukeKnee;
-                    MessageController.textSelection = 26;
-                    chatBoxHUDElement.gameObject.SetActive(true);
-                    chatBoxHUDElement.startEndBossDialogue = true;
-                    once = true;
+                    sasukeAnimator.enabled = false;
                 }
                 
                 
+                if (!once)
+                {
+                   if(Application.loadedLevel == 8)
+                   {
+                       FindObjectOfType<SasukeController>().canMove = false;
+
+                       sasukeSpriteRenderer.sprite = sasukeKnee;
+                       MessageController.textSelection = 26;
+                       chatBoxHUDElement.gameObject.SetActive(true);
+                       chatBoxHUDElement.startEndBossDialogue = true;
+                       once = true;
+                   }
+                }
             }
         
                 

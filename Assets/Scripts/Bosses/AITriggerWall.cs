@@ -29,7 +29,6 @@ public class AITriggerWall : MonoBehaviour
         if(IntroTimer >= 0.0f && IntroTimer <= 3.5f)
         {
             sasukeHPBarHUDElement.gameObject.SetActive(true);
-            
         }
 
         if(IntroTimer <= 0.0f && MessageController.textSelection == 0)

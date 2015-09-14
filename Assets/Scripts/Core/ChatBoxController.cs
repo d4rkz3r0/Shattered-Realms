@@ -65,7 +65,7 @@ public class ChatBoxController : MonoBehaviour
 
         if (voiceClipEndAudioTimer <= 0.0f)
         {
-            if(MessageController.textSelection == 28)
+            if(MessageController.textSelection == 28 || MessageController.textSelection == 32)
             {
                 MessageController.textSelection = 0;
                 currText.text = "";
@@ -213,6 +213,30 @@ public class ChatBoxController : MonoBehaviour
                             player.canExecuteSasuke = true;
                             player.disableInput = true;
                             hasEndPlayed = true;
+                        }
+                        break;
+                    }
+                    //Gizmo Boss Fight
+                case 31:
+                    {
+                        if (!hasPlayed)
+                        {
+                            currChatBoxAvatar.sprite = chatBoxAvatars[0];
+                            voiceClips[voiceClipIndex].Play();
+                            voiceClipAudioTimer = 2.351f;
+                            hasPlayed = true;
+                        }
+                        break;
+                    }
+                case 32:
+                    {
+                        hasPlayed = false;
+                        if (!hasPlayed && voiceClipAudioTimer <= 0.0f)
+                        {
+                            currChatBoxAvatar.sprite = chatBoxAvatars[1];
+                            voiceClips[voiceClipIndex].Play();
+                            voiceClipAudioTimer = 1.071f;
+                            hasPlayed = true;
                         }
                         break;
                     }
