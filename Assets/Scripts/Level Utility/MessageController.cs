@@ -261,7 +261,7 @@ public class MessageController : MonoBehaviour
                 {
                     pressedUp = true;
                     displayedText.text =
-                        "I'll handle this...\n(Press LT)";
+                        "I'll handle this...\n(Press X or LT)";
                     //textFadeTimer = defaultTextFadeDuration;
                     break;
                 }
