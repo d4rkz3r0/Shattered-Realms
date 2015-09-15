@@ -70,7 +70,7 @@ public class EnemyMovement : MonoBehaviour {
     private SasukeController sasuke;
     private MasterController player;
 
-
+	private float defJumpPower;
 
 	// Use this for initialization
 	void Start ()
@@ -85,10 +85,13 @@ public class EnemyMovement : MonoBehaviour {
         sasuke = FindObjectOfType<SasukeController>();
 		rb2d = GetComponent<Rigidbody2D>();
 		rb2d.gravityScale = 0;
-
+		defJumpPower = jumpPower;
+		jumpPower = 0;
 		jumping = false;
 		shocked = false;
 		smartTimer = 0;
+
+		gameObject.GetComponent<CircleCollider2D> ().enabled = false;
 
         //Spawn Aggro
         spawnAggroOnce = false;
@@ -108,6 +111,8 @@ public class EnemyMovement : MonoBehaviour {
 		if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro) {
 			if(Mathf.Abs(target.transform.position.x - xPos)< 5){
 					rb2d.gravityScale = 1;
+					gameObject.GetComponent<CircleCollider2D> ().enabled = true;
+					jumpPower = defJumpPower;
 				}
 			}
 		}
