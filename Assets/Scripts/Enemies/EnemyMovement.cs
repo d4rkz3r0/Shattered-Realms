@@ -70,19 +70,22 @@ public class EnemyMovement : MonoBehaviour {
     private SasukeController sasuke;
     private MasterController player;
 
+
+
 	// Use this for initialization
 	void Start ()
     {
 		startingPosition = transform.position;
 		currentWaypoint = waypoint1.position;
-
+		
 		actualSpeed = speed;
 		myBehaviour = myDefaultBehaviour;
 		target = GameObject.Find("Player");
         player = FindObjectOfType<MasterController>();
         sasuke = FindObjectOfType<SasukeController>();
 		rb2d = GetComponent<Rigidbody2D>();
-        
+		rb2d.gravityScale = 0;
+
 		jumping = false;
 		shocked = false;
 		smartTimer = 0;
@@ -95,6 +98,20 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+		float xPos;
+		if (startingPosition.x > transform.position.x) {
+			xPos = transform.position.x;
+		} else {
+			xPos = startingPosition.x;
+		}
+		if(rb2d.gravityScale == 0){
+		if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro) {
+			if(Mathf.Abs(target.transform.position.x - xPos)< 5){
+					rb2d.gravityScale = 1;
+				}
+			}
+		}
+
 		if (shocked) {
 			shockTimer -= Time.deltaTime;
 		}
