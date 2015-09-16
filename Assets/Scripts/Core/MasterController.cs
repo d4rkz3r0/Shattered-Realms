@@ -1375,11 +1375,19 @@ public class MasterController : MonoBehaviour
 			}
 		}
 
-        if(other.tag == "Enemy" && isGoingSuper)
+        if(other.tag == "Enemy" && isGoingSuper && other.name != "Gizmo")
         {
             other.GetComponent<EnemyHealthManager>().enemyHP = 0;
         }
 
+		if (other.tag == "Boss" && isSpinDashing) {
+			if (sasukeHP != null)
+			{
+				Debug.Log("bH FOR SHO");
+				sasukeHP.takeDamage(spinDashDamage);
+				other.attachedRigidbody.velocity = new Vector2 (0, 8);
+			}
+		}
         if(other.tag == "Enemy" && isSpinDashing)
         {
             other.GetComponent<EnemyHealthManager>().takeDamage(spinDashDamage);
