@@ -25,6 +25,7 @@ public class MasterController : MonoBehaviour
 	private float afterClimbEffTimer;
 	private bool afterClimbEff;
 	private bool wallQuaking;
+	private bool canWallClimb;
 	//public GameObject wallQuake;
 
     //Movement Abilities
@@ -237,6 +238,7 @@ public class MasterController : MonoBehaviour
 
     void Start()
     {
+
 		afterClimbEff = false;
 		wallCheck = GetComponentInChildren<WallClimbingCheck> ();
 		wallClimbing = false;
@@ -343,6 +345,7 @@ public class MasterController : MonoBehaviour
 
     void Update()
     {
+
 		if (disableInput) {
 			idleTimer += Time.deltaTime;
 			if (idleTimer > 3) {
@@ -353,25 +356,14 @@ public class MasterController : MonoBehaviour
 			idleTimer = 0;
 		}
 
-		if (!wallCheck.touchingWall && wallClimbing && currentCharacter != 3) { 
-			Debug.Log("after climb");
-			//if(currentCharacter == 3 || currentCharacter == 1){
-			transform.rotation = Quaternion.Euler(0, 0, 0);
-			wallClimbingTimer = 0;
-			wallClimbing = false;
-			afterClimbEff = true;
-			afterClimbEffTimer = 0;
-			//	}
-			
+	
+		if (wallClimbing && !wallCheck.touchingWall) {
+
+			Debug.Log("vert");
+		//	AfterWallClimb();
 		}
 
-  if (!wallCheck.touchingWall && currentCharacter != 3) { 
-		if(wallClimbing){
-			Debug.Log ("Not at WALL correct");}
-		transform.rotation = Quaternion.Euler(0, 0, 0);
-		wallClimbingTimer = 0;
-		wallClimbing = false;
-	}
+
 
 		if (wallClimbing && wallCheck.touchingWall) {
 			if(currentCharacter == 1){
@@ -400,44 +392,7 @@ public class MasterController : MonoBehaviour
 
 			wallClimbingTimer += Time.deltaTime;
 			if ((currentCharacter == 1 && wallClimbingTimer > 1 ) || (currentCharacter == 2 && wallClimbingTimer > 0.5f) || (currentCharacter == 3 && wallClimbingTimer > 0.2f )) {
-				wallClimbingTimer = 0;
-				wallClimbing = false;
-
-				afterClimbEff = true;
-				afterClimbEffTimer = 0;
-
-				switch(currentCharacter){
-				case 1:
-				if (wallCheck.wallToTheRight) {
-					rb2D.velocity = new Vector2 (-wallClimbSpeed*0.2f, wallClimbSpeed);
-				} else {
-						rb2D.velocity = new Vector2 (wallClimbSpeed*0.2f, wallClimbSpeed);
-					}
-					break;
-				case 2:
-					if (wallCheck.wallToTheRight) {
-						rb2D.velocity = new Vector2 (-wallClimbSpeed*2, -wallClimbSpeed*2);
-					} else {
-						rb2D.velocity = new Vector2 (wallClimbSpeed*2, -wallClimbSpeed*2);
-					}
-					wallQuaking = true;
-
-					actualCharge = Instantiate(charge);
-					actualCharge.transform.position = transform.position;
-					actualCharge.transform.localScale = new Vector3(-chargeSize * transform.localScale.x, chargeSize, 1.0f);
-					isCharging = true;
-					canCastCharge = false;
-					chargeTimer = chargeCoolDown;
-
-					break;
-				case 3:
-					if (wallCheck.wallToTheRight) {
-						rb2D.velocity = new Vector2 (-wallClimbSpeed*2, wallClimbSpeed);
-					} else {
-						rb2D.velocity = new Vector2 (wallClimbSpeed*2, wallClimbSpeed);
-					}
-					break;
-				}
+				AfterWallClimb();
 			}
 
 		}
@@ -799,20 +754,20 @@ public class MasterController : MonoBehaviour
                 }
             }
 			if(wallQuaking && isGrounded){
-
+			
 				rb2D.velocity = Vector2.zero;
 				Destroy(actualCharge);
 				chargeTimer = 0;
 				canCastCharge = true;
 				
-
+			
 					isCharging = false;
 					actualQuake = Instantiate(theQuake);
 					actualQuake.transform.position = transform.position;
 					actualQuake.transform.localScale = new Vector3(quakeSize, quakeSize, 1.0f);
 					wallQuaking = false;
 					rb2D.gravityScale = defaultGravityScale;
-
+			
 			}
 
             //// Charge
@@ -1294,25 +1249,26 @@ public class MasterController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-		if (other.tag == "Wall")
+		if (other.tag == "Wall" && ((afterClimbEff == false && canWallClimb) || currentCharacter == 3))
 		{
-
+			Debug.Log ("wall climbing");
 			wallClimbing = true;
-			//Debug.Log ("collied w wall");
+			canWallClimb = false;
 			if(other.transform.position.x > transform.position.x)
 			{
-				Debug.Log ("wall to the right");
+				//Debug.Log ("wall to the right");
 				transform.rotation = Quaternion.Euler(0, 0, 90);
 			}
 			else
 			{
-				Debug.Log ("wall to the left");
+				//Debug.Log ("wall to the left");
 				transform.rotation = Quaternion.Euler(0, 0, -90);
 			}
 		}
 
 		if (other.tag == "Ground") {
 			transform.rotation = Quaternion.Euler(0, 0, 0);
+			canWallClimb = true;
 		}
 		//if (other.tag == "Wall") {
 		//	Debug.Log("TRIGGER");
@@ -1545,5 +1501,53 @@ public class MasterController : MonoBehaviour
         Instantiate(blinkParticle, rb2D.transform.position, rb2D.transform.rotation);
     }
 
-    
+    void AfterWallClimb(){
+		wallClimbingTimer = 0;
+		wallClimbing = false;
+		
+		afterClimbEff = true;
+		afterClimbEffTimer = 0;
+		transform.rotation = Quaternion.Euler(0, 0, 0);
+		Debug.Log("after effect");
+
+		
+		switch(currentCharacter){
+		case 1:
+			Debug.Log("Itachi has velocity");
+			if (wallCheck.wallToTheRight) {
+				rb2D.velocity = new Vector2 (-wallClimbSpeed*0.2f, wallClimbSpeed);
+				
+			} else {
+				rb2D.velocity = new Vector2 (wallClimbSpeed*0.2f, wallClimbSpeed);
+			}
+			break;
+		case 2:
+			Debug.Log("CYBORG has velocity");
+			if (wallCheck.wallToTheRight) {
+				rb2D.velocity = new Vector2 (-wallClimbSpeed*2, -wallClimbSpeed*2);
+			} else {
+				rb2D.velocity = new Vector2 (wallClimbSpeed*2, -wallClimbSpeed*2);
+			}
+			wallQuaking = true;
+
+			//isQuaking = true;
+			actualCharge = Instantiate(charge);
+			actualCharge.transform.position = transform.position;
+			actualCharge.transform.localScale = new Vector3(-chargeSize * transform.localScale.x, chargeSize, 1.0f);
+			actualCharge.GetComponent<Rigidbody2D>().velocity = rb2D.velocity;
+			//isCharging = true;
+			//canCastCharge = false;
+			//chargeTimer = chargeCoolDown;
+			
+			break;
+		case 3:
+			if (wallCheck.wallToTheRight) {
+				rb2D.velocity = new Vector2 (-wallClimbSpeed*2, wallClimbSpeed);
+			} else {
+				rb2D.velocity = new Vector2 (wallClimbSpeed*2, wallClimbSpeed);
+			}
+			break;
+		}
+	}
+
 }
