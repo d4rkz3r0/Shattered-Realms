@@ -4,13 +4,15 @@ using System.Collections;
 public class RespawnManager : MonoBehaviour
 {
     public bool isRespawning;
+    private Transform GemContainer;
 
 	void Start () 
     {
         isRespawning = false;
+        GemContainer = GameObject.Find("HP Gems").GetComponent<Transform>();
 
         //Diagnostic Information
-        //Debug.Log("Respawnable Enemies: " + CountEnemies(transform));
+        Debug.Log("Respawnable Item Count: " + CountRespawnableObjects(GemContainer));
 	}
 	
 	void Update ()
@@ -21,19 +23,20 @@ public class RespawnManager : MonoBehaviour
         }
         else
         {
+            RespawnHPItems(GemContainer);
             RespawnEnemies(transform);
             isRespawning = false;
         }
 	}
 
-    int CountEnemies(Transform parent)
+    int CountRespawnableObjects(Transform parent)
     {
-        int enemyCount = 0;
+        int itemCount = 0;
         foreach (Transform child in parent)
         {
-            enemyCount++;
+            itemCount++;
         }
-        return enemyCount;
+        return itemCount;
     }
 
     void RespawnEnemies(Transform parent)
@@ -51,5 +54,36 @@ public class RespawnManager : MonoBehaviour
             
         }
         isRespawning = false;
+    }
+
+    void RespawnHPItems(Transform parent)
+    {
+        Transform stripTransform;
+
+        foreach (Transform child in parent)
+        {
+
+            stripTransform = child.gameObject.transform;
+            foreach (Transform child1 in stripTransform)
+            {
+                if (child1.gameObject.activeInHierarchy == false)
+                {
+                    child1.gameObject.GetComponent<RespawnableItem>().ResetSelf();
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            if (child.gameObject.activeInHierarchy == false)
+            {
+                child.gameObject.GetComponent<RespawnableItem>().ResetSelf();
+            }
+            else
+            {
+                continue;
+            }
+        }
     }
 }

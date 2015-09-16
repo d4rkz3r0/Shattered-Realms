@@ -153,7 +153,7 @@ public class LevelManager : MonoBehaviour
         //    AudioManager.currAudio.Play();
         //}
 
-        //Respawn Enemies
+        //Respawn Enemies & Items
         if(respawnManager != null)
         {
             respawnManager.isRespawning = true;
@@ -176,7 +176,6 @@ public class LevelManager : MonoBehaviour
         //HealthManager.respawnRumbleEnd();
 
         timerManager.ResetTimer();
-        
         Instantiate(respawnParticle, player.transform.position, player.transform.rotation);
         startZoomOutTime = 0.0f;
         startZoomInTime = 0.0f;
