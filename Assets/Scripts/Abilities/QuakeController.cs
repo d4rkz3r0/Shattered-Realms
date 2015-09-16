@@ -7,7 +7,8 @@ public class QuakeController : MonoBehaviour {
 	public int abilityDamage;
 	public float duration;
 	public float stunTime;
-	
+
+
 	//Private References
 	private MasterController player;
     private BossHealthManager sasuke;
@@ -15,6 +16,7 @@ public class QuakeController : MonoBehaviour {
 	private EnemyMovement eMScrp;
 	private EnemyAttack eAScrp;
 	private float timer;
+	private float attTimer;
 
 	
 	
@@ -22,6 +24,7 @@ public class QuakeController : MonoBehaviour {
 	void Start ()
 	{
 		timer = 0;
+		attTimer = 0;
         switch (Application.loadedLevel)
         {
             case 8:
@@ -41,6 +44,7 @@ public class QuakeController : MonoBehaviour {
 	void Update () 
 	{
 		timer += Time.deltaTime;
+		attTimer -= Time.deltaTime;
 		if (timer > duration) {
 			Destroy(gameObject);
 		}
@@ -59,13 +63,14 @@ public class QuakeController : MonoBehaviour {
 				Debug.Log ("here");
 				other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
 			}
-			if (other.tag == "Enemy")
+			if (other.tag == "Enemy" && attTimer <= 0)
 			{
+				timer = 0.1f;
 				other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
 			}
-            if (other.tag == "Boss")
+			if (other.tag == "Boss" && attTimer <= 0)
             {
-
+				timer = 0.1f;
                 if (sasuke != null)
                 {
                     sasuke.takeDamage(abilityDamage);
