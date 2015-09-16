@@ -9,7 +9,6 @@ public class BossHealthManager : MonoBehaviour
     //Boss Stats
     public int bossHP;
     public int bossMaxHP;
-    public int xpReward;
     public bool isBossDead;
 
     public ChatBoxController chatBoxHUDElement;
@@ -297,7 +296,6 @@ public class BossHealthManager : MonoBehaviour
 
 
                 //Instantiate(deathParticle, transform.position, transform.rotation);
-                //XPManager.AddToEarnedXPThisLevel(xpReward);
                 //Destroy(gameObject);
         }
     }

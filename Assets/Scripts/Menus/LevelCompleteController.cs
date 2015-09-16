@@ -10,7 +10,6 @@ public class LevelCompleteController : MonoBehaviour
     public GameObject LevelGoldTimeTextHUD;
     public GameObject LevelSilverTimeTextHUD;
     public GameObject LevelBronzeTimeTextHUD;
-    public GameObject XPCollectedTextHUD;
 
 
     public Sprite[] goalTimerSheet;
@@ -23,7 +22,6 @@ public class LevelCompleteController : MonoBehaviour
     private Text goldTierTimeText;
     private Text silverTierTimeText;
     private Text bronzeTierTimeText;
-    private Text xpCollectedText;
 
     //Special Items
     public Image level1SpecialItem;
@@ -44,7 +42,6 @@ public class LevelCompleteController : MonoBehaviour
         goldTierTimeText = LevelGoldTimeTextHUD.GetComponent<Text>();
         silverTierTimeText = LevelSilverTimeTextHUD.GetComponent<Text>();
         bronzeTierTimeText = LevelBronzeTimeTextHUD.GetComponent<Text>();
-        xpCollectedText = XPCollectedTextHUD.GetComponent<Text>();
 
         if(GameOptionData.level1SpecialItemCollected)
         {
@@ -181,14 +178,6 @@ public class LevelCompleteController : MonoBehaviour
                 }
         }
 
-        if(GameOptionData.xpCollectedPercentage.ToString() == float.NaN.ToString())
-        {
-            xpCollectedText.text = "0.0";
-        }
-        else
-        {
-            xpCollectedText.text = GameOptionData.xpCollectedPercentage.ToString("F1") + "%";
-        }
        
 
 
@@ -213,5 +202,11 @@ public class LevelCompleteController : MonoBehaviour
     {
         ButtonSelectSFX.Play();
         StartCoroutine(ChangeScene(GameOptionData.nextLevel, 1.1f));
+    }
+
+    public void LevelSelect()
+    {
+        ButtonSelectSFX.Play();
+        StartCoroutine(ChangeScene(5, 1.1f));
     }
 }
