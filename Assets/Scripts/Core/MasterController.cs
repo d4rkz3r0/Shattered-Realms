@@ -443,18 +443,6 @@ public class MasterController : MonoBehaviour
             }
 
 
-
-            if (XPGemManager.allGemsCollected && playedOnce == false)
-            {
-                playerLvLUP.Play();
-                //charBeforelvlUp = currentCharacter;
-                levelUpAnimTimer = 3.0f;
-                anim.runtimeAnimatorController = Resources.Load("Animations/Player") as RuntimeAnimatorController;
-                anim.Play("player_LvLUP");
-                playedOnce = true;
-                releaseControl = false;
-            }
-
             if (levelUpAnimTimer > 0.0f)
             {
                 levelUpAnimTimer -= Time.deltaTime;

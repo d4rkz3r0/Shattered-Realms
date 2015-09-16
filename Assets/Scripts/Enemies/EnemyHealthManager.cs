@@ -5,7 +5,6 @@ public class EnemyHealthManager : MonoBehaviour
 {
     public int enemyHP;
     public int EnemyMaxHP;
-    public int xpOnDeath;
     public GameObject deathParticle;
     private AudioSource enemyHurtSFX;
     
@@ -64,7 +63,6 @@ public class EnemyHealthManager : MonoBehaviour
 
                 }
                 Instantiate(deathParticle, transform.position, transform.rotation);
-                XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                 Destroy(gameObject);
             }
 
@@ -81,7 +79,6 @@ public class EnemyHealthManager : MonoBehaviour
 
                 }
                 Instantiate(deathParticle, transform.position, transform.rotation);
-                XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                 Destroy(gameObject);
                 
             }
@@ -92,7 +89,6 @@ public class EnemyHealthManager : MonoBehaviour
                 if(enemyAnim != null)
                 {
                     deathAnimation = true;
-                    XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                     return;
                 }
                 else
@@ -103,7 +99,6 @@ public class EnemyHealthManager : MonoBehaviour
                         return;
                     }
                     Instantiate(deathParticle, transform.position, transform.rotation);
-                    XPManager.AddToEarnedXPThisLevel(xpOnDeath);
                     gameObject.SetActive(false);
                 }  
             } 
