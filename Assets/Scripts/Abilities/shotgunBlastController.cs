@@ -16,16 +16,17 @@ public class shotgunBlastController : MonoBehaviour
 	private EnemyMovement eMScrp;
 	private EnemyAttack eAScrp;
     private float timer;
-    public float timeBetweenAttacks;
+    private float timeBetweenAttacks;
 
 
 	// Use this for initialization
 	void Start ()
     {
-        timer = timeBetweenAttacks;
+		timeBetweenAttacks = 0;
+		Debug.Log ("can attack");
         anim = GetComponent<Animator>();
 		player = FindObjectOfType<MasterController>();
-        timer += Time.deltaTime;
+       
 
 		if(player.transform.localScale.x < 0.0f)
 		{
@@ -55,73 +56,60 @@ public class shotgunBlastController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+		timeBetweenAttacks -= Time.deltaTime;
         anim.Play("cyborg_blast");
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name != "Player" || other.tag != "Collectibles" || other.tag != "LethalHazard" || other.tag != "Platform")
-        {
-            if(other.GetComponent<Rigidbody2D>() == null)
-            {
-                return;
-            }
-            else
-            {
-                otherRB = other.GetComponent<Rigidbody2D>();
-            }
-            if (other.tag == "Boss" && timer > timeBetweenAttacks)
-            {
+		if (timeBetweenAttacks <= 0) {
+			timeBetweenAttacks = 2;
+			Debug.Log("time reseted");
+			if (other.name != "Player" || other.tag != "Collectibles" || other.tag != "LethalHazard" || other.tag != "Platform") {
+				if (other.GetComponent<Rigidbody2D> () == null) {
+					return;
+				} else {
+					otherRB = other.GetComponent<Rigidbody2D> ();
+				}
+				if (other.tag == "Boss") {
 
-                if (sasuke != null)
-                {
-                    timer = 0;
-                    sasuke.takeDamage(1);
-                }
-                else
-                {
-                    return;
-                }
-            }
+					if (sasuke != null) {
+						timer = 0;
+						sasuke.takeDamage (1);
+					} else {
+						return;
+					}
+				}
 
-			if (other.tag == "Destructable Platform")
-			{
-				other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
+				if (other.tag == "Destructable Platform") {
+					other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);
+				}
+				if (other.tag == "MysteryBox") {
+					other.GetComponent<MysteryBoxHealthManager> ().takeDamage (abilityDamage);
+				}
+				if (other.tag == "Enemy") {
+					Debug.Log("damage deal");
+					other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
+				}
+				if (other.tag == "MiniBoss") {
+					other.GetComponent<BossHealthManager> ().takeDamage (abilityDamage);
+				}
+
+				if (other.GetComponent<EnemyMovement> ()) {
+					eMScrp = other.GetComponent<EnemyMovement> ();
+					eMScrp.GetStun (stunTime);
+				}
+				if (other.GetComponent<EnemyAttack> ()) {
+					eAScrp = other.GetComponent<EnemyAttack> ();
+					eAScrp.GetStun (stunTime);
+				}
+				if (other.transform.position.x < transform.position.x) {
+					otherRB.velocity = new Vector2 (-5, 2);
+				} else {
+					otherRB.velocity = new Vector2 (5, 2);
+				}
 			}
-			if (other.tag == "MysteryBox")
-			{
-				other.GetComponent<MysteryBoxHealthManager> ().takeDamage (abilityDamage);
-			}
-            if (other.tag == "Enemy" && timer > timeBetweenAttacks)
-            {
-                timer = 0;
-                other.GetComponent<EnemyHealthManager>().takeDamage(abilityDamage);
-            }
-            if (other.tag == "MiniBoss")
-            {
-                other.GetComponent<BossHealthManager>().takeDamage(abilityDamage);
-            }
-
-            if (other.GetComponent<EnemyMovement>())
-            {
-                eMScrp = other.GetComponent<EnemyMovement>();
-				eMScrp.GetStun(stunTime);
-            }
-            if (other.GetComponent<EnemyAttack>())
-            {
-                eAScrp = other.GetComponent<EnemyAttack>();
-                eAScrp.GetStun(stunTime);
-            }
-            if (other.transform.position.x < transform.position.x)
-            {
-                otherRB.velocity = new Vector2(-5, 2);
-            }
-            else
-            {
-                otherRB.velocity = new Vector2(5, 2);
-            }
-        }
-
+		}
         //Cleanup
         //Destroy(gameObject);
     }

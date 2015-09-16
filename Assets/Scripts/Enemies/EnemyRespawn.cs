@@ -60,11 +60,6 @@ public class EnemyRespawn : MonoBehaviour
         {
             enemyAnimation.enemyDefeatedAnimDuration = enemyDefeatedAnimDuration;
         }
-        
-
-
-
-
         gameObject.SetActive(true);
     }
 }
