@@ -62,21 +62,20 @@ public class RespawnManager : MonoBehaviour
 
         foreach (Transform child in parent)
         {
-            if(child.gameObject.name == "hpGemStrip")
+
+            stripTransform = child.gameObject.transform;
+            foreach (Transform child1 in stripTransform)
             {
-                stripTransform = child.gameObject.transform;
-                foreach(Transform child1 in stripTransform)
+                if (child1.gameObject.activeInHierarchy == false)
                 {
-                    if (child1.gameObject.activeInHierarchy == false)
-                    {
-                        child1.gameObject.GetComponent<RespawnableItem>().ResetSelf();
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                    child1.gameObject.GetComponent<RespawnableItem>().ResetSelf();
+                }
+                else
+                {
+                    continue;
                 }
             }
+
             if (child.gameObject.activeInHierarchy == false)
             {
                 child.gameObject.GetComponent<RespawnableItem>().ResetSelf();
