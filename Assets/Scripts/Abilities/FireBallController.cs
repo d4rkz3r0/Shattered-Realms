@@ -44,7 +44,9 @@ public class FireBallController : MonoBehaviour
         {
             case 8:
                 {
+		
                     sasuke = FindObjectOfType<BossHealthManager>();
+			Debug.Log(sasuke);
                     break;
                 }
             default:

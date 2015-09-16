@@ -178,6 +178,7 @@ public class MasterController : MonoBehaviour
     private bool canCastBackFlip;
     private float backFlipAnimTimer; //Must Match ability cooldown!
     public bool isBackFlipping;
+	private float bfHitCD;
     
     //W - Chaos Emeralds
     public float chaosEmeraldCoolDown;
@@ -270,10 +271,13 @@ public class MasterController : MonoBehaviour
 
         if(Application.loadedLevel == 8)
         {
+			Debug.Log("level lodaded");
             executeSasukeTimer = 2.0f;
             sasukeBossFightOver = false;
             sasuke = FindObjectOfType<SasukeController>();
-            sasukeHP = FindObjectOfType<BossHealthManager>();
+          
+
+			Debug.Log(sasukeHP);
         }
 
         if(Application.loadedLevel == 11)
@@ -345,6 +349,13 @@ public class MasterController : MonoBehaviour
 
     void Update()
     {
+		if (isBackFlipping) {
+			bfHitCD -= Time.deltaTime;
+		}
+
+		if (Application.loadedLevel == 8) {
+			sasukeHP = FindObjectOfType<BossHealthManager> ();
+		}
 
 		if (disableInput) {
 			idleTimer += Time.deltaTime;
@@ -824,6 +835,7 @@ public class MasterController : MonoBehaviour
             {
                 if (canCastBackFlip)
                 {
+					bfHitCD = 0;
                     circleCollider.offset = new Vector2(0.0f, -0.84f);
                     backFlipSFX.Play();
 
@@ -1311,9 +1323,10 @@ public class MasterController : MonoBehaviour
         //    }
         //}
 
-        if (other.tag == "Enemy" && isBackFlipping)
+        if (other.tag == "Enemy" && isBackFlipping && bfHitCD <= 0)
         {
-            other.GetComponent<EnemyHealthManager>().takeDamage(backFlipDamage);
+			bfHitCD = 1;
+			other.GetComponent<EnemyHealthManager>().takeDamage(backFlipDamage);
 			if(other.GetComponent<EnemyMovement>())
 			{
 				eMScrp = other.GetComponent<EnemyMovement>();
@@ -1334,16 +1347,27 @@ public class MasterController : MonoBehaviour
 			}
         }
 
-        if (other.tag == "Boss" && isBackFlipping)
+		Debug.Log("trying");
+        if (other.tag == "Boss" && isBackFlipping && bfHitCD <= 0)
         {
-            if (sasukeHP != null)
-            {
-                sasukeHP.takeDamage(backFlipDamage);
-            }
-            else
-            {
-                return;
-            }
+			bfHitCD = 1;
+           if (sasukeHP != null)
+           {
+			Debug.Log("bH FOR SHO");
+            sasukeHP.takeDamage(backFlipDamage);
+				if (other.transform.position.x < transform.position.x) 
+				{
+					other.attachedRigidbody.velocity = new Vector2 (-4, 2); 
+				} 
+				else
+				{
+					other.attachedRigidbody.velocity = new Vector2 (4, 2); 
+				}
+           }
+           else
+           {
+               return;
+           }
 
         }
 		
