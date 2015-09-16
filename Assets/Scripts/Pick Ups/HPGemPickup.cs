@@ -1,22 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class HPPotionPickup : MonoBehaviour
+public class HPGemPickup : MonoBehaviour
 {
-    public int HPToAdd;
-    private AudioSource hpSFX;
-
-	public GameObject spark;
-
+    public int HPToRestore = 1;
+    public GameObject spark;
+    private AudioSource hpGemSFX;
+	
 	void Start () 
     {
         if(gameObject.name == "chestHPGem (clone)")
         {
-            hpSFX = GetComponent<AudioSource>();
+            hpGemSFX = GetComponent<AudioSource>();
         }
         else
         {
-            hpSFX = GetComponentInParent<AudioSource>();
+            hpGemSFX = GetComponentInParent<AudioSource>();
         }
 	}
 
@@ -28,11 +27,11 @@ public class HPPotionPickup : MonoBehaviour
         {
             return;
         }
-        HealthManager.receiveHealing(HPToAdd);
-        hpSFX.Play();
+        HealthManager.receiveHealing(HPToRestore);
+        hpGemSFX.Play();
 
 		Instantiate (spark).transform.position = transform.position;
-        
-		Destroy(gameObject);
+
+        gameObject.SetActive(false);
     }
 }
