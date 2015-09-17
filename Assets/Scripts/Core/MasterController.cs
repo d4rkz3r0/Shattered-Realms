@@ -848,7 +848,7 @@ public class MasterController : MonoBehaviour
                 {
                     circleCollider.radius = 0.4f;
                     chaosSFX.Play();
-                    chaosEmeraldsAnimTimer = 1.2f;
+                    chaosEmeraldsAnimTimer = 3;
                     isGoingSuper = true;
 
                     canCastChaosEmeralds = false;
@@ -1214,6 +1214,9 @@ public class MasterController : MonoBehaviour
 
             if (chaosEmeraldsAnimTimer <= 0.0f)
             {
+				Debug.Log("HIIIIIIII");
+				boxColliders[1].offset = new Vector2(0.0f, 0.56f/2);
+				circleCollider.radius = 0.2f;
                 isGoingSuper = false;
                 anim.SetBool("isGoingSuper", false);
 
@@ -1268,8 +1271,11 @@ public class MasterController : MonoBehaviour
 			}
 		}
 
-		if (other.tag == "Ground") {
+		if (other.tag == "Ground" || other.tag == "Platform") {
 			transform.rotation = Quaternion.Euler(0, 0, 0);
+			afterClimbEff = false;
+			disableInput = false;
+			wallClimbing = false;
 			canWallClimb = true;
 		}
 		//if (other.tag == "Wall") {
@@ -1378,6 +1384,12 @@ public class MasterController : MonoBehaviour
         if(other.tag == "Enemy" && isGoingSuper && other.name != "Gizmo")
         {
             other.GetComponent<EnemyHealthManager>().enemyHP = 0;
+			if( other.GetComponent<EnemyAttack>())
+			{
+				eAScrp = other.GetComponent<EnemyAttack>();
+				eAScrp.GetStun(shortStun);
+			}
+		
         }
 
 		if (other.tag == "Boss" && isSpinDashing) {
