@@ -30,6 +30,7 @@ public class MarioCombatBehaviour : MonoBehaviour {
 	void Update () {
 
 		if (gameObject.GetComponent<MarioMovementBehaviour>().MushroomPwrActivate == true) {
+			gameObject.GetComponent<EnemyHealthManager>().enabled = false;
 			transform.localScale = new Vector3(1.45f, 1.45f, 0);
 			gameObject.GetComponent<MarioMovementBehaviour>().PoweredUp = true;
 		}
@@ -37,6 +38,7 @@ public class MarioCombatBehaviour : MonoBehaviour {
 		if (gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.75f))
 		{
 			if (gameObject.GetComponent<MarioMovementBehaviour>().MushroomPwrActivate == true){
+				gameObject.GetComponent<EnemyHealthManager>().enemyHP = (int)(gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.75f);
 				gameObject.GetComponent<MarioMovementBehaviour>().MushroomPwrActivate = false;
 			transform.localScale = new Vector3(1f, 1f, 0f);
 			gameObject.GetComponent<MarioMovementBehaviour>().PoweredUp = false;
@@ -57,8 +59,6 @@ public class MarioCombatBehaviour : MonoBehaviour {
 					trf.position = transform.position;
 					rb2d = temp.GetComponent<Rigidbody2D>();
 					rb2d.velocity = aiming.normalized*projectileSpeed;
-
-					//HealthManager.takeDamage (2);
 					attackTimer = .75f;
 					}
 				}
@@ -71,33 +71,32 @@ public class MarioCombatBehaviour : MonoBehaviour {
 
 		if (gameObject.GetComponent<EnemyHealthManager> ().enemyHP <= (gameObject.GetComponent<EnemyHealthManager> ().EnemyMaxHP * .50f)) {
 			if (gameObject.GetComponent<MarioMovementBehaviour>().FlowerPwrActivate == true){
+				gameObject.GetComponent<EnemyHealthManager>().enemyHP = (int)(gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.50f);
 				gameObject.GetComponent<MarioMovementBehaviour>().FlowerPwrActivate = false;
 				transform.localScale = new Vector3(1f, 1f, 0f);
 				gameObject.GetComponent<MarioMovementBehaviour>().PoweredUp = false;
 				gameObject.GetComponent<SpriteRenderer>().sprite = marioSmall;
 			}
 			if (gameObject.GetComponent<MarioMovementBehaviour>().TanookiPwrActivate == true){
-				//Debug.Log ("Test");
 				transform.localScale = new Vector3(1f, 1f, 0);
 				gameObject.GetComponent<MarioMovementBehaviour>().PoweredUp = true;
 				gameObject.GetComponent<SpriteRenderer>().sprite = marioTanooki;
 			}
 		}
 
-		if (gameObject.GetComponent<EnemyHealthManager> ().enemyHP <= (gameObject.GetComponent<EnemyHealthManager> ().EnemyMaxHP * .25f) &&
-		    gameObject.GetComponent<EnemyHealthManager> ().enemyHP > 0) {
+		if (gameObject.GetComponent<EnemyHealthManager> ().enemyHP <= (gameObject.GetComponent<EnemyHealthManager> ().EnemyMaxHP * .25f)) {
+
 			if (gameObject.GetComponent<MarioMovementBehaviour> ().TanookiPwrActivate == true) {
+				gameObject.GetComponent<EnemyHealthManager>().enemyHP = (int)(gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f);
 				gameObject.GetComponent<MarioMovementBehaviour> ().TanookiPwrActivate = false;
 				transform.localScale = new Vector3 (1f, 1f, 0f);
 				gameObject.GetComponent<MarioMovementBehaviour> ().PoweredUp = false;
 				gameObject.GetComponent<SpriteRenderer> ().sprite = marioSmall;
 			}
 			if (gameObject.GetComponent<MarioMovementBehaviour>().StarPwrActivate == true){
-				//Debug.Log ("Test");
 				transform.localScale = new Vector3(1f, 1f, 0);
 				gameObject.GetComponent<MarioMovementBehaviour>().PoweredUp = true;
-				//gameObject.GetComponent<SpriteRenderer>().sprite = marioTanooki;
-				gameObject.GetComponent<EnemyHealthManager>().enabled = false;
+
 			}
 		}
 		if (MysteryBoxDestroyed == true)
