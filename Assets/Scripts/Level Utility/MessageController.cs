@@ -424,6 +424,25 @@ public class MessageController : MonoBehaviour
                         "grant it...";
                     break;
                 }
+			case 200:
+			{
+				displayedText.text =
+					"You think you can stop me?";
+				break;
+			}
+			case 201:
+			{
+				displayedText.text =
+					"You Don't have what it takes!";
+				break;
+			}
+			case 202:
+			{
+				displayedText.text =
+					"Go ahead and try!\n" +
+					"My minions will stop you!\n";
+				break;
+			}
 
 
             default:
