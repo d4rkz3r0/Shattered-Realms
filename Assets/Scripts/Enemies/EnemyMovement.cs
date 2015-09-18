@@ -91,8 +91,9 @@ public class EnemyMovement : MonoBehaviour {
 		shocked = false;
 		smartTimer = 0;
 
-		gameObject.GetComponent<CircleCollider2D> ().enabled = false;
-
+		if (gameObject.GetComponent<CircleCollider2D> ()) {
+			gameObject.GetComponent<CircleCollider2D> ().enabled = false;
+		}
         //Spawn Aggro
         spawnAggroOnce = false;
 
