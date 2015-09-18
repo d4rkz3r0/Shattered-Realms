@@ -11,6 +11,7 @@ public class CreditsMenuController : MonoBehaviour
     public Image backgroundImage;
     public Image progressBarImage;
     public Text percentageText;
+    public GameObject creditsText;
     private int loadingProgress = 0;
 	void Start () 
     {
@@ -24,6 +25,7 @@ public class CreditsMenuController : MonoBehaviour
 
     public IEnumerator ChangeScene(int sceneChoice)
     {
+        creditsText.SetActive(false);
         backgroundImage.gameObject.SetActive(true);
         progressBarImage.gameObject.SetActive(true);
         percentageText.gameObject.SetActive(true);
