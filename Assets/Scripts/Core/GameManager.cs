@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     //public static List<PlayerData> saveFiles = new List<PlayerData>();
     public static PlayerData saveFile;
     public int playerHP;
-    public int playerXP;
     public int playerLVL;
     public int levelsCompleted;
 
@@ -83,7 +82,6 @@ public class GameManager : MonoBehaviour
             FileStream file = File.Create(Application.persistentDataPath + "/playerStats.dat");
             //Fill in class data
             fileData.playerHP = playerHP;
-            fileData.playerXP = playerXP;
             fileData.playerLVL = playerLVL;
             fileData.levelsCompleted = levelsCompleted;
             //Actually write to the file
@@ -112,7 +110,6 @@ public class GameManager : MonoBehaviour
             file.Close();
             //Assign class variables to GM variables for use in game
             playerHP = fileData.playerHP;
-            playerXP = fileData.playerXP;
             playerLVL = fileData.playerLVL;
             levelsCompleted = fileData.levelsCompleted;
         }
@@ -147,14 +144,12 @@ public class GameManager : MonoBehaviour
 public class PlayerData
 {
     public int playerHP;
-    public int playerXP;
     public int playerLVL;
     public int levelsCompleted;
 
     public PlayerData()
     {
         playerHP = 10;
-        playerXP = 0;
         playerLVL = 1;
         levelsCompleted = 0;
     }

@@ -73,6 +73,12 @@ public class LightningController : MonoBehaviour {
 		eM = other.GetComponent<EnemyMovement>(); i = 0;
 		//Fireball->Enemy
 
+		if (other.name == "Gizmo") {
+
+				other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
+			Instantiate(hit).transform.position = transform.position;
+		}
+
 		if (other.tag == "Destructable Platform")
 		{
 			other.GetComponent<PlatformHealthManager> ().takeDamage (abilityDamage);

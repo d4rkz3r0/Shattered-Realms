@@ -288,9 +288,9 @@ public class PortalController : MonoBehaviour
 
 
 
-        //XP Info
-        float xpCollectedPercentage = FindObjectOfType<XPGemManager>().formatFinalXPBarRatio;
-        GameOptionData.xpCollectedPercentage = xpCollectedPercentage;
+        ////XP Info
+        //float xpCollectedPercentage = FindObjectOfType<XPGemManager>().formatFinalXPBarRatio;
+        //GameOptionData.xpCollectedPercentage = xpCollectedPercentage;
 
         //Always Load the Level Complete Screen
         Application.LoadLevel(16);

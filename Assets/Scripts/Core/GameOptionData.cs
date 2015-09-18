@@ -13,7 +13,6 @@ using System.Collections;
 public static class GameOptionData
 {
     public static int playerStartingHP;
-    public static int playerStartingXP;
     public static int playerStartingLVL;
     public static int levelsCompleted;
 
@@ -36,7 +35,6 @@ public static class GameOptionData
     ////Level Complete Information
     //Arrays? Lists? Stacks?! Queues?! Hue hue hue!
     //XP
-    public static float xpCollectedPercentage;
     public static int actualLevelTime;
     public static int levelGoalTime;
 
@@ -127,7 +125,6 @@ public static class GameOptionData
     public static void InitializeGame()
     {
         playerStartingHP = 10;
-        playerStartingXP = 0;
         playerStartingLVL = 1;
 
         musicOn = true;

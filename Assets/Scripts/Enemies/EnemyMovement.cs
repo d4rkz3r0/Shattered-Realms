@@ -337,24 +337,25 @@ public class EnemyMovement : MonoBehaviour {
 		case MovementBehaviour.FlyingPatrolling:
 
 			transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, actualSpeed * Time.deltaTime);
-
-			if(transform.position == currentWaypoint)
+			Debug.Log(transform.position);
+			Debug.Log(currentWaypoint);
+			if(ComparePositions(currentWaypoint,transform.position))
 			{
 				//Debug.Log("Reached waypoint");
-				if(transform.position - startingPosition == waypoint1.localPosition){
-				//	Debug.Log("Reached waypoint 1");
-					currentWaypoint = waypoint2.position + startingPosition - transform.position; 
+				if(ComparePositions(waypoint1.position,transform.position)){
+					Debug.Log("Reached waypoint 1");
+					currentWaypoint = waypoint2.position; 
 				}
-				else if(transform.position - startingPosition == waypoint2.localPosition){
-				//	Debug.Log("Reached waypoint 2");
-					currentWaypoint = waypoint3.position + startingPosition - transform.position;  
+				else if(ComparePositions(waypoint2.position,transform.position)){
+					Debug.Log("Reached waypoint 2");
+					currentWaypoint = waypoint3.position;  
 				}
-				else if(transform.position - startingPosition == waypoint3.localPosition){
-				//	Debug.Log("Reached waypoint 3");
+				else if(ComparePositions(waypoint3.position,transform.position)){
+					Debug.Log("Reached waypoint 3");
 					currentWaypoint = startingPosition; 
 				}
-				else if(transform.position == startingPosition){
-				//	Debug.Log("Reached starting point");
+				else if(ComparePositions(startingPosition,transform.position)){
+					Debug.Log("Reached starting point");
 					currentWaypoint = waypoint1.position; 
 				}
 			}
@@ -375,6 +376,7 @@ public class EnemyMovement : MonoBehaviour {
 			stunTimer -= Time.deltaTime;
 			if(stunTimer <=0 ){
 				myBehaviour = myDefaultBehaviour;
+				rb2d.velocity = Vector2.zero;
 			}
 			break;
 
@@ -406,5 +408,14 @@ public class EnemyMovement : MonoBehaviour {
 		myBehaviour = MovementBehaviour.Stunned;
 		stunTimer = stn;
 	}
+
+	bool ComparePositions(Vector3 pos1, Vector3 pos2){
+		if (pos1.x < pos2.x + 0.01f && pos1.x > pos2.x - 0.01f && pos1.y < pos2.y + 0.01f && pos1.y > pos2.y - 0.01f) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 

@@ -63,7 +63,7 @@ public class shotgunBlastController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 		if (timeBetweenAttacks <= 0) {
-			timeBetweenAttacks = 2;
+			timeBetweenAttacks = 1;
 			Debug.Log("time reseted");
 			if (other.name != "Player" || other.tag != "Collectibles" || other.tag != "LethalHazard" || other.tag != "Platform") {
 				if (other.GetComponent<Rigidbody2D> () == null) {

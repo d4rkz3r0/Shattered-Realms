@@ -12,7 +12,7 @@ public class RespawnManager : MonoBehaviour
         GemContainer = GameObject.Find("HP Gems").GetComponent<Transform>();
 
         //Diagnostic Information
-        Debug.Log("Respawnable Item Count: " + CountRespawnableObjects(GemContainer));
+        //Debug.Log("Respawnable Item Count: " + CountRespawnableObjects(GemContainer));
 	}
 	
 	void Update ()
