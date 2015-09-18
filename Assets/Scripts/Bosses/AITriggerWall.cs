@@ -9,6 +9,7 @@ public class AITriggerWall : MonoBehaviour
     private float IntroTimerDuration = 10.585f;
     public ChatBoxController chatBoxHUDElement;
     public BossHealthManager sasukeHPBarHUDElement;
+    public GameObject LeftBossWall;
 
 	// Use this for initialization
 	void Start ()
@@ -37,7 +38,7 @@ public class AITriggerWall : MonoBehaviour
             sasukeHPBarHUDElement.GetComponent<Animator>().enabled = false;
             sasuke.canMove = true;
             player.disableInput = false;
-            
+            sasuke.fireBallGlobalTimer = sasuke.fireBallGlobalJutsuCoolDown;
             Destroy(gameObject);
         }
 	}
@@ -46,6 +47,7 @@ public class AITriggerWall : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            LeftBossWall.gameObject.SetActive(true);
             chatBoxHUDElement.gameObject.SetActive(true);
             IntroTimer = IntroTimerDuration;
             chatBoxHUDElement.startBossDialogue = true;
