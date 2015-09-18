@@ -23,6 +23,9 @@ public class CameraController : MonoBehaviour
     public Vector3 minBounds;
     public Vector3 maxBounds;
 
+    private Vector3 minBoundsStored;
+    private Vector3 maxBoundsStored;
+
     ////Level Specific Camera Movement
     //Level 1
     private bool level1PreStory;
@@ -52,6 +55,8 @@ public class CameraController : MonoBehaviour
 
         //Auto Hook
         player = FindObjectOfType<MasterController>();
+        minBoundsStored = minBounds;
+        maxBoundsStored = maxBounds;
     }
 
     void FixedUpdate()
@@ -81,5 +86,15 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void IncreaseYBounds()
+    {
+        maxBounds.y = -30.15f;
+    }
+
+    public void ResetYBounds()
+    {
+        maxBounds.y = maxBoundsStored.y;
     }
 }

@@ -13,9 +13,12 @@ public class KillPlayer : MonoBehaviour
 {
     //Private References
     private LevelManager levelManager;
+    
+
 
     void Start()
     {
+        
         //Auto Hook
         levelManager = FindObjectOfType<LevelManager>();
     }
@@ -24,6 +27,8 @@ public class KillPlayer : MonoBehaviour
     void Update()
     {
 
+           
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -42,5 +47,7 @@ public class KillPlayer : MonoBehaviour
                 //other.GetComponent<EnemyHealthManager>().deathAnimation = true;
             }
         }
+
+        
     }
 }

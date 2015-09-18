@@ -501,7 +501,7 @@ public class MasterController : MonoBehaviour
             }
 
             //Straight Selection
-            if(Input.GetButtonDown("Char1"))
+            if(Input.GetButtonDown("Char1") && currentCharacter != 1)
             {
                 currentCharacter = 1;
                 boxColliders[1].offset = new Vector2(0.0f, 0);
@@ -511,7 +511,7 @@ public class MasterController : MonoBehaviour
                 anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
             }
 
-            if(Input.GetButtonDown("Char2"))
+            if (Input.GetButtonDown("Char2") && currentCharacter != 2)
             {
                 currentCharacter = 2;
                 boxColliders[1].offset = new Vector2(0.0f, 0);
@@ -520,7 +520,7 @@ public class MasterController : MonoBehaviour
                 anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
             }
 
-            if (Input.GetButtonDown("Char3"))
+            if (Input.GetButtonDown("Char3") && currentCharacter != 3)
             {
                 currentCharacter = 3;
                 boxColliders[0].offset = new Vector2(0.0f, 0.61127716f / 2);

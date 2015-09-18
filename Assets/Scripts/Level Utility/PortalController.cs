@@ -10,9 +10,11 @@ public class PortalController : MonoBehaviour
     private float winAudioTimer;
     private float warpSFXDuration;
     private TimerManager timerManager;
+    private MasterController player;
 
 	void Start ()
     {
+        player = FindObjectOfType<MasterController>();
         playedOnce = false;
         isplayerInWarp = false;
         keyCollected = false;
@@ -25,8 +27,10 @@ public class PortalController : MonoBehaviour
     {
         if ((Input.GetAxis("Vertical") > 0.0f) && isplayerInWarp && keyCollected)
         {
+            player.disableInput = true;
             if(!playedOnce)
             {
+
                 warpSFX.Play();
                 playedOnce = true;
             }
