@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0d4f94fd37e5c084fa2ec76ec1ff4853
-timeCreated: 1442417830
+guid: 9c4e164a79baad14b9c8ef67de3a1d22
+timeCreated: 1442510956
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -55,17 +55,17 @@ TextureImporter:
     - name: groundrobot2_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 0
-        width: 206
-        height: 224
+        x: 9
+        y: 19
+        width: 182
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: groundrobot2_1
       rect:
         serializedVersion: 2
-        x: 245
+        x: 191
         y: 41
         width: 174
         height: 183
@@ -75,10 +75,10 @@ TextureImporter:
     - name: groundrobot2_2
       rect:
         serializedVersion: 2
-        x: 419
-        y: 19
-        width: 182
-        height: 220
+        x: 365
+        y: 0
+        width: 206
+        height: 224
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

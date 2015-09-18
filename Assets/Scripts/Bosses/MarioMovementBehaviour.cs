@@ -49,27 +49,31 @@ public class MarioMovementBehaviour : MonoBehaviour {
 		isPlayerInRange = Physics2D.OverlapCircle(transform.position, aggroRange, playerLayer);
 
 		if (isPlayerInRange == true) {
-			
-			//transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, actualSpeed * Time.deltaTime);
 
 
 			if (gameObject.GetComponent<EnemyHealthManager>().enemyHP ==  gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP && PoweredUp == false ||
 			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.75f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.50f)&& PoweredUp == false ||
 			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.50f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f) && PoweredUp == false ||
-			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > 0 && PoweredUp == false)
+			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > 0 && PoweredUp == false || 
+			    gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP < 0 && PoweredUp == false)
 
 			{
-				currentWaypoint = waypoint2.position;
 
 				transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, actualSpeed * Time.deltaTime);
 
 				if (gameObject.GetComponent<MarioCombatBehaviour>().MysteryBoxDestroyed == false)
 				{
 					float blockPos = Mysterybox.transform.position.x;
-		
-					if (gameObject.transform.localPosition.x <= blockPos + 0.5f && gameObject.transform.position.x >= blockPos - 0.5f && gameObject.GetComponent<MarioCombatBehaviour>().MysteryBoxDestroyed == false)
+
+					if (gameObject.transform.position.x < blockPos - 0.5f)
 					{
-						Vector3 jump = new Vector3(0.0f, 5.0f, 0.0f);
+						currentWaypoint = waypoint2.position;
+					}
+
+		
+					if (gameObject.transform.localPosition.x <= blockPos + 0.5f && gameObject.transform.position.x >= blockPos - 0.5f && PoweredUp == false) //&& gameObject.GetComponent<MarioCombatBehaviour>().MysteryBoxDestroyed == false)
+					{
+						Vector3 jump = new Vector3(0.0f, 7.0f, 0.0f);
 						gameObject.GetComponent<Rigidbody2D>().velocity = jump;
 					}
 				}
@@ -79,9 +83,6 @@ public class MarioMovementBehaviour : MonoBehaviour {
 				currentWaypoint = waypoint1.position;
 				transform.position = Vector3.MoveTowards(transform.position, player.gameObject.transform.position, actualSpeed * Time.deltaTime);
 			}
-
-
-
 		}
 	}
 
