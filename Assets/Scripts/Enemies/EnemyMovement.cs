@@ -81,19 +81,31 @@ public class EnemyMovement : MonoBehaviour {
 		actualSpeed = speed;
 		myBehaviour = myDefaultBehaviour;
 		target = GameObject.Find("Player");
-        player = FindObjectOfType<MasterController>();
-        sasuke = FindObjectOfType<SasukeController>();
+        player = FindObjectOfType<MasterController>();        
 		rb2d = GetComponent<Rigidbody2D>();
-		rb2d.gravityScale = 0;
+        if(Application.loadedLevel == 9 && gameObject.name == "Sasuke")
+        {
+            sasuke = FindObjectOfType<SasukeController>();
+            rb2d.gravityScale = 5;
+        }
+        else
+        {
+            sasuke = null;
+            rb2d.gravityScale = 0;
+            if (gameObject.GetComponent<CircleCollider2D>())
+            {
+                gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            }
+        }
+
+		
 		defJumpPower = jumpPower;
 		jumpPower = 0;
 		jumping = false;
 		shocked = false;
 		smartTimer = 0;
 
-		if (gameObject.GetComponent<CircleCollider2D> ()) {
-			gameObject.GetComponent<CircleCollider2D> ().enabled = false;
-		}
+        
         //Spawn Aggro
         spawnAggroOnce = false;
 
@@ -102,30 +114,42 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		float xPos;
-		if (target.transform.position.x > transform.position.x) {
-			if (startingPosition.x > transform.position.x) {
-				xPos = transform.position.x;
-			} else {
-				xPos = startingPosition.x;
-			}
-		} else {
-			if (startingPosition.x < transform.position.x) {
-				xPos = transform.position.x;
-			} else {
-				xPos = startingPosition.x;
-			}
-		}
+        float xPos;
+        if (target.transform.position.x > transform.position.x)
+        {
+            if (startingPosition.x > transform.position.x)
+            {
+                xPos = transform.position.x;
+            }
+            else
+            {
+                xPos = startingPosition.x;
+            }
+        }
+        else
+        {
+            if (startingPosition.x < transform.position.x)
+            {
+                xPos = transform.position.x;
+            }
+            else
+            {
+                xPos = startingPosition.x;
+            }
+        }
 
-		if(rb2d.gravityScale == 0){
-		if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro) {
-			if(Mathf.Abs(target.transform.position.x - xPos)< 10){
-					rb2d.gravityScale = 1;
-					gameObject.GetComponent<CircleCollider2D> ().enabled = true;
-					jumpPower = defJumpPower;
-				}
-			}
-		}
+        if (rb2d.gravityScale == 0)
+        {
+            if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro)
+            {
+                if (Mathf.Abs(target.transform.position.x - xPos) < 10)
+                {
+                    rb2d.gravityScale = 1;
+                    gameObject.GetComponent<CircleCollider2D>().enabled = true;
+                    jumpPower = defJumpPower;
+                }
+            }
+        }
 
 		if (shocked) {
 			shockTimer -= Time.deltaTime;
@@ -370,14 +394,14 @@ public class EnemyMovement : MonoBehaviour {
 				}
 			}
 
-			//if (transform.position.x < currentWaypoint.x)
-			//{
-			//	transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
-			//}
-			//else
-			//{
-			//	transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
-			//}
+			if (transform.position.x < currentWaypoint.x)
+			{
+				transform.localScale = new Vector3(-1.0f, 1.0f, 0.0f);
+			}
+			else
+			{
+				transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+			}
 
 			break;
 
@@ -413,8 +437,9 @@ public class EnemyMovement : MonoBehaviour {
 		}
 	}
 
-	public void GetStun(float stn){
-		//rb2d.velocity = Vector2.zero;
+	public void GetStun(float stn)
+    {
+		rb2d.velocity = Vector2.zero;
 		myBehaviour = MovementBehaviour.Stunned;
 		stunTimer = stn;
 	}
