@@ -114,7 +114,8 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-if (target.transform.position.x > transform.position.x) {
+		float xPos;
+		if (target.transform.position.x > transform.position.x) {
 			if (startingPosition.x < transform.position.x) {
 				xPos = transform.position.x;
 			} else {
