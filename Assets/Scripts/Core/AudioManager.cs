@@ -123,6 +123,10 @@ public class AudioManager : MonoBehaviour
             currAudio = level10Music;
             currAudio.Play();
         }
+        else if(Application.loadedLevel == 17)
+        {
+            currAudio.Stop();
+        }
     }
 
     void Start()

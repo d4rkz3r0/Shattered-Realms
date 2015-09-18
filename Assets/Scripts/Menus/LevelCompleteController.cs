@@ -31,6 +31,8 @@ public class LevelCompleteController : MonoBehaviour
     public Image level7SpecialItem;
     public Image level8SpecialItem;
 
+    private AudioManager AM;
+
 
 	void Start () 
     {

@@ -359,10 +359,16 @@ public class MasterController : MonoBehaviour
 			sasukeHP = FindObjectOfType<BossHealthManager> ();
 		}
 
-		if (disableInput) {
+		if (disableInput) 
+        {
 			idleTimer += Time.deltaTime;
-			if (idleTimer > 3) {
-				disableInput = false;
+			if (idleTimer > 3)
+            {
+                if(Application.loadedLevel != 9)
+                {
+                    disableInput = false;
+                }
+				
 			}
 		} 
 		else {
