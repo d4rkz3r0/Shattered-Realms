@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
         fakeCyborg = FindObjectOfType<FakeC>();
         fakeSonic = FindObjectOfType<FakeS>();
 
-        if(Application.loadedLevel == 6)
+        if(Application.loadedLevel == 7)
         {
             fakeItachi = FindObjectOfType<FakeI>();
             fakeCyborg = FindObjectOfType<FakeC>();

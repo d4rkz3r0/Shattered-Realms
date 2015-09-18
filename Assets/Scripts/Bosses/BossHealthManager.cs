@@ -65,7 +65,7 @@ public class BossHealthManager : MonoBehaviour
 
         //Visual Hooks
         currBossHPBarImage = GetComponent<Image>();
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
             sasukeAnimator = FindObjectOfType<SasukeController>().GetComponent<Animator>();
             sasukeSpriteRenderer = FindObjectOfType<SasukeController>().GetComponent<SpriteRenderer>();
@@ -73,7 +73,7 @@ public class BossHealthManager : MonoBehaviour
             sasukeOOHPAnimationTimer = sasukeOOHPAnimationTimerDuration;
         }
 
-        if(Application.loadedLevel == 11)
+        if(Application.loadedLevel == 12)
         {
             gizmo = GameObject.Find("Gizmo");
             bossHP = gizmoHP;
@@ -95,7 +95,7 @@ public class BossHealthManager : MonoBehaviour
 
     void Update()
     {
-        if(Application.loadedLevel == 11)
+        if(Application.loadedLevel == 12)
         {
             switch(gizmo.GetComponent<EnemyHealthManager>().enemyHP)
             {
@@ -153,7 +153,7 @@ public class BossHealthManager : MonoBehaviour
             }
         }
 
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
             if (bossMaxHP == 8)
             {
@@ -214,7 +214,7 @@ public class BossHealthManager : MonoBehaviour
         }
        
 
-            if(Application.loadedLevel == 8)
+            if(Application.loadedLevel == 9)
             {
                 if (bossHP < 4 && bossHP > 0)
                 {
@@ -233,7 +233,7 @@ public class BossHealthManager : MonoBehaviour
                 bossHP = bossMaxHP;
             }
 
-            if(Application.loadedLevel == 8)
+            if(Application.loadedLevel == 9)
             {
                 if (bossHP <= 0 && !warpPortalEngaged)
                 {
@@ -248,7 +248,7 @@ public class BossHealthManager : MonoBehaviour
             }
             
 
-            if(Application.loadedLevel == 8)
+            if(Application.loadedLevel == 9)
             {
                 if (sasukeOOHPAnimationTimer >= 0.0f && bossHP == 0)
                 {
@@ -257,7 +257,7 @@ public class BossHealthManager : MonoBehaviour
                 }
             }
             
-            if(Application.loadedLevel == 8)
+            if(Application.loadedLevel == 9)
             {
                 if (sasukeOOHPAnimationTimer <= 0.0f)
                 {
@@ -268,7 +268,7 @@ public class BossHealthManager : MonoBehaviour
 
             if (isBossDead)
             {
-                if(Application.loadedLevel == 8)
+                if(Application.loadedLevel == 9)
                 {
                     sasukeAnimator.enabled = false;
                 }
@@ -276,7 +276,7 @@ public class BossHealthManager : MonoBehaviour
                 
                 if (!once)
                 {
-                   if(Application.loadedLevel == 8)
+                   if(Application.loadedLevel == 9)
                    {
                        FindObjectOfType<SasukeController>().canMove = false;
 

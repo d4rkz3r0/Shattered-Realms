@@ -42,7 +42,7 @@ public class ImageSwitcherController : MonoBehaviour
         if (imageIndex >= 22)
         {
             imageIndex = 22;
-            ChangeScenes(5);
+            ChangeScenes(6);
         }
         else
         {

@@ -61,7 +61,7 @@ public class EnemyAttack : MonoBehaviour {
 		playerScript = GameObject.Find ("Player").GetComponent<MasterController> ();
 		player = GameObject.Find ("Player");
 
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
             sasuke = FindObjectOfType<SasukeController>();
         }

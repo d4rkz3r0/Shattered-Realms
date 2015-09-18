@@ -190,7 +190,7 @@ public class LevelCompleteController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         //If End of Game, return to Main Menu
-        if(sceneChoice == 16)
+        if(sceneChoice == 17)
         {
             sceneChoice = 0;
         }
@@ -207,6 +207,6 @@ public class LevelCompleteController : MonoBehaviour
     public void LevelSelect()
     {
         ButtonSelectSFX.Play();
-        StartCoroutine(ChangeScene(5, 1.1f));
+        StartCoroutine(ChangeScene(6, 1.1f));
     }
 }

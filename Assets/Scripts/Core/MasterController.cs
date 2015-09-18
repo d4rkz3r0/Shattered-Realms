@@ -269,7 +269,7 @@ public class MasterController : MonoBehaviour
 
         //defaultDrag = rb2D.drag;
 
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
 			Debug.Log("level lodaded");
             executeSasukeTimer = 2.0f;
@@ -280,7 +280,7 @@ public class MasterController : MonoBehaviour
 			Debug.Log(sasukeHP);
         }
 
-        if(Application.loadedLevel == 11)
+        if(Application.loadedLevel == 12)
         {
             gizmoBossFightOver = false;
             gizmo = GameObject.Find("Gizmo");
@@ -353,7 +353,7 @@ public class MasterController : MonoBehaviour
 			bfHitCD -= Time.deltaTime;
 		}
 
-		if (Application.loadedLevel == 8) {
+		if (Application.loadedLevel == 9) {
 			sasukeHP = FindObjectOfType<BossHealthManager> ();
 		}
 
@@ -1041,7 +1041,7 @@ public class MasterController : MonoBehaviour
             transform.position = warpPortal.transform.position;
         }
 
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
             if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
             {
@@ -1128,7 +1128,7 @@ public class MasterController : MonoBehaviour
         }
 
         //WARNING: FIX THIS SPAGHETTI, Interdependent code module: EnemyHealthManager.cs!
-        if(Application.loadedLevel == 11)
+        if(Application.loadedLevel == 12)
         {
             if (gizmoBossFightOver)
             {
@@ -1343,7 +1343,7 @@ public class MasterController : MonoBehaviour
 			}
         }
 
-		Debug.Log("trying");
+		//Debug.Log("trying");
         if (other.tag == "Boss" && isBackFlipping && bfHitCD <= 0)
         {
 			bfHitCD = 1;
@@ -1433,7 +1433,7 @@ public class MasterController : MonoBehaviour
             }
             if(other.tag == "Boss")
             {
-                if(Application.loadedLevel == 8)
+                if(Application.loadedLevel == 9)
                 {
                     //Sasuke Takes Dmg
                     if (GameObject.FindObjectOfType<BossHealthManager>() != null)
@@ -1441,12 +1441,12 @@ public class MasterController : MonoBehaviour
                         GameObject.FindObjectOfType<BossHealthManager>().takeDamage(sonicJumpDamage);
                     }
                 }
-                else if(Application.loadedLevel == 11)
+                else if(Application.loadedLevel == 12)
                 {
                     //Gizmo Takes Dmg
                     gizmo.GetComponent<EnemyHealthManager>().takeDamage(sonicJumpDamage);
                 }
-                else if (Application.loadedLevel == 14)
+                else if (Application.loadedLevel == 15)
                 {
                     //Robotnik Takes Double Dmg
                     sonicJumpDamage *= 2;
