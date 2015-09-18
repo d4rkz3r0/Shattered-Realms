@@ -23,19 +23,18 @@ public class SasukeController : MonoBehaviour
 
     //FireBall
     public bool isCastingFireBallJustu;
-    public float fireballJutsuAnimTimer;
-    public Transform fireballJutsuTopSpawnPoint;
-    public Transform fireballJutsuMiddleSpawnPoint;
-    public Transform fireballJutsuBottomSpawnPoint;
-    public GameObject fireballJustuFireBall;
-    public float fireballJutsuCoolDown;
-    public float fireballJutsuTimer;
+    public float phoenixFlowerJustuAnimTimer;
+    public Transform phoenixFlowerJutsuTopSpawnPoint;
+    public Transform phoenixFlowerJutsuMiddleSpawnPoint;
+    public Transform phoenixFlowerJutsuBottomSpawnPoint;
+    public GameObject phoenixFlowerJustuFireBall;
+    public float phoenixFlowerJutsuCoolDown;
+    public float phoenixFlowerJutsuTimer;
     private bool fireBallAudioHasPlayed;
     public float fireBallGlobalTimer;
     public float fireBallGlobalJutsuCoolDown;
     public bool isPlayerInFireBallRange;
     public float fireBallAggroRange;
-    private bool fireballOnce;
 
     //Chidori
     public bool isChargingChidori;
@@ -117,8 +116,7 @@ public class SasukeController : MonoBehaviour
         transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         //Basic Init
         startMoving = false;
-        canMove = false;
-        fireballOnce = false;
+        canMove = true;
         
 
         player = FindObjectOfType<MasterController>();
@@ -138,7 +136,7 @@ public class SasukeController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, groundCheckRadius, groundCheckLayer);
         isPlayerInFireBallRange = Physics2D.OverlapCircle(transform.position, fireBallAggroRange, playerLayer);
-       //isPlayerInChidoriRange = Physics2D.OverlapCircle(transform.position, chidoriAggroRange, playerLayer);
+        isPlayerInChidoriRange = Physics2D.OverlapCircle(transform.position, chidoriAggroRange, playerLayer);
         chidoriHit = Physics2D.OverlapCircle(chidoriCheckPoint.position, 0.2f, playerLayer);
     }
 
@@ -206,29 +204,29 @@ public class SasukeController : MonoBehaviour
             fireBallGlobalTimer -= Time.deltaTime;
         }
 
-        if (!canCastPhoenixFlowerJustu && fireballJutsuTimer >= 0.0f)
+        if (!canCastPhoenixFlowerJustu && phoenixFlowerJutsuTimer >= 0.0f)
         {
-            fireballJutsuTimer -= Time.deltaTime;
+            phoenixFlowerJutsuTimer -= Time.deltaTime;
         }
-        if (fireballJutsuTimer <= 0.0f)
+        if (phoenixFlowerJutsuTimer <= 0.0f)
         {
             canCastPhoenixFlowerJustu = true;
         }
 
-        ////Chidori CoolDown
-        //if (chidoriGlobalTimer > 0.0f)
-        //{
-        //    chidoriGlobalTimer -= Time.deltaTime;
-        //}
+        //Chidori CoolDown
+        if (chidoriGlobalTimer > 0.0f)
+        {
+            chidoriGlobalTimer -= Time.deltaTime;
+        }
 
-        //if (!canCastChidori && chidoriTimer >= 0.0f)
-        //{
-        //    chidoriTimer -= Time.deltaTime;
-        //}
-        //if (chidoriTimer <= 0.0f)
-        //{
-        //    canCastChidori = true;
-        //}
+        if (!canCastChidori && chidoriTimer >= 0.0f)
+        {
+            chidoriTimer -= Time.deltaTime;
+        }
+        if (chidoriTimer <= 0.0f)
+        {
+            canCastChidori = true;
+        }
 
         //Blink Animation
         if (blinkAnimTimer >= 0.0f)
@@ -244,13 +242,13 @@ public class SasukeController : MonoBehaviour
         }
 
         //FireBall Animation
-        if(fireballJutsuAnimTimer >= 0.0f) //&& !isChargingChidori)
+        if(phoenixFlowerJustuAnimTimer >= 0.0f && !isChargingChidori)
         {
             isCastingFireBallJustu = true;
             animator.SetBool("isCastingFireBall", true);
-            fireballJutsuAnimTimer -= Time.deltaTime;
+            phoenixFlowerJustuAnimTimer -= Time.deltaTime;
         }
-        if (fireballJutsuAnimTimer <= 0.0f && !chatBoxHUDElement.isActiveAndEnabled)
+        if (phoenixFlowerJustuAnimTimer <= 0.0f && !chatBoxHUDElement.isActiveAndEnabled)
         {
             isCastingFireBallJustu = false;
             animator.SetBool("isCastingFireBall", false);
@@ -265,19 +263,19 @@ public class SasukeController : MonoBehaviour
             }
         }
 
-        ////Chidori Animation
-        //if (chidoriAnimTimer >= 0.0f && !isCastingFireBallJustu)
-        //{
-        //    isChargingChidori = true;
-        //    animator.SetBool("isChargingChidori", true);
-        //    chidoriAnimTimer -= Time.deltaTime;
-        //}
+        //Chidori Animation
+        if (chidoriAnimTimer >= 0.0f && !isCastingFireBallJustu)
+        {
+            isChargingChidori = true;
+            animator.SetBool("isChargingChidori", true);
+            chidoriAnimTimer -= Time.deltaTime;
+        }
 
-        //if (chidoriAnimTimer <= 0.0f)
-        //{
-        //    isChargingChidori = false;
-        //    animator.SetBool("isChargingChidori", false);
-        //}
+        if (chidoriAnimTimer <= 0.0f)
+        {
+            isChargingChidori = false;
+            animator.SetBool("isChargingChidori", false);
+        }
 
         if (isPlayerInFireBallRange && fireBallGlobalTimer <= 0.0f)
         {
@@ -287,12 +285,10 @@ public class SasukeController : MonoBehaviour
             }
             else
             {
-                if (FindObjectOfType<BossHealthManager>() != null && !FindObjectOfType<BossHealthManager>().isBossDead)
+                if (!FindObjectOfType<BossHealthManager>().isBossDead)
                 {
-
                     castFireBall();
                     fireBallGlobalTimer = fireBallGlobalJutsuCoolDown;
-
                 }
                 else
                 {
@@ -301,25 +297,25 @@ public class SasukeController : MonoBehaviour
             }
         }
 
-        //if (isPlayerInChidoriRange && chidoriGlobalTimer <= 0.0f && fireBallGlobalTimer >= 0.0f && !isCastingFireBallJustu)
-        //{
-        //    if ((Mathf.Round(player.transform.position.y) > Mathf.Round(transform.position.y)) || (Mathf.Round(player.transform.position.y) < Mathf.Round(transform.position.y)))
-        //    {
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        if (!FindObjectOfType<BossHealthManager>().isBossDead && !isCastingFireBallJustu)
-        //        {
-        //            castChidori();
+        if (isPlayerInChidoriRange && chidoriGlobalTimer <= 0.0f && fireBallGlobalTimer >= 0.0f && !isCastingFireBallJustu)
+        {
+            if ((Mathf.Round(player.transform.position.y) > Mathf.Round(transform.position.y)) || (Mathf.Round(player.transform.position.y) < Mathf.Round(transform.position.y)))
+            {
+                return;
+            }
+            else
+            {
+                if (!FindObjectOfType<BossHealthManager>().isBossDead && !isCastingFireBallJustu)
+                {
+                    castChidori();
                     
-        //        }
-        //        else
-        //        {
-        //            return;
-        //        }
-        //    }
-        //} 
+                }
+                else
+                {
+                    return;
+                }
+            }
+        } 
 	}
 
 
@@ -354,77 +350,76 @@ public class SasukeController : MonoBehaviour
             fireBallAudioHasPlayed = true;
         }
         
-        fireballJutsuAnimTimer = 2.1f;
+        phoenixFlowerJustuAnimTimer = 2.1f;
         canCastPhoenixFlowerJustu = false;
-        fireballJutsuTimer = fireballJutsuCoolDown;
+        phoenixFlowerJutsuTimer = phoenixFlowerJutsuCoolDown;
     }
 
     public void spawnPhoneixFireJutsu()
     {
         phoenixBallSFX.Play();
-        Instantiate(fireballJustuFireBall, fireballJutsuTopSpawnPoint.position, fireballJutsuMiddleSpawnPoint.rotation);
-        Instantiate(fireballJustuFireBall, fireballJutsuMiddleSpawnPoint.position, fireballJutsuMiddleSpawnPoint.rotation);
-        Instantiate(fireballJustuFireBall, fireballJutsuBottomSpawnPoint.position, fireballJutsuBottomSpawnPoint.rotation);
+        Instantiate(phoenixFlowerJustuFireBall, phoenixFlowerJutsuTopSpawnPoint.position, phoenixFlowerJutsuMiddleSpawnPoint.rotation);
+        Instantiate(phoenixFlowerJustuFireBall, phoenixFlowerJutsuMiddleSpawnPoint.position, phoenixFlowerJutsuMiddleSpawnPoint.rotation);
+        Instantiate(phoenixFlowerJustuFireBall, phoenixFlowerJutsuBottomSpawnPoint.position, phoenixFlowerJutsuBottomSpawnPoint.rotation);
     }
 
-    //public void castChidori()
-    //{
-    //    if (canCastChidori)
-    //    {
-    //        animator.Play("sasuke_Chidori");
-    //    }
-    //}
+    public void castChidori()
+    {
+        if(canCastChidori)
+        {
+            animator.Play("sasuke_Chidori");
+        }
+    }
+    public void chidoriStart()
+    {
+        chidoriAnimTimer = 2.0f;
+        canMove = false;
+        canCastChidori = false;
+        if (!chidoriChargeAudiohasPlayed)
+        {
+            chargeChidoriSFX.Play();
+            chidoriChargeAudiohasPlayed = true;
+        }
+    }
 
-    //public void chidoriStart()
-    //{
-    //    chidoriAnimTimer = 2.0f;
-    //    canMove = false;
-    //    canCastChidori = false;
-    //    if (!chidoriChargeAudiohasPlayed)
-    //    {
-    //        chargeChidoriSFX.Play();
-    //        chidoriChargeAudiohasPlayed = true;
-    //    }
-    //}
+    public void chidoriMiddle()
+    {
+        if (!chidoriCryAudiohasPlayed)
+        {
+            chidoriCrySFX.Play();
+            chidoriCryAudiohasPlayed = true;
+        }
+        //chidoriChargeTimer = chidoriChargeDuration;
 
-    //public void chidoriMiddle()
-    //{
-    //    if (!chidoriCryAudiohasPlayed)
-    //    {
-    //        chidoriCrySFX.Play();
-    //        chidoriCryAudiohasPlayed = true;
-    //    }
-    //    //chidoriChargeTimer = chidoriChargeDuration;
+        if (transform.localScale.x >= 0.0f)
+        {
+            rb2D.velocity = new Vector3(chidoriChargeSpeed, 0.0f);
+        }
+        else
+        {
+            rb2D.velocity = new Vector3(-chidoriChargeSpeed, 0.0f);
+        }
 
-    //    if (transform.localScale.x >= 0.0f)
-    //    {
-    //        rb2D.velocity = new Vector3(chidoriChargeSpeed, 0.0f);
-    //    }
-    //    else
-    //    {
-    //        rb2D.velocity = new Vector3(-chidoriChargeSpeed, 0.0f);
-    //    }
+    }
 
-    //}
+    public void chidoriEnd()
+    {
+        //Version 2 Chidori
+        //rb2D.velocity = new Vector2(0.0f, 0.0f);
+        canMove = true;
+        chidoriChargeAudiohasPlayed = false;
+        chidoriCryAudiohasPlayed = false;
+        chidoriGlobalTimer = chidoriGlobalCoolDown;
+        chidoriStrike = false;
+    }
 
-    //public void chidoriEnd()
-    //{
-    //    //Version 2 Chidori
-    //    //rb2D.velocity = new Vector2(0.0f, 0.0f);
-    //    canMove = true;
-    //    chidoriChargeAudiohasPlayed = false;
-    //    chidoriCryAudiohasPlayed = false;
-    //    chidoriGlobalTimer = chidoriGlobalCoolDown;
-    //    chidoriStrike = false;
-    //}
-
-    //public void chidoriStrikeCheck()
-    //{
-    //    if(chidoriHit && chidoriStrikeCD <= 0.0f)
-    //    {
-    //        HealthManager.takeDamage(5);
-    //        chidoriStrikeCD = 3.0f;
-    //        canCastChidori = false;
-    //    }
-    //}
+    public void chidoriStrikeCheck()
+    {
+        if(chidoriHit && chidoriStrikeCD <= 0.0f)
+        {
+            HealthManager.takeDamage(5);
+            chidoriStrikeCD = 3.0f;
+            canCastChidori = false;
+        }
+    }
 }
