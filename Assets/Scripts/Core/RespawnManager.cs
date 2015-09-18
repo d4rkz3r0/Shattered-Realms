@@ -41,18 +41,31 @@ public class RespawnManager : MonoBehaviour
 
     void RespawnEnemies(Transform parent)
     {
-        foreach(Transform child in parent)
-        {
-            if (child.gameObject.activeInHierarchy == false)
-            {
-                child.gameObject.GetComponent<EnemyRespawn>().ResetSelf();
-            }
-            else
-            {
-                continue;
-            }
-            
-        }
+
+		foreach (Transform child in parent)
+		{
+			if (child.gameObject.activeInHierarchy == false){
+				Debug.Log ("FIRST");
+				child.gameObject.GetComponent<EnemyRespawn>().ResetSelf();
+				Debug.Log(child.gameObject.name);
+			}
+			else{
+				Debug.Log("gotta go deeper");
+				foreach (Transform childNext in child)
+				{
+					if (childNext.gameObject.activeInHierarchy == false){
+						Debug.Log ("SECOND");
+						childNext.gameObject.GetComponent<EnemyRespawn>().ResetSelf();
+					}
+					else{
+						Debug.Log ("ive tried so hard and got so far");
+						continue;
+					}
+				}
+			}
+		}
+
+  
         isRespawning = false;
     }
 

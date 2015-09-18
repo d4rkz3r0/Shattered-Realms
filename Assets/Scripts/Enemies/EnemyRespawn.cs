@@ -29,10 +29,10 @@ public class EnemyRespawn : MonoBehaviour
             enemyAnimation = null;
         }   
 	    //Auto Hook
-        enemyHealthManager = GetComponent<EnemyHealthManager>();
-        enemyAttack        = GetComponent<EnemyAttack>();
-        enemyMovement      = GetComponent<EnemyMovement>();
-        enemyAnimator      = GetComponent<Animator>();
+			enemyHealthManager = GetComponent<EnemyHealthManager> ();
+			enemyAttack = GetComponent<EnemyAttack> ();
+			enemyMovement = GetComponent<EnemyMovement> ();
+			enemyAnimator = GetComponent<Animator> ();
 
         //Initial Save
         startingPosition = gameObject.transform.position;

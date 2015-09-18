@@ -347,25 +347,25 @@ public class EnemyMovement : MonoBehaviour {
 		case MovementBehaviour.FlyingPatrolling:
 
 			transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, actualSpeed * Time.deltaTime);
-			Debug.Log(transform.position);
-			Debug.Log(currentWaypoint);
+			//Debug.Log(transform.position);
+			//Debug.Log(currentWaypoint);
 			if(ComparePositions(currentWaypoint,transform.position))
 			{
 				//Debug.Log("Reached waypoint");
 				if(ComparePositions(waypoint1.position,transform.position)){
-					Debug.Log("Reached waypoint 1");
+					//Debug.Log("Reached waypoint 1");
 					currentWaypoint = waypoint2.position; 
 				}
 				else if(ComparePositions(waypoint2.position,transform.position)){
-					Debug.Log("Reached waypoint 2");
+					//Debug.Log("Reached waypoint 2");
 					currentWaypoint = waypoint3.position;  
 				}
 				else if(ComparePositions(waypoint3.position,transform.position)){
-					Debug.Log("Reached waypoint 3");
+				//	Debug.Log("Reached waypoint 3");
 					currentWaypoint = startingPosition; 
 				}
 				else if(ComparePositions(startingPosition,transform.position)){
-					Debug.Log("Reached starting point");
+					//Debug.Log("Reached starting point");
 					currentWaypoint = waypoint1.position; 
 				}
 			}
