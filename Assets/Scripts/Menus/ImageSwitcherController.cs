@@ -5,17 +5,19 @@ using System.Collections;
 public class ImageSwitcherController : MonoBehaviour
 {
 
-    private int imageIndex = 0;
+    public int imageIndex = 0;
     public Image[] imageBank;
     private Image currImage;
 
+
+    private controlTitleImages crtlTitle;
     public AudioSource ButtonSelectSFX;
     
 
 	// Use this for initialization
 	void Start () 
     {
-        
+        crtlTitle = FindObjectOfType<controlTitleImages>();
         currImage = GetComponent<Image>();
         currImage.sprite = imageBank[imageIndex].sprite;
 	}
@@ -27,9 +29,9 @@ public class ImageSwitcherController : MonoBehaviour
         {
             imageIndex = 0;
         }
-        if(imageIndex >= 22)
+        if(imageIndex >= 2)
         {
-            imageIndex = 22;
+            imageIndex = 2;
             currImage.sprite = imageBank[imageIndex].sprite;
             
         }
@@ -39,15 +41,16 @@ public class ImageSwitcherController : MonoBehaviour
     public void IncreaseScene()
     {
         GetComponent<AudioSource>().Play();
-        if (imageIndex >= 22)
+        if (imageIndex >= 2)
         {
-            imageIndex = 22;
-            ChangeScenes(5);
+            imageIndex = 2;
+            crtlTitle.imageIndex = 2;
+            ChangeScenes(6);
         }
         else
         {
+            crtlTitle.IncreaseIndex();
             imageIndex++;
-            PreStoryText.textIndex++;
             currImage.sprite = imageBank[imageIndex].sprite;
         } 
     }
@@ -57,13 +60,14 @@ public class ImageSwitcherController : MonoBehaviour
         GetComponent<AudioSource>().Play();
         if (imageIndex <= 0)
         {
+            crtlTitle.ZeroOut();
             imageIndex = 0;
             return;
         }
         else
         {
+            crtlTitle.DecrementIndex();
             imageIndex--;
-            PreStoryText.textIndex--;
             currImage.sprite = imageBank[imageIndex].sprite;
         }
         
@@ -90,8 +94,8 @@ public class ImageSwitcherController : MonoBehaviour
 
     public void SkipIntro()
     {
-        imageIndex = 22;
+        imageIndex = 2;
+        crtlTitle.imageIndex = 2;
         currImage.sprite = imageBank[imageIndex].sprite;
-        PreStoryText.textIndex = 22;
     }
 }

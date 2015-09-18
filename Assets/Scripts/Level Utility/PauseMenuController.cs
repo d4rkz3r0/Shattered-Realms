@@ -80,4 +80,9 @@ public class PauseMenuController : MonoBehaviour
         transitionScene = true;
         StartCoroutine(ChangeScene(sceneChoice, 1.1f));
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

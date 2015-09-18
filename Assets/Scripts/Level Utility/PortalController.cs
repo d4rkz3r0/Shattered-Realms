@@ -73,52 +73,52 @@ public class PortalController : MonoBehaviour
         //Save Level Time
         switch(Application.loadedLevel)
         {
-            case 6:
+            case 7:
                 {
                     GameOptionData.levelOneActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 7:
+            case 8:
                 {
                     GameOptionData.levelTwoActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 8:
+            case 9:
                 {
                     GameOptionData.levelThreeActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 9:
+            case 10:
                 {
                     GameOptionData.levelFourActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 10:
+            case 11:
                 {
                     GameOptionData.levelFiveActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 11:
+            case 12:
                 {
                     GameOptionData.levelSixActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 12:
+            case 13:
                 {
                     GameOptionData.levelSevenActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 13:
+            case 14:
                 {
                     GameOptionData.levelEightActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 14:
+            case 15:
                 {
                     GameOptionData.levelNineActualTime = levelCompletedTimeSecs;
                     break;
                 }
-            case 15:
+            case 16:
                 {
                     GameOptionData.levelTenActualTime = levelCompletedTimeSecs;
                     break;
@@ -136,52 +136,52 @@ public class PortalController : MonoBehaviour
         //Save Max Level Time
         switch (Application.loadedLevel)
         {
-            case 6:
+            case 7:
                 {
                     GameOptionData.levelOneMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 7:
+            case 8:
                 {
                     GameOptionData.levelTwoMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 8:
+            case 9:
                 {
                     GameOptionData.levelThreeMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 9:
+            case 10:
                 {
                     GameOptionData.levelFourMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 10:
+            case 11:
                 {
                     GameOptionData.levelFiveMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 11:
+            case 12:
                 {
                     GameOptionData.levelSixMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 12:
+            case 13:
                 {
                     GameOptionData.levelSevenMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 13:
+            case 14:
                 {
                     GameOptionData.levelEightMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 14:
+            case 15:
                 {
                     GameOptionData.levelNineMaxTime = maxLevelTimeSecs;
                     break;
                 }
-            case 15:
+            case 16:
                 {
                     GameOptionData.levelTenMaxTime = maxLevelTimeSecs;
                     break;
@@ -205,70 +205,70 @@ public class PortalController : MonoBehaviour
         //Save Goal Times
         switch (Application.loadedLevel)
         {
-            case 6:
+            case 7:
                 {
                     GameOptionData.levelOneBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelOneSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelOneGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 7:
+            case 8:
                 {
                     GameOptionData.levelTwoBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelTwoSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelTwoGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 8:
+            case 9:
                 {
                     GameOptionData.levelThreeBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelThreeSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelThreeGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 9:
+            case 10:
                 {
                     GameOptionData.levelFourBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelFourSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelFourGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 10:
+            case 11:
                 {
                     GameOptionData.levelFiveBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelFiveSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelFiveGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 11:
+            case 12:
                 {
                     GameOptionData.levelSixBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelSixSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelSixGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 12:
+            case 13:
                 {
                     GameOptionData.levelSevenBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelSevenSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelSevenGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 13:
+            case 14:
                 {
                     GameOptionData.levelEightBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelEightSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelEightGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 14:
+            case 15:
                 {
                     GameOptionData.levelNineBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelNineSilverTime = levelSilverTimeSecs;
                     GameOptionData.levelNineGoldTime = levelGoldTimeSecs;
                     break;
                 }
-            case 15:
+            case 16:
                 {
                     GameOptionData.levelTenBronzeTime = levelBronzeTimeSecs;
                     GameOptionData.levelTenSilverTime = levelSilverTimeSecs;
@@ -293,6 +293,6 @@ public class PortalController : MonoBehaviour
         //GameOptionData.xpCollectedPercentage = xpCollectedPercentage;
 
         //Always Load the Level Complete Screen
-        Application.LoadLevel(16);
+        Application.LoadLevel(17);
     }
 }

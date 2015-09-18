@@ -116,7 +116,7 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator RespawnPlayerCoRoutine()
     {
-        if (Application.loadedLevel == 8)
+        if (Application.loadedLevel == 9)
         {
             if(!FindObjectOfType<SasukeController>().hasPlayedOnce && GameObject.Find("BossIntro") == null)
             {

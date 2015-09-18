@@ -1,4 +1,4 @@
-﻿	using UnityEngine;
+	using UnityEngine;
 	using System.Collections;
 	
 	public class ChargeController : MonoBehaviour
@@ -20,7 +20,7 @@
 		// Use this for initialization
 		void Start ()
 		{
-			if (Application.loadedLevel == 8) {
+			if (Application.loadedLevel == 9) {
 			sasuke = FindObjectOfType<BossHealthManager>();
 		}
 		}

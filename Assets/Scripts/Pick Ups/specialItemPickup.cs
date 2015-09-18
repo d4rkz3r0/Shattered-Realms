@@ -47,37 +47,37 @@ public class specialItemPickup : MonoBehaviour
 
         switch(Application.loadedLevel)
         {
-            case 6:
+            case 7:
                 {
                     GameOptionData.level1SpecialItemCollected = true;
                     GameOptionData.numberOfSpecialItemsCollected++;
                     break;
                 }
-            case 7:
+            case 8:
                 {
                     GameOptionData.level2SpecialItemCollected = true;
                     GameOptionData.numberOfSpecialItemsCollected++;
                     break;
                 }
-            case 9:
+            case 10:
                 {
                     GameOptionData.level4SpecialItemCollected = true;
                     GameOptionData.numberOfSpecialItemsCollected++;
                     break;
                 }
-            case 10:
+            case 11:
                 {
                     GameOptionData.level5SpecialItemCollected = true;
                     GameOptionData.numberOfSpecialItemsCollected++;
                     break;
                 }
-            case 12:
+            case 13:
                 {
                     GameOptionData.level7SpecialItemCollected = true;
                     GameOptionData.numberOfSpecialItemsCollected++;
                     break;
                 }
-            case 13:
+            case 14:
                 {
                     GameOptionData.level8SpecialItemCollected = true;
                     GameOptionData.numberOfSpecialItemsCollected++;

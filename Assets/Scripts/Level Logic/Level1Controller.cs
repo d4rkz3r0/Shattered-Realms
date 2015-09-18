@@ -105,7 +105,7 @@ public class Level1Controller : MonoBehaviour
 
             if(Input.GetAxis("Submit") != 0.0f)
             {
-                Application.LoadLevel(7);
+                Application.LoadLevel(8);
             }
         }
 
