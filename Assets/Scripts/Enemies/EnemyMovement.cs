@@ -104,13 +104,13 @@ public class EnemyMovement : MonoBehaviour {
     {
 		float xPos;
 		if (target.transform.position.x > transform.position.x) {
-			if (startingPosition.x > transform.position.x) {
+			if (startingPosition.x < transform.position.x) {
 				xPos = transform.position.x;
 			} else {
 				xPos = startingPosition.x;
 			}
 		} else {
-			if (startingPosition.x < transform.position.x) {
+			if (startingPosition.x > transform.position.x) {
 				xPos = transform.position.x;
 			} else {
 				xPos = startingPosition.x;
@@ -119,7 +119,7 @@ public class EnemyMovement : MonoBehaviour {
 
 		if(rb2d.gravityScale == 0){
 		if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro) {
-			if(Mathf.Abs(target.transform.position.x - xPos)< 10){
+			if(Mathf.Abs(target.transform.position.x - xPos) < 10){
 					rb2d.gravityScale = 1;
 					gameObject.GetComponent<CircleCollider2D> ().enabled = true;
 					jumpPower = defJumpPower;
