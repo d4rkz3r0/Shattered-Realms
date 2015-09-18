@@ -1271,7 +1271,7 @@ public class MasterController : MonoBehaviour
 			}
 		}
 
-		if (other.tag == "Ground" || other.tag == "Platform") {
+		if ((other.tag == "Ground" || other.tag == "Platform") && !wallCheck.touchingWall) {
 			transform.rotation = Quaternion.Euler(0, 0, 0);
 			afterClimbEff = false;
 			disableInput = false;
