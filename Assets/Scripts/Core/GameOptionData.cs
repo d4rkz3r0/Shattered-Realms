@@ -133,7 +133,7 @@ public static class GameOptionData
         musicVolume = 1.0f;
         sfxVolume = 1.0f;
 
-        startingLevel = 0; //Main Menu
+        startingLevel = 0; //Splash Screen
 
         //Screen.SetResolution(screenResolutionWidth, screenResolutionHeight, fullScreen);
 
@@ -144,7 +144,7 @@ public static class GameOptionData
     {
         switch(Application.loadedLevel)
         {
-            case 6:
+            case 7:
                 {
                     if(levelTimeInSecs >= levelOneMaxTime && levelTimeInSecs >= levelOneBronzeTime)
                     {
@@ -174,7 +174,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 7:
+            case 8:
                 {
                     if (levelTimeInSecs >= levelTwoMaxTime && levelTimeInSecs >= levelTwoBronzeTime)
                     {
@@ -204,7 +204,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 8:
+            case 9:
                 {
                     if (levelTimeInSecs >= levelThreeMaxTime && levelTimeInSecs >= levelThreeBronzeTime)
                     {
@@ -234,7 +234,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 9:
+            case 10:
                 {
                     if (levelTimeInSecs >= levelFourMaxTime && levelTimeInSecs >= levelFourBronzeTime)
                     {
@@ -264,7 +264,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 10:
+            case 11:
                 {
                     if (levelTimeInSecs >= levelFiveMaxTime && levelTimeInSecs >= levelFiveBronzeTime)
                     {
@@ -294,7 +294,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 11:
+            case 12:
                 {
                     if (levelTimeInSecs >= levelSixMaxTime && levelTimeInSecs >= levelSixBronzeTime)
                     {
@@ -324,7 +324,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 12:
+            case 13:
                 {
                     if (levelTimeInSecs >= levelSevenMaxTime && levelTimeInSecs >= levelSevenBronzeTime)
                     {
@@ -354,7 +354,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 13:
+            case 14:
                 {
                     if (levelTimeInSecs >= levelEightMaxTime && levelTimeInSecs >= levelEightBronzeTime)
                     {
@@ -384,7 +384,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 14:
+            case 15:
                 {
                     if (levelTimeInSecs >= levelNineMaxTime && levelTimeInSecs >= levelNineBronzeTime)
                     {
@@ -414,7 +414,7 @@ public static class GameOptionData
                     }
                     break;
                 }
-            case 15:
+            case 16:
                 {
                     if (levelTimeInSecs >= levelTenMaxTime && levelTimeInSecs >= levelTenBronzeTime)
                     {

@@ -50,7 +50,7 @@ public class EnemyHealthManager : MonoBehaviour
 
 	    if(isDead)
         {
-            if(Application.loadedLevel == 11 && gameObject.name == "Gizmo")
+            if(Application.loadedLevel == 12 && gameObject.name == "Gizmo")
             {
                 Vector3 formattedWarpPortalPos = gameObject.transform.position;
                 formattedWarpPortalPos += new Vector3(0.0f, 1.0f, 0.0f);
@@ -66,7 +66,7 @@ public class EnemyHealthManager : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            if(Application.loadedLevel == 15 && gameObject.name == "Mario")
+            if(Application.loadedLevel == 16 && gameObject.name == "Mario")
             {
                 Vector3 formattedWarpPortalPos = gameObject.transform.position;
                 formattedWarpPortalPos += new Vector3(0.0f, 1.0f, 0.0f);

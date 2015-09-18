@@ -232,6 +232,7 @@ public class MasterController : MonoBehaviour
     private PortalController warpPortal;
     private KeyPickup warpKey;
     private BossHealthManager sasukeHP;
+    //private PauseOverlay PauseMenu;
 
 
     
@@ -266,21 +267,18 @@ public class MasterController : MonoBehaviour
         warpPortal = FindObjectOfType<PortalController>();
         warpKey = FindObjectOfType<KeyPickup>();
 		spRender = GetComponent<SpriteRenderer> ();
+        //PauseMenu = FindObjectOfType<PauseOverlay>();
 
         //defaultDrag = rb2D.drag;
 
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
-			Debug.Log("level lodaded");
             executeSasukeTimer = 2.0f;
             sasukeBossFightOver = false;
             sasuke = FindObjectOfType<SasukeController>();
-          
-
-			Debug.Log(sasukeHP);
         }
 
-        if(Application.loadedLevel == 11)
+        if(Application.loadedLevel == 12)
         {
             gizmoBossFightOver = false;
             gizmo = GameObject.Find("Gizmo");
@@ -353,14 +351,20 @@ public class MasterController : MonoBehaviour
 			bfHitCD -= Time.deltaTime;
 		}
 
-		if (Application.loadedLevel == 8) {
+		if (Application.loadedLevel == 9) {
 			sasukeHP = FindObjectOfType<BossHealthManager> ();
 		}
 
-		if (disableInput) {
+		if (disableInput) 
+        {
 			idleTimer += Time.deltaTime;
-			if (idleTimer > 3) {
-				disableInput = false;
+			if (idleTimer > 3)
+            {
+                if(Application.loadedLevel != 9)
+                {
+                    disableInput = false;
+                }
+				
 			}
 		} 
 		else {
@@ -490,6 +494,35 @@ public class MasterController : MonoBehaviour
                     rb2D.velocity = new Vector2(rb2D.velocity.x, jumpHeight);
                     jumpsRemaining--;
                 }
+            }
+
+            //Straight Selection
+            if(Input.GetButtonDown("Char1") && currentCharacter != 1)
+            {
+                currentCharacter = 1;
+                boxColliders[1].offset = new Vector2(0.0f, 0);
+                boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
+                circleCollider.offset = new Vector2(0.0f, -0.83f);
+                transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
+                anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+            }
+
+            if (Input.GetButtonDown("Char2") && currentCharacter != 2)
+            {
+                currentCharacter = 2;
+                boxColliders[1].offset = new Vector2(0.0f, 0);
+                boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
+                circleCollider.offset = new Vector2(0.0f, -0.83f);
+                anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+            }
+
+            if (Input.GetButtonDown("Char3") && currentCharacter != 3)
+            {
+                currentCharacter = 3;
+                boxColliders[0].offset = new Vector2(0.0f, 0.61127716f / 2);
+                circleCollider.offset = new Vector2(0.0f, -0.56f);
+                boxColliders[1].offset = new Vector2(0.0f, 0.56f / 2);
+                anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
             }
 
             //Rotate Characters
@@ -1041,7 +1074,7 @@ public class MasterController : MonoBehaviour
             transform.position = warpPortal.transform.position;
         }
 
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
             if ((Input.GetAxis("Execute") != 0 || Input.GetKeyDown(KeyCode.X)))
             {
@@ -1128,7 +1161,7 @@ public class MasterController : MonoBehaviour
         }
 
         //WARNING: FIX THIS SPAGHETTI, Interdependent code module: EnemyHealthManager.cs!
-        if(Application.loadedLevel == 11)
+        if(Application.loadedLevel == 12)
         {
             if (gizmoBossFightOver)
             {
@@ -1214,7 +1247,7 @@ public class MasterController : MonoBehaviour
 
             if (chaosEmeraldsAnimTimer <= 0.0f)
             {
-				Debug.Log("HIIIIIIII");
+				//Debug.Log("HIIIIIIII");
 				boxColliders[1].offset = new Vector2(0.0f, 0.56f/2);
 				circleCollider.radius = 0.2f;
                 isGoingSuper = false;
@@ -1271,7 +1304,7 @@ public class MasterController : MonoBehaviour
 			}
 		}
 
-		if (other.tag == "Ground" || other.tag == "Platform") {
+		if ((other.tag == "Ground" || other.tag == "Platform") && !wallCheck.touchingWall) {
 			transform.rotation = Quaternion.Euler(0, 0, 0);
 			afterClimbEff = false;
 			disableInput = false;
@@ -1433,7 +1466,7 @@ public class MasterController : MonoBehaviour
             }
             if(other.tag == "Boss")
             {
-                if(Application.loadedLevel == 8)
+                if(Application.loadedLevel == 9)
                 {
                     //Sasuke Takes Dmg
                     if (GameObject.FindObjectOfType<BossHealthManager>() != null)
@@ -1441,12 +1474,12 @@ public class MasterController : MonoBehaviour
                         GameObject.FindObjectOfType<BossHealthManager>().takeDamage(sonicJumpDamage);
                     }
                 }
-                else if(Application.loadedLevel == 11)
+                else if(Application.loadedLevel == 12)
                 {
                     //Gizmo Takes Dmg
                     gizmo.GetComponent<EnemyHealthManager>().takeDamage(sonicJumpDamage);
                 }
-                else if (Application.loadedLevel == 14)
+                else if (Application.loadedLevel == 15)
                 {
                     //Robotnik Takes Double Dmg
                     sonicJumpDamage *= 2;

@@ -7,8 +7,12 @@ public class SettingsMenuController : MonoBehaviour
     public Slider musicVolumeSlider;
     public Slider sfxVolumeSlider;
     private AudioSource testSFX;
-
     public AudioSource ButtonSelectSFX;
+    public Image backgroundImage;
+    public Image progressBarImage;
+    public Text percentageText;
+    private int loadingProgress = 0;
+    //public GameObject loadingAnimation;
 
     void Awake()
     {
@@ -18,6 +22,8 @@ public class SettingsMenuController : MonoBehaviour
 	void Start () 
     {
         testSFX = GetComponent<AudioSource>();
+
+        //loadingScreen = FindObjectOfType<LoadingScreenController>();
 	}
 	
 	void Update ()
@@ -35,18 +41,41 @@ public class SettingsMenuController : MonoBehaviour
         GameOptionData.sfxVolume = newSFXVolume;
     }
 
-    public IEnumerator ChangeScene(int sceneChoice, float waitTime)
+    public IEnumerator ChangeScene(int sceneChoice)
     {
-        yield return new WaitForSeconds(waitTime);
-        GameOptionData.currentLevel = sceneChoice;
-        Application.LoadLevel(sceneChoice);
+        backgroundImage.gameObject.SetActive(true);
+        progressBarImage.gameObject.SetActive(true);
+        percentageText.gameObject.SetActive(true);
 
+        progressBarImage.transform.localScale = new Vector3(loadingProgress,
+                                                           progressBarImage.transform.localScale.y,
+                                                           progressBarImage.transform.localScale.z);
+        percentageText.text = "Loading..." + loadingProgress + "%";
+
+
+        //Loads Level in background thread, without loss of input.
+        AsyncOperation aSync = Application.LoadLevelAsync(sceneChoice);
+
+        while (!aSync.isDone)
+        {
+
+            //Update While Frozen
+            loadingProgress = (int)(aSync.progress * 100);
+
+            //Use it
+            percentageText.text = "Loading..." + loadingProgress + "%";
+            progressBarImage.transform.localScale = new Vector3(aSync.progress,
+                                                            progressBarImage.transform.localScale.y,
+                                                            progressBarImage.transform.localScale.z);
+            yield return null;
+        } 
     }
 
     public void ChangeScenes(int sceneChoice)
     {
         ButtonSelectSFX.Play();
-        StartCoroutine(ChangeScene(sceneChoice, 1.1f));
+        GameOptionData.currentLevel = sceneChoice;
+        StartCoroutine("ChangeScene", sceneChoice);
     }
 
     public void ToggleMusic()

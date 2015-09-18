@@ -65,7 +65,7 @@ public class EnemyAttack : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		GizmoAttack = GetComponent<AudioSource> ();
 
-        if(Application.loadedLevel == 8)
+        if(Application.loadedLevel == 9)
         {
             sasuke = FindObjectOfType<SasukeController>();
         }

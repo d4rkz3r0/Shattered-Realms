@@ -45,83 +45,87 @@ public class AudioManager : MonoBehaviour
 
    void OnLevelWasLoaded(int level)
     {
-        if (Application.loadedLevel == 3)
+        if (Application.loadedLevel == 4)
         {
             //currAudio.Stop();
             currAudio = fileSelectMusic;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 4)
+        else if (Application.loadedLevel == 5)
         {
             currAudio.Stop();
             currAudio = preStoryMusic;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 5)
+        else if (Application.loadedLevel == 6)
         {
             currAudio.Stop();
             currAudio = levelSelectMusic;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 6)
+        else if (Application.loadedLevel == 7)
         {
             currAudio.Stop();
             currAudio = level1Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 7)
+        else if (Application.loadedLevel == 8)
         {
             currAudio.Stop();
             currAudio = level2Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 8)
+        else if (Application.loadedLevel == 9)
         {
             currAudio.Stop();
             currAudio = level3Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 9)
+        else if (Application.loadedLevel == 10)
         {
             currAudio.Stop();
             currAudio = level4Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 10)
+        else if (Application.loadedLevel == 11)
         {
             currAudio.Stop();
             currAudio = level5Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 11)
+        else if (Application.loadedLevel == 12)
         {
             currAudio.Stop();
             currAudio = level6Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 12)
+        else if (Application.loadedLevel == 13)
         {
             currAudio.Stop();
             currAudio = level7Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 13)
+        else if (Application.loadedLevel == 14)
         {
             currAudio.Stop();
             currAudio = level8Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 14)
+        else if (Application.loadedLevel == 15)
         {
             currAudio.Stop();
             currAudio = level9Music;
             currAudio.Play();
         }
-        else if (Application.loadedLevel == 15)
+        else if (Application.loadedLevel == 16)
         {
             currAudio.Stop();
             currAudio = level10Music;
             currAudio.Play();
+        }
+        else if(Application.loadedLevel == 17)
+        {
+            currAudio.Stop();
         }
     }
 

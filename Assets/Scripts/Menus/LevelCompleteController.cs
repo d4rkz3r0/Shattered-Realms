@@ -31,6 +31,8 @@ public class LevelCompleteController : MonoBehaviour
     public Image level7SpecialItem;
     public Image level8SpecialItem;
 
+    private AudioManager AM;
+
 
 	void Start () 
     {
@@ -80,7 +82,7 @@ public class LevelCompleteController : MonoBehaviour
     {
         switch(GameOptionData.prevLevel)
         {
-            case 6:
+            case 7:
                 {
                     yourTimeText.text = GameOptionData.levelOneActualTime.ToString() + " seconds";
                     goldTierTimeText.text = GameOptionData.levelOneGoldTime.ToString() + " seconds";
@@ -89,7 +91,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelOneTimeTier;
                     break;
                 }
-            case 7:
+            case 8:
                 {
                     yourTimeText.text = GameOptionData.levelTwoActualTime.ToString() + " seconds";
                     goldTierTimeText.text = GameOptionData.levelTwoGoldTime.ToString() + " seconds";
@@ -98,7 +100,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelTwoTimeTier;
                     break;
                 }
-            case 8:
+            case 9:
                 {
                     yourTimeText.text = GameOptionData.levelThreeActualTime.ToString() + " seconds";
                     goldTierTimeText.text = GameOptionData.levelThreeGoldTime.ToString() + " seconds";
@@ -107,7 +109,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelThreeTimeTier;
                     break;
                 }
-            case 9:
+            case 10:
                 {
                     goldTierTimeText.text = GameOptionData.levelFourGoldTime.ToString() + " seconds";
                     silverTierTimeText.text = GameOptionData.levelFourSilverTime.ToString() + " seconds";
@@ -116,7 +118,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelFourTimeTier;
                     break;
                 }
-            case 10:
+            case 11:
                 {
                     goldTierTimeText.text = GameOptionData.levelFiveGoldTime.ToString() + " seconds";
                     silverTierTimeText.text = GameOptionData.levelFiveSilverTime.ToString() + " seconds";
@@ -125,7 +127,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelFiveTimeTier;
                     break;
                 }
-            case 11:
+            case 12:
                 {
                     goldTierTimeText.text = GameOptionData.levelSixGoldTime.ToString() + " seconds";
                     silverTierTimeText.text = GameOptionData.levelSixSilverTime.ToString() + " seconds";
@@ -134,7 +136,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelSixTimeTier;
                     break;
                 }
-            case 12:
+            case 13:
                 {
                     goldTierTimeText.text = GameOptionData.levelSevenGoldTime.ToString() + " seconds";
                     silverTierTimeText.text = GameOptionData.levelSevenSilverTime.ToString() + " seconds";
@@ -143,7 +145,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelSevenTimeTier;
                     break;
                 }
-            case 13:
+            case 14:
                 {
                     goldTierTimeText.text = GameOptionData.levelEightGoldTime.ToString() + " seconds";
                     silverTierTimeText.text = GameOptionData.levelEightSilverTime.ToString() + " seconds";
@@ -152,7 +154,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelEightTimeTier;
                     break;
                 }
-            case 14:
+            case 15:
                 {
                     goldTierTimeText.text = GameOptionData.levelNineGoldTime.ToString() + " seconds";
                     silverTierTimeText.text = GameOptionData.levelNineSilverTime.ToString() + " seconds";
@@ -161,7 +163,7 @@ public class LevelCompleteController : MonoBehaviour
                     goalTimerTier = GameOptionData.levelNineTimeTier;
                     break;
                 }
-            case 15:
+            case 16:
                 {
                     goldTierTimeText.text = GameOptionData.levelTenGoldTime.ToString() + " seconds";
                     silverTierTimeText.text = GameOptionData.levelTenSilverTime.ToString() + " seconds";
@@ -190,7 +192,7 @@ public class LevelCompleteController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         //If End of Game, return to Main Menu
-        if(sceneChoice == 16)
+        if(sceneChoice == 17)
         {
             sceneChoice = 0;
         }
@@ -207,6 +209,6 @@ public class LevelCompleteController : MonoBehaviour
     public void LevelSelect()
     {
         ButtonSelectSFX.Play();
-        StartCoroutine(ChangeScene(5, 1.1f));
+        StartCoroutine(ChangeScene(6, 1.1f));
     }
 }
