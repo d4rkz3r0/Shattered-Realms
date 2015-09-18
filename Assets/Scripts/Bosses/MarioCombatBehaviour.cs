@@ -17,6 +17,7 @@ public class MarioCombatBehaviour : MonoBehaviour {
 	private Transform trf;
 	private Rigidbody2D rb2d;
 	public bool MysteryBoxDestroyed;
+	private Rigidbody2D playerRigidBody;
 	
 
 	// Use this for initialization
@@ -121,6 +122,20 @@ public class MarioCombatBehaviour : MonoBehaviour {
 			
 			if (attackTimer > 0) {
 				attackTimer -= Time.deltaTime;
+			}
+
+			if (gameObject.GetComponent<MarioMovementBehaviour> ().TanookiPwrActivate == true)
+			{
+				playerRigidBody = player.GetComponent<Rigidbody2D>();
+				if (player.transform.position.x < transform.position.x)
+				{
+
+					playerRigidBody.velocity = new Vector2(-10, 10);
+				}
+				else
+				{
+					playerRigidBody.velocity = new Vector2(10, 10);
+				}
 			}
 		}
 	

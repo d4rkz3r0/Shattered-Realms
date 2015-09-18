@@ -40,6 +40,8 @@ public class EnemyAttack : MonoBehaviour {
 	//Stunned
 	private float stunTimer;
 
+	private AudioSource GizmoAttack;
+
 
 	//Other References
     private SasukeController sasuke;
@@ -47,6 +49,7 @@ public class EnemyAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
         if (GetComponent<EnemyAnimation>() != null)
 		{
 			enemyAnim = FindObjectOfType<EnemyAnimation>();
@@ -60,6 +63,7 @@ public class EnemyAttack : MonoBehaviour {
 		playerSound = GameObject.Find("Player").GetComponent<AudioSource>();
 		playerScript = GameObject.Find ("Player").GetComponent<MasterController> ();
 		player = GameObject.Find ("Player");
+		GizmoAttack = GetComponent<AudioSource> ();
 
         if(Application.loadedLevel == 8)
         {
@@ -97,6 +101,7 @@ public class EnemyAttack : MonoBehaviour {
 				{
 					enemyAnim = null;
 				} 
+				GizmoAttack.Play ();
 				aiming = player.transform.position - transform.position;
 				attackTimer = timeBetweenAttacks;
 				temp = Instantiate(projectile);

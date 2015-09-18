@@ -4,6 +4,7 @@ using System.Collections;
 public class DoorTrigger : MonoBehaviour {
 	
 	public Transform door;
+	public bool DoorisActive;
 
 	// Use this for initialization
 	void Start () {

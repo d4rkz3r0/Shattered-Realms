@@ -1343,7 +1343,7 @@ public class MasterController : MonoBehaviour
 			}
         }
 
-		Debug.Log("trying");
+		//Debug.Log("trying");
         if (other.tag == "Boss" && isBackFlipping && bfHitCD <= 0)
         {
 			bfHitCD = 1;
