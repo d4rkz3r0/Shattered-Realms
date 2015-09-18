@@ -23,9 +23,18 @@ public class RespawnManager : MonoBehaviour
         }
         else
         {
-            RespawnHPItems(GemContainer);
-            RespawnEnemies(transform);
-            isRespawning = false;
+            
+            if(Application.loadedLevel == 9)
+            {
+                RespawnHPItems(GemContainer);
+                isRespawning = false;
+            }
+            else
+            {
+                RespawnHPItems(GemContainer);
+                RespawnEnemies(transform);
+                isRespawning = false;
+            }
         }
 	}
 

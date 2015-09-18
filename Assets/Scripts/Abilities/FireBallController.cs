@@ -42,11 +42,10 @@ public class FireBallController : MonoBehaviour
 
         switch(Application.loadedLevel)
         {
-            case 8:
+            case 9:
                 {
 		
                     sasuke = FindObjectOfType<BossHealthManager>();
-			Debug.Log(sasuke);
                     break;
                 }
             default:
@@ -87,9 +86,11 @@ public class FireBallController : MonoBehaviour
 		}
 		if (other.tag == "Boss") {
             
-			if (sasuke != null) {
+			if (sasuke != null) 
+            {
 				sasuke.takeDamage (abilityDamage);
-			} else {
+			} else
+            {
 				return;
 			}
 		}

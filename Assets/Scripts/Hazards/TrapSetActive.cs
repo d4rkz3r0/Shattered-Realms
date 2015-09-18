@@ -27,7 +27,7 @@ public class TrapSetActive : MonoBehaviour {
 		if (playertriggered == true) {
 
 			transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, actualSpeed * Time.deltaTime);
-			
+
 			if(transform.position == currentWaypoint)
 			{
 				currentWaypoint = startingPosition;

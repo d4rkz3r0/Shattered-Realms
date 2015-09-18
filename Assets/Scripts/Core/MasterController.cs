@@ -273,13 +273,9 @@ public class MasterController : MonoBehaviour
 
         if(Application.loadedLevel == 9)
         {
-			Debug.Log("level loaded");
             executeSasukeTimer = 2.0f;
             sasukeBossFightOver = false;
             sasuke = FindObjectOfType<SasukeController>();
-          
-
-			Debug.Log(sasukeHP);
         }
 
         if(Application.loadedLevel == 12)
