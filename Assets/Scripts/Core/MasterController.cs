@@ -232,6 +232,7 @@ public class MasterController : MonoBehaviour
     private PortalController warpPortal;
     private KeyPickup warpKey;
     private BossHealthManager sasukeHP;
+    //private PauseOverlay PauseMenu;
 
 
     
@@ -266,12 +267,13 @@ public class MasterController : MonoBehaviour
         warpPortal = FindObjectOfType<PortalController>();
         warpKey = FindObjectOfType<KeyPickup>();
 		spRender = GetComponent<SpriteRenderer> ();
+        //PauseMenu = FindObjectOfType<PauseOverlay>();
 
         //defaultDrag = rb2D.drag;
 
         if(Application.loadedLevel == 9)
         {
-			Debug.Log("level lodaded");
+			Debug.Log("level loaded");
             executeSasukeTimer = 2.0f;
             sasukeBossFightOver = false;
             sasuke = FindObjectOfType<SasukeController>();
@@ -490,6 +492,35 @@ public class MasterController : MonoBehaviour
                     rb2D.velocity = new Vector2(rb2D.velocity.x, jumpHeight);
                     jumpsRemaining--;
                 }
+            }
+
+            //Straight Selection
+            if(Input.GetButtonDown("Char1"))
+            {
+                currentCharacter = 1;
+                boxColliders[1].offset = new Vector2(0.0f, 0);
+                boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
+                circleCollider.offset = new Vector2(0.0f, -0.83f);
+                transform.position = new Vector3(transform.position.x, transform.position.y + 0.26992f, transform.position.z);
+                anim.runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+            }
+
+            if(Input.GetButtonDown("Char2"))
+            {
+                currentCharacter = 2;
+                boxColliders[1].offset = new Vector2(0.0f, 0);
+                boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
+                circleCollider.offset = new Vector2(0.0f, -0.83f);
+                anim.runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+            }
+
+            if (Input.GetButtonDown("Char3"))
+            {
+                currentCharacter = 3;
+                boxColliders[0].offset = new Vector2(0.0f, 0.61127716f / 2);
+                circleCollider.offset = new Vector2(0.0f, -0.56f);
+                boxColliders[1].offset = new Vector2(0.0f, 0.56f / 2);
+                anim.runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
             }
 
             //Rotate Characters
@@ -1214,7 +1245,7 @@ public class MasterController : MonoBehaviour
 
             if (chaosEmeraldsAnimTimer <= 0.0f)
             {
-				Debug.Log("HIIIIIIII");
+				//Debug.Log("HIIIIIIII");
 				boxColliders[1].offset = new Vector2(0.0f, 0.56f/2);
 				circleCollider.radius = 0.2f;
                 isGoingSuper = false;
