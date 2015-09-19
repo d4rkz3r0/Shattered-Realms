@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class Level2Logic : MonoBehaviour 
+public class Level2GameLogic : MonoBehaviour 
 {
-    public float fishJumpHeight;
+    private float fishJumpHeight;
     private CameraController mainCamera;
 	void Start ()
     {
