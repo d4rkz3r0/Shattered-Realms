@@ -12,9 +12,11 @@ public class TreasureChest : MonoBehaviour
     private float chestAnimDuration;
     private Animator anim;
     private bool audioOnce;
+    private MasterController player;
 
 	void Start () 
     {
+        player = FindObjectOfType<MasterController>();
         audioOnce = false;
         chestAnimDuration = 1.33f;
         anim = GetComponent<Animator>();
@@ -50,7 +52,7 @@ public class TreasureChest : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "PlayerAbility")
+        if (other.tag == "PlayerAbility" || player.isBackFlipping || player.isSpinDashing || player.isSpringing || player.isGoingSuper)
         {
             chestHitSFX.Play();
             chestHP -= 1;

@@ -424,25 +424,58 @@ public class MessageController : MonoBehaviour
                         "grant it...";
                     break;
                 }
-			case 200:
-			{
-				displayedText.text =
-					"You think you can stop me?";
-				break;
-			}
-			case 201:
-			{
-				displayedText.text =
-					"You Don't have what it takes!";
-				break;
-			}
-			case 202:
-			{
-				displayedText.text =
-					"Go ahead and try!\n" +
-					"My minions will stop you!\n";
-				break;
-			}
+
+                //Begin Level 2 Sample Text Dialogue
+            case 150:
+                {
+                    displayedText.text =
+                        "My name is Itachi\n" +
+                        "and I love Genjutsu.";
+                    break;
+                }
+            case 151:
+                {
+                    displayedText.text =
+                        "My name is Cyborg\n" +
+                        "and I want Starfire...";
+                    break;
+                }
+            case 152:
+                {
+                    displayedText.text =
+                        "My name is Sonic\n" +
+                        "and I want Tails...";
+                    break;
+                }
+            case 153:
+                {
+                    displayedText.text =
+                        "My name is Sasuke\n" +
+                        "and I <3 Naruto...";
+                    break;
+                }
+                //End Level 2 Sample Text Dialogue
+
+            case 200:
+                {
+                    displayedText.text =
+                        "You think you can stop me?";
+                    break;
+                }
+            case 201:
+                {
+                    displayedText.text =
+                        "You Don't have what it\n" + 
+						"takes!\n";
+                    break;
+                }
+            case 202:
+                {
+                    displayedText.text =
+                        "Go ahead and try!\n" +
+                        "My minions will stop you!\n";
+                    break;
+                }
 
 
             default:
