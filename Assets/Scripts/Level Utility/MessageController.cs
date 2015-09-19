@@ -465,7 +465,8 @@ public class MessageController : MonoBehaviour
             case 201:
                 {
                     displayedText.text =
-                        "You Don't have what it takes!";
+                        "You Don't have what it\n" + 
+						"takes!\n";
                     break;
                 }
             case 202:
