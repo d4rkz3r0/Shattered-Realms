@@ -17,6 +17,8 @@ public class MasterController : MonoBehaviour
 
 	public GameObject damAnim;
 
+	private BoxCollider2D[] groundWallC;
+
 	//Wall Climbing
 	private bool wallClimbing;
 	private float wallClimbingTimer;
@@ -240,7 +242,7 @@ public class MasterController : MonoBehaviour
 
     void Start()
     {
-
+		groundWallC = GetComponentsInChildren<BoxCollider2D> ();
 		afterClimbEff = false;
 		wallCheck = GetComponentInChildren<WallClimbingCheck> ();
 		wallClimbing = false;
@@ -345,8 +347,15 @@ public class MasterController : MonoBehaviour
         isTouchingWall = Physics2D.OverlapCircle(wallCheckTransform.position, wallCheckRadius, wallCheckLayer);
     }
 
-    void Update()
+    void Update() 
     {
+		if (currentCharacter == 3) {
+			groundWallC[2].offset = new Vector2 (-0.05f,0.24f);
+		}
+		else{
+			groundWallC[2].offset = new Vector2 (-0.05f,-0.028f);
+		}
+
 		if (isBackFlipping) {
 			bfHitCD -= Time.deltaTime;
 		}
@@ -378,6 +387,9 @@ public class MasterController : MonoBehaviour
 		//	AfterWallClimb();
 		}
 
+	if (!wallClimbing && !afterClimbEff) {
+		transform.eulerAngles = Vector3.zero;
+	}
 
 
 		if (wallClimbing && wallCheck.touchingWall) {
@@ -396,7 +408,7 @@ public class MasterController : MonoBehaviour
 			//	Debug.Log ("afterclimb over");
 				afterClimbEff = false;
 				disableInput = false;
-				Debug.Log("2");
+
 			}
 		}
 
@@ -1304,7 +1316,8 @@ public class MasterController : MonoBehaviour
 			}
 		}
 
-		if ((other.tag == "Ground" || other.tag == "Platform") && !wallCheck.touchingWall) {
+		if ((other.tag == "Ground" || other.tag == "Platform") && (!wallCheck.touchingWall|| currentCharacter == 3 )) {
+		//	Debug.Log("straight");
 			transform.rotation = Quaternion.Euler(0, 0, 0);
 			afterClimbEff = false;
 			disableInput = false;
@@ -1574,7 +1587,9 @@ public class MasterController : MonoBehaviour
 		
 		afterClimbEff = true;
 		afterClimbEffTimer = 0;
-		transform.rotation = Quaternion.Euler(0, 0, 0);
+		if (currentCharacter != 3) {
+			transform.rotation = Quaternion.Euler (0, 0, 0);
+		}
 		Debug.Log("after effect");
 
 		
@@ -1608,6 +1623,7 @@ public class MasterController : MonoBehaviour
 			
 			break;
 		case 3:
+			springSFX.Play();
 			if (wallCheck.wallToTheRight) {
 				rb2D.velocity = new Vector2 (-wallClimbSpeed*2, wallClimbSpeed);
 			} else {
