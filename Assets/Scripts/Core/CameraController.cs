@@ -26,13 +26,19 @@ public class CameraController : MonoBehaviour
     private Vector3 minBoundsStored;
     private Vector3 maxBoundsStored;
 
-    ////Level Specific Camera Movement
+    ////Level Specific
     //Level 1
-    private bool level1PreStory;
+    public bool level1PreStory;
+    public int charToFollow;
     private FakeI fakeItachi;
     private FakeC fakeCyborg;
     private FakeS fakeSonic;
-
+    public Transform platformCenterPoint;
+    public bool explosionFlash;
+    private float explosionTimer;
+    private Color color1 = Color.black;
+    private Color color2 = Color.white;
+    private Camera theCamera;
 
 
     ////Private References
@@ -41,16 +47,16 @@ public class CameraController : MonoBehaviour
 
 	void Start () 
     {
-        fakeItachi = FindObjectOfType<FakeI>();
-        fakeCyborg = FindObjectOfType<FakeC>();
-        fakeSonic = FindObjectOfType<FakeS>();
-
         if(Application.loadedLevel == 7)
         {
+            theCamera = GetComponent<Camera>();
             fakeItachi = FindObjectOfType<FakeI>();
             fakeCyborg = FindObjectOfType<FakeC>();
             fakeSonic = FindObjectOfType<FakeS>();
             level1PreStory = true;
+            explosionFlash = false;
+            explosionTimer = 5.537f;
+            charToFollow = 1;
         }
 
         //Auto Hook
@@ -77,9 +83,64 @@ public class CameraController : MonoBehaviour
 
         if(level1PreStory)
         {
-            positionX = Mathf.SmoothDamp(transform.position.x, fakeCyborg.transform.position.x, ref cameraVelocity.x, lagX);
-            positionY = Mathf.SmoothDamp(transform.position.y, fakeCyborg.transform.position.y - 2.0f, ref cameraVelocity.y, lagY);
-            transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
+            switch(charToFollow)
+            {
+                case 0:
+                    {
+                        positionX = Mathf.SmoothDamp(transform.position.x, fakeItachi.transform.position.x, ref cameraVelocity.x, lagX);
+                        positionY = Mathf.SmoothDamp(transform.position.y, fakeItachi.transform.position.y - 2.0f, ref cameraVelocity.y, lagY);
+                        transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
+                        break;
+                    }
+                case 1:
+                    {
+                        positionX = Mathf.SmoothDamp(transform.position.x, fakeCyborg.transform.position.x, ref cameraVelocity.x, lagX);
+                        positionY = Mathf.SmoothDamp(transform.position.y, fakeCyborg.transform.position.y - 2.0f, ref cameraVelocity.y, lagY);
+                        transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
+                        break;
+                    }
+                case 2:
+                    {
+                        positionX = Mathf.SmoothDamp(transform.position.x, fakeSonic.transform.position.x, ref cameraVelocity.x, lagX);
+                        positionY = Mathf.SmoothDamp(transform.position.y, fakeSonic.transform.position.y - 2.0f, ref cameraVelocity.y, lagY);
+                        transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
+                        break;
+                    }
+                case 3:
+                    {
+                        positionX = Mathf.SmoothDamp(transform.position.x, platformCenterPoint.position.x, ref cameraVelocity.x, lagX);
+                        positionY = Mathf.SmoothDamp(transform.position.y, platformCenterPoint.position.y - 2.0f, ref cameraVelocity.y, lagY);
+                        if(explosionFlash)
+                        {
+                            transform.position = new Vector3(positionX + XOffset, positionY + YOffset, 0.0f);
+                        }
+                        else
+                        {
+                            transform.position = new Vector3(positionX + XOffset, positionY + YOffset, -10.0f);
+                        }
+                        
+                        break;
+                    }
+
+            }
+
+            float time = Mathf.PingPong(Time.time, 1.0f) / 1.0f;
+
+            if (explosionFlash)
+            {
+                theCamera.clearFlags = CameraClearFlags.SolidColor;
+                if (explosionTimer >= 0.0f)
+                {
+                    explosionTimer -= Time.deltaTime;
+                    theCamera.backgroundColor = Color.Lerp(color1, color2, time);
+                }
+                if(explosionTimer <= 0.0f)
+                {
+                    theCamera.clearFlags = CameraClearFlags.Skybox;
+                    explosionFlash = false;
+                }
+            }
+            
         }
     }
 

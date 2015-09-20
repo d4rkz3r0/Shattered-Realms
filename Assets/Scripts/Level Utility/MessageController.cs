@@ -424,6 +424,115 @@ public class MessageController : MonoBehaviour
                         "grant it...";
                     break;
                 }
+                //Level 1 End Starting Dialouge
+                //Level 1 Start Ending Dialogue
+            case 116:
+                {
+                    displayedText.text =
+                        "*Ugh!*";
+                    break;
+                }
+            case 117:
+                {
+                    displayedText.text =
+                        "*Gah!*";
+                    break;
+                }
+            case 118:
+                {
+                    displayedText.text =
+                        "*Uff!*";
+                    break;
+                }
+            case 119:
+                {
+                    displayedText.text =
+                        "You two seem somewhat...\n" +
+                        "competent, perhaps we can";
+                    break;
+                }
+            case 120:
+                {
+                    displayedText.text =
+                        "come to an agreement\n" + 
+                        "of sorts?";
+                    break;
+                }
+            case 121:
+                {
+                    displayedText.text =
+                        "At this point\n" +
+                        "I'm just hungry!";
+                    break;
+                }
+            case 122:
+                {
+                    displayedText.text =
+                        "Yea, I could sure use\n" +
+                        "a really spicy Chili Dog";
+                    break;
+                }
+            case 123:
+                {
+                    displayedText.text =
+                        "right about now...";
+                    break;
+                }
+            case 124:
+                {
+                    displayedText.text =
+                        "Hmmmm...battling longer\n" +
+                        "would be pointless.";
+                    break;
+                }
+            case 125:
+                {
+                    displayedText.text =
+                        "It seems our worlds\n" +
+                        "have been merged...";
+                    break;
+                }
+            case 126:
+                {
+                    displayedText.text =
+                        "Maybe, we should form\n" +
+                        "a team!";
+                    break;
+                }
+            case 127:
+                {
+                    displayedText.text =
+                        "I really don't know\n" +
+                        "about anything anymore";
+                    break;
+                }
+            case 128:
+                {
+                    displayedText.text =
+                        "but I DO want to get\n" +
+                        "to the bottom of this!";
+                    break;
+                }
+            case 129:
+                {
+                    displayedText.text =
+                        "Very well then, follow\n" +
+                        "my lead!";
+                    break;
+                }
+            case 130:
+                {
+                    displayedText.text =
+                        "BOOYAH!!";
+                    break;
+                }
+            case 131:
+                {
+                    displayedText.text =
+                        "Piece of cake!!";
+                    break;
+                }
+                //Level 1 End Ending Dialogue
 
                 //Begin Level 2 Sample Text Dialogue
             case 150:
