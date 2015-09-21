@@ -999,6 +999,80 @@ public class MessageController : MonoBehaviour
                         "My minions will stop you!\n";
                     break;
                 }
+		
+		case 300:
+		{
+			displayedText.text =
+				"All right, now we are talking!\nThis feels like home.";
+			break;
+		}
+		case 301:
+		{
+			displayedText.text =
+				"Your home looks... checkeerd blue guy.\nWhat's up with this place?";
+			break;
+		}
+		case 302:
+		{
+			displayedText.text =
+				"Lets just get it over with,\nthere must be a way to get out of here.";
+			break;
+		}
+		case 400:
+		{
+			displayedText.text =
+				"Maybe now we will now finally see who is behind this";
+			break;
+		}
+		case 401:
+		{
+			displayedText.text =
+				"This is as far as you go.";
+			break;
+		}
+		case 402:
+		{
+			displayedText.text =
+				"I know that voice... it's-";
+			break;
+		}
+		case 403:
+		{
+			displayedText.text =
+				"Yes Sonic, it's me...";
+			break;
+		}
+		case 404:
+		{
+			displayedText.text =
+				"MARIO!";
+			break;
+		}
+		case 405:
+		{
+			displayedText.text =
+				"Mario?! But why?!";
+			break;
+		}
+		case 406:
+		{
+			displayedText.text =
+				"I'm not a pawn of these game anymore.\nI'm on top now. From now on,\nthings are going to be much different.";
+			break;
+		}
+		case 407:
+		{
+			displayedText.text =
+				"Not if we bring you down first, pal!";
+			break;
+		}
+		case 408:
+		{
+			displayedText.text =
+				"Lets finish this.";
+			break;
+		}
+
 
 
             default:
