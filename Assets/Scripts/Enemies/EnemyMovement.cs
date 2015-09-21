@@ -114,43 +114,29 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        float xPos;
-        if (target.transform.position.x > transform.position.x)
-        {
-            if (startingPosition.x > transform.position.x)
-            {
-                xPos = transform.position.x;
-            }
-            else
-            {
-                xPos = startingPosition.x;
-            }
-        }
-        else
-        {
-            if (startingPosition.x < transform.position.x)
-            {
-                xPos = transform.position.x;
-            }
-            else
-            {
-                xPos = startingPosition.x;
-            }
-        }
-
-        if (rb2d.gravityScale == 0)
-        {
-            if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro)
-            {
-                if (Mathf.Abs(target.transform.position.x - xPos) < 10)
-                {
-                    rb2d.gravityScale = 1;
-                    gameObject.GetComponent<CircleCollider2D>().enabled = true;
-                    jumpPower = defJumpPower;
-                }
-            }
-        }
-
+		float xPos;
+		if (target.transform.position.x > transform.position.x) {
+			if (startingPosition.x < transform.position.x) {
+				xPos = transform.position.x;
+			} else {
+				xPos = startingPosition.x;
+			}
+		} else {
+			if (startingPosition.x > transform.position.x) {
+				xPos = transform.position.x;
+			} else {
+				xPos = startingPosition.x;
+			}
+		}
+		if(rb2d.gravityScale == 0){
+		if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro) {
+			if(Mathf.Abs(target.transform.position.x - xPos) < 10){
+					rb2d.gravityScale = 1;
+					gameObject.GetComponent<CircleCollider2D> ().enabled = true;
+					jumpPower = defJumpPower;
+				}
+			}
+		}
 		if (shocked) {
 			shockTimer -= Time.deltaTime;
 		}
@@ -377,19 +363,19 @@ public class EnemyMovement : MonoBehaviour {
 			{
 				//Debug.Log("Reached waypoint");
 				if(ComparePositions(waypoint1.position,transform.position)){
-					Debug.Log("Reached waypoint 1");
+					//Debug.Log("Reached waypoint 1");
 					currentWaypoint = waypoint2.position; 
 				}
 				else if(ComparePositions(waypoint2.position,transform.position)){
-					Debug.Log("Reached waypoint 2");
+					//Debug.Log("Reached waypoint 2");
 					currentWaypoint = waypoint3.position;  
 				}
 				else if(ComparePositions(waypoint3.position,transform.position)){
-					Debug.Log("Reached waypoint 3");
+				//	Debug.Log("Reached waypoint 3");
 					currentWaypoint = startingPosition; 
 				}
 				else if(ComparePositions(startingPosition,transform.position)){
-					Debug.Log("Reached starting point");
+					//Debug.Log("Reached starting point");
 					currentWaypoint = waypoint1.position; 
 				}
 			}

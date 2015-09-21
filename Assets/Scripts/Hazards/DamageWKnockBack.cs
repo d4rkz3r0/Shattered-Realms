@@ -34,8 +34,9 @@ public class DamageWKnockBack : MonoBehaviour {
 		{
             if ((other.GetComponent<MasterController>().currentCharacter == 3) &&
               ((other.GetComponent<MasterController>().isGoingSuper)    ||
-              ((other.GetComponent<MasterController>().isBackFlipping)) ||
-              ((!other.GetComponent<MasterController>().isGrounded))))
+              ((other.GetComponent<MasterController>().isBackFlipping))))
+
+			    //|| ((!other.GetComponent<MasterController>().isGrounded))))
             {
                 return;
             }

@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class RobotnikController : MonoBehaviour {
-	
+
+	private Vector3 respawnPos;
 	private Rigidbody2D rb2d;
 	public GameObject laser;
 	public float robotnickSize;
@@ -23,6 +24,7 @@ public class RobotnikController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		respawnPos = transform.position;
 		delayTimer = 0;
 		rb2d = GetComponent<Rigidbody2D>();
 		laserDir = Direction.Down;
@@ -74,7 +76,7 @@ public class RobotnikController : MonoBehaviour {
 
 			if (HealthManager.playerHP == 0) {
 				laugh.Play();
-				transform.position = new Vector3 (-6.5f, -64.48f, 0);
+				transform.position = respawnPos;
 				delayTimer = 0;
 				rb2d.velocity = Vector2.zero;
 			}
@@ -84,81 +86,84 @@ public class RobotnikController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "RobotnickWaypoint") {
-			newData = other.GetComponent<RobotnickWPData>();
-			speed = newData.RobSpeed;
-			speedIncrement = newData.RobSpeedIncrement;
-			dir = newData.RobDirection;
+			newData = other.GetComponent<RobotnickWPData> ();
+			if (newData.used == false) {
+				newData.used = true;
+				speed = newData.RobSpeed;
+				speedIncrement = newData.RobSpeedIncrement;
+				dir = newData.RobDirection;
 
-			laser.SetActive(newData.RobLaserOn);
+				laser.SetActive (newData.RobLaserOn);
 
-			switch(laserDir){
+				switch (laserDir) {
 
-			case Direction.Down:
-				switch(newData.RobLaserDir){
 				case Direction.Down:
+					switch (newData.RobLaserDir) {
+					case Direction.Down:
+						break;
+					case Direction.Right:
+						laser.transform.RotateAround (transform.position, transform.forward, 90);
+						break;
+					case Direction.Up:
+						laser.transform.RotateAround (transform.position, transform.forward, 180);
+						break;
+					case Direction.Left:
+						laser.transform.RotateAround (transform.position, transform.forward, -90);
+						break;
+					}
 					break;
-				case Direction.Right:
-					laser.transform.RotateAround(transform.position,transform.forward,90);
-					break;
-				case Direction.Up:
-					laser.transform.RotateAround(transform.position,transform.forward,180);
-					break;
-				case Direction.Left:
-					laser.transform.RotateAround(transform.position,transform.forward,-90);
-					break;
-				}
-				break;
 
-			case Direction.Right:
-				switch(newData.RobLaserDir){
 				case Direction.Right:
+					switch (newData.RobLaserDir) {
+					case Direction.Right:
+						break;
+					case Direction.Up:
+						laser.transform.RotateAround (transform.position, transform.forward, 90);
+						break;
+					case Direction.Left:
+						laser.transform.RotateAround (transform.position, transform.forward, 180);
+						break;
+					case Direction.Down:
+						laser.transform.RotateAround (transform.position, transform.forward, -90);
+						break;
+					}
 					break;
-				case Direction.Up:
-					laser.transform.RotateAround(transform.position,transform.forward,90);
-					break;
-				case Direction.Left:
-					laser.transform.RotateAround(transform.position,transform.forward,180);
-					break;
-				case Direction.Down:
-					laser.transform.RotateAround(transform.position,transform.forward,-90);
-					break;
-				}
-				break;
 
-			case Direction.Up:
-				switch(newData.RobLaserDir){
 				case Direction.Up:
+					switch (newData.RobLaserDir) {
+					case Direction.Up:
+						break;
+					case Direction.Left:
+						laser.transform.RotateAround (transform.position, transform.forward, 90);
+						break;
+					case Direction.Down:
+						laser.transform.RotateAround (transform.position, transform.forward, 180);
+						break;
+					case Direction.Right:
+						laser.transform.RotateAround (transform.position, transform.forward, -90);
+						break;
+					}
 					break;
-				case Direction.Left:
-					laser.transform.RotateAround(transform.position,transform.forward,90);
-					break;
-				case Direction.Down:
-					laser.transform.RotateAround(transform.position,transform.forward,180);
-					break;
-				case Direction.Right:
-					laser.transform.RotateAround(transform.position,transform.forward,-90);
-					break;
-				}
-				break;
 
-			case Direction.Left:
-				switch(newData.RobLaserDir){
 				case Direction.Left:
-					break;
-				case Direction.Down:
-					laser.transform.RotateAround(transform.position,transform.forward,90);
-					break;
-				case Direction.Right:
-					laser.transform.RotateAround(transform.position,transform.forward,180);
-					break;
-				case Direction.Up:
-					laser.transform.RotateAround(transform.position,transform.forward,-90);
-					break;
+					switch (newData.RobLaserDir) {
+					case Direction.Left:
+						break;
+					case Direction.Down:
+						laser.transform.RotateAround (transform.position, transform.forward, 90);
+						break;
+					case Direction.Right:
+						laser.transform.RotateAround (transform.position, transform.forward, 180);
+						break;
+					case Direction.Up:
+						laser.transform.RotateAround (transform.position, transform.forward, -90);
+						break;
+					}
+					break;			
 				}
-				break;			
+
+				laserDir = newData.RobLaserDir;				
 			}
-
-			laserDir = newData.RobLaserDir;				
 		}
 	}
 }
