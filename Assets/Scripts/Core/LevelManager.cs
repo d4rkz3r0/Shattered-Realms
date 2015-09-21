@@ -144,10 +144,14 @@ public class LevelManager : MonoBehaviour
 
         //AudioManager
         //Death Timer has Expired
-        //if (!AudioManager.currAudio.isPlaying)
-        //{
-        //    AudioManager.currAudio.Play();
-        //}
+        if(AudioManager.GetInstance() != null)
+        {
+            if (!AudioManager.currAudio.isPlaying)
+            {
+                AudioManager.currAudio.Play();
+            }
+        }
+        
 
         //Respawn Enemies & Items
         if(respawnManager != null)

@@ -80,7 +80,8 @@ public class FireBallController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 		//Fireball->Enemy
-		if (other.tag == "Enemy") {
+		if (other.tag == "Enemy" && other.gameObject.name != "PinkFish")
+        {
 			other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
 			Instantiate(hit).transform.position = transform.position;
 		}

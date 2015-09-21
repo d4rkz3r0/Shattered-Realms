@@ -51,29 +51,24 @@ public class Level2ChatBoxController : MonoBehaviour
 	
 	void Update ()
     {
-        //Keeps the text timer charged until you are ready.
         if(startChatBoxDialogue == false)
         {
             textDisplayTimer = textDisplayDuration;
         }
 
-        //It's a timer...
         if(textDisplayTimer >= 0.0f)
         {
             textDisplayTimer -= Time.deltaTime;
         }
 
-        //ChatBox Text Updating Handled here
         if(textDisplayTimer <= 0.0f)
         {
-            //If we have reached the end chat index, the reset game text and kill yourself
             if(textSelectionIndex == endingTextIndex)
             {
                 MessageController.textSelection = 0;
                 gameObject.SetActive(false);
                 return;
             }
-            //If we haven't reached the end chat index, keep the conversation going 
             else
             {
                 MessageController.textSelection += 1;
@@ -91,21 +86,12 @@ public class Level2ChatBoxController : MonoBehaviour
 
             switch(MessageController.textSelection)
             {
-                    //Hardcode the MessageController index values for your conversation HERE.
-
-                    //currChatBoxAvatar.sprite = chatBoxAvatars[0]; - the array index corresponds to the
-                    //chat box avatar you want, 0 being the first, 1 being the second, 2 being the third, etc...
-                    //Doesn't have to be set every case unless there is a change, but I set it each case anyway...
-
                 case 150:
                     {
                         if (!hasPlayed)
                         {
-                            //Which picture should I use?
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
-                            //How long should I display the text?
                             textDisplayTimer = 2.22f;
-                            //Trigger buffer
                             hasPlayed = true;
                         }
                         break;
@@ -127,7 +113,7 @@ public class Level2ChatBoxController : MonoBehaviour
                         if (!hasPlayed && textDisplayTimer <= 0.0f)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[2];
-                            textDisplayTimer = 2.5f;
+                            textDisplayTimer = 2.6f;
                             hasPlayed = true;
                         }
                         break;
@@ -138,7 +124,29 @@ public class Level2ChatBoxController : MonoBehaviour
                         if (!hasPlayed && textDisplayTimer <= 0.0f)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[3];
-                            textDisplayTimer = 1.93f;
+                            textDisplayTimer = 2.22f;
+                            hasPlayed = true;
+                        }
+                        break;
+                    }
+                case 154:
+                    {
+                        hasPlayed = false;
+                        if (!hasPlayed && textDisplayTimer <= 0.0f)
+                        {
+                            currChatBoxAvatar.sprite = chatBoxAvatars[3];
+                            textDisplayTimer = 2.5f;
+                            hasPlayed = true;
+                        }
+                        break;
+                    }
+                case 155:
+                    {
+                        hasPlayed = false;
+                        if (!hasPlayed && textDisplayTimer <= 0.0f)
+                        {
+                            currChatBoxAvatar.sprite = chatBoxAvatars[0];
+                            textDisplayTimer = 2.0f;
                             hasPlayed = true;
                         }
                         break;

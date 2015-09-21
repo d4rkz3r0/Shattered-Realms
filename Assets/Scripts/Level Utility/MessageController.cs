@@ -937,29 +937,44 @@ public class MessageController : MonoBehaviour
             case 150:
                 {
                     displayedText.text =
-                        "My name is Itachi\n" +
-                        "and I love Genjutsu.";
+                        "This place reeks\n" +
+                        "of incompetence...";
                     break;
                 }
             case 151:
                 {
                     displayedText.text =
-                        "My name is Cyborg\n" +
-                        "and I want Starfire...";
+                        "This seems right\n" +
+                        "up your alley\n" +
+                        "Itachi!";
                     break;
                 }
             case 152:
                 {
                     displayedText.text =
-                        "My name is Sonic\n" +
-                        "and I want Tails...";
+                        "Can we get moving?\n" +
+                        "I know Eggman is\n" +
+                        "behind all this!";
                     break;
                 }
             case 153:
                 {
                     displayedText.text =
-                        "My name is Sasuke\n" +
-                        "and I <3 Naruto...";
+                        "...";
+                    break;
+                }
+            case 154:
+                {
+                    displayedText.text =
+                        "I've found you\n" +
+                        "brother, I can\n" +
+                        "see everything now!";
+                    break;
+                }
+            case 155:
+                {
+                    displayedText.text =
+                        "Hmm...";
                     break;
                 }
                 //End Level 2 Sample Text Dialogue
