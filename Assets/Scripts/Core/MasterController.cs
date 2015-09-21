@@ -48,6 +48,7 @@ public class MasterController : MonoBehaviour
     public Transform wallCheckTransform;
     public Transform playerCenterPoint;
     public LayerMask groundCheckLayer;
+    public LayerMask enemyCheckLayer;
     public LayerMask wallCheckLayer;
     public float groundCheckRadius;
     public float wallCheckRadius;
@@ -75,6 +76,7 @@ public class MasterController : MonoBehaviour
     private Animation blastProjectileAnimation;
     private float blastAnimTimer = 0.45f; //Must Match ability cooldown!
     public bool isGrounded;
+    public bool hasTouchedEnemy;
     public bool isBlinking;
 
     //LvL Up Animation
@@ -140,8 +142,8 @@ public class MasterController : MonoBehaviour
    //Charge
 	public float chargeCoolDown;
 	private float chargeTimer;
-	private bool isCharging;
-	private bool canCastCharge;
+	public bool isCharging;
+    public bool canCastCharge;
 	public GameObject charge;
 	public float chargingDuration;
 	public float chargeRunningSpeed;
@@ -151,8 +153,8 @@ public class MasterController : MonoBehaviour
 	//Quake
 	public float quakeCoolDown;
 	private float quakeTimer;
-	private bool isQuaking;
-	private bool canCastQuake;
+	public bool isQuaking;
+	public bool canCastQuake;
 	public GameObject theQuake;
 	private GameObject actualQuake;
 	public float quakeSize;
@@ -242,6 +244,7 @@ public class MasterController : MonoBehaviour
 
     void Start()
     {
+        hasTouchedEnemy = false;
 		groundWallC = GetComponentsInChildren<BoxCollider2D> ();
 		afterClimbEff = false;
 		wallCheck = GetComponentInChildren<WallClimbingCheck> ();
@@ -345,6 +348,8 @@ public class MasterController : MonoBehaviour
         //Player Collision
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, groundCheckRadius, groundCheckLayer);
         isTouchingWall = Physics2D.OverlapCircle(wallCheckTransform.position, wallCheckRadius, wallCheckLayer);
+        hasTouchedEnemy = Physics2D.OverlapCircle(groundCheckTransform.position, groundCheckRadius, enemyCheckLayer);
+
     }
 
     void Update() 
@@ -789,7 +794,7 @@ public class MasterController : MonoBehaviour
             if (isQuaking)
             {
                 rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);
-                if (isGrounded)
+                if (isGrounded || hasTouchedEnemy)
                 {
                     actualQuake = Instantiate(theQuake);
                     actualQuake.transform.position = transform.position;
@@ -1631,5 +1636,16 @@ public class MasterController : MonoBehaviour
 			break;
 		}
 	}
+
+    public void RechargeAbilities()
+    {
+        blinkTimer = 0.0f;
+        tsukuyomiTimer = 0.0f;
+        chaosEmeraldTimer = 0.0f;
+        springTimer = 0.0f;
+        spinDashTimer = 0.0f;
+        quakeTimer = 0.0f;
+        lightningTimer = 0.0f;
+    }
 
 }

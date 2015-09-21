@@ -106,8 +106,7 @@ public class QuakeController : MonoBehaviour {
 			{
 				otherRB.velocity = new Vector2 (10, 2); 
 			}
-		}
-		
+		}		
 	}
 	
 }

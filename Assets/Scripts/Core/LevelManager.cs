@@ -122,8 +122,18 @@ public class LevelManager : MonoBehaviour
         }
 
         //Player Has Died
+        player.canCastCharge = false;
+        player.isCharging = false;
+        player.canCastQuake = true;
         cameraZoomInEffect = true;
         player.isBlinking = false;
+        player.isBackFlipping = false;
+        player.isGoingSuper = false;
+        player.isSpinDashing = false;
+        player.isSpringing = false;
+        player.isTouchingWall = false;
+        player.isQuaking = false;
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         //Capture Time at Death Start
         startZoomInTime = Time.time;
 
@@ -163,7 +173,20 @@ public class LevelManager : MonoBehaviour
         
 
         //Respawn Player
+        player.RechargeAbilities();
+        player.canCastCharge = false;
+        player.isCharging = false;
+        player.canCastQuake = true;
         player.isGrounded = true;
+        player.isBlinking = false;
+        player.isBackFlipping = false;
+        player.isGoingSuper = false;
+        player.isSpinDashing = false;
+        player.isSpringing = false;
+        player.isTouchingWall = false;
+        player.isQuaking = false;
+        player.GetComponent<Rigidbody2D>().gravityScale = 5.0f;
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.disableInput = false;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.GetComponent<Rigidbody2D>().gravityScale = 5.0f;
