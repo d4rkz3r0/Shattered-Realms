@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class RobotnikController : MonoBehaviour {
-	
+
+	private Vector3 respawnPos;
 	private Rigidbody2D rb2d;
 	public GameObject laser;
 	public float robotnickSize;
@@ -23,6 +24,7 @@ public class RobotnikController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		respawnPos = transform.position;
 		delayTimer = 0;
 		rb2d = GetComponent<Rigidbody2D>();
 		laserDir = Direction.Down;
@@ -74,7 +76,7 @@ public class RobotnikController : MonoBehaviour {
 
 			if (HealthManager.playerHP == 0) {
 				laugh.Play();
-				transform.position = new Vector3 (-6.5f, -64.48f, 0);
+				transform.position = respawnPos;
 				delayTimer = 0;
 				rb2d.velocity = Vector2.zero;
 			}
