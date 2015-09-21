@@ -43,6 +43,10 @@ public class GizmoTriggerWall : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            if (AudioManager.GetInstance() != null)
+            {
+                AudioManager.playGizmoBossMusic();
+            }
             IntroTimer = IntroTimerDuration;
             gizmoHPBarHUDElement.gameObject.SetActive(true);
             chatBoxHUDElement.startBossDialogue = true;
