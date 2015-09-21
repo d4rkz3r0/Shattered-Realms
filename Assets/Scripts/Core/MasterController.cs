@@ -381,11 +381,11 @@ public class MasterController : MonoBehaviour
 		}
 
 	
-		if (wallClimbing && !wallCheck.touchingWall) {
-
-			Debug.Log("vert");
-		//	AfterWallClimb();
-		}
+		//if (wallClimbing && !wallCheck.touchingWall) {
+		//
+		//	Debug.Log("vert");
+		////	AfterWallClimb();
+		//}
 
 	if (!wallClimbing && !afterClimbEff) {
 		transform.eulerAngles = Vector3.zero;
@@ -404,7 +404,7 @@ public class MasterController : MonoBehaviour
 		if (afterClimbEff) {//Debug.Log ("running afterclimb");
 
 			afterClimbEffTimer += Time.deltaTime;
-			if ((currentCharacter == 1 && afterClimbEffTimer > 0.35f ) || (currentCharacter == 2 && afterClimbEffTimer > 0.1f) || (currentCharacter == 3 && afterClimbEffTimer > 0.2f )) {
+			if ((currentCharacter == 1 && afterClimbEffTimer > 0.2f ) || (currentCharacter == 2 && afterClimbEffTimer > 0.1f) || (currentCharacter == 3 && afterClimbEffTimer > 0.2f )) {
 			//	Debug.Log ("afterclimb over");
 				afterClimbEff = false;
 				disableInput = false;
