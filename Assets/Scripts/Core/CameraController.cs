@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour
             fakeItachi = FindObjectOfType<FakeI>();
             fakeCyborg = FindObjectOfType<FakeC>();
             fakeSonic = FindObjectOfType<FakeS>();
-            //level1PreStory = true;
+            level1PreStory = true;
             explosionFlash = false;
             explosionTimer = 5.537f;
             charToFollow = 1;

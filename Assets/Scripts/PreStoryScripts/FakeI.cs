@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class FakeI : MonoBehaviour
@@ -34,6 +35,8 @@ public class FakeI : MonoBehaviour
     public GameObject UITextLabels;
     public GameObject HPBar;
     public GameObject timerManager;
+    public GameObject tutorialText;
+    public GameObject LM;
 
 
     void Start()
@@ -47,8 +50,8 @@ public class FakeI : MonoBehaviour
         sprRenderer = GetComponent<SpriteRenderer>();
         groundChecker = GetComponentInChildren<Transform>();
         mainCamera = FindObjectOfType<CameraController>();
-        HPBar.SetActive(false);
-        timerManager.SetActive(false);
+        //HPBar.SetActive(false);
+        //timerManager.SetActive(false);
         thePlayer.GetComponent<MasterController>().disableInput = true;
     }
 
@@ -123,15 +126,17 @@ public class FakeI : MonoBehaviour
     {
         UIComponents.SetActive(true);
         UITextLabels.SetActive(true);
-        timerManager.SetActive(true);
-        HPBar.SetActive(true);
+        tutorialText.SetActive(true);
+        timerManager.GetComponent<Text>().enabled = true;
+        HPBar.GetComponent<Image>().enabled = true;
+        LM.SetActive(true);
         thePlayer.GetComponent<MasterController>().disableInput = false;
         mainCamera.level1PreStory = false;
         mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
-        mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.02f, 0.278f, 0.459f, 0.588f);
-        mainCamera.GetComponent<Camera>().orthographicSize = 7.0f;
-        mainCamera.minBounds = new Vector3(18.66f, -121.1f, -10.0f);
-        //mainCamera.maxBounds = new Vector3();
+        mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.2784919725490196f, 0.4588235294117647f, 0.0f, 1.0f);
+        mainCamera.GetComponent<Camera>().orthographicSize = 7.0f; //Used to be 5.5
+        mainCamera.minBounds = new Vector3(5.15f, -120.87f, -10.0f);
+        mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
         yield return new WaitForSeconds(0.1f);
         mainCamera.followPlayer = true;
 

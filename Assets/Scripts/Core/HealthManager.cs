@@ -65,6 +65,12 @@ public class HealthManager : MonoBehaviour
 
     void Start () 
     {
+        if(Application.loadedLevel == 7)
+        {
+            GetComponent<Image>().enabled = false;
+        }
+
+
 		DamageTakenTimer = 0.0f;
         lowBGMHasPlayed = false;
         //Pull Player Info

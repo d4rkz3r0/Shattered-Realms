@@ -7,8 +7,10 @@ public class MessageController : MonoBehaviour
     public static int textSelection;
     private Text displayedText;
 	private float timer;
+    private MasterController player;
 
 	private bool pressedUp;
+    private bool tutAudio1;
 
     //private float textFadeTimer;
     //private float defaultTextFadeDuration;
@@ -22,6 +24,16 @@ public class MessageController : MonoBehaviour
         displayedText = GetComponent<Text>();
 		timer = 0;
 		pressedUp = false;
+
+        if(Application.loadedLevel == 7)
+        {
+            tutAudio1 = false;
+            player = FindObjectOfType<MasterController>();
+        }
+        else
+        {
+            player = null;
+        }
         //textTimer = timeBetweenText;
 	}
 	
@@ -59,117 +71,122 @@ public class MessageController : MonoBehaviour
                     //textFadeTimer = defaultTextFadeDuration;
                     break;
                 }
-            case 1:
-                {
-                   /* displayedText.text =
-                        "Welcome To the Tutorial!";*/
-                    break;
-                }
-            case 2:
-                {
+            //case 1:
+            //    {
+            //       displayedText.text =
+            //            "Welcome To the Tutorial!";
+            //        break;
+            //    }
+            //case 2:
+            //    {
 
-                    displayedText.text =
-                        "Press A to Jump.";
+            //        displayedText.text =
+            //            "Press A to Jump.";
 		
 				
-                    break;
-                }
-            case 3:
-                {
-                    displayedText.text =
-                        "Press A twice to Double Jump.";
-                    break;
-                }
+            //        break;
+            //    }
+            //case 3:
+            //    {
+            //        displayedText.text =
+            //            "Press A twice to Double Jump.";
+            //        break;
+            //    }
             case 4:
                 {
-                 /*  displayedText.text =
-                        "Press A three times to Triple Jump.";*/
-                    break;
-                }
-            case 5:
-                {
                     displayedText.text =
-                        "Press X to Attack.";
+                         "Damage Treasure Chests to\n" +
+                          "see what's inside!";
                     break;
                 }
-            case 6:
-                {
-                    displayedText.text =
-                        "Press LB to switch between characters.";
-                    //displayedText.text =
-                    //    "You can switch between characters\n"
-                    //    + "by pressing 1, 2 or 3.";
-                    break;
-                }
-            case 7:
-                {
-                    displayedText.text =
-                        "Cyborg's X has shorter range but more power.\nAnd Sonic's even more!";
-                    //displayedText.text =
-                    //    "Press Q,W,E,R to use your abilities.";
-                    break;
-                }
-            case 8:
-                {
-                    displayedText.text =
-                        "Press RT for each characters' movement ability.";
-                    //displayedText.text =
-                    //    "Reach the end of the level\nif you can.";
-                    break;
-                }
-            case 9:
-                {
-                    displayedText.text =
-                        "Cyborg's Charge damages enemies.";
-                    //displayedText.text =
-                    //    "Hazards and Enemies will try to stop you.";
-                    break;
-                }
-            case 10:
-                {
-                    displayedText.text =
-                        "Itachi's Blink works horizontally and vertically.";
-                    //displayedText.text =
-                    //    "Good luck!";
-                    break;
-                }
+            //case 5:
+            //    {
+            //        displayedText.text =
+            //            "This is a practice enemy,\n" +
+            //            "Practice your abilities on him...";
+            //        break;
+            //    }
+            //case 6:
+            //    {
+            //        displayedText.text =
+            //            "Cyborg's 1st ability is\n" +
+            //            "Blast. It knockbacks and\n" +
+            //            "applies stun. Use it with X.";
+            //        break;
+            //    }
+            //case 7:
+            //    {
+            //        displayedText.text =
+            //            "Cyborg's X has shorter range but more power.\nAnd Sonic's even more!";
+            //        //displayedText.text =
+            //        //    "Press Q,W,E,R to use your abilities.";
+            //        break;
+            //    }
+            //case 8:
+            //    {
+            //        displayedText.text =
+            //            "Press RT for each characters' movement ability.";
+            //        //displayedText.text =
+            //        //    "Reach the end of the level\nif you can.";
+            //        break;
+            //    }
+            //case 9:
+            //    {
+            //        displayedText.text =
+            //            "Cyborg's Charge damages enemies.";
+            //        //displayedText.text =
+            //        //    "Hazards and Enemies will try to stop you.";
+            //        break;
+            //    }
+            //case 10:
+            //    {
+            //        displayedText.text =
+            //            "Itachi's Blink works horizontally and vertically.";
+            //        //displayedText.text =
+            //        //    "Good luck!";
+            //        break;
+            //    }
             case 11:
                 {
-                   /* displayedText.text =
-                        "Spikes deal damage and apply knockback.";*/
+                    displayedText.text =
+                         "Spikes deal damage and apply\n" +
+                         "knockback.";
                     break;
                 }
             case 12:
                 {
                     displayedText.text =
-                        "Red Gems replenish your HP Bar.\nBlue Gems increase your XP.";
+                        "Red Gems replenish your HP.\n" +
+                        "Your life is displayed by\n" +
+                        "the bar in the top left.";
                     break;
                 }
-            case 13:
-                {
-                    displayedText.text =
-                        "Lost? Signs will point you in the right direction.";
-                    break;
-                }
-            case 14:
-                {
-                    displayedText.text =
-                        "Itachi's second ability deflects bullets!\nPress B to use it.";
-                    break;
-                }
-            case 15:
-                {
-                    displayedText.text =
-				"Cyborg's second ability can only be used while in th air!\nPress B to use it.";
-                    break;
-                }
+            //case 13:
+            //    {
+            //        displayedText.text =
+            //            "Lost? Signs will point you in the right direction.";
+            //        break;
+            //    }
+            //case 14:
+            //    {
+            //        displayedText.text =
+            //            "Itachi's second ability deflects bullets!\nPress B to use it.";
+            //        break;
+            //    }
+            //case 15:
+            //    {
+            //        displayedText.text =
+            //    "Cyborg's second ability can only be used while in th air!\nPress B to use it.";
+            //        break;
+            //    }
             case 16:
                 {
 				if(!pressedUp)
-			{
+			    {
                     displayedText.text =
-                        "Use the Portal by going UP\nwith the analog stick.";
-			}
+                        "Use the Portal by pressing UP\n" +
+                        "on the analog stick.";
+			    }
                     break;
                 }
             case 17:
@@ -269,7 +286,7 @@ public class MessageController : MonoBehaviour
                 {
                     pressedUp = true;
                     displayedText.text =
-                        "Make it happen!";
+                        "";
                     //textFadeTimer = defaultTextFadeDuration;
                     break;
                 }
@@ -313,6 +330,378 @@ public class MessageController : MonoBehaviour
                     displayedText.text =
                         "Hey! That's\n" +
                         "my line!!";
+                    break;
+                }
+                //Tutorial Text Starts Here
+            case 40:
+                {
+                    displayedText.text =
+                    "Welcome to the Tutorial.";
+                    break;
+                }
+            case 41:
+                {
+                    displayedText.text =
+                    "Press A to Jump.";
+                    break;
+                }
+            case 42:
+                {
+                    displayedText.text =
+                    "Press A twice to\n" +
+                    "Double Jump.";
+                    break;
+                }
+            case 43:
+                {
+                    displayedText.text =
+                    "Switch between characters\n" +
+                    "with LB and RB.";
+                    break;
+                }
+            case 44:
+                {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "This ninja has been captured,\n" +
+                    "practice Itachi's 1st ability\n"  +
+                    "on him by pressing X.";
+                    break;
+                }
+            //case 45:
+            //    {
+            //        displayedText.text =
+            //        "Itachi's 1st Ability is a,\n" +
+            //        "ranged fireball. (Light Damage)";
+            //        break;
+            //    }
+            //case 46:
+            //    {
+                    
+            //        displayedText.text =
+            //        "Cyborg's 1st Ability is a,\n" +
+            //        "short ranged energy blast.\n" +
+            //        "(Light Damage w/ Stun & Knockback)";
+            //        break;
+            //    }
+            //case 47:
+            //    {
+            //        displayedText.text =
+            //        "Sonic's 1st Ability is a,\n" +
+            //        "ground spin.\n" +
+            //        "(Med Damage w/ Knockback)";
+            //        break;
+            //    }
+            case 48:
+                {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Itachi's 2nd Ability is\n" +
+                    "Dark Storm. It can reflect\n" +
+                    "most projectiles.";
+                    break;
+                }
+            case 49:
+                {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Reflect the kunai\n" +
+                    "by pressing B.";
+                    break;
+                }
+            case 50:
+                {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Itachi's 3rd Ability is\n" +
+                    "his Tsukuyomi. It slows\n" +
+                    "enemies within a radius.";
+                    break;
+                }
+            case 51:
+                {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Slow these fatties\n" +
+                    "down by pressing Y!";
+                    break;
+                }
+            case 52:
+                {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Itachi's 4th Ability is\n" +
+                    "Blink. It teleports you\n" +
+                    "horizontally and vertically.";
+                    break;
+                }
+            case 53:
+                {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Reach the other side\n" +
+                    "without relying on\n" +
+                    "jumping and using Blink!";
+                    break;
+                }
+            case 54:
+                {
+                    displayedText.text =
+                    "Tornadoes can either\n" +
+                    "be friend or foe!";
+                    break;
+                }
+            case 55:
+                {
+                    displayedText.text =
+                    "Congrats, you made it!";
+                    break;
+                }
+            case 56:
+                {
+                    player.currentCharacter = 2;
+                    displayedText.text =
+                    "You can rotate characters\n" + 
+                    "by pressing LB and RB.";
+                    break;
+                }
+            case 57:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+
+                    displayedText.text =
+                    "Cyborg's 1st ability is\n" +
+                    "Blast. It knockbacks and\n" +
+                    "applies stun. Use it with X.";
+                    break;
+                }
+            case 58:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Help these chit-chatters\n" +
+                    "into The Sparta Pit with\n" +
+                    "Cyborg's Blast!";
+                    break;
+                }
+            case 59:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    if (!tutAudio1)
+                    {
+                        GameObject.Find("victoryFanFareSFX").GetComponent<AudioSource>().Play();
+                        tutAudio1 = true;
+                    }
+                    
+                    displayedText.text =
+                    "That felt good, didn't\n" +
+                    "it?";
+                    break;
+                }
+            case 60:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Cyborg's 2nd Ability is\n" +
+                    "Quake, it deals massive\n" +
+                    "AoE Damage upon landing.";
+                    break;
+                }
+            case 61:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Take a Leap of Quake\n" +
+                    "and press Y while in Air.";
+                    break;
+                }
+            case 62:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Phew, close one!\n" +
+                    "Do you always do what\n" +
+                    "a random narrator suggests?";
+                    break;
+                }
+            case 63:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Try using Cyborg's Quake\n" +
+                    "again. This time get more\n" +
+                    "altitude, trust me!";
+                    break;
+                }
+            case 64:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Use the Tornado to climb\n" +
+                    "back up.";
+                    break;
+                }
+            case 65:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "How unfortunate... ;)";
+                    break;
+                }
+            case 66:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Glory awaits! Jump!";
+                    break;
+                }
+            case 67:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Cyborg's 3rd ability is\n" +
+                    "Chain Spark, it is used\n" +
+                    "by pressing T.";
+                    break;
+                }
+            case 68:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Chain Spark is most\n" +
+                    "effective on groups\n" +
+                    "of bunched enemies.";
+                    break;
+                }
+            case 69:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Cyborg's 4th Ability is\n" +
+                    "Charge, it is used by\n" +
+                    "using RT.";
+                    break;
+                }
+            case 70:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Charge is great for\n" +
+                    "countering aggressive\n" +
+                    "ground enemies.";
+                    break;
+                }
+            case 71:
+                {
+                    player.currentCharacter = 2;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Give it a test run\n" +
+                    "on these slopes!";
+                    break;
+                }
+            case 72:
+                {
+                    player.currentCharacter = 3;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Sonic's 1st ability is\n" +
+                    "Backflip. It is used by\n" +
+                    "pressing X.";
+                    break;
+                }
+            case 73:
+                {
+                    player.currentCharacter = 3;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Sonic's 2nd ability is\n" +
+                    "Chaos Activation. It is\n" +
+                    "used by pressing B.";
+                    break;
+                }
+            case 74:
+                {
+                    player.currentCharacter = 3;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Sonic's 3rd ability is\n" +
+                    "Spring. It is used by\n" +
+                    "pressing Y.";
+                    break;
+                }
+            case 75:
+                {
+                    player.currentCharacter = 3;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
+                    displayedText.text =
+                    "Sonic's 4th ability is\n" +
+                    "SpinDash. It is used by\n" +
+                    "pressing RT.";
+                    break;
+                }
+            case 76:
+                {
+                    displayedText.text =
+                    "To progress through each\n" +
+                    "level you must find the\n" +
+                    "green Warp Key.";
+                    break;
+                }
+            case 77:
+                {
+                    displayedText.text =
+                    "Once the key is collected\n" +
+                    "you can use this portal to\n" +
+                    "warp to the next level!";
+                    break;
+                }
+            case 78:
+                {
+                    displayedText.text =
+                    "Press UP on the analog\n" +
+                    "stick to use the Portal.";
+                    break;
+                }
+            case 79:
+                {
+                    displayedText.text =
+                    "Warp Key Collected!!";
+                    break;
+                }
+            case 80:
+                {
+                    displayedText.text =
+                    "Gotta go FAAAST!!";
+                    break;
+                }
+            case 99:
+                {
+                    displayedText.text =
+                    "You found the ninja\n" +
+                    "scroll! Keep your eyes\n" +
+                    "peeled for these!";
                     break;
                 }
             case 100:

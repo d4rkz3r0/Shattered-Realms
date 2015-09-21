@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -24,6 +24,11 @@ public class TimerManager : MonoBehaviour
 
 	void Start ()
     {
+        if (Application.loadedLevel == 7)
+        {
+            GetComponent<Text>().enabled = false;
+        }
+
         timeRemainingText = GetComponent<Text>();
         levelTimer = maxTimeToCompleteLevel;
 	}
