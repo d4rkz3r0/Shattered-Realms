@@ -18,7 +18,7 @@ public class GizmoTriggerWall : MonoBehaviour
         player = FindObjectOfType<MasterController>();
         gizmo = GameObject.Find("Gizmo");
 
-        MessageController.textSelection = 1;
+        MessageController.textSelection = 0;
 	}
 	
 	void Update () 

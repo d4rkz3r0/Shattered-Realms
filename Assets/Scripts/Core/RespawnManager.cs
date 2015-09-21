@@ -55,8 +55,17 @@ public class RespawnManager : MonoBehaviour
 		{
 			if (child.gameObject.activeInHierarchy == false){
 				Debug.Log ("FIRST");
-				child.gameObject.GetComponent<EnemyRespawn>().ResetSelf();
-				Debug.Log(child.gameObject.name);
+                if(child.gameObject.GetComponent<EnemyRespawn>() == null)
+                {
+                    Debug.Log("game breaking error occured");
+                    return;
+                }
+                else
+                {
+                    child.gameObject.GetComponent<EnemyRespawn>().ResetSelf();
+                }
+				
+				//Debug.Log(child.gameObject.name);
 			}
 			else{
 				Debug.Log("gotta go deeper");

@@ -344,7 +344,7 @@ public class SasukeController : MonoBehaviour
     public void castFireBall()
     {
         canMove = false;
-        if (!fireBallAudioHasPlayed)
+        if (!fireBallAudioHasPlayed && !isChargingChidori)
         {
             sasukeFireballJutsuSFX.Play();
             fireBallAudioHasPlayed = true;
@@ -417,7 +417,7 @@ public class SasukeController : MonoBehaviour
     {
         if(chidoriHit && chidoriStrikeCD <= 0.0f)
         {
-            HealthManager.takeDamage(5);
+            HealthManager.takeDamage(6);
             chidoriStrikeCD = 3.0f;
             canCastChidori = false;
         }

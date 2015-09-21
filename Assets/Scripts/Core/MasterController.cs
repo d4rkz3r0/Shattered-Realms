@@ -372,8 +372,7 @@ public class MasterController : MonoBehaviour
                 if(Application.loadedLevel != 9)
                 {
                     disableInput = false;
-                }
-				
+                }				
 			}
 		} 
 		else {

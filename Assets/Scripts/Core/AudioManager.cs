@@ -8,16 +8,20 @@ public class AudioManager : MonoBehaviour
     public AudioSource fileSelectMusic;
     public AudioSource preStoryMusic;
     public AudioSource levelSelectMusic;
+    public AudioSource tutorialMusic;
     public AudioSource level1Music;
     public AudioSource level2Music;
     public AudioSource level3Music;
+    public AudioSource sasukeBossMusic;
     public AudioSource level4Music;
     public AudioSource level5Music;
     public AudioSource level6Music;
+    public AudioSource gizmoBossMusic;
     public AudioSource level7Music;
     public AudioSource level8Music;
     public AudioSource level9Music;
     public AudioSource level10Music;
+    public AudioSource marioBossMusic;
 
     
     //Instance
@@ -66,7 +70,7 @@ public class AudioManager : MonoBehaviour
         else if (Application.loadedLevel == 7)
         {
             currAudio.Stop();
-            currAudio = level1Music;
+            currAudio = tutorialMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 8)
@@ -141,5 +145,37 @@ public class AudioManager : MonoBehaviour
     public static AudioManager GetInstance()
     {
         return instance;
+    }
+
+    public static void level1GameplayMusic()
+    {
+        currAudio.Stop();
+        currAudio = AudioManager.GetInstance().level1Music;
+        currAudio.Play();
+    }
+
+    public static void playSasukeBossMusic()
+    {
+        currAudio.Stop();
+        currAudio = AudioManager.GetInstance().sasukeBossMusic;
+        currAudio.Play();
+    }
+
+    public static void playGizmoBossMusic()
+    {
+        currAudio.Stop();
+        currAudio = AudioManager.GetInstance().gizmoBossMusic;
+        currAudio.Play();
+    }
+
+    public static void playMarioBossMusic()
+    {
+        currAudio.Stop();
+        currAudio = AudioManager.GetInstance().marioBossMusic;
+        currAudio.Play();
+    }
+    public static void stopMusic()
+    {
+        currAudio.Stop();
     }
 }

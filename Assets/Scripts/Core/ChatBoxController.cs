@@ -40,6 +40,7 @@ public class ChatBoxController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        Debug.Log(MessageController.textSelection);
         if(startBossDialogue == false && startEndBossDialogue == false)
         {
             voiceClipAudioTimer = voiceClipDuration;
@@ -65,9 +66,7 @@ public class ChatBoxController : MonoBehaviour
 
         if (voiceClipEndAudioTimer <= 0.0f)
         {
-            if (MessageController.textSelection == 28 ||
-                MessageController.textSelection == 32 ||
-                MessageController.textSelection == 37)
+            if (MessageController.textSelection == 28)
             {
                 MessageController.textSelection = 0;
                 currText.text = "";
@@ -76,6 +75,7 @@ public class ChatBoxController : MonoBehaviour
             }
             else
             {
+                
                 MessageController.textSelection += 1;
                 voiceClipIndex++;
             }
@@ -84,13 +84,25 @@ public class ChatBoxController : MonoBehaviour
 
         if (voiceClipAudioTimer <= 0.0f && startEndBossDialogue == false)
         {
-            if(MessageController.textSelection == 25)
+            if (MessageController.textSelection == 25 ||
+                MessageController.textSelection == 32 ||
+                MessageController.textSelection == 37)
             {
-                MessageController.textSelection = 0;
-                ++voiceClipIndex;
-                currText.text = "";
-                gameObject.SetActive(false);
-                return;
+                if (MessageController.textSelection == 25)
+                {
+                    voiceClipIndex++;
+                    MessageController.textSelection = 0;
+                    currText.text = "";
+                    gameObject.SetActive(false);
+                    return;
+                }
+                else
+                {
+                    MessageController.textSelection = 0;
+                    currText.text = "";
+                    gameObject.SetActive(false);
+                    return;
+                }
             }
             else
             {
@@ -111,6 +123,10 @@ public class ChatBoxController : MonoBehaviour
                         if (!hasPlayed)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
+                            if (AudioManager.GetInstance() != null)
+                            {
+                                AudioManager.stopMusic();
+                            }
                             voiceClips[voiceClipIndex].Play();
                             voiceClipAudioTimer = 2.22f;
                             hasPlayed = true;

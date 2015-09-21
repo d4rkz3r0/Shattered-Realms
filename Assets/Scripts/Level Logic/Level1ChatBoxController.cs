@@ -31,6 +31,7 @@ public class Level1ChatBoxController : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<MasterController>().moveSpeed = 0.0f;
         startingTextIndex -= 1;
         textIndex = startingTextIndex;
         MessageController.textSelection = textIndex;

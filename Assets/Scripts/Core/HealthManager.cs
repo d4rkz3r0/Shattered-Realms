@@ -67,6 +67,7 @@ public class HealthManager : MonoBehaviour
     {
         if(Application.loadedLevel == 7)
         {
+            GetComponentInChildren<Text>().enabled = false;
             GetComponent<Image>().enabled = false;
         }
 
@@ -184,18 +185,24 @@ public class HealthManager : MonoBehaviour
 
         if (playerHP < 4 && playerHP > 0)
         {
-            //if (!lowBGMHasPlayed)
-            //{
-            //    AudioManager.currAudio.Stop();
-            //    lowHPMusic.Play();
-            //    lowBGMHasPlayed = true;
+            if (!lowBGMHasPlayed)
+            {
+                if (AudioManager.GetInstance() != null)
+                {
+                    AudioManager.currAudio.Stop();
+                }
+                lowHPMusic.Play();
+                lowBGMHasPlayed = true;
 
-            //}
+            }
         }
         if (playerHP > 3 && lowBGMHasPlayed)
         {
             lowHPMusic.Stop();
-            AudioManager.currAudio.Play();
+            if(AudioManager.GetInstance() != null)
+            {
+                AudioManager.currAudio.Play();
+            }            
             lowBGMHasPlayed = false;
 
         }

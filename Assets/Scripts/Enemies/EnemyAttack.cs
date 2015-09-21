@@ -63,7 +63,7 @@ public class EnemyAttack : MonoBehaviour {
 		playerSound = GameObject.Find("Player").GetComponent<AudioSource>();
 		playerScript = GameObject.Find ("Player").GetComponent<MasterController> ();
 		player = GameObject.Find ("Player");
-		GizmoAttack = GetComponent<AudioSource> ();
+		//GizmoAttack = GetComponent<AudioSource> ();
 
         if(Application.loadedLevel == 9)
         {
@@ -101,7 +101,7 @@ public class EnemyAttack : MonoBehaviour {
 				{
 					enemyAnim = null;
 				} 
-				GizmoAttack.Play ();
+				//GizmoAttack.Play ();
 				aiming = player.transform.position - transform.position;
 				attackTimer = timeBetweenAttacks;
 				temp = Instantiate(projectile);
@@ -161,7 +161,15 @@ public class EnemyAttack : MonoBehaviour {
                 {
                     if (other.transform.position.x < transform.position.x)
                     {
-                        playerRigidBody.velocity = new Vector2(-12.0f, 12.0f);
+                        if(playerRigidBody == null)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            playerRigidBody.velocity = new Vector2(-12.0f, 12.0f);
+                        }
+                        
                     }
                     else
                     {

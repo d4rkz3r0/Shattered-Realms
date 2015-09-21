@@ -39,6 +39,10 @@ public class AITriggerWall : MonoBehaviour
             sasuke.canMove = true;
             player.disableInput = false;
             sasuke.fireBallGlobalTimer = sasuke.fireBallGlobalJutsuCoolDown;
+            if (AudioManager.GetInstance() != null)
+            {
+                AudioManager.playSasukeBossMusic();
+            }
             Destroy(gameObject);
         }
 	}

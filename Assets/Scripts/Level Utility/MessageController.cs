@@ -30,6 +30,10 @@ public class MessageController : MonoBehaviour
             tutAudio1 = false;
             player = FindObjectOfType<MasterController>();
         }
+        else if(Application.loadedLevel == 9)
+        {
+            player = FindObjectOfType<MasterController>();
+        }
         else
         {
             player = null;
@@ -212,6 +216,8 @@ public class MessageController : MonoBehaviour
                 }
             case 20:
                 {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
                     pressedUp = true;
                     displayedText.text =
                         "How much can I see\nwith these?";
@@ -260,6 +266,8 @@ public class MessageController : MonoBehaviour
                 }
             case 26:
                 {
+                    player.currentCharacter = 1;
+                    player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Itachi") as RuntimeAnimatorController;
                     pressedUp = true;
                     displayedText.text =
                         "What?!";
@@ -453,6 +461,7 @@ public class MessageController : MonoBehaviour
                 }
             case 54:
                 {
+                    displayedText.color = Color.white;
                     displayedText.text =
                     "Tornadoes can either\n" +
                     "be friend or foe!";
@@ -460,6 +469,7 @@ public class MessageController : MonoBehaviour
                 }
             case 55:
                 {
+                    displayedText.color = Color.black;
                     displayedText.text =
                     "Congrats, you made it!";
                     break;
@@ -524,7 +534,7 @@ public class MessageController : MonoBehaviour
                     player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                     displayedText.text =
                     "Take a Leap of Quake\n" +
-                    "and press Y while in Air.";
+                    "and press B while in Air.";
                     break;
                 }
             case 62:
@@ -579,7 +589,7 @@ public class MessageController : MonoBehaviour
                     displayedText.text =
                     "Cyborg's 3rd ability is\n" +
                     "Chain Spark, it is used\n" +
-                    "by pressing T.";
+                    "by pressing Y.";
                     break;
                 }
             case 68:

@@ -50,9 +50,6 @@ public class FakeI : MonoBehaviour
         sprRenderer = GetComponent<SpriteRenderer>();
         groundChecker = GetComponentInChildren<Transform>();
         mainCamera = FindObjectOfType<CameraController>();
-        //HPBar.SetActive(false);
-        //timerManager.SetActive(false);
-        thePlayer.GetComponent<MasterController>().disableInput = true;
     }
 
     void FixedUpdate()
@@ -129,8 +126,12 @@ public class FakeI : MonoBehaviour
         tutorialText.SetActive(true);
         timerManager.GetComponent<Text>().enabled = true;
         HPBar.GetComponent<Image>().enabled = true;
+        HPBar.GetComponentInChildren<Text>().enabled = true;
         LM.SetActive(true);
-        thePlayer.GetComponent<MasterController>().disableInput = false;
+        if(AudioManager.GetInstance() != null)
+        {
+            AudioManager.level1GameplayMusic();
+        }
         mainCamera.level1PreStory = false;
         mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
         mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.2784919725490196f, 0.4588235294117647f, 0.0f, 1.0f);
@@ -139,6 +140,7 @@ public class FakeI : MonoBehaviour
         mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
         yield return new WaitForSeconds(0.1f);
         mainCamera.followPlayer = true;
+        thePlayer.GetComponent<MasterController>().moveSpeed = 8.0f;
 
 
     }
