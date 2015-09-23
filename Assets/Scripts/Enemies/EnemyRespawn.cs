@@ -29,11 +29,17 @@ public class EnemyRespawn : MonoBehaviour
             enemyAnimation = null;
         }   
 	    //Auto Hook
+		if (GetComponent<EnemyHealthManager> ()) {
 			enemyHealthManager = GetComponent<EnemyHealthManager> ();
-			enemyAttack = GetComponent<EnemyAttack> ();
-			enemyMovement = GetComponent<EnemyMovement> ();
-			enemyAnimator = GetComponent<Animator> ();
+		} 
+		//else {
+		//	enemyHealthManager = GetComponentInChildren<EnemyHealthManager> ();
+		//}
+		// Adding "In Chidren" fixes errors, but generates whorst ones. Its probably necesary though.
 
+		enemyAttack = GetComponent<EnemyAttack> ();
+		enemyMovement = GetComponent<EnemyMovement> ();
+		enemyAnimator = GetComponent<Animator> ();
         //Initial Save
         startingPosition = gameObject.transform.position;
         startingHP = enemyHealthManager.enemyHP;

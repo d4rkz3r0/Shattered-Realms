@@ -28,6 +28,7 @@ public class MasterController : MonoBehaviour
 	private bool afterClimbEff;
 	private bool wallQuaking;
 	private bool canWallClimb;
+	private bool playerWantsToWallClimb;
 	//public GameObject wallQuake;
 
     //Movement Abilities
@@ -494,6 +495,14 @@ public class MasterController : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
             }
+
+			//Wall Climb Input
+			if(Input.GetKey(KeyCode.LeftShift)){
+				playerWantsToWallClimb = true;
+			}
+			else{
+				playerWantsToWallClimb = false;
+			}
 
             //Jumping
             if (Input.GetButtonDown("Jump") && isGrounded)
@@ -1303,7 +1312,7 @@ public class MasterController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-		if (other.tag == "Wall" && ((afterClimbEff == false && canWallClimb) || currentCharacter == 3))
+		if (playerWantsToWallClimb && other.tag == "Wall" && ((afterClimbEff == false && canWallClimb) || currentCharacter == 3))
 		{
 			Debug.Log ("wall climbing");
 			wallClimbing = true;
