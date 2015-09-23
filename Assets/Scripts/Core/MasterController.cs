@@ -20,16 +20,24 @@ public class MasterController : MonoBehaviour
 	private BoxCollider2D[] groundWallC;
 
 	//Wall Climbing
+	private bool playerWantsToWallClimb;
+	private bool canWallClimb;
+
 	private bool wallClimbing;
 	private float wallClimbingTimer;
-	private WallClimbingCheck wallCheck;
-	public float wallClimbSpeed;
+
 	private float afterClimbEffTimer;
-	private bool afterClimbEff;
-	private bool wallQuaking;
-	private bool canWallClimb;
-	private bool playerWantsToWallClimb;
-	//public GameObject wallQuake;
+	private bool afterClimbEffing;
+
+	private bool wallIsToTheRight;
+
+	public float itachiWallClimbSpeed;
+	public float cyborgWallClimbSpeed;
+	public float sonicWallClimbSpeed;
+
+	//private bool wallQuaking;
+	//private WallClimbingCheck wallCheck;
+
 
     //Movement Abilities
     public bool stunned;
@@ -244,11 +252,13 @@ public class MasterController : MonoBehaviour
 
 
     void Start()
-    {
+    { 
+
+
         hasTouchedEnemy = false;
 		groundWallC = GetComponentsInChildren<BoxCollider2D> ();
-		afterClimbEff = false;
-		wallCheck = GetComponentInChildren<WallClimbingCheck> ();
+		afterClimbEffing = false;
+	//	wallCheck = GetComponentInChildren<WallClimbingCheck> ();
 		wallClimbing = false;
         releaseControl = false;
 		//Debug.Log("1");
@@ -261,7 +271,7 @@ public class MasterController : MonoBehaviour
 		wallClimbingTimer = 0.0F;
         playedOnce = false;
         stunned = false;
-		wallQuaking = false;
+		//wallQuaking = false;
         //Auto Hook to GameObjects Components
         boxColliders = GetComponents<BoxCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
@@ -355,6 +365,68 @@ public class MasterController : MonoBehaviour
 
     void Update() 
     {
+		//Wall Climbing Update
+		if(Input.GetKey(KeyCode.LeftShift)){
+			playerWantsToWallClimb = true;
+		}
+		else{
+			playerWantsToWallClimb = false;
+		} 
+
+		if (!playerWantsToWallClimb && wallClimbing) {
+			FromClimbingToAfterClimb();
+		}
+
+		if (wallClimbing) {
+			wallClimbingTimer += Time.deltaTime;
+			switch(currentCharacter)
+			{
+			case 1:
+				rb2D.velocity = new Vector2(0,itachiWallClimbSpeed);
+				if(wallClimbingTimer > 0.5f){
+					FromClimbingToAfterClimb();
+				}
+				break;
+			case 2:
+				rb2D.velocity = new Vector2(0,1);
+				if(wallClimbingTimer > 0.2f){
+					FromClimbingToAfterClimb();
+				}
+				break;
+			case 3:
+				rb2D.velocity = new Vector2(0,1);
+				if(wallClimbingTimer > 0.2f){
+					FromClimbingToAfterClimb();
+				}
+				break;
+			}
+		}
+		else if (afterClimbEffing) {
+			Debug.Log("frames after climbing");
+			afterClimbEffTimer += Time.deltaTime;
+			switch(currentCharacter)
+			{
+			case 1:
+				if(afterClimbEffTimer > 0.3f){
+					FromAfterClimbToNormal();
+				}
+				break;
+			case 2:
+				if(afterClimbEffTimer > 0.8f){
+					FromAfterClimbToNormal();
+				}
+				break;
+			case 3:
+				if(afterClimbEffTimer > 0.5f){
+					FromAfterClimbToNormal();
+				}
+				break;
+			}
+		}
+
+
+
+
 		if (currentCharacter == 3) {
 			groundWallC[2].offset = new Vector2 (-0.05f,0.24f);
 		}
@@ -370,64 +442,27 @@ public class MasterController : MonoBehaviour
 			sasukeHP = FindObjectOfType<BossHealthManager> ();
 		}
 
-		if (disableInput) 
-        {
-			idleTimer += Time.deltaTime;
-			if (idleTimer > 3)
-            {
-                if(Application.loadedLevel != 9)
-                {
-                    disableInput = false;
-                }				
-			}
-		} 
-		else {
-			idleTimer = 0;
+		//BETTER EMERGENCY FAILSAFE
+		if (spinDashAnimTimer <= 0 && !FindObjectOfType<ChatBoxController>() && !wallClimbing && !afterClimbEffing) {
+			isSpinDashing = false;
+			disableInput = false;
 		}
 
-	
-		//if (wallClimbing && !wallCheck.touchingWall) {
-		//
-		//	Debug.Log("vert");
-		////	AfterWallClimb();
+		//EMERGENCY FAILSAFE
+		//if (disableInput) 
+        //{
+		//	idleTimer += Time.deltaTime;
+		//	if (idleTimer > 3)
+        //    {
+        //        if(Application.loadedLevel != 9)
+        //        {
+        //            disableInput = false;
+        //        }				
+		//	}
+		//} 
+		//else {
+		//	idleTimer = 0;
 		//}
-
-	if (!wallClimbing && !afterClimbEff) {
-		transform.eulerAngles = Vector3.zero;
-	}
-
-
-		if (wallClimbing && wallCheck.touchingWall) {
-			if(currentCharacter == 1){
-			rb2D.velocity = new Vector2(0,wallClimbSpeed);
-			}
-			else {
-				rb2D.velocity = new Vector2(0,1);
-			}
-		}
-
-		if (afterClimbEff) {//Debug.Log ("running afterclimb");
-
-			afterClimbEffTimer += Time.deltaTime;
-			if ((currentCharacter == 1 && afterClimbEffTimer > 0.2f ) || (currentCharacter == 2 && afterClimbEffTimer > 0.1f) || (currentCharacter == 3 && afterClimbEffTimer > 0.2f )) {
-			//	Debug.Log ("afterclimb over");
-				afterClimbEff = false;
-				disableInput = false;
-
-			}
-		}
-
-		if (wallClimbing) {
-			//Debug.Log ("running Climb");
-
-			disableInput = true;
-
-			wallClimbingTimer += Time.deltaTime;
-			if ((currentCharacter == 1 && wallClimbingTimer > 1 ) || (currentCharacter == 2 && wallClimbingTimer > 0.5f) || (currentCharacter == 3 && wallClimbingTimer > 0.2f )) {
-				AfterWallClimb();
-			}
-
-		}
 
 
         if (stunned)
@@ -495,14 +530,6 @@ public class MasterController : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
             }
-
-			//Wall Climb Input
-			if(Input.GetKey(KeyCode.LeftShift)){
-				playerWantsToWallClimb = true;
-			}
-			else{
-				playerWantsToWallClimb = false;
-			}
 
             //Jumping
             if (Input.GetButtonDown("Jump") && isGrounded)
@@ -812,22 +839,6 @@ public class MasterController : MonoBehaviour
                     rb2D.gravityScale = defaultGravityScale;
                 }
             }
-			if(wallQuaking && isGrounded){
-			
-				rb2D.velocity = Vector2.zero;
-				Destroy(actualCharge);
-				chargeTimer = 0;
-				canCastCharge = true;
-				
-			
-					isCharging = false;
-					actualQuake = Instantiate(theQuake);
-					actualQuake.transform.position = transform.position;
-					actualQuake.transform.localScale = new Vector3(quakeSize, quakeSize, 1.0f);
-					wallQuaking = false;
-					rb2D.gravityScale = defaultGravityScale;
-			
-			}
 
             //// Charge
             if ((Input.GetAxis("Fire4") != 0 || Input.GetKeyDown(KeyCode.R)) && (currentCharacter == 2))
@@ -940,24 +951,11 @@ public class MasterController : MonoBehaviour
                     spinDashSFX.Play();
                     spinDashAnimTimer = 1.9f;
                     isSpinDashing = true;
-
+					disableInput = true;
                     canCastSpinDash = false;
                     spinDashTimer = spinDashCoolDown;
                 }
             }
-
-            if (isSpinDashing && isGrounded)
-            {
-                disableInput = true;
-				Debug.Log("o3");
-				
-            }
-            else if (isSpinDashing && !isGrounded)
-            {
-                disableInput = false;
-				Debug.Log("3");
-            }
-
 
 
 
@@ -1085,6 +1083,8 @@ public class MasterController : MonoBehaviour
             }
             if (spinDashTimer <= 0.0f)
             {
+					isSpinDashing = false;
+					disableInput = false;
 				canCastSpinDash = true;
             }
 			}
@@ -1312,71 +1312,29 @@ public class MasterController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-		if (playerWantsToWallClimb && other.tag == "Wall" && ((afterClimbEff == false && canWallClimb) || currentCharacter == 3))
-		{
-			Debug.Log ("wall climbing");
-			wallClimbing = true;
-			canWallClimb = false;
-			if(other.transform.position.x > transform.position.x)
-			{
-				//Debug.Log ("wall to the right");
-				transform.rotation = Quaternion.Euler(0, 0, 90);
+		if (!canWallClimb && (other.tag == "Ground" || other.tag == "Platform")) {
+			if (currentCharacter == 2 && afterClimbEffing ) {
+				actualQuake = Instantiate(theQuake);
+				actualQuake.transform.localScale = new Vector3(quakeSize,quakeSize,1);
+				actualQuake.transform.position = transform.position;
+				FromAfterClimbToNormal();
 			}
-			else
-			{
-				//Debug.Log ("wall to the left");
-				transform.rotation = Quaternion.Euler(0, 0, -90);
-			}
-		}
-
-		if ((other.tag == "Ground" || other.tag == "Platform") && (!wallCheck.touchingWall|| currentCharacter == 3 )) {
-		//	Debug.Log("straight");
-			transform.rotation = Quaternion.Euler(0, 0, 0);
-			afterClimbEff = false;
-			disableInput = false;
-			wallClimbing = false;
+			FromAfterClimbToNormal();
 			canWallClimb = true;
 		}
-		//if (other.tag == "Wall") {
-		//	Debug.Log("TRIGGER");
-		//	rotated = true;
-		//	wallClimbing = true;
-		//	transform.Rotate(0,0,90);
-		//}
 
-        ////Hurt SFXs
-        //if (other.tag == "Enemy" || other.tag == "EnemyProjectile")
-        //{
-        //    switch(currentCharacter)
-        //    {
-        //        case 1:
-        //            {
-        //                itachiHurtSFX.Play();
-        //                break;
-        //            }
-        //        case 2:
-        //            {
-        //                cyborgHurtSFX.Play();
-        //                break;
-        //            }
-        //        case 3:
-        //            {
-        //                if(!isGoingSuper && !isBackFlipping && !isSpinDashing)
-        //                {
-        //                    if(!isGrounded)
-        //                    {
-        //                        //Do Nothing
-        //                    }
-        //                    else
-        //                    {
-        //                        sonicHurtSFX.Play();
-        //                    }
-                            
-        //                }
-        //                break;
-        //            }
-        //    }
-        //}
+		if (playerWantsToWallClimb && other.tag == "Wall" && canWallClimb) {
+			if(other.transform.position.x > transform.position.x){
+				wallIsToTheRight = true;
+			}
+			else{
+				wallIsToTheRight = false;
+			}
+
+			FromNormalToClimbing();
+		}
+
+        
 
         if (other.tag == "Enemy" && isBackFlipping && bfHitCD <= 0)
         {
@@ -1478,7 +1436,7 @@ public class MasterController : MonoBehaviour
 
         if(other.tag == "Obstacle" && isSpinDashing)
         {
-			Debug.Log("6");
+
                 disableInput = false;
                 isSpinDashing = false;
                 rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);           
@@ -1515,77 +1473,20 @@ public class MasterController : MonoBehaviour
         }
     }
 
-    //public void WallSlide()
-    //{
-    //    rb2D.velocity = new Vector2(rb2D.velocity.x, 0.7f);
-    //    wallSliding = true;
-
-    //    if(Input.GetButtonDown("Jump"))
-    //    {
-    //        if(transform.localScale.x > 0)
-    //        {
-    //            rb2D.AddForce(new Vector2(-2.0f, 5.0f) * jumpHeight);
-    //        }
-    //        else
-    //        {
-    //            rb2D.AddForce(new Vector2(2.0f, 5.0f) * jumpHeight);
-    //        }
-    //    }
-    //}
-
-    //public void GrabWall()
-    //{
-    //    isOnWall = true;
-    //    rb2D.gravityScale = 0.0f;
-    //    rb2D.drag = 10.0f;
-
-    //}
-
-    //public void ReleaseWall()
-    //{
-    //    if (rb2D.gravityScale != defaultGravityScale)
-    //    {
-    //        rb2D.gravityScale = defaultGravityScale;
-    //        rb2D.drag = defaultDrag;
-    //        isOnWall = false;
-    //    }
-    //}
-
-   //void OnTriggerExit2D(Collider2D other)
-   //{
-	//	Debug.Log("on triger ex");
-	//	if (!wallCheck.touchingWall && wallClimbing) { 
-	//		Debug.Log("after climb");
-	//		//if(currentCharacter == 3 || currentCharacter == 1){
-	//		transform.rotation = Quaternion.Euler(0, 0, 0);
-	//		wallClimbingTimer = 0;
-	//		wallClimbing = false;
-	//		afterClimbEff = true;
-	//		afterClimbEffTimer = 0;
-	//	//	}
-	//	
-	//	}
-   //}
 
 
-    void SpinDashMove()
-    {
-        if(transform.localScale.x >= 0.0f)
-        {
-            rb2D.velocity = new Vector3(spinDashSpeed, rb2D.velocity.y);
-        }
-        else
-        {
-            rb2D.velocity = new Vector3(-spinDashSpeed, rb2D.velocity.y);
-        }
-    }
 
-    void SpinDashEnd()
-    {
-        disableInput = false;
-    }
-
-   
+  void SpinDashMove()
+  {
+      if(transform.localScale.x >= 0.0f)
+      {
+          rb2D.velocity = new Vector3(spinDashSpeed, rb2D.velocity.y);
+      }
+      else
+      {
+          rb2D.velocity = new Vector3(-spinDashSpeed, rb2D.velocity.y);
+      }
+  }
 
     //Blink Helper Function
     public IEnumerator makeBlinkParticle()
@@ -1593,59 +1494,7 @@ public class MasterController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Instantiate(blinkParticle, rb2D.transform.position, rb2D.transform.rotation);
     }
-
-    void AfterWallClimb(){
-		wallClimbingTimer = 0;
-		wallClimbing = false;
-		
-		afterClimbEff = true;
-		afterClimbEffTimer = 0;
-		if (currentCharacter != 3) {
-			transform.rotation = Quaternion.Euler (0, 0, 0);
-		}
-		Debug.Log("after effect");
-
-		
-		switch(currentCharacter){
-		case 1:
-			Debug.Log("Itachi has velocity");
-			if (wallCheck.wallToTheRight) {
-				rb2D.velocity = new Vector2 (-wallClimbSpeed*0.2f, wallClimbSpeed);
-				
-			} else {
-				rb2D.velocity = new Vector2 (wallClimbSpeed*0.2f, wallClimbSpeed);
-			}
-			break;
-		case 2:
-			Debug.Log("CYBORG has velocity");
-			if (wallCheck.wallToTheRight) {
-				rb2D.velocity = new Vector2 (-wallClimbSpeed*2, -wallClimbSpeed*2);
-			} else {
-				rb2D.velocity = new Vector2 (wallClimbSpeed*2, -wallClimbSpeed*2);
-			}
-			wallQuaking = true;
-
-			//isQuaking = true;
-			actualCharge = Instantiate(charge);
-			actualCharge.transform.position = transform.position;
-			actualCharge.transform.localScale = new Vector3(-chargeSize * transform.localScale.x, chargeSize, 1.0f);
-			actualCharge.GetComponent<Rigidbody2D>().velocity = rb2D.velocity;
-			//isCharging = true;
-			//canCastCharge = false;
-			//chargeTimer = chargeCoolDown;
-			
-			break;
-		case 3:
-			springSFX.Play();
-			if (wallCheck.wallToTheRight) {
-				rb2D.velocity = new Vector2 (-wallClimbSpeed*2, wallClimbSpeed);
-			} else {
-				rb2D.velocity = new Vector2 (wallClimbSpeed*2, wallClimbSpeed);
-			}
-			break;
-		}
-	}
-
+	
     public void RechargeAbilities()
     {
         blinkTimer = 0.0f;
@@ -1656,5 +1505,67 @@ public class MasterController : MonoBehaviour
         quakeTimer = 0.0f;
         lightningTimer = 0.0f;
     }
+
+	public void FromNormalToClimbing(){
+		Debug.Log("normal to climb");
+		canWallClimb = false;
+		disableInput = true;
+		wallClimbing = true;
+		afterClimbEffing = false;
+		afterClimbEffTimer = 0;
+		wallClimbingTimer = 0;
+		if (wallIsToTheRight) {
+			transform.eulerAngles = new Vector3 (0, 0, 90);
+		} else {
+			transform.eulerAngles = new Vector3(0,0,-90);
+		}
+
+	}
+	public void FromClimbingToAfterClimb(){
+		Debug.Log("climb to after");
+		transform.eulerAngles = new Vector3(0,0,0);
+		wallClimbing = false;
+		afterClimbEffing = true;
+		afterClimbEffTimer = 0;
+		wallClimbingTimer = 0;
+		switch (currentCharacter) {
+		case 1:
+			if(wallIsToTheRight){
+				rb2D.velocity = new Vector2(-itachiWallClimbSpeed/3,itachiWallClimbSpeed);
+			}else{
+				rb2D.velocity = new Vector2(itachiWallClimbSpeed/3,itachiWallClimbSpeed);
+			}
+			break;
+		case 2:
+			if(wallIsToTheRight){
+				rb2D.velocity = new Vector2(-cyborgWallClimbSpeed,-cyborgWallClimbSpeed);
+			}else{
+				rb2D.velocity = new Vector2(cyborgWallClimbSpeed,-cyborgWallClimbSpeed);
+			}
+			actualCharge = Instantiate(charge);
+			actualCharge.transform.position = transform.position;
+			actualCharge.GetComponent<Rigidbody2D>().velocity = rb2D.velocity;
+			actualCharge.transform.localScale = new Vector3(chargeSize,chargeSize,1);
+			break;
+		case 3:
+			if(wallIsToTheRight){
+				rb2D.velocity = new Vector2(-sonicWallClimbSpeed,sonicWallClimbSpeed/2);
+			}else{
+				rb2D.velocity = new Vector2(sonicWallClimbSpeed,sonicWallClimbSpeed/2);
+			}
+			springSFX.Play();
+			canWallClimb = true;
+			break;
+		}
+
+	}
+	public void FromAfterClimbToNormal(){
+		Debug.Log("after to normal");
+		afterClimbEffing = false;
+		afterClimbEffTimer = 0;
+		wallClimbingTimer = 0;
+		disableInput = false;
+	}
+
 
 }

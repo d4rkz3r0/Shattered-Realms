@@ -129,7 +129,7 @@ public class EnemyMovement : MonoBehaviour {
 			}
 		}
 		if(rb2d.gravityScale == 0){
-		if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro) {
+			if (myDefaultBehaviour == MovementBehaviour.GroundAgile || myDefaultBehaviour == MovementBehaviour.FixedDistanceGroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundAggro || myDefaultBehaviour == MovementBehaviour.GroundPatrolling || myDefaultBehaviour == MovementBehaviour.GroundSmart || myDefaultBehaviour == MovementBehaviour.SpawnAggro || myDefaultBehaviour == MovementBehaviour.Stunned) {
 			if(Mathf.Abs(target.transform.position.x - xPos) < 10){
 					rb2d.gravityScale = 1;
 					gameObject.GetComponent<CircleCollider2D> ().enabled = true;
