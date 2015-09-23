@@ -63,7 +63,7 @@ public class shotgunBlastController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 		if (timeBetweenAttacks <= 0) {
-			timeBetweenAttacks = 1;
+			timeBetweenAttacks = 0.2f;
 			Debug.Log("time reseted");
 			if (other.name != "Player" || other.tag != "Collectibles" || other.tag != "LethalHazard" || other.tag != "Platform") {
 				if (other.GetComponent<Rigidbody2D> () == null) {
@@ -103,7 +103,7 @@ public class shotgunBlastController : MonoBehaviour
 					eAScrp = other.GetComponent<EnemyAttack> ();
 					eAScrp.GetStun (stunTime);
 				}
-				if (other.transform.position.x < transform.position.x) {
+				if (other.transform.position.x < player.transform.position.x) {
 					otherRB.velocity = new Vector2 (-5, 2);
 				} else {
 					otherRB.velocity = new Vector2 (5, 2);
