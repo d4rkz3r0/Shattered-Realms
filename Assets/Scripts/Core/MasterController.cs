@@ -443,7 +443,8 @@ public class MasterController : MonoBehaviour
 		}
 
 		//BETTER EMERGENCY FAILSAFE
-		if (spinDashAnimTimer <= 0 && !FindObjectOfType<ChatBoxController>() && !wallClimbing && !afterClimbEffing) {
+		if (spinDashAnimTimer <= 0 && !FindObjectOfType<ChatBoxController>() && !wallClimbing && !afterClimbEffing) 
+        {
 			isSpinDashing = false;
 			disableInput = false;
 		}
@@ -1292,7 +1293,7 @@ public class MasterController : MonoBehaviour
 				boxColliders[1].enabled = true;
 
                 isSpinDashing = false;
-                if(Application.loadedLevel != 8 && isSpinDashing)
+                if(Application.loadedLevel != 9 && isSpinDashing)
                 {
 					Debug.Log("5");
                     disableInput = false;
@@ -1301,7 +1302,7 @@ public class MasterController : MonoBehaviour
                 {
                     if(FindObjectOfType<ChatBoxController>() != null)
                     {
-                        disableInput = true;
+                        //disableInput = true;
                     }
                 }
                 anim.SetBool("isSpinDashing", false);
@@ -1504,6 +1505,27 @@ public class MasterController : MonoBehaviour
         spinDashTimer = 0.0f;
         quakeTimer = 0.0f;
         lightningTimer = 0.0f;
+    }
+
+    public void abilityReset()
+    {
+        switch(currentCharacter)
+        {
+            case 1:
+                {
+
+                    break;
+                }
+            case 2:
+                {
+                    break;
+                }
+            case 3:
+                {
+                    break;
+                }
+
+        }
     }
 
 	public void FromNormalToClimbing(){
