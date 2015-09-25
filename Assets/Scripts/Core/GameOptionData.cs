@@ -99,16 +99,16 @@ public static class GameOptionData
     //1 - Bronze          (1 Stars)
     //2 - Silver          (2 Stars)
     //3 - Gold            (3 Stars)
-    public static int levelOneTimeTier;
-    public static int levelTwoTimeTier;
-    public static int levelThreeTimeTier;
-    public static int levelFourTimeTier;
-    public static int levelFiveTimeTier;
-    public static int levelSixTimeTier;
-    public static int levelSevenTimeTier;
-    public static int levelEightTimeTier;
-    public static int levelNineTimeTier;
-    public static int levelTenTimeTier;
+    public static int levelOneTimeTier = 0;
+    public static int levelTwoTimeTier = 0;
+    public static int levelThreeTimeTier = 0;
+    public static int levelFourTimeTier = 0;
+    public static int levelFiveTimeTier = 0;
+    public static int levelSixTimeTier = 0;
+    public static int levelSevenTimeTier = 0;
+    public static int levelEightTimeTier = 0;
+    public static int levelNineTimeTier = 0;
+    public static int levelTenTimeTier = 0;
 
     //Special Items
     public static int numberOfSpecialItemsCollected;

@@ -52,12 +52,12 @@ public class AudioManager : MonoBehaviour
         if (Application.loadedLevel == 4)
         {
             //currAudio.Stop();
-            currAudio = fileSelectMusic;
+            //currAudio = fileSelectMusic;
             currAudio.Play();
         }
         else if (Application.loadedLevel == 5)
         {
-            currAudio.Stop();
+            //currAudio.Stop();
             currAudio = preStoryMusic;
             currAudio.Play();
         }

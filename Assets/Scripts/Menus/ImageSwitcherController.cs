@@ -8,16 +8,12 @@ public class ImageSwitcherController : MonoBehaviour
     public int imageIndex = 0;
     public Image[] imageBank;
     private Image currImage;
-
-
-    private controlTitleImages crtlTitle;
     public AudioSource ButtonSelectSFX;
     
 
 	// Use this for initialization
 	void Start () 
     {
-        crtlTitle = FindObjectOfType<controlTitleImages>();
         currImage = GetComponent<Image>();
         currImage.sprite = imageBank[imageIndex].sprite;
 	}
@@ -44,12 +40,10 @@ public class ImageSwitcherController : MonoBehaviour
         if (imageIndex >= 2)
         {
             imageIndex = 2;
-            crtlTitle.imageIndex = 2;
             ChangeScenes(6);
         }
         else
         {
-            crtlTitle.IncreaseIndex();
             imageIndex++;
             currImage.sprite = imageBank[imageIndex].sprite;
         } 
@@ -60,13 +54,11 @@ public class ImageSwitcherController : MonoBehaviour
         GetComponent<AudioSource>().Play();
         if (imageIndex <= 0)
         {
-            crtlTitle.ZeroOut();
             imageIndex = 0;
             return;
         }
         else
         {
-            crtlTitle.DecrementIndex();
             imageIndex--;
             currImage.sprite = imageBank[imageIndex].sprite;
         }
@@ -94,8 +86,7 @@ public class ImageSwitcherController : MonoBehaviour
 
     public void SkipIntro()
     {
-        imageIndex = 2;
-        crtlTitle.imageIndex = 2;
-        currImage.sprite = imageBank[imageIndex].sprite;
+        ButtonSelectSFX.Play();
+        StartCoroutine(ChangeScene(6, 1.1f));
     }
 }

@@ -12,11 +12,257 @@ public class LevelSelectController : MonoBehaviour
     public Button[] levelButtons;
     public Image[] levelStarArray;
 
+    public Sprite completionStarImage;
+    public Sprite bronzeStarImage;
+    public Sprite silverStarImage;
+    public Sprite goldStarImage;
     
 
 	// Use this for initialization
 	void Start ()
     {
+        switch(GameOptionData.levelOneTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[0].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[0].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[0].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[0].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelTwoTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[1].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[1].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[1].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[1].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelThreeTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[2].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[2].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[2].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[2].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelFourTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[3].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[3].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[3].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[3].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelFiveTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[4].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[4].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[4].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[4].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelSixTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[5].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[5].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[5].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[5].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelSevenTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[6].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[6].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[6].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[6].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelEightTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[7].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[7].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[7].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[7].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelNineTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[8].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[8].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[8].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[8].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+        switch (GameOptionData.levelTenTimeTier)
+        {
+            case 0:
+                {
+                    levelStarArray[9].sprite = completionStarImage;
+                    break;
+                }
+            case 1:
+                {
+                    levelStarArray[9].sprite = bronzeStarImage;
+                    break;
+                }
+            case 2:
+                {
+                    levelStarArray[9].sprite = silverStarImage;
+                    break;
+                }
+            case 3:
+                {
+                    levelStarArray[9].sprite = goldStarImage;
+                    break;
+                }
+        }
+
+       
+
 	    if(GameOptionData.level1Completed)
         {
             levelButtons[1].interactable = true;

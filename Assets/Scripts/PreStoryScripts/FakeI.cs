@@ -141,6 +141,7 @@ public class FakeI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         mainCamera.followPlayer = true;
         thePlayer.GetComponent<MasterController>().moveSpeed = 8.0f;
+        GameObject.Find("Skip Button").gameObject.SetActive(false);
     }
 
     public void skipIntro()
