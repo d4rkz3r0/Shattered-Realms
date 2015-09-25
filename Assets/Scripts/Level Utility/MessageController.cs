@@ -153,8 +153,8 @@ public class MessageController : MonoBehaviour
             case 11:
                 {
                     displayedText.text =
-                         "Spikes deal damage and apply\n" +
-                         "knockback.";
+                         "Try using blink instead\n"
+                         + "of jumping.";
                     break;
                 }
             case 12:
@@ -286,7 +286,7 @@ public class MessageController : MonoBehaviour
                 {
                     pressedUp = true;
                     displayedText.text =
-                        "I'll handle this...\n(Press X or LT)";
+                        "I'll handle this...\n(Press LT)";
                     //textFadeTimer = defaultTextFadeDuration;
                     break;
                 }
@@ -539,6 +539,7 @@ public class MessageController : MonoBehaviour
                 }
             case 62:
                 {
+                    displayedText.color = Color.red;
                     player.currentCharacter = 2;
                     player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                     displayedText.text =
@@ -559,6 +560,7 @@ public class MessageController : MonoBehaviour
                 }
             case 64:
                 {
+                    displayedText.color = Color.white;
                     player.currentCharacter = 2;
                     player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Cyborg") as RuntimeAnimatorController;
                     displayedText.text =
@@ -653,6 +655,7 @@ public class MessageController : MonoBehaviour
                 }
             case 74:
                 {
+                    displayedText.color = Color.blue;
                     player.currentCharacter = 3;
                     player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
                     displayedText.text =
@@ -663,6 +666,7 @@ public class MessageController : MonoBehaviour
                 }
             case 75:
                 {
+                    displayedText.color = Color.blue;
                     player.currentCharacter = 3;
                     player.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Sonic") as RuntimeAnimatorController;
                     displayedText.text =
@@ -888,7 +892,7 @@ public class MessageController : MonoBehaviour
                 {
                     displayedText.text =
                         "It seems our worlds\n" +
-                        "have been merged...";
+                        "are merging...";
                     break;
                 }
             case 126:

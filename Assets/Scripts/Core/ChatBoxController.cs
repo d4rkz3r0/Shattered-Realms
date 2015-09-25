@@ -40,7 +40,6 @@ public class ChatBoxController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        Debug.Log(MessageController.textSelection);
         if(startBossDialogue == false && startEndBossDialogue == false)
         {
             voiceClipAudioTimer = voiceClipDuration;
@@ -199,6 +198,11 @@ public class ChatBoxController : MonoBehaviour
                         if (!hasEndPlayed)
                         {
                             player.currentCharacter = 1;
+                            player.disableInput = true;
+                            if (AudioManager.GetInstance() != null)
+                            {
+                                AudioManager.stopMusic();
+                            }
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
                             voiceClips[voiceClipIndex].Play();
                             voiceClipEndAudioTimer = 0.717f;
@@ -223,13 +227,13 @@ public class ChatBoxController : MonoBehaviour
                         hasEndPlayed = false;
                         if (!hasEndPlayed && voiceClipEndAudioTimer <= 0.0f)
                         {
+                            FindObjectOfType<SasukeController>().gameObject.GetComponent<BoxCollider2D>().enabled = false;
                             currChatBoxAvatar.sprite = chatBoxAvatars[1];
                             voiceClips[voiceClipIndex].Play();
                             voiceClipEndAudioTimer = 6.0f;
                             
                             player.currentCharacter = 1;
                             player.canExecuteSasuke = true;
-                            player.disableInput = true;
                             hasEndPlayed = true;
                         }
                         break;

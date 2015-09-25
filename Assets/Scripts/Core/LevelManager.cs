@@ -56,7 +56,15 @@ public class LevelManager : MonoBehaviour
         cameraSize = mainCamera.orthographicSize;
         zoomOutDuration = playerRespawnDelay * 0.35f;
         zoomInDuration = playerRespawnDelay;
-        defaultCameraSize = mainCamera.orthographicSize;
+        if(Application.loadedLevel == 7)
+        {
+            defaultCameraSize = 7.0f;
+        }
+        else
+        {
+            defaultCameraSize = mainCamera.orthographicSize;
+        }
+        
         cameraZoomInEffect = false;
         cameraZoomOutEffect = false;
 
@@ -113,9 +121,8 @@ public class LevelManager : MonoBehaviour
     {
         if (Application.loadedLevel == 9)
         {
-            if(!FindObjectOfType<SasukeController>().hasPlayedOnce && GameObject.Find("BossIntro") == null)
+            if(!FindObjectOfType<SasukeController>().hasPlayedOnce)
             {
-                FindObjectOfType<BossHealthManager>().bossHP = 8;
                 FindObjectOfType<SasukeController>().sasukeVictorySFX.Play();
                 FindObjectOfType<SasukeController>().hasPlayedOnce = true;
             }
