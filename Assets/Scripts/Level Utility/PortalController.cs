@@ -79,46 +79,55 @@ public class PortalController : MonoBehaviour
         {
             case 7:
                 {
+                    GameOptionData.level1Completed = true;
                     GameOptionData.levelOneActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 8:
                 {
+                    GameOptionData.level2Completed = true;
                     GameOptionData.levelTwoActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 9:
                 {
+                    GameOptionData.level3Completed = true;
                     GameOptionData.levelThreeActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 10:
                 {
+                    GameOptionData.level4Completed = true;
                     GameOptionData.levelFourActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 11:
                 {
+                    GameOptionData.level5Completed = true;
                     GameOptionData.levelFiveActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 12:
                 {
+                    GameOptionData.level6Completed = true;
                     GameOptionData.levelSixActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 13:
                 {
+                    GameOptionData.level7Completed = true;
                     GameOptionData.levelSevenActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 14:
                 {
+                    GameOptionData.level8Completed = true;
                     GameOptionData.levelEightActualTime = levelCompletedTimeSecs;
                     break;
                 }
             case 15:
                 {
+                    GameOptionData.level9Completed = true;
                     GameOptionData.levelNineActualTime = levelCompletedTimeSecs;
                     break;
                 }

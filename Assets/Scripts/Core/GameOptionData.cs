@@ -118,6 +118,17 @@ public static class GameOptionData
     public static bool level5SpecialItemCollected;
     public static bool level7SpecialItemCollected;
     public static bool level8SpecialItemCollected;
+    
+    //Level Progression
+    public static bool level1Completed;
+    public static bool level2Completed;
+    public static bool level3Completed;
+    public static bool level4Completed;
+    public static bool level5Completed;
+    public static bool level6Completed;
+    public static bool level7Completed;
+    public static bool level8Completed;
+    public static bool level9Completed;
 
 
 

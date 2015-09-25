@@ -22,6 +22,7 @@ public class LevelCompleteController : MonoBehaviour
     private Text goldTierTimeText;
     private Text silverTierTimeText;
     private Text bronzeTierTimeText;
+    public Text specialItemWarningText;
 
     //Special Items
     public Image level1SpecialItem;
@@ -196,8 +197,34 @@ public class LevelCompleteController : MonoBehaviour
         {
             sceneChoice = 0;
         }
-        Application.LoadLevel(sceneChoice);
-
+        if(sceneChoice == 9 && GameOptionData.numberOfSpecialItemsCollected < 1)
+        {
+            specialItemWarningText.gameObject.SetActive(true);
+            specialItemWarningText.text =
+            "You need to find\n" +
+            "at least 1 Special Item\n" +
+            "to continue to Level 3.";
+        }
+        else if(sceneChoice == 12 && GameOptionData.numberOfSpecialItemsCollected < 2)
+        {
+            specialItemWarningText.gameObject.SetActive(true);
+            specialItemWarningText.text =
+            "You need to find\n" +
+            "at least 2 Special Items\n" +
+            "to continue to Level 6.";
+        }
+        else if (sceneChoice == 15 && GameOptionData.numberOfSpecialItemsCollected < 3)
+        {
+            specialItemWarningText.gameObject.SetActive(true);
+            specialItemWarningText.text =
+            "You need to find\n" +
+            "at least 3 Special Items\n" +
+            "to continue to Level 9.";
+        }
+        else
+        {
+            Application.LoadLevel(sceneChoice);
+        }
     }
 
     public void ChangeScenes()
