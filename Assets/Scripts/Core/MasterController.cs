@@ -366,7 +366,7 @@ public class MasterController : MonoBehaviour
     void Update() 
     {
 		//Wall Climbing Update
-		if(Input.GetKey(KeyCode.LeftShift)){
+		if(Input.GetAxis("WallRun") != 0 || Input.GetButton("WallRunKeyboard")){
 			playerWantsToWallClimb = true;
 		}
 		else{
