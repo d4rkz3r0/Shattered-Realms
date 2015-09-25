@@ -1007,19 +1007,25 @@ public class MessageController : MonoBehaviour
 		case 300:
 		{
 			displayedText.text =
-				"All right, now we are talking!\nThis feels like home.";
+				"All right, now we are\n" +
+                "talking! This feels\n" +
+                "more like home.";
 			break;
 		}
 		case 301:
 		{
 			displayedText.text =
-				"Your home looks... checkeerd blue guy.\nWhat's up with this place?";
+				"Your home looks...\n" +
+                "checkered blue guy.\n" +
+                "What's up with this place?";
 			break;
 		}
 		case 302:
 		{
 			displayedText.text =
-				"Lets just get it over with,\nthere must be a way to get out of here.";
+				"Lets just get it over\n" +
+                "with, there must be a way\n" +
+                "out of here.";
 			break;
 		}
 		case 400:

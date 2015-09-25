@@ -97,12 +97,12 @@ public class Level7ChatBoxController : MonoBehaviour
                 //chat box avatar you want, 0 being the first, 1 being the second, 2 being the third, etc...
                 //Doesn't have to be set every case unless there is a change, but I set it each case anyway...
 
-                case 150:
+                case 300:
                     {
                         if (!hasPlayed)
                         {
                             //Which picture should I use?
-                            currChatBoxAvatar.sprite = chatBoxAvatars[0];
+                            currChatBoxAvatar.sprite = chatBoxAvatars[2];
                             //How long should I display the text?
                             textDisplayTimer = 2.22f;
                             //Trigger buffer
@@ -110,7 +110,7 @@ public class Level7ChatBoxController : MonoBehaviour
                         }
                         break;
                     }
-                case 151:
+                case 301:
                     {
                         hasPlayed = false;
                         if (!hasPlayed && textDisplayTimer <= 0.0f)
@@ -121,12 +121,12 @@ public class Level7ChatBoxController : MonoBehaviour
                         }
                         break;
                     }
-                case 152:
+                case 302:
                     {
                         hasPlayed = false;
                         if (!hasPlayed && textDisplayTimer <= 0.0f)
                         {
-                            currChatBoxAvatar.sprite = chatBoxAvatars[2];
+                            currChatBoxAvatar.sprite = chatBoxAvatars[0];
                             textDisplayTimer = 2.5f;
                             hasPlayed = true;
                         }
