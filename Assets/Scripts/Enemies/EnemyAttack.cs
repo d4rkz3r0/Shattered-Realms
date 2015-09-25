@@ -189,6 +189,7 @@ public class EnemyAttack : MonoBehaviour {
             return;
         }
 
+
         if (myBehaviour == AttackBehaviour.Melee && other.name == "Player" && attackTimer <= 0)
         {
             if (GetComponent<Animator>() != null)
@@ -197,7 +198,23 @@ public class EnemyAttack : MonoBehaviour {
             }
 
             attackTimer = timeBetweenAttacks;
-            HealthManager.takeDamage(damageAmount);
+            
+            if(Application.loadedLevel == 9 && gameObject.name == "Sasuke")
+            {
+                HealthManager.takeDamage(damageAmount);
+            }
+
+            else
+            {
+                if(GetComponent<EnemyHealthManager>().isDead)
+                {
+                    return;
+                }
+                else
+                {
+                    HealthManager.takeDamage(damageAmount);
+                }
+            }
 
             //Knockback
             playerScript.stunned = true;

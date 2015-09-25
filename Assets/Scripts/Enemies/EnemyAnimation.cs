@@ -7,7 +7,7 @@ public class EnemyAnimation : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private bool isAttacking;
-    private bool isDefeated;
+    public bool isDefeated;
 
     private int moveSpeed;
     private int hp;
@@ -79,6 +79,8 @@ public class EnemyAnimation : MonoBehaviour
             //Defeat
             if (health.deathAnimation)
             {
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<BoxCollider2D>().enabled = false;
                 movement.enabled = false;
                 AI.enabled = false;
                 anim.SetBool("isDying", true);
@@ -93,7 +95,24 @@ public class EnemyAnimation : MonoBehaviour
         {
             if(gameObject.name == "Sasuke")
             {
-                sasuke.sasukeMeleeSFX.Play();
+                if(FindObjectOfType<BossHealthManager>().isBossDead)
+                {
+                    return;
+                }
+                else
+                {
+                    sasuke.sasukeMeleeSFX.Play();
+                    HealthManager.takeDamage(1);
+                    if (FindObjectOfType<MasterController>().transform.position.x < transform.position.x)
+                    {
+                        FindObjectOfType<MasterController>().GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 10);
+                    }
+                    else
+                    {
+                        FindObjectOfType<MasterController>().GetComponent<Rigidbody2D>().velocity = new Vector2(10, 10);
+                    }
+                }
+                
             }
 
             anim.SetBool("isAttacking", true);

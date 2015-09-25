@@ -359,14 +359,14 @@ public class MasterController : MonoBehaviour
         //Player Collision
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, groundCheckRadius, groundCheckLayer);
         isTouchingWall = Physics2D.OverlapCircle(wallCheckTransform.position, wallCheckRadius, wallCheckLayer);
-        hasTouchedEnemy = Physics2D.OverlapCircle(groundCheckTransform.position, groundCheckRadius, enemyCheckLayer);
+        hasTouchedEnemy = Physics2D.OverlapCircle(groundCheckTransform.position, 2.0f, enemyCheckLayer);
 
     }
 
     void Update() 
     {
 		//Wall Climbing Update
-		if(Input.GetKey(KeyCode.LeftShift)){
+		if(Input.GetAxis("WallRun") != 0 || Input.GetButton("WallRunKeyboard")){
 			playerWantsToWallClimb = true;
 		}
 		else{
@@ -1135,6 +1135,9 @@ public class MasterController : MonoBehaviour
                     executeSasukeAnimTimer = 3.2f;
                     canExecuteSasuke = false;
                     isExecutingSasuke = true;
+                    sasuke.GetComponent<BoxCollider2D>().enabled = false;
+                    //sasuke.GetComponent<CircleCollider2D>().enabled = false;
+                    //sasuke.GetComponent<EnemyAnimation>().enabled = false;
                 }
             }
 
@@ -1487,6 +1490,11 @@ public class MasterController : MonoBehaviour
       {
           rb2D.velocity = new Vector3(-spinDashSpeed, rb2D.velocity.y);
       }
+  }
+
+    public void SpinDashEnd()
+  {
+      disableInput = false;
   }
 
     //Blink Helper Function

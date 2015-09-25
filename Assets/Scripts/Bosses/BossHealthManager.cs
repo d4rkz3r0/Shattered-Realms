@@ -67,6 +67,7 @@ public class BossHealthManager : MonoBehaviour
         currBossHPBarImage = GetComponent<Image>();
         if(Application.loadedLevel == 9)
         {
+            sasuke = FindObjectOfType<SasukeController>();
             sasukeAnimator = FindObjectOfType<SasukeController>().GetComponent<Animator>();
             sasukeSpriteRenderer = FindObjectOfType<SasukeController>().GetComponent<SpriteRenderer>();
             //Animation Logic
@@ -221,7 +222,7 @@ public class BossHealthManager : MonoBehaviour
                     if (!hasPlayed)
                     {
                         bossLowHPSFX.Play();
-                        bossHP = 5;
+                        bossHP = 6;
                         hasPlayed = true;
                     }
                 }
@@ -239,6 +240,7 @@ public class BossHealthManager : MonoBehaviour
                 {
                     bossHP = 0;
                     sasukeAnimator.Play("sasuke_OOHP");
+                    
                 }
             }
 
@@ -252,7 +254,7 @@ public class BossHealthManager : MonoBehaviour
             {
                 if (sasukeOOHPAnimationTimer >= 0.0f && bossHP == 0)
                 {
-                    FindObjectOfType<SasukeController>().GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
+                    sasuke.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
                     sasukeOOHPAnimationTimer -= Time.deltaTime;
                 }
             }
@@ -270,6 +272,7 @@ public class BossHealthManager : MonoBehaviour
             {
                 if(Application.loadedLevel == 9)
                 {
+                    sasuke.GetComponent<EnemyAttack>().enabled = false;
                     sasukeAnimator.enabled = false;
                 }
                 
@@ -278,7 +281,7 @@ public class BossHealthManager : MonoBehaviour
                 {
                    if(Application.loadedLevel == 9)
                    {
-                       FindObjectOfType<SasukeController>().canMove = false;
+                       sasuke.canMove = false;
 
                        sasukeSpriteRenderer.sprite = sasukeKnee;
                        MessageController.textSelection = 26;

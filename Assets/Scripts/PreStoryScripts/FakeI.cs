@@ -134,14 +134,40 @@ public class FakeI : MonoBehaviour
         }
         mainCamera.level1PreStory = false;
         mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
-        mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.2784919725490196f, 0.4588235294117647f, 0.0f, 1.0f);
+        mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.278f, 0.459f, 0.588f, 1.0f);
         mainCamera.GetComponent<Camera>().orthographicSize = 7.0f; //Used to be 5.5
-        mainCamera.minBounds = new Vector3(5.15f, -120.87f, -10.0f);
+        mainCamera.minBounds = new Vector3(5.15f, -122.51f, -10.0f);
         mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
         yield return new WaitForSeconds(0.1f);
         mainCamera.followPlayer = true;
         thePlayer.GetComponent<MasterController>().moveSpeed = 8.0f;
+        GameObject.Find("Skip Button").gameObject.SetActive(false);
+    }
 
-
+    public void skipIntro()
+    {
+        FindObjectOfType<Level1EventManager>().gameObject.SetActive(false);
+        GameObject.Find("ChatBox").gameObject.SetActive(false);
+        MessageController.textSelection = 0;
+        UIComponents.SetActive(true);
+        UITextLabels.SetActive(true);
+        tutorialText.SetActive(true);
+        timerManager.GetComponent<Text>().enabled = true;
+        HPBar.GetComponent<Image>().enabled = true;
+        HPBar.GetComponentInChildren<Text>().enabled = true;
+        LM.SetActive(true);
+        if (AudioManager.GetInstance() != null)
+        {
+            AudioManager.level1GameplayMusic();
+        }
+        mainCamera.level1PreStory = false;
+        mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
+        mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.278f, 0.459f, 0.588f, 1.0f);
+        mainCamera.GetComponent<Camera>().orthographicSize = 7.0f; //Used to be 5.5
+        mainCamera.minBounds = new Vector3(5.15f, -122.51f, -10.0f);
+        mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
+        mainCamera.followPlayer = true;
+        thePlayer.GetComponent<MasterController>().moveSpeed = 8.0f;
+        GameObject.Find("Skip Button").gameObject.SetActive(false);
     }
 }
