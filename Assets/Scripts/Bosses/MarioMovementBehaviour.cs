@@ -30,6 +30,7 @@ public class MarioMovementBehaviour : MonoBehaviour {
 
 
 	public bool isPlayerInRange;
+	public Transform sign;
 
 	// Use this for initialization
 	void Start () {
@@ -119,6 +120,7 @@ public class MarioMovementBehaviour : MonoBehaviour {
 		else if (other.gameObject.tag == "PowerUp" && gameObject.GetComponent<EnemyHealthManager>().enemyHP <= (gameObject.GetComponent<EnemyHealthManager>().EnemyMaxHP  *.25f) && gameObject.GetComponent<EnemyHealthManager>().enemyHP > 0)
 		{
 			StarPwrActivate = true;
+			sign.gameObject.SetActive (true);
 		}	
 }
 }
