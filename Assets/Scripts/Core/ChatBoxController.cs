@@ -227,7 +227,6 @@ public class ChatBoxController : MonoBehaviour
                         hasEndPlayed = false;
                         if (!hasEndPlayed && voiceClipEndAudioTimer <= 0.0f)
                         {
-                            FindObjectOfType<SasukeController>().gameObject.GetComponent<BoxCollider2D>().enabled = false;
                             currChatBoxAvatar.sprite = chatBoxAvatars[1];
                             voiceClips[voiceClipIndex].Play();
                             voiceClipEndAudioTimer = 6.0f;
