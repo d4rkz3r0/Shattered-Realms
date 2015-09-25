@@ -1327,19 +1327,6 @@ public class MasterController : MonoBehaviour
 			canWallClimb = true;
 		}
 
-		if (playerWantsToWallClimb && other.tag == "Wall" && canWallClimb) {
-			if(other.transform.position.x > transform.position.x){
-				wallIsToTheRight = true;
-			}
-			else{
-				wallIsToTheRight = false;
-			}
-
-			FromNormalToClimbing();
-		}
-
-        
-
         if (other.tag == "Enemy" && isBackFlipping && bfHitCD <= 0)
         {
 			bfHitCD = 1;
@@ -1597,5 +1584,18 @@ public class MasterController : MonoBehaviour
 		disableInput = false;
 	}
 
+	void OnTriggerStay2D(Collider2D other){
+		if (playerWantsToWallClimb && other.tag == "Wall" && canWallClimb) {
+			if(other.transform.position.x > transform.position.x){
+				wallIsToTheRight = true;
+			}
+			else{
+				wallIsToTheRight = false;
+			}
+			
+			FromNormalToClimbing();
+		}
+
+	}
 
 }
