@@ -49,15 +49,12 @@ public class AudioManager : MonoBehaviour
 
    void OnLevelWasLoaded(int level)
     {
-        if (Application.loadedLevel == 4)
+        if (Application.loadedLevel == 5)
         {
-            //currAudio.Stop();
-            //currAudio = fileSelectMusic;
-            currAudio.Play();
-        }
-        else if (Application.loadedLevel == 5)
-        {
-            //currAudio.Stop();
+            if(currAudio != null)
+            {
+                currAudio.Stop();
+            }
             currAudio = preStoryMusic;
             currAudio.Play();
         }

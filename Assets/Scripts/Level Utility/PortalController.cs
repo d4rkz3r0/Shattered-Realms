@@ -71,7 +71,7 @@ public class PortalController : MonoBehaviour
         
 
         //Level and Goal Timer Data
-        float yourLevelTime = Time.time;
+        float yourLevelTime = Time.timeSinceLevelLoad;
         int levelCompletedTimeSecs = (int)Mathf.Round(yourLevelTime);
 
         //Save Level Time
