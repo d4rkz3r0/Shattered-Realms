@@ -552,6 +552,19 @@ public class MasterController : MonoBehaviour
             //Straight Selection
             if(Input.GetButtonDown("Char1") && currentCharacter != 1)
             {
+				springTimer = 0;
+				chaosEmeraldTimer= 0;
+				backFlipAnimTimer = 0;
+				spinDashTimer = 0;
+				spinDashAnimTimer = 0;
+				backFlipTimer = 0;
+				quakeTimer = 0;
+				chargeTimer = 0;
+				chaosEmeraldsAnimTimer = 0;
+				spRender.color = Color.white;
+				circleCollider.radius = 0.2f;
+				circleCollider.offset = new Vector2(0.0f, -0.83f);
+
                 currentCharacter = 1;
                 boxColliders[1].offset = new Vector2(0.0f, 0);
                 boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
@@ -562,6 +575,19 @@ public class MasterController : MonoBehaviour
 
             if (Input.GetButtonDown("Char2") && currentCharacter != 2)
             {
+				springTimer = 0;
+				chaosEmeraldTimer= 0;
+				backFlipAnimTimer = 0;
+				spinDashTimer = 0;
+				spinDashAnimTimer = 0;
+				backFlipTimer = 0;
+				quakeTimer = 0;
+				chargeTimer = 0;
+				spRender.color = Color.white;
+				circleCollider.radius = 0.2f;
+				chaosEmeraldsAnimTimer = 0;
+				circleCollider.offset = new Vector2(0.0f, -0.83f);
+
                 currentCharacter = 2;
                 boxColliders[1].offset = new Vector2(0.0f, 0);
                 boxColliders[0].offset = new Vector2(0.0f, 0.05127716f);
@@ -571,6 +597,19 @@ public class MasterController : MonoBehaviour
 
             if (Input.GetButtonDown("Char3") && currentCharacter != 3)
             {
+				springTimer = 0;
+				chaosEmeraldTimer= 0;
+				backFlipAnimTimer = 0;
+				spinDashTimer = 0;
+				spinDashAnimTimer = 0;
+				backFlipTimer = 0;
+				quakeTimer = 0;
+				chargeTimer = 0;
+				spRender.color = Color.white;
+				circleCollider.radius = 0.2f;
+				chaosEmeraldsAnimTimer = 0;
+				circleCollider.offset = new Vector2(0.0f, -0.83f);
+
                 currentCharacter = 3;
                 boxColliders[0].offset = new Vector2(0.0f, 0.61127716f / 2);
                 circleCollider.offset = new Vector2(0.0f, -0.56f);
@@ -586,6 +625,19 @@ public class MasterController : MonoBehaviour
                 {
                     case 1:
                         {
+					springTimer = 0;
+					chaosEmeraldTimer= 0;
+					backFlipAnimTimer = 0;
+					spinDashTimer = 0;
+					spinDashAnimTimer = 0;
+					backFlipTimer = 0;
+					quakeTimer = 0;
+					chargeTimer = 0;
+					spRender.color = Color.white;
+					circleCollider.radius = 0.2f;
+					chaosEmeraldsAnimTimer = 0;
+					circleCollider.offset = new Vector2(0.0f, -0.83f);
+
                             currentCharacter = 2;
 					//boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
 					boxColliders[1].offset = new Vector2(0.0f, 0);
@@ -596,6 +648,19 @@ public class MasterController : MonoBehaviour
                         }
                     case 2:
                         {
+					springTimer = 0;
+					chaosEmeraldTimer= 0;
+					backFlipAnimTimer = 0;
+					spinDashTimer = 0;
+					spinDashAnimTimer = 0;
+					backFlipTimer = 0;
+					quakeTimer = 0;
+					chargeTimer = 0;
+					spRender.color = Color.white;
+
+					circleCollider.radius = 0.2f;
+					chaosEmeraldsAnimTimer = 0;
+					circleCollider.offset = new Vector2(0.0f, -0.83f);
                             currentCharacter = 3;
 					boxColliders[0].offset = new Vector2(0.0f, 0.61127716f/2);
 					circleCollider.offset = new Vector2(0.0f, -0.56f);
@@ -605,6 +670,19 @@ public class MasterController : MonoBehaviour
                         }
                     case 3:
                         {
+					springTimer = 0;
+					chaosEmeraldTimer= 0;
+					backFlipAnimTimer = 0;
+					spinDashTimer = 0;
+					spinDashAnimTimer = 0;
+					backFlipTimer = 0;
+					quakeTimer = 0;
+					chargeTimer = 0;
+					spRender.color = Color.white;
+					circleCollider.radius = 0.2f;
+					chaosEmeraldsAnimTimer = 0;
+					circleCollider.offset = new Vector2(0.0f, -0.83f);
+
                             currentCharacter = 1;
 					//boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
 					boxColliders[1].offset = new Vector2(0.0f, 0);
@@ -629,6 +707,18 @@ public class MasterController : MonoBehaviour
                 {
                     case 1:
                         {
+					springTimer = 0;
+					chaosEmeraldTimer= 0;
+					backFlipAnimTimer = 0;
+					spinDashTimer = 0;
+					spinDashAnimTimer = 0;
+					backFlipTimer = 0;
+					quakeTimer = 0;
+					chargeTimer = 0;
+					spRender.color = Color.white;
+					circleCollider.radius = 0.2f;
+					chaosEmeraldsAnimTimer = 0;
+					circleCollider.offset = new Vector2(0.0f, -0.83f);
                             currentCharacter = 3;
 					boxColliders[0].offset = new Vector2(0.0f, 0.61127716f/2);
                circleCollider.offset = new Vector2(0.0f, -0.56f);
@@ -638,6 +728,18 @@ public class MasterController : MonoBehaviour
                         }
                     case 2:
                         {
+					springTimer = 0;
+					chaosEmeraldTimer= 0;
+					backFlipAnimTimer = 0;
+					spinDashTimer = 0;
+					spinDashAnimTimer = 0;
+					backFlipTimer = 0;
+					quakeTimer = 0;
+					chargeTimer = 0;
+					spRender.color = Color.white;
+					circleCollider.radius = 0.2f;
+					chaosEmeraldsAnimTimer = 0;
+					circleCollider.offset = new Vector2(0.0f, -0.83f);
 					currentCharacter = 1;
 	//boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
 					boxColliders[1].offset = new Vector2(0.0f, 0);
@@ -649,6 +751,18 @@ public class MasterController : MonoBehaviour
                         }
                     case 3:
                         {
+					springTimer = 0;
+					chaosEmeraldTimer= 0;
+					backFlipAnimTimer = 0;
+					spinDashTimer = 0;
+					spinDashAnimTimer = 0;
+					backFlipTimer = 0;
+					quakeTimer = 0;
+					chargeTimer = 0;
+					spRender.color = Color.white;
+					circleCollider.radius = 0.2f;
+					chaosEmeraldsAnimTimer = 0;
+					circleCollider.offset = new Vector2(0.0f, -0.83f);
                             currentCharacter = 2;
 					boxColliders[1].offset = new Vector2(0.0f, 0);
 	//boxColliders[0].size = new Vector2(boxColliders[0].size.x, 1.86f);
@@ -1075,6 +1189,7 @@ public class MasterController : MonoBehaviour
 			if(rb2D.velocity.y < 0){
 				isSpringing = false;
 				spRender.color = Color.white;
+
 
 			}
 
