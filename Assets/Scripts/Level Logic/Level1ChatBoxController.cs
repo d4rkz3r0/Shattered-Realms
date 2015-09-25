@@ -51,8 +51,7 @@ public class Level1ChatBoxController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            textIndex = 115;
-            MessageController.textSelection = textIndex;
+            fakeItachi.skipIntro();
         }
 
         if (startChatBoxDialogue == false)
@@ -92,7 +91,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         if (!textEventReset)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[1];
-                            textDisplayTimer = 1.0f;
+                            textDisplayTimer = 2.0f;
                             textEventReset = true;
                         }
                         break;
@@ -103,8 +102,9 @@ public class Level1ChatBoxController : MonoBehaviour
                         if (!textEventReset && textDisplayTimer <= 0.0f)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[2];
-                            textDisplayTimer = 1.0f;
+                            textDisplayTimer = 2.0f;
                             textEventReset = true;
+                            animS.enabled = true;
                         }
                         break;
                     }
@@ -114,9 +114,9 @@ public class Level1ChatBoxController : MonoBehaviour
                         if (!textEventReset && textDisplayTimer <= 0.0f)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
-                            textDisplayTimer = 1.0f;
+                            textDisplayTimer = 2.0f;
                             textEventReset = true;
-                            animS.enabled = true;
+                            
 
                         }
                         break;
@@ -129,7 +129,7 @@ public class Level1ChatBoxController : MonoBehaviour
 
                             fakeItachi.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
-                            textDisplayTimer = 1.5f;
+                            textDisplayTimer = 2.5f;
                             textEventReset = true;
                         }
                         break;
@@ -141,7 +141,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeCyborg.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[1];
-                            textDisplayTimer = 1.5f;
+                            textDisplayTimer = 2.5f;
                             textEventReset = true;
                         }
                         break;
@@ -152,7 +152,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         if (!textEventReset && textDisplayTimer <= 0.0f)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[2];
-                            textDisplayTimer = 1.5f;
+                            textDisplayTimer = 2.5f;
                             textEventReset = true;
                         }
                         break;
@@ -164,7 +164,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeItachi.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
-                            textDisplayTimer = 1.5f;
+                            textDisplayTimer = 2.5f;
                             textEventReset = true;
                         }
                         break;
@@ -176,7 +176,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeCyborg.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[1];
-                            textDisplayTimer = 1.5f;
+                            textDisplayTimer = 2.5f;
                             textEventReset = true;
                         }
                         break;
@@ -188,7 +188,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeSonic.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[2];
-                            textDisplayTimer = 1.5f;
+                            textDisplayTimer = 2.5f;
                             textEventReset = true;
                         }
                         break;
@@ -200,7 +200,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeCyborg.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[1];
-                            textDisplayTimer = 1.5f;
+                            textDisplayTimer = 2.5f;
                             textEventReset = true;
                         }
                         break;
@@ -211,7 +211,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         if (!textEventReset && textDisplayTimer <= 0.0f)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
-                            textDisplayTimer = 2.0f;
+                            textDisplayTimer = 3.0f;
                             textEventReset = true;
                         }
                         break;
@@ -222,7 +222,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         if (!textEventReset && textDisplayTimer <= 0.0f)
                         {
                             currChatBoxAvatar.sprite = chatBoxAvatars[2];
-                            textDisplayTimer = 2.5f;
+                            textDisplayTimer = 3.5f;
                             textEventReset = true;
                         }
                         break;
@@ -234,7 +234,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeCyborg.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[2];
-                            textDisplayTimer = 2.5f;
+                            textDisplayTimer = 3.5f;
                             textEventReset = true;
                         }
                         break;
@@ -246,7 +246,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeCyborg.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[1];
-                            textDisplayTimer = 2.0f;
+                            textDisplayTimer = 3.0f;
                             textEventReset = true;
                         }
                         break;
@@ -258,7 +258,7 @@ public class Level1ChatBoxController : MonoBehaviour
                         {
                             fakeCyborg.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                             currChatBoxAvatar.sprite = chatBoxAvatars[0];
-                            textDisplayTimer = 2.5f;
+                            textDisplayTimer = 3.5f;
                             textEventReset = true;
                         }
                         break;

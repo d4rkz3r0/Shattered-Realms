@@ -26,7 +26,7 @@ public class MainMenuMusic : MonoBehaviour
     void OnLevelWasLoaded(int level)
     {
         //File Select Menu Reached, stop Intro Menu BGM
-        if(level == 4)
+        if(level == 5)
         {
             Destroy(gameObject);
         }
