@@ -48,10 +48,7 @@
 				attTimer = 0.1f;
 					other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
 				}
-				if (other.tag == "MiniBoss")
-				{
-					other.GetComponent<BossHealthManager> ().takeDamage (abilityDamage);
-				}
+				
 				if (other.tag == "Obstacle")
 				{
 					//Debug.Log("IS GETTING CALLED");

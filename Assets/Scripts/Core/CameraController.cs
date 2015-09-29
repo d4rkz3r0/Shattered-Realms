@@ -63,6 +63,7 @@ public class CameraController : MonoBehaviour
         player = FindObjectOfType<MasterController>();
         minBoundsStored = minBounds;
         maxBoundsStored = maxBounds;
+
     }
 
     void FixedUpdate()

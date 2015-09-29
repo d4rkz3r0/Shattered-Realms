@@ -68,16 +68,16 @@ public class RespawnManager : MonoBehaviour
 				//Debug.Log(child.gameObject.name);
 			}
 			else{
-				Debug.Log("gotta go deeper");
-				foreach (Transform childNext in child)
-				{
-					if (childNext.gameObject.activeInHierarchy == false){
-						Debug.Log ("SECOND");
-						childNext.gameObject.GetComponent<EnemyRespawn>().ResetSelf();
+				GameObject deeper = child.GetComponentInChildren<EnemyMovement>().gameObject;
+				if (deeper.activeInHierarchy == false){
+					if(child.gameObject.GetComponent<EnemyRespawn>() == null)
+					{
+						Debug.Log("game breaking error occured");
+						return;
 					}
-					else{
-						Debug.Log ("ive tried so hard and got so far");
-						continue;
+					else
+					{
+						child.gameObject.GetComponent<EnemyRespawn>().ResetSelf();
 					}
 				}
 			}

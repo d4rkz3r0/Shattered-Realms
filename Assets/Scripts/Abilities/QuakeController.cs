@@ -80,7 +80,7 @@ public class QuakeController : MonoBehaviour {
                     return;
                 }
             }
-			if (other.tag == "MiniBoss")
+			if (other.tag == "Boss")
 			{
 				other.GetComponent<BossHealthManager> ().takeDamage (abilityDamage);
 			}

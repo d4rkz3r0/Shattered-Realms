@@ -19,31 +19,51 @@ public class EnemyRespawn : MonoBehaviour
 
 	void Start ()
     {
-        if (GetComponent<EnemyAnimation>() != null)
-        {
-            enemyAnimation = FindObjectOfType<EnemyAnimation>();
-            enemyDefeatedAnimDuration = enemyAnimation.enemyDefeatedAnimDuration;
-        }
-        else
-        {
-            enemyAnimation = null;
-        }   
-	    //Auto Hook
-		if (GetComponent<EnemyHealthManager> ()) {
-			enemyHealthManager = GetComponent<EnemyHealthManager> ();
-		} 
-		//else {
-		//	enemyHealthManager = GetComponentInChildren<EnemyHealthManager> ();
-		//}
-		// Adding "In Chidren" fixes errors, but generates whorst ones. Its probably necesary though.
+		if (GetComponent<EnemyMovement> ()) {
+			if (GetComponent<EnemyAnimation> () != null) {
+				enemyAnimation = FindObjectOfType<EnemyAnimation> ();
+				enemyDefeatedAnimDuration = enemyAnimation.enemyDefeatedAnimDuration;
+			} else {
+				enemyAnimation = null;
+			}   
+			//Auto Hook
+			if (GetComponent<EnemyHealthManager> ()) {
+				enemyHealthManager = GetComponent<EnemyHealthManager> ();
+			} 
+			//else {
+			//	enemyHealthManager = GetComponentInChildren<EnemyHealthManager> ();
+			//}
+			// Adding "In Chidren" fixes errors, but generates whorst ones. Its probably necesary though.
 
-		enemyAttack = GetComponent<EnemyAttack> ();
-		enemyMovement = GetComponent<EnemyMovement> ();
-		enemyAnimator = GetComponent<Animator> ();
-        //Initial Save
-        startingPosition = gameObject.transform.position;
-        startingHP = enemyHealthManager.enemyHP;
-        
+			enemyAttack = GetComponent<EnemyAttack> ();
+			enemyMovement = GetComponent<EnemyMovement> ();
+			enemyAnimator = GetComponent<Animator> ();
+			//Initial Save
+			startingPosition = gameObject.transform.position;
+			startingHP = enemyHealthManager.enemyHP;
+		} else {
+			if (GetComponentInChildren<EnemyAnimation> () != null) {
+				enemyAnimation = FindObjectOfType<EnemyAnimation> ();
+				enemyDefeatedAnimDuration = enemyAnimation.enemyDefeatedAnimDuration;
+			} else {
+				enemyAnimation = null;
+			}   
+			//Auto Hook
+			if (GetComponentInChildren<EnemyHealthManager> ()) {
+				enemyHealthManager = GetComponentInChildren<EnemyHealthManager> ();
+			} 
+			//else {
+			//	enemyHealthManager = GetComponentInChildren<EnemyHealthManager> ();
+			//}
+			// Adding "In Chidren" fixes errors, but generates whorst ones. Its probably necesary though.
+			
+			enemyAttack = GetComponentInChildren<EnemyAttack> ();
+			enemyMovement = GetComponentInChildren<EnemyMovement> ();
+			enemyAnimator = GetComponentInChildren<Animator> ();
+			//Initial Save
+			startingPosition = gameObject.transform.position;
+			startingHP = enemyHealthManager.enemyHP;
+		}
 
 	}
 	
@@ -54,18 +74,19 @@ public class EnemyRespawn : MonoBehaviour
 
     public void ResetSelf()
     {
-        gameObject.transform.position = startingPosition;
 
-        enemyHealthManager.enemyHP = startingHP;
-        enemyHealthManager.isDead = false;
-        enemyHealthManager.deathAnimation = false;
-        enemyAttack.enabled = true;
-        enemyMovement.enabled = true;
+			gameObject.transform.position = startingPosition;
 
-        if(enemyAnimation != null)
-        {
-            enemyAnimation.enemyDefeatedAnimDuration = enemyDefeatedAnimDuration;
-        }
-        gameObject.SetActive(true);
+			enemyHealthManager.enemyHP = startingHP;
+			enemyHealthManager.isDead = false;
+			enemyHealthManager.deathAnimation = false;
+			enemyAttack.enabled = true;
+			enemyMovement.enabled = true;
+
+			if (enemyAnimation != null) {
+				enemyAnimation.enemyDefeatedAnimDuration = enemyDefeatedAnimDuration;
+			}
+			gameObject.SetActive (true);
+		
     }
 }

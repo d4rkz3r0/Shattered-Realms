@@ -104,7 +104,7 @@ public class LightningController : MonoBehaviour {
 			other.GetComponent<EnemyHealthManager> ().takeDamage (abilityDamage);
 			Instantiate(hit).transform.position = transform.position;
 			eM.shocked = true;
-			eM.shockTimer = 2;
+			eM.shockTimer = 1;
 			enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
 			eM = enemies[0].GetComponent<EnemyMovement>();
 			closest = enemies[0];

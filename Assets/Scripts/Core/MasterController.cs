@@ -737,6 +737,7 @@ public class MasterController : MonoBehaviour
 					quakeTimer = 0;
 					chargeTimer = 0;
 					spRender.color = Color.white;
+
 					circleCollider.radius = 0.2f;
 					chaosEmeraldsAnimTimer = 0;
 					circleCollider.offset = new Vector2(0.0f, -0.83f);
