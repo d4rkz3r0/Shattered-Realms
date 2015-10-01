@@ -136,8 +136,8 @@ public class FakeI : MonoBehaviour
         mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
         mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.278f, 0.459f, 0.588f, 1.0f);
         mainCamera.GetComponent<Camera>().orthographicSize = 7.0f; //Used to be 5.5
-        mainCamera.minBounds = new Vector3(5.15f, -122.51f, -10.0f);
-        mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
+       // mainCamera.minBounds = new Vector3(5.15f, -122.51f, -10.0f);
+       // mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
         yield return new WaitForSeconds(0.1f);
         mainCamera.followPlayer = true;
         thePlayer.GetComponent<MasterController>().moveSpeed = 8.0f;
@@ -164,8 +164,8 @@ public class FakeI : MonoBehaviour
         mainCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
         mainCamera.GetComponent<Camera>().backgroundColor = new Color(0.278f, 0.459f, 0.588f, 1.0f);
         mainCamera.GetComponent<Camera>().orthographicSize = 7.0f; //Used to be 5.5
-        mainCamera.minBounds = new Vector3(5.15f, -122.51f, -10.0f);
-        mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
+       // mainCamera.minBounds = new Vector3(5.15f, -122.51f, -10.0f);
+       // mainCamera.maxBounds = new Vector3(543.44f, -105.6f, -10.0f);
         mainCamera.followPlayer = true;
         thePlayer.GetComponent<MasterController>().moveSpeed = 8.0f;
         GameObject.Find("Skip Button").gameObject.SetActive(false);
